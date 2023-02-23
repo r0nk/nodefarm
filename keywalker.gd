@@ -15,4 +15,4 @@ func _process(delta):
 		direction.x=-1
 	if Input.is_action_pressed('right'):
 		direction.x=1
-	emit_signal("change",direction)
+	emit_signal("change",direction.normalized())

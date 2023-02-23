@@ -2,6 +2,7 @@ extends Node2D
 
 
 export var path = "res://MyScene.tscn"
+export var is_item = false
 
 var output_scene = load(path)
 
