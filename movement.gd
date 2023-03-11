@@ -4,7 +4,7 @@ onready var parent = get_parent()
 
 export var speed = 100
 
-export var friction = 0.10
+export var friction = 0.15
 
 export var velocity = Vector2(0,0)
 
