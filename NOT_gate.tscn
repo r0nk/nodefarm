@@ -2,8 +2,8 @@
 
 [node name="NOT_gate" type="Polygon2D"]
 position = Vector2( 365, 245 )
-polygon = PoolVector2Array( -2, -42, 60, 1, 76, 2, -8, -56, -7, 56, 67.5681, 7.48582, 76, 2, 60, 1, 1, 43 )
+polygon = PackedVector2Array( -2, -42, 60, 1, 76, 2, -8, -56, -7, 56, 67.5681, 7.48582, 76, 2, 60, 1, 1, 43 )
 
 [node name="bell" type="Polygon2D" parent="."]
 position = Vector2( -9, -1 )
-polygon = PoolVector2Array( 78, 3, 82, -6, 95, -7, 97.9894, -1.6191, 100, 2, 94, 12, 84, 12 )
+polygon = PackedVector2Array( 78, 3, 82, -6, 95, -7, 97.9894, -1.6191, 100, 2, 94, 12, 84, 12 )

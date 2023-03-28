@@ -4,6 +4,6 @@
 
 [node name="wire" type="Line2D"]
 position = Vector2( -22, 480 )
-points = PoolVector2Array( 675, 167, 804, 167 )
+points = PackedVector2Array( 675, 167, 804, 167 )
 default_color = Color( 0, 0.2, 0.2, 1 )
 script = ExtResource( 1 )

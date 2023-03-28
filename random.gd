@@ -1,6 +1,6 @@
 extends Node
 
-export var p = 0.5
+@export var p = 0.5
 
 signal activation
 

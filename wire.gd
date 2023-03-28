@@ -1,7 +1,7 @@
 extends Line2D
 
-export var from :NodePath
-export var to :NodePath
+@export var from :NodePath
+@export var to :NodePath
 var state = false
 
 signal toggle(state)

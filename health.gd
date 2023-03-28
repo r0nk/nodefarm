@@ -1,7 +1,7 @@
 extends Node
 
 
-export var health = 100
+@export var health = 100
 
 func hurt(amount):
 	health -=amount

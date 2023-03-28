@@ -1,6 +1,6 @@
 extends Node2D
 
-export var speed = 20
+@export var speed = 20
 var target = Vector2(0,1)
 func set_direction(direction):
 	direction.y*=-1

@@ -2,4 +2,4 @@
 
 [node name="AND_gate" type="Polygon2D"]
 position = Vector2( -3, -1 )
-polygon = PoolVector2Array( -18, -33, -18, 48, 44, 47, 69, 30, 79, 10, 71, -16, 45, -34 )
+polygon = PackedVector2Array( -18, -33, -18, 48, 44, 47, 69, 30, 79, 10, 71, -16, 45, -34 )

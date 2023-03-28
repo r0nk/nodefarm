@@ -1,6 +1,6 @@
 extends Area2D
 
-export var force = 3000
+@export var force = 3000
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var bpush=Vector2(1,0).rotated(global_rotation)

@@ -1,0 +1,175 @@
+[gd_scene load_steps=16 format=3 uid="uid://ch6d8j0ivqwl6"]
+
+[ext_resource type="PackedScene" uid="uid://bxwppiqwr5fu" path="res://models/spider_bot_model.gltf" id="1_eooot"]
+[ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://noise.tres" id="1_mrgqy"]
+[ext_resource type="Script" path="res://start_ik.gd" id="3_det0y"]
+[ext_resource type="PackedScene" uid="uid://npoimesn13lo" path="res://akai.tscn" id="3_g1vbr"]
+[ext_resource type="PackedScene" uid="uid://b7v7ddihhufc3" path="res://player.tscn" id="4_hcxq1"]
+[ext_resource type="PackedScene" uid="uid://3aui5ieby065" path="res://models/scarecrow.gltf" id="6_1ll62"]
+[ext_resource type="Script" path="res://training_dummy.gd" id="7_hiqul"]
+[ext_resource type="Script" path="res://hurtbox.gd" id="8_rydtu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xp1vo"]
+
+[sub_resource type="Sky" id="Sky_iv4st"]
+sky_material = SubResource("ProceduralSkyMaterial_xp1vo")
+
+[sub_resource type="Environment" id="Environment_6rrrx"]
+background_mode = 2
+sky = SubResource("Sky_iv4st")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 7.65
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pcmr"]
+albedo_color = Color(0, 0.960784, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23wlg"]
+albedo_color = Color(1, 0.705882, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ba58f"]
+albedo_color = Color(1, 0, 0.980392, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tecka"]
+size = Vector3(1, 1.97317, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6rrrx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 7.35845e-08, 0.539932, 0.841709, -4.72023e-08, 0.841709, -0.539932, -10.9166, 7.09611, -2.98215)
+
+[node name="map" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458634, 0, -0.257289)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.92798, 0)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = ExtResource("1_mrgqy")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 41.7142, -48.23)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = ExtResource("1_mrgqy")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 41.7142, 49.6943)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = ExtResource("1_mrgqy")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="map"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 48.9105, 41.7142, 2.97971)
+use_collision = true
+size = Vector3(100, 1, 100)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="map"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -48.9105, 41.7142, -1.51535)
+use_collision = true
+size = Vector3(100, 1, 100)
+
+[node name="spider_bot_model" parent="." instance=ExtResource("1_eooot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458634, 0, -0.257289)
+
+[node name="Body_2" parent="spider_bot_model/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.325856, 0, 0, 0, 0.325856, 0, 0, 0, 0.325856, 0, 0, 0)
+bone_idx = 21
+
+[node name="Body_2" parent="spider_bot_model/Armature/Skeleton3D/Body_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8pcmr")
+
+[node name="Cylinder" parent="spider_bot_model/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.325856, 0, 0, 0, 0, -0.325856, 0, 0.325856, 0, 0, 0.101015, -0.348666)
+bone_idx = 22
+
+[node name="Cylinder" parent="spider_bot_model/Armature/Skeleton3D/Cylinder" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_23wlg")
+
+[node name="Leg" parent="spider_bot_model/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ba58f")
+
+[node name="FrontLeftIk" type="SkeletonIK3D" parent="spider_bot_model/Armature/Skeleton3D" index="3"]
+process_priority = 1
+root_bone = &"leg0FrontLeft"
+tip_bone = &"Foot IKFrontLeft"
+use_magnet = true
+target_node = NodePath("../../FLIKTarget")
+script = ExtResource("3_det0y")
+
+[node name="FrontRightIk" type="SkeletonIK3D" parent="spider_bot_model/Armature/Skeleton3D" index="4"]
+process_priority = 1
+root_bone = &"leg0FrontRight"
+tip_bone = &"Foot IKFrontRight"
+use_magnet = true
+target_node = NodePath("../../FRIKTarget")
+script = ExtResource("3_det0y")
+
+[node name="BackLeftIk" type="SkeletonIK3D" parent="spider_bot_model/Armature/Skeleton3D" index="5"]
+process_priority = 1
+root_bone = &"leg0BackLeft"
+tip_bone = &"Foot IKBackLeft"
+use_magnet = true
+target_node = NodePath("../../BLIKTarget")
+script = ExtResource("3_det0y")
+
+[node name="BackRightIk" type="SkeletonIK3D" parent="spider_bot_model/Armature/Skeleton3D" index="6"]
+process_priority = 1
+root_bone = &"leg0BackRight"
+tip_bone = &"Foot IKBackRight"
+use_magnet = true
+target_node = NodePath("../../BRIKTarget")
+script = ExtResource("3_det0y")
+
+[node name="FLIKTarget" type="Marker3D" parent="spider_bot_model/Armature" index="1"]
+transform = Transform3D(0.325856, 0, 0, 0, 0.325856, 0, 0, 0, 0.325856, -0.710896, -1.10432, -1.42041)
+top_level = true
+
+[node name="FRIKTarget" type="Marker3D" parent="spider_bot_model/Armature" index="2"]
+transform = Transform3D(-0.323252, -0.0411114, 0, 0.0411114, -0.323252, 0, 0, 0, 0.325856, 1.07568, -0.734999, -1.69237)
+top_level = true
+
+[node name="BLIKTarget" type="Marker3D" parent="spider_bot_model/Armature" index="3"]
+transform = Transform3D(0.325856, 0, 0, 0, 0.325856, 0, 0, 0, 0.325856, -0.867464, -0.849912, 1.35509)
+top_level = true
+
+[node name="BRIKTarget" type="Marker3D" parent="spider_bot_model/Armature" index="4"]
+transform = Transform3D(0.325856, 0, 0, 0, 0.325856, 0, 0, 0, 0.325856, 1.246, -1.15208, 0.748404)
+top_level = true
+
+[node name="akai" parent="." instance=ExtResource("3_g1vbr")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.3061, 0)
+light_energy = 20.0
+omni_range = 43.0
+
+[node name="player" parent="." instance=ExtResource("4_hcxq1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.32428, -4.98151, -8.60456)
+extra_jumps = 3
+jump_force = 75
+
+[node name="training_dummy" parent="." instance=ExtResource("6_1ll62")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -25.8818, -7.42798, 28.3716)
+script = ExtResource("7_hiqul")
+
+[node name="arms2" parent="training_dummy/Node2/body2" index="1"]
+transform = Transform3D(0.996195, 0, 0.0871558, 0, 1, 0, -0.0871558, 0, 0.996195, 0, 0, 0)
+
+[node name="hurtbox" type="Area3D" parent="training_dummy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33554, 0)
+script = ExtResource("8_rydtu")
+
+[node name="cs" type="CollisionShape3D" parent="training_dummy/hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3145, 0)
+shape = SubResource("BoxShape3D_tecka")
+
+[node name="damage_number" type="Label3D" parent="training_dummy/hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00575542, 0.757162, 0)
+billboard = 1
+text = "100"
+
+[editable path="spider_bot_model"]
+[editable path="training_dummy"]

@@ -1,34 +1,96 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://b7v7ddihhufc3"]
 
-[ext_resource path="res://health.gd" type="Script" id=1]
-[ext_resource path="res://keywalker.gd" type="Script" id=2]
-[ext_resource path="res://movement.gd" type="Script" id=3]
-[ext_resource path="res://player.png" type="Texture" id=4]
+[ext_resource type="Script" path="res://player.gd" id="1"]
+[ext_resource type="Script" path="res://rifle.gd" id="2_tf0d1"]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 11.5, 13.5 )
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpo0g"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
 
-[node name="player" type="KinematicBody2D"]
-position = Vector2( 353, 347 )
+[sub_resource type="CapsuleShape3D" id="3"]
+radius = 0.490116
+height = 3.0
 
-[node name="sprite" type="Sprite" parent="."]
-position = Vector2( 3, -3 )
-scale = Vector2( 0.107422, 0.115234 )
-texture = ExtResource( 4 )
+[node name="player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1")
 
-[node name="movement" type="Node2D" parent="."]
-position = Vector2( 10, 18 )
-script = ExtResource( 3 )
-speed = 50
+[node name="camera" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.53674e-07, 2.10365, 5.96046e-08)
+cull_mask = 2148532223
+current = true
+fov = 90.0
+far = 10000.0
 
-[node name="cs" type="CollisionShape2D" parent="."]
-position = Vector2( 1.5, -3.5 )
-shape = SubResource( 2 )
+[node name="HUD" type="CanvasLayer" parent="camera"]
 
-[node name="keywalker" type="Node" parent="."]
-script = ExtResource( 2 )
+[node name="sights" type="Node2D" parent="camera/HUD"]
+visible = false
 
-[node name="health" type="Node" parent="."]
-script = ExtResource( 1 )
+[node name="Line2D" type="Line2D" parent="camera/HUD/sights"]
+z_index = 3
+position = Vector2(-533, -274)
+rotation = -1.23279
+points = PackedVector2Array(-246.863, 145.068, -85.7383, 592.219, -69.3421, 637.722, 98.5878, 1103.76)
+default_color = Color(0, 0, 0, 1)
 
-[connection signal="change" from="keywalker" to="movement" method="set_direction"]
+[node name="Line2D2" type="Line2D" parent="camera/HUD/sights"]
+z_index = 3
+position = Vector2(-535, -274)
+points = PackedVector2Array(546, 655, 537, -22)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="camera/HUD/sights/Line2D2"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(110, 599, 367, 704, 576, 693, 903, 623, 1101, 527, 1141, 265, 1076, 44, 858, -134, 627, -187, 263, -173, 54.9999, -102, -132, 25, -101, 270, -24.0001, 451, 67.9999, 574, -417, 1260, -694, 615, -564, -81, -366, -383, 279, -389, 978, -395, 1467, -338, 1767, -242, 2010, 103, 2013, 519, 2013, 827, 1934, 1062, 1775, 1229, 1150, 1379, 814, 1387, 251, 1410, -148, 1396, -369, 1351, -380, 1271)
+
+[node name="Polygon2D" type="Polygon2D" parent="camera/HUD/sights/Line2D2/Polygon2D"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-35.0001, 471, 146, 660, -380, 1365, -516, 1229)
+
+[node name="crosshair" type="Polygon2D" parent="camera/HUD"]
+position = Vector2(-5.96046e-08, 5.96046e-08)
+scale = Vector2(2, 2)
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(0, -1, 1, 0, 0, 1, -1, 0)
+
+[node name="status" type="RichTextLabel" parent="camera/HUD"]
+offset_left = 6.0
+offset_top = 158.0
+offset_right = 932.0
+offset_bottom = 678.0
+
+[node name="undercross" type="RichTextLabel" parent="camera/HUD"]
+offset_left = 735.0
+offset_top = 574.0
+offset_right = 1188.0
+offset_bottom = 797.0
+text = "
+"
+
+[node name="interact_cast" type="RayCast3D" parent="camera"]
+target_position = Vector3(0, 0, -4000)
+
+[node name="rifle" type="CSGBox3D" parent="camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5021, -0.65926, -0.842095)
+size = Vector3(0.154796, 0.225773, 1)
+script = ExtResource("2_tf0d1")
+
+[node name="sight" type="CSGBox3D" parent="camera/rifle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0.0513422, -0.460795)
+size = Vector3(0.0310372, 0.225773, 0.0497531)
+
+[node name="laser_body" type="CSGBox3D" parent="camera/rifle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32458e-06, -0.0107685, -25.3695)
+visible = false
+size = Vector3(0.068, 0.244, 50)
+material = SubResource("StandardMaterial3D_qpo0g")
+
+[node name="ray" type="RayCast3D" parent="camera/rifle"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.96046e-08, 0, -0.488235)
+target_position = Vector3(0, -100, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="cs" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657689, 0)
+shape = SubResource("3")
