@@ -1,6 +1,7 @@
 res://default_env.tres
-res://main3d.tscn
-res://noise.tres
-res://akai.tscn
 res://player.tscn
-res://hurtbox.gd
+res://noise.tres
+res://main3d.tscn
+res://akai.tscn
+res://dmg_number.tscn
+res://hurtbox.tscn

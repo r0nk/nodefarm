@@ -63,9 +63,6 @@ func process_input(delta):
 	if Input.is_action_just_pressed("escape"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-	if Input.is_action_just_pressed("fire"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 	if Input.is_action_pressed("up"):
 		input_direction+=forward
 	if Input.is_action_pressed("down"):
@@ -103,7 +100,7 @@ func _process(delta):
 		return
 	process_input(delta)
 	accel += gravity_vector*delta*7
-	velocity += (input_direction*0.5)+(accel*delta)
+	velocity += (input_direction)+(accel*delta)
 	set_velocity(velocity)
 	set_up_direction(-gravity_vector.normalized())
 	move_and_slide()

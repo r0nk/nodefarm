@@ -1,7 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=13 format=3 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" path="res://player.gd" id="1"]
+[ext_resource type="Script" path="res://HUD.gd" id="2_3y5t6"]
 [ext_resource type="Script" path="res://rifle.gd" id="2_tf0d1"]
+[ext_resource type="Script" path="res://addons/gloot/ctrl_inventory_grid.gd" id="2_tyb6u"]
+[ext_resource type="Script" path="res://addons/gloot/inventory_grid.gd" id="3_agli8"]
+[ext_resource type="Script" path="res://addons/gloot/item_protoset.gd" id="4_t4tf4"]
+[ext_resource type="Script" path="res://addons/gloot/inventory_item.gd" id="5_44q0f"]
+
+[sub_resource type="Gradient" id="Gradient_34f6l"]
+colors = PackedColorArray(0, 0, 0, 1, 0.316706, 0.316706, 0.316706, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mwgos"]
+gradient = SubResource("Gradient_34f6l")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpo0g"]
 shading_mode = 0
@@ -10,6 +21,15 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
 height = 3.0
+
+[sub_resource type="Resource" id="Resource_7moeu"]
+script = ExtResource("4_t4tf4")
+json_data = "[
+    {
+        \"id\": \"minimal_item\",
+        \"image\": \"icon.png\"
+    }
+]"
 
 [node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1")
@@ -22,6 +42,7 @@ fov = 90.0
 far = 10000.0
 
 [node name="HUD" type="CanvasLayer" parent="camera"]
+script = ExtResource("2_3y5t6")
 
 [node name="sights" type="Node2D" parent="camera/HUD"]
 visible = false
@@ -67,6 +88,24 @@ offset_bottom = 797.0
 text = "
 "
 
+[node name="inventory" type="Control" parent="camera/HUD"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 623.0
+offset_top = 100.0
+offset_right = 943.0
+offset_bottom = 420.0
+script = ExtResource("2_tyb6u")
+inventory_path = NodePath("../../../InventoryGrid")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="camera/HUD/inventory"]
+z_index = -1
+layout_mode = 0
+offset_right = 326.0
+offset_bottom = 325.0
+texture = SubResource("GradientTexture1D_mwgos")
+
 [node name="interact_cast" type="RayCast3D" parent="camera"]
 target_position = Vector3(0, 0, -4000)
 
@@ -94,3 +133,20 @@ collide_with_bodies = false
 [node name="cs" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657689, 0)
 shape = SubResource("3")
+
+[node name="InventoryGrid" type="Node" parent="."]
+script = ExtResource("3_agli8")
+item_protoset = SubResource("Resource_7moeu")
+
+[node name="InventoryItem" type="Node" parent="InventoryGrid"]
+script = ExtResource("5_44q0f")
+protoset = SubResource("Resource_7moeu")
+prototype_id = "minimal_item"
+
+[node name="minimal_item" type="Node" parent="InventoryGrid"]
+script = ExtResource("5_44q0f")
+protoset = SubResource("Resource_7moeu")
+prototype_id = "minimal_item"
+properties = {
+"grid_position": Vector2(1, 1)
+}

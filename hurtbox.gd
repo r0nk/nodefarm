@@ -1,7 +1,20 @@
 extends Area3D
 
-func hurt(damage):
-	$damage_number.text=str(damage)
-	get_node("../AnimationPlayer").stop()
-	get_node("../AnimationPlayer").play("impact")
+@export var multiplier = 1.0
 
+var dmgn = load("res://dmg_number.tscn")
+
+signal hurted
+
+func hurt(damage):
+	var instance = dmgn.instantiate()
+	instance.text=str(damage*multiplier)
+	if(multiplier>1):
+		instance.modulate="#FFFF00"
+	get_parent().add_child(instance)
+	hurted.emit()
+	$flash_box.visible=true
+	$flash_box/Timer.start()
+
+func _on_timer_timeout():
+	$flash_box.visible=false

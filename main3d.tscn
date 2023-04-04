@@ -1,13 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=15 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://bxwppiqwr5fu" path="res://models/spider_bot_model.gltf" id="1_eooot"]
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://noise.tres" id="1_mrgqy"]
 [ext_resource type="Script" path="res://start_ik.gd" id="3_det0y"]
-[ext_resource type="PackedScene" uid="uid://npoimesn13lo" path="res://akai.tscn" id="3_g1vbr"]
 [ext_resource type="PackedScene" uid="uid://b7v7ddihhufc3" path="res://player.tscn" id="4_hcxq1"]
 [ext_resource type="PackedScene" uid="uid://3aui5ieby065" path="res://models/scarecrow.gltf" id="6_1ll62"]
+[ext_resource type="Script" path="res://training_dummy_animations.gd" id="7_7rtep"]
 [ext_resource type="Script" path="res://training_dummy.gd" id="7_hiqul"]
-[ext_resource type="Script" path="res://hurtbox.gd" id="8_rydtu"]
+[ext_resource type="PackedScene" uid="uid://dw032d3mhs81m" path="res://hurtbox.tscn" id="7_lup56"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xp1vo"]
 
@@ -28,9 +28,6 @@ albedo_color = Color(1, 0.705882, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ba58f"]
 albedo_color = Color(1, 0, 0.980392, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tecka"]
-size = Vector3(1, 1.97317, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -139,8 +136,6 @@ top_level = true
 transform = Transform3D(0.325856, 0, 0, 0, 0.325856, 0, 0, 0, 0.325856, 1.246, -1.15208, 0.748404)
 top_level = true
 
-[node name="akai" parent="." instance=ExtResource("3_g1vbr")]
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.3061, 0)
 light_energy = 20.0
@@ -155,21 +150,29 @@ jump_force = 75
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -25.8818, -7.42798, 28.3716)
 script = ExtResource("7_hiqul")
 
-[node name="arms2" parent="training_dummy/Node2/body2" index="1"]
+[node name="hurtbox" parent="training_dummy/Node2/body2" index="0" instance=ExtResource("7_lup56")]
+transform = Transform3D(0.6, 0, 0, 0, 1.2, 0, 0, 0, 0.45, 0, 1.48714, -0.0367079)
+top_level = false
+
+[node name="arms2" parent="training_dummy/Node2/body2" index="2"]
 transform = Transform3D(0.996195, 0, 0.0871558, 0, 1, 0, -0.0871558, 0, 0.996195, 0, 0, 0)
 
-[node name="hurtbox" type="Area3D" parent="training_dummy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33554, 0)
-script = ExtResource("8_rydtu")
+[node name="hurtbox2" parent="training_dummy/Node2/body2/arms2" index="0" instance=ExtResource("7_lup56")]
+transform = Transform3D(1.29505, 0, -0.0174311, 0, 0.2, 0, 0.113302, 0, 0.199239, 0.00124359, 1.33753, -0.0141993)
+top_level = false
+multiplier = 0.5
 
-[node name="cs" type="CollisionShape3D" parent="training_dummy/hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3145, 0)
-shape = SubResource("BoxShape3D_tecka")
+[node name="hurtbox" parent="training_dummy/Node2/body2/head2" index="1" instance=ExtResource("7_lup56")]
+transform = Transform3D(0.3, 0, 0, 0, 0.6, 0, 0, 0, 0.3, 0, 0.487623, -0.0142546)
+top_level = false
+multiplier = 2.0
 
-[node name="damage_number" type="Label3D" parent="training_dummy/hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00575542, 0.757162, 0)
-billboard = 1
-text = "100"
+[node name="AnimationPlayer" parent="training_dummy" index="1"]
+script = ExtResource("7_7rtep")
+
+[connection signal="hurted" from="training_dummy/Node2/body2/hurtbox" to="training_dummy/AnimationPlayer" method="hurted"]
+[connection signal="hurted" from="training_dummy/Node2/body2/arms2/hurtbox2" to="training_dummy/AnimationPlayer" method="hurted"]
+[connection signal="hurted" from="training_dummy/Node2/body2/head2/hurtbox" to="training_dummy/AnimationPlayer" method="hurted"]
 
 [editable path="spider_bot_model"]
 [editable path="training_dummy"]
