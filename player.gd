@@ -19,8 +19,6 @@ var power=0
 
 var weapon_array = [[0,1]]
 
-var victory = false
-
 var camera_speed=0.2
 
 signal player_killed
@@ -40,17 +38,11 @@ func get_aim():
 	return -$camera.transform.basis.z
 
 func process_interactibles():
-	if victory:
-		return
 	$camera/HUD/undercross.text=""
 	if $camera/interact_cast.is_colliding():
 		var body = $camera/interact_cast.get_collider()
 		if body.is_in_group("interactibles"):
-			$camera/HUD/undercross.text="THE ANT."
-			if Input.is_action_just_pressed("fire"):
-				$camera/HUD/undercross.text="VICTORY!"
-				body.queue_free()
-				victory=true
+			pass
 
 func process_input(delta):
 	input_direction = Vector3()
@@ -98,6 +90,7 @@ func align_with_y(xform,new_y):
 func _process(delta):
 	if dead:
 		return
+
 	process_input(delta)
 	accel += gravity_vector*delta*7
 	velocity += (input_direction)+(accel*delta)

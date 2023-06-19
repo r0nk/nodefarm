@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cdvcp345h4b48"]
+
+[ext_resource type="Texture2D" uid="uid://dprywy6r36poj" path="res://materials/gothic_bricks.png" id="1_pt4qy"]
+[ext_resource type="Texture2D" uid="uid://bv872rsejabd4" path="res://materials/gothic_bricks_n.png" id="2_0ymke"]
+
+[resource]
+albedo_texture = ExtResource("1_pt4qy")
+metallic = 1.0
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_0ymke")
+uv1_triplanar = true

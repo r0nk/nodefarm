@@ -22,7 +22,7 @@ visible = false
 material = SubResource("StandardMaterial3D_wmcag")
 
 [node name="Timer" type="Timer" parent="flash_box"]
-wait_time = 0.1
+wait_time = 0.05
 one_shot = true
 
 [connection signal="timeout" from="flash_box/Timer" to="." method="_on_timer_timeout"]

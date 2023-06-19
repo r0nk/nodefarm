@@ -6,3 +6,7 @@ addons/*
 todo.txt
 qrcode.png
 .godot/*
+sfx/*
+models/*
+images/
+.godot/*

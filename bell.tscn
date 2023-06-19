@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cds2b4d2aptr3"]
+
+[ext_resource type="Script" path="res://bell.gd" id="1_327kr"]
+[ext_resource type="PackedScene" uid="uid://cdp5hhuacuqwr" path="res://models/bell.gltf" id="2_ct0hl"]
+[ext_resource type="Script" path="res://AnimationPlayer.gd" id="3_yuhad"]
+[ext_resource type="PackedScene" uid="uid://dw032d3mhs81m" path="res://hurtbox.tscn" id="4_mmojl"]
+[ext_resource type="AudioStream" uid="uid://b41u5e28d281e" path="res://sfx/bell.ogg" id="5_rusp4"]
+
+[node name="bell" type="Node3D"]
+script = ExtResource("1_327kr")
+
+[node name="model" parent="." instance=ExtResource("2_ct0hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0578713, 0, -0.060854)
+
+[node name="hurtbox" parent="model/Node2/bell" index="1" instance=ExtResource("4_mmojl")]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.099727, 0)
+
+[node name="AnimationPlayer" parent="model" index="1"]
+speed_scale = 2.0
+script = ExtResource("3_yuhad")
+
+[node name="sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_rusp4")
+pitch_scale = 0.5
+
+[connection signal="hurted" from="model/Node2/bell/hurtbox" to="." method="hurted"]
+
+[editable path="model"]

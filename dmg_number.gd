@@ -3,7 +3,7 @@ extends Label3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	global_scale(Vector3(1,1,1))
 
 var timer=1
 

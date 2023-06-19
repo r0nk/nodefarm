@@ -1,13 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=12 format=3 uid="uid://ch6d8j0ivqwl6"]
 
-[ext_resource type="PackedScene" uid="uid://bxwppiqwr5fu" path="res://models/spider_bot_model.gltf" id="1_eooot"]
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://noise.tres" id="1_mrgqy"]
-[ext_resource type="Script" path="res://start_ik.gd" id="3_det0y"]
 [ext_resource type="PackedScene" uid="uid://b7v7ddihhufc3" path="res://player.tscn" id="4_hcxq1"]
 [ext_resource type="PackedScene" uid="uid://3aui5ieby065" path="res://models/scarecrow.gltf" id="6_1ll62"]
 [ext_resource type="Script" path="res://training_dummy_animations.gd" id="7_7rtep"]
 [ext_resource type="Script" path="res://training_dummy.gd" id="7_hiqul"]
 [ext_resource type="PackedScene" uid="uid://dw032d3mhs81m" path="res://hurtbox.tscn" id="7_lup56"]
+[ext_resource type="Script" path="res://lip_sync.gd" id="8_so300"]
+[ext_resource type="PackedScene" uid="uid://cds2b4d2aptr3" path="res://bell.tscn" id="9_qop5p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xp1vo"]
 
@@ -19,15 +19,6 @@ background_mode = 2
 sky = SubResource("Sky_iv4st")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 7.65
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pcmr"]
-albedo_color = Color(0, 0.960784, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23wlg"]
-albedo_color = Color(1, 0.705882, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ba58f"]
-albedo_color = Color(1, 0, 0.980392, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -68,74 +59,6 @@ transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -
 use_collision = true
 size = Vector3(100, 1, 100)
 
-[node name="spider_bot_model" parent="." instance=ExtResource("1_eooot")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458634, 0, -0.257289)
-
-[node name="Body_2" parent="spider_bot_model/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.325856, 0, 0, 0, 0.325856, 0, 0, 0, 0.325856, 0, 0, 0)
-bone_idx = 21
-
-[node name="Body_2" parent="spider_bot_model/Armature/Skeleton3D/Body_2" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_8pcmr")
-
-[node name="Cylinder" parent="spider_bot_model/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.325856, 0, 0, 0, 0, -0.325856, 0, 0.325856, 0, 0, 0.101015, -0.348666)
-bone_idx = 22
-
-[node name="Cylinder" parent="spider_bot_model/Armature/Skeleton3D/Cylinder" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_23wlg")
-
-[node name="Leg" parent="spider_bot_model/Armature/Skeleton3D" index="2"]
-surface_material_override/0 = SubResource("StandardMaterial3D_ba58f")
-
-[node name="FrontLeftIk" type="SkeletonIK3D" parent="spider_bot_model/Armature/Skeleton3D" index="3"]
-process_priority = 1
-root_bone = &"leg0FrontLeft"
-tip_bone = &"Foot IKFrontLeft"
-use_magnet = true
-target_node = NodePath("../../FLIKTarget")
-script = ExtResource("3_det0y")
-
-[node name="FrontRightIk" type="SkeletonIK3D" parent="spider_bot_model/Armature/Skeleton3D" index="4"]
-process_priority = 1
-root_bone = &"leg0FrontRight"
-tip_bone = &"Foot IKFrontRight"
-use_magnet = true
-target_node = NodePath("../../FRIKTarget")
-script = ExtResource("3_det0y")
-
-[node name="BackLeftIk" type="SkeletonIK3D" parent="spider_bot_model/Armature/Skeleton3D" index="5"]
-process_priority = 1
-root_bone = &"leg0BackLeft"
-tip_bone = &"Foot IKBackLeft"
-use_magnet = true
-target_node = NodePath("../../BLIKTarget")
-script = ExtResource("3_det0y")
-
-[node name="BackRightIk" type="SkeletonIK3D" parent="spider_bot_model/Armature/Skeleton3D" index="6"]
-process_priority = 1
-root_bone = &"leg0BackRight"
-tip_bone = &"Foot IKBackRight"
-use_magnet = true
-target_node = NodePath("../../BRIKTarget")
-script = ExtResource("3_det0y")
-
-[node name="FLIKTarget" type="Marker3D" parent="spider_bot_model/Armature" index="1"]
-transform = Transform3D(0.325856, 0, 0, 0, 0.325856, 0, 0, 0, 0.325856, -0.710896, -1.10432, -1.42041)
-top_level = true
-
-[node name="FRIKTarget" type="Marker3D" parent="spider_bot_model/Armature" index="2"]
-transform = Transform3D(-0.323252, -0.0411114, 0, 0.0411114, -0.323252, 0, 0, 0, 0.325856, 1.07568, -0.734999, -1.69237)
-top_level = true
-
-[node name="BLIKTarget" type="Marker3D" parent="spider_bot_model/Armature" index="3"]
-transform = Transform3D(0.325856, 0, 0, 0, 0.325856, 0, 0, 0, 0.325856, -0.867464, -0.849912, 1.35509)
-top_level = true
-
-[node name="BRIKTarget" type="Marker3D" parent="spider_bot_model/Armature" index="4"]
-transform = Transform3D(0.325856, 0, 0, 0, 0.325856, 0, 0, 0, 0.325856, 1.246, -1.15208, 0.748404)
-top_level = true
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.3061, 0)
 light_energy = 20.0
@@ -170,9 +93,20 @@ multiplier = 2.0
 [node name="AnimationPlayer" parent="training_dummy" index="1"]
 script = ExtResource("7_7rtep")
 
+[node name="bell" parent="training_dummy" instance=ExtResource("9_qop5p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.20486, 0)
+
+[node name="bell3" parent="training_dummy" instance=ExtResource("9_qop5p")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.67564, 4.20486, 0)
+
+[node name="bell2" parent="training_dummy" instance=ExtResource("9_qop5p")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.86426, 4.20486, 0)
+
+[node name="lip_sync" type="Node3D" parent="."]
+script = ExtResource("8_so300")
+
 [connection signal="hurted" from="training_dummy/Node2/body2/hurtbox" to="training_dummy/AnimationPlayer" method="hurted"]
 [connection signal="hurted" from="training_dummy/Node2/body2/arms2/hurtbox2" to="training_dummy/AnimationPlayer" method="hurted"]
 [connection signal="hurted" from="training_dummy/Node2/body2/head2/hurtbox" to="training_dummy/AnimationPlayer" method="hurted"]
 
-[editable path="spider_bot_model"]
 [editable path="training_dummy"]

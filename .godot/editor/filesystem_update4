@@ -1,7 +1,4 @@
+res://default_bus_layout.tres
 res://default_env.tres
-res://player.tscn
-res://noise.tres
-res://main3d.tscn
-res://akai.tscn
-res://dmg_number.tscn
-res://hurtbox.tscn
+res://tcg.tscn
+res://tcg.tres

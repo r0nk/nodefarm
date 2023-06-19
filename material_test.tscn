@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://begeai5ycal36"]
+
+[ext_resource type="Material" uid="uid://cdvcp345h4b48" path="res://materials/material_test.tres" id="1_nmq4l"]
+[ext_resource type="Script" path="res://spinner.gd" id="2_eafyh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0v3hm"]
+lightmap_size_hint = Vector2i(104, 76)
+material = ExtResource("1_nmq4l")
+size = Vector3(10, 2, 10)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xi8yi"]
+material = ExtResource("1_nmq4l")
+
+[sub_resource type="Curve3D" id="Curve3D_ptphr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.31487, -0.633051, -1.7525, 0, 0, 0, 0, 0, 0, 3.68117, -0.693108, -1.93689, 0, 0, 0, 0, 0, 0, 1.35967, -0.317297, 0.0765572),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v2lye"]
+
+[sub_resource type="Gradient" id="Gradient_vvjbn"]
+colors = PackedColorArray(0.472845, 0, 0, 1, 1, 0.349429, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mnlm0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jsbfq"]
+height = 100
+color_ramp = SubResource("Gradient_vvjbn")
+noise = SubResource("FastNoiseLite_mnlm0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wkj7j"]
+albedo_texture = SubResource("NoiseTexture2D_jsbfq")
+uv1_triplanar = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.941034, 0, 0.464869)
+mesh = SubResource("BoxMesh_0v3hm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -5.90613, 0, 0.464869)
+mesh = SubResource("BoxMesh_0v3hm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.780639, 0.624748, 0.0170878, -0.0218843, 1.20875e-08, 0.999761, 0.624599, -0.780826, 0.0136722, -3.54037, 2.20782, -0.776109)
+mesh = SubResource("SphereMesh_xi8yi")
+script = ExtResource("2_eafyh")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14502, 0)
+curve = SubResource("Curve3D_ptphr")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.0307373, 0.0100062, 0.999439, 0, 0.999952, -0.0100105, -0.999524, -0.000307709, -0.0307346, -2.31487, -0.633051, -1.7525)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Path3D/PathFollow3D"]
+light_color = Color(1, 0.929412, 0.643137, 1)
+light_energy = 3.0
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22022, 3.72544, 0)
+mesh = SubResource("CapsuleMesh_v2lye")
+surface_material_override/0 = SubResource("StandardMaterial3D_wkj7j")

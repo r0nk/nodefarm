@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgaqebgcqvkia"]
+
+[ext_resource type="PackedScene" uid="uid://w3oy7exu6kdc" path="res://models/practice.glb" id="1_7epak"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f8s8q"]
+
+[node name="Node3D" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_f8s8q")
+
+[node name="practice" parent="." instance=ExtResource("1_7epak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84597, 0, 2.13099)
+
+[node name="Skeleton3D" parent="practice/Armature" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.659708, 0, 0)
+bones/4/rotation = Quaternion(0.500475, 0.000474975, 0.00547497, 1.00048)
+
+[editable path="practice"]
