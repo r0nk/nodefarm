@@ -1,6 +1,6 @@
+Node2D
 AudioStreamPlayer
 Polygon2D
-Node2D
 DirectionalLight2D
 ColorRect
 TextureRect
@@ -30,4 +30,3 @@ CtrlItemSlot
 CtrlInventoryGrid
 InventoryItem
 InventoryGrid
-Inventory

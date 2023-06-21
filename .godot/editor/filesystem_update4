@@ -1,4 +1,5 @@
 res://default_bus_layout.tres
 res://default_env.tres
-res://tcg.tscn
+res://card.tscn
 res://tcg.tres
+res://tcg.tscn

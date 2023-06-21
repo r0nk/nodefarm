@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://cipc1ogxd5qvo"]
+
+[ext_resource type="Texture2D" uid="uid://oi8p5g4t3m4c" path="res://images/trading_card.png" id="1_yv7tc"]
+[ext_resource type="Script" path="res://card.gd" id="2_0pvee"]
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="3_dvy5s"]
+[ext_resource type="FontFile" uid="uid://dqcewehdefg67" path="res://m5x7.ttf" id="4_nsi76"]
+[ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://sfx/snap.ogg" id="5_x8nun"]
+
+[node name="card" type="Node2D"]
+script = ExtResource("2_0pvee")
+
+[node name="placement_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_x8nun")
+
+[node name="texture" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -175.0
+offset_right = 125.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 0
+texture = ExtResource("1_yv7tc")
+
+[node name="description" type="RichTextLabel" parent="texture"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 213.0
+offset_right = 199.0
+offset_bottom = 321.0
+mouse_filter = 2
+text = "On Draw: deal 10 damage to a target creature"
+
+[node name="title" type="RichTextLabel" parent="texture"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = 211.0
+offset_bottom = 38.0
+mouse_filter = 2
+text = "Steve
+"
+
+[node name="mass" type="RichTextLabel" parent="texture"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 3.0
+offset_right = 380.0
+offset_bottom = 122.0
+mouse_filter = 2
+theme = ExtResource("3_dvy5s")
+theme_override_colors/default_color = Color(0, 0.941176, 1, 1)
+theme_override_fonts/normal_font = ExtResource("4_nsi76")
+text = "5
+"
+
+[connection signal="mouse_entered" from="texture" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="texture" to="." method="_on_mouse_exited"]

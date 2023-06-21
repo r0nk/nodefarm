@@ -1,5 +1,5 @@
 2a60927148abd1d33b818b535e306557
-::res://::1687153234
+::res://::1687360420
 akai.tscn::PackedScene::944285595150971348::1680809836::0::1::::<><>::uid://bn7b72h3m1tjr
 AND_gate.tscn::PackedScene::-1::1679109058::0::1::::<><>::
 background.png::CompressedTexture2D::7794990447754637862::1676591536::1679109093::1::::<><>::
@@ -7,9 +7,10 @@ bell.gd::GDScript::-1::1681154016::0::1::::<>Node3D<>::
 bell.tscn::PackedScene::5022209371510910658::1680810187::0::1::::<><>::res://bell.gd<>uid://cdp5hhuacuqwr<>res://AnimationPlayer.gd<>uid://dw032d3mhs81m<>uid://b41u5e28d281e
 building.tscn::PackedScene::4110988056907556156::1683503015::0::1::::<><>::
 cam.gd::GDScript::-1::1679109058::0::1::::<>Camera2D<>::
-card.gd::GDScript::-1::1687153156::0::1::::<>TextureRect<>::
-default_bus_layout.tres::AudioBusLayout::6263286984149806907::1687151490::0::1::::<><>::
-default_env.tres::Environment::2261925541047898404::1687153234::0::1::::<><>::
+card.gd::GDScript::-1::1687235110::0::1::::<>Node2D<>::
+card.tscn::PackedScene::5365486393074368664::1687235413::0::1::::<><>::uid://oi8p5g4t3m4c<>res://card.gd<>uid://p4jp3wkv06tq<>uid://dqcewehdefg67<>uid://1adwfsldpeqs
+default_bus_layout.tres::AudioBusLayout::6263286984149806907::1687232837::0::1::::<><>::
+default_env.tres::Environment::2261925541047898404::1687235413::0::1::::<><>::
 dmg_number.gd::GDScript::-1::1681717992::0::1::::<>Label3D<>::
 dmg_number.tscn::PackedScene::2048611555552519359::1683503015::0::1::::<><>::uid://dqcewehdefg67<>res://dmg_number.gd
 factory.gd::GDScript::-1::1682139289::0::1::::<>Node2D<>::
@@ -48,8 +49,8 @@ shark.png::CompressedTexture2D::360457978989929437::1678514241::1679109093::1:::
 skeleton.tscn::PackedScene::5618441995336455449::1680809836::0::1::::<><>::uid://bgne7ywuhnqel
 spinner.gd::GDScript::-1::1680979757::0::1::::<>MeshInstance3D<>::
 start_ik.gd::GDScript::-1::1679424588::0::1::::<>SkeletonIK3D<>::
-tcg.tres::Theme::1113274354404628458::1687151504::0::1::::<><>::uid://dqcewehdefg67
-tcg.tscn::PackedScene::4945189228023880768::1687153234::0::1::::<><>::uid://oi8p5g4t3m4c<>uid://p4jp3wkv06tq<>uid://dqcewehdefg67<>res://card.gd
+tcg.tres::Theme::1113274354404628458::1687232847::0::1::::<><>::uid://dqcewehdefg67
+tcg.tscn::PackedScene::4945189228023880768::1687235089::0::1::::<><>::uid://p4jp3wkv06tq<>uid://cipc1ogxd5qvo
 todo.txt::TextFile::-1::1677985493::0::1::::<><>::
 training_dummy.gd::GDScript::-1::1680027396::0::1::::<>Node3D<>::
 training_dummy_animations.gd::GDScript::-1::1680586681::0::1::::<>AnimationPlayer<>::
@@ -213,7 +214,7 @@ inventory_stacked_transfer.gd::GDScript::-1::1680388372::0::1::::<>Control<>::
 inventory_stacked_transfer.tscn::PackedScene::4311795717936853728::1680388372::0::1::::<><>::res://addons/gloot/ctrl_inventory_stacked.gd<>res://addons/gloot/inventory_stacked.gd<>uid://c1fip2r65xx12<>res://examples/inventory_stacked_transfer.gd<>uid://bju6hohmp15ua<>res://addons/gloot/ctrl_item_slot.gd<>res://addons/gloot/item_slot.gd<>res://addons/gloot/inventory_item.gd
 inventory_transfer.gd::GDScript::-1::1680388372::0::1::::<>Control<>::
 inventory_transfer.tscn::PackedScene::8746502829911248906::1680388372::0::1::::<><>::res://addons/gloot/ctrl_inventory.gd<>res://addons/gloot/inventory.gd<>uid://nnxjxxu47mtj<>res://examples/inventory_transfer.gd<>uid://bju6hohmp15ua<>res://addons/gloot/ctrl_item_slot.gd<>res://addons/gloot/item_slot.gd<>res://addons/gloot/inventory_item.gd
-::res://images/::1687049164
+::res://images/::1687200631
 field_background.png::CompressedTexture2D::3464242305412553553::1680388372::1680388373::1::::<><>::
 field_highlighted_background.png::CompressedTexture2D::4999113497827289991::1680388372::1680388373::1::::<><>::
 field_selected_background.png::CompressedTexture2D::9070327000681956549::1680388372::1680388373::1::::<><>::
@@ -224,6 +225,7 @@ item_armour_silver.png::CompressedTexture2D::1560561598343858558::1680388372::16
 item_book_blue.png::CompressedTexture2D::843337291627351538::1680388372::1680388373::1::::<><>::
 item_key.png::CompressedTexture2D::3061303305556543008::1680388372::1680388373::1::::<><>::
 item_scroll_blue.png::CompressedTexture2D::4770035527959100396::1680388372::1680388373::1::::<><>::
+patterned_linen.png::CompressedTexture2D::8176628838993711132::1687200567::1687200631::1::::<><>::
 trading_card.png::CompressedTexture2D::1001190866948262204::1687049161::1687049164::1::::<><>::
 ::res://items/::1680388735
 minimal_protoset.json::JSON::-1::1680388652::0::1::::<><>::
@@ -248,7 +250,7 @@ spider_bot_model.gd::GDScript::-1::1679424495::0::1::::<>Node3D<>::
 spider_bot_model.gltf::PackedScene::119032893696599582::1679385913::1679385915::1::::<><>::
 ::res://models/textures/::1680804445
 Material_67_baseColor.png::CompressedTexture2D::5735579314749921085::1679049874::1680804445::1::::<><>::
-::res://sfx/::1687153353
+::res://sfx/::1687153388
 bell.ogg::AudioStreamOggVorbis::4476839137781668580::1680809241::1680809249::1::::<><>::
 pew.ogg::AudioStreamOggVorbis::7036393814562106481::1681717603::1681717603::1::::<><>::
 snap.ogg::AudioStreamOggVorbis::1825131663960672714::1687153386::1687153388::1::::<><>::

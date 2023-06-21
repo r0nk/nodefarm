@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccpqsq7xr2yts"]
 
-[ext_resource type="Texture2D" uid="uid://oi8p5g4t3m4c" path="res://images/trading_card.png" id="1_g8710"]
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="1_pa345"]
-[ext_resource type="FontFile" uid="uid://dqcewehdefg67" path="res://m5x7.ttf" id="2_yps5s"]
-[ext_resource type="Script" path="res://card.gd" id="3_gxx18"]
-[ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://sfx/snap.ogg" id="5_w6doy"]
+[ext_resource type="Script" path="res://tcg_player.gd" id="2_n7ery"]
+[ext_resource type="PackedScene" uid="uid://cipc1ogxd5qvo" path="res://card.tscn" id="2_nklit"]
+[ext_resource type="Script" path="res://deck.gd" id="4_21qmu"]
+[ext_resource type="Texture2D" uid="uid://doq25aagq4t6k" path="res://images/patterned_linen.png" id="4_t0uwk"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -19,56 +19,6 @@ offset_bottom = 19.0
 theme = ExtResource("1_pa345")
 text = "health: 20"
 
-[node name="card" type="TextureRect" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 370.0
-offset_top = 708.0
-offset_right = 620.0
-offset_bottom = 1058.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("1_g8710")
-script = ExtResource("3_gxx18")
-
-[node name="description" type="RichTextLabel" parent="card"]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 213.0
-offset_right = 199.0
-offset_bottom = 321.0
-mouse_filter = 2
-text = "On Draw: deal 10 damage to a target creature"
-
-[node name="title" type="RichTextLabel" parent="card"]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 8.0
-offset_right = 211.0
-offset_bottom = 38.0
-mouse_filter = 2
-text = "Steve
-"
-
-[node name="mass" type="RichTextLabel" parent="card"]
-layout_mode = 0
-offset_left = 224.0
-offset_top = 3.0
-offset_right = 380.0
-offset_bottom = 122.0
-mouse_filter = 2
-theme = ExtResource("1_pa345")
-theme_override_colors/default_color = Color(0, 0.941176, 1, 1)
-theme_override_fonts/normal_font = ExtResource("2_yps5s")
-text = "5
-"
-
-[node name="placement_sfx" type="AudioStreamPlayer" parent="card"]
-stream = ExtResource("5_w6doy")
-
 [node name="board" type="Node2D" parent="."]
 
 [node name="End_turn_button" type="Button" parent="board"]
@@ -79,25 +29,51 @@ offset_bottom = 295.0
 theme = ExtResource("1_pa345")
 text = "End Turn"
 
-[node name="Polygon2D" type="Polygon2D" parent="board" groups=["card_squares"]]
+[node name="tcg_player" type="Node2D" parent="."]
+script = ExtResource("2_n7ery")
+
+[node name="side" type="Node2D" parent="tcg_player"]
+position = Vector2(134, 467)
+
+[node name="slot1" type="Polygon2D" parent="tcg_player/side" groups=["card_squares"]]
 z_index = -5
-position = Vector2(-5, 340)
+offset = Vector2(-100, -150)
 polygon = PackedVector2Array(1, 2, -2, 287, 206, 281, 206, 2)
 
-[node name="Polygon2D2" type="Polygon2D" parent="board" groups=["card_squares"]]
+[node name="slot2" type="Polygon2D" parent="tcg_player/side" groups=["card_squares"]]
 z_index = -5
-position = Vector2(269, 340)
+position = Vector2(274, 0)
+offset = Vector2(-100, -150)
 polygon = PackedVector2Array(1, 2, -2, 287, 206, 281, 206, 2)
 
-[node name="Polygon2D3" type="Polygon2D" parent="board" groups=["card_squares"]]
+[node name="slot3" type="Polygon2D" parent="tcg_player/side" groups=["card_squares"]]
 z_index = -5
-position = Vector2(538, 342)
+position = Vector2(543, 2)
+offset = Vector2(-100, -150)
 polygon = PackedVector2Array(1, 2, -2, 287, 206, 281, 206, 2)
 
-[node name="Polygon2D4" type="Polygon2D" parent="board" groups=["card_squares"]]
+[node name="slot4" type="Polygon2D" parent="tcg_player/side" groups=["card_squares"]]
 z_index = -5
-position = Vector2(807, 342)
+position = Vector2(812, 2)
+offset = Vector2(-100, -150)
 polygon = PackedVector2Array(1, 2, -2, 287, 206, 281, 206, 2)
 
-[connection signal="mouse_entered" from="card" to="card" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="card" to="card" method="_on_mouse_exited"]
+[node name="hand" type="Node2D" parent="tcg_player"]
+position = Vector2(174, 796)
+
+[node name="card" parent="tcg_player/hand" instance=ExtResource("2_nklit")]
+position = Vector2(170, -28)
+
+[node name="card2" parent="tcg_player/hand" instance=ExtResource("2_nklit")]
+position = Vector2(-191, -25)
+
+[node name="deck" type="Node2D" parent="tcg_player"]
+script = ExtResource("4_21qmu")
+
+[node name="texture" type="Sprite2D" parent="tcg_player/deck"]
+modulate = Color(1, 0.352941, 0, 1)
+position = Vector2(1565, 888)
+scale = Vector2(0.47998, 0.686523)
+texture = ExtResource("4_t0uwk")
+
+[connection signal="pressed" from="board/End_turn_button" to="tcg_player" method="end_turn"]
