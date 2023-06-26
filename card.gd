@@ -10,8 +10,8 @@ func place():
 	in_hand=false
 
 func end_of_turn():
+	print("end of turn")
 	attack()
-	pass
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -50,8 +50,7 @@ func _process(delta):
 func attack():
 	if(in_hand):
 		return
-	get_node("../../../../enemy/health").text = str( int(get_node("../../../../enemy/health").text)-4 )
-
+	get_node("../../../../enemy").health -= 1
 
 func discard():
 	#deathrattles or whatever
@@ -63,10 +62,12 @@ func draw_card():
 
 func _on_mouse_entered():
 	mouse_hovering=true
+	z_index=10
 	scale=Vector2(1.2,1.2)
 
 func _on_mouse_exited():
 	scale=Vector2(1,1)
+	z_index=0
 	if(dragging==false):
 		mouse_hovering=false
 

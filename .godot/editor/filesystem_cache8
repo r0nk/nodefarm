@@ -1,5 +1,5 @@
 2a60927148abd1d33b818b535e306557
-::res://::1687360420
+::res://::1687745355
 akai.tscn::PackedScene::944285595150971348::1680809836::0::1::::<><>::uid://bn7b72h3m1tjr
 AND_gate.tscn::PackedScene::-1::1679109058::0::1::::<><>::
 background.png::CompressedTexture2D::7794990447754637862::1676591536::1679109093::1::::<><>::
@@ -7,10 +7,11 @@ bell.gd::GDScript::-1::1681154016::0::1::::<>Node3D<>::
 bell.tscn::PackedScene::5022209371510910658::1680810187::0::1::::<><>::res://bell.gd<>uid://cdp5hhuacuqwr<>res://AnimationPlayer.gd<>uid://dw032d3mhs81m<>uid://b41u5e28d281e
 building.tscn::PackedScene::4110988056907556156::1683503015::0::1::::<><>::
 cam.gd::GDScript::-1::1679109058::0::1::::<>Camera2D<>::
-card.gd::GDScript::-1::1687235110::0::1::::<>Node2D<>::
-card.tscn::PackedScene::5365486393074368664::1687235413::0::1::::<><>::uid://oi8p5g4t3m4c<>res://card.gd<>uid://p4jp3wkv06tq<>uid://dqcewehdefg67<>uid://1adwfsldpeqs
-default_bus_layout.tres::AudioBusLayout::6263286984149806907::1687232837::0::1::::<><>::
-default_env.tres::Environment::2261925541047898404::1687235413::0::1::::<><>::
+card.gd::GDScript::-1::1687365418::0::1::::<>Node2D<>::
+card.tscn::PackedScene::5365486393074368664::1687366398::0::1::::<><>::uid://oi8p5g4t3m4c<>res://card.gd<>uid://p4jp3wkv06tq<>uid://dqcewehdefg67<>uid://1adwfsldpeqs
+deck.gd::GDScript::-1::1687366417::0::1::::<>Node2D<>::
+default_bus_layout.tres::AudioBusLayout::6263286984149806907::1687360422::0::1::::<><>::
+default_env.tres::Environment::2261925541047898404::1687366423::0::1::::<><>::
 dmg_number.gd::GDScript::-1::1681717992::0::1::::<>Label3D<>::
 dmg_number.tscn::PackedScene::2048611555552519359::1683503015::0::1::::<><>::uid://dqcewehdefg67<>res://dmg_number.gd
 factory.gd::GDScript::-1::1682139289::0::1::::<>Node2D<>::
@@ -49,8 +50,9 @@ shark.png::CompressedTexture2D::360457978989929437::1678514241::1679109093::1:::
 skeleton.tscn::PackedScene::5618441995336455449::1680809836::0::1::::<><>::uid://bgne7ywuhnqel
 spinner.gd::GDScript::-1::1680979757::0::1::::<>MeshInstance3D<>::
 start_ik.gd::GDScript::-1::1679424588::0::1::::<>SkeletonIK3D<>::
-tcg.tres::Theme::1113274354404628458::1687232847::0::1::::<><>::uid://dqcewehdefg67
-tcg.tscn::PackedScene::4945189228023880768::1687235089::0::1::::<><>::uid://p4jp3wkv06tq<>uid://cipc1ogxd5qvo
+tcg.tres::Theme::1113274354404628458::1687360432::0::1::::<><>::uid://dqcewehdefg67
+tcg.tscn::PackedScene::4945189228023880768::1687366423::0::1::::<><>::uid://p4jp3wkv06tq<>res://tcg_player.gd<>uid://cipc1ogxd5qvo<>res://deck.gd<>uid://doq25aagq4t6k
+tcg_player.gd::GDScript::-1::1687366420::0::1::::<>Node2D<>::
 todo.txt::TextFile::-1::1677985493::0::1::::<><>::
 training_dummy.gd::GDScript::-1::1680027396::0::1::::<>Node3D<>::
 training_dummy_animations.gd::GDScript::-1::1680586681::0::1::::<>AnimationPlayer<>::
