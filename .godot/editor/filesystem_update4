@@ -1,5 +1,9 @@
 res://default_bus_layout.tres
 res://default_env.tres
-res://card.tscn
-res://tcg.tres
 res://tcg.tscn
+res://tcg.tres
+res://noise.tres
+res://card.tscn
+res://main.tscn
+res://player.tscn
+res://main3d.tscn

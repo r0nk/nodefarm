@@ -1,16 +1,22 @@
 extends Node2D
 
+@export var card_resource: Card_Resource
+
 var default_size = Vector2(250,350)
 
 var in_hand=true
 var mouse_hovering=false
 var dragging=false
 
+func _ready():
+	$texture/title.text= card_resource.title
+	$texture/description.text= card_resource.description
+	$texture/portrait.texture=load("res://images/portraits/"+card_resource.portrait_path+".png")
+
 func place():
 	in_hand=false
 
 func end_of_turn():
-	print("end of turn")
 	attack()
 
 func _input(event):

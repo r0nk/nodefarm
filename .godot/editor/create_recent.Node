@@ -1,10 +1,10 @@
+TextureRect
 RichTextLabel
 Node2D
 AudioStreamPlayer
 Polygon2D
 DirectionalLight2D
 ColorRect
-TextureRect
 Button
 Sprite2D
 Skeleton3D

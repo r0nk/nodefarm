@@ -1,18 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cipc1ogxd5qvo"]
+[gd_scene load_steps=8 format=3 uid="uid://cipc1ogxd5qvo"]
 
 [ext_resource type="Texture2D" uid="uid://oi8p5g4t3m4c" path="res://images/trading_card.png" id="1_yv7tc"]
 [ext_resource type="Script" path="res://card.gd" id="2_0pvee"]
+[ext_resource type="Resource" uid="uid://lduh0resxr2w" path="res://cards/bob.tres" id="2_jslas"]
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="3_dvy5s"]
 [ext_resource type="FontFile" uid="uid://dqcewehdefg67" path="res://m5x7.ttf" id="4_nsi76"]
 [ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://sfx/snap.ogg" id="5_x8nun"]
+[ext_resource type="Texture2D" uid="uid://bv84cdr4jv5l4" path="res://images/portraits/steve.png" id="6_ae3jx"]
 
 [node name="card" type="Node2D"]
 script = ExtResource("2_0pvee")
+card_resource = ExtResource("2_jslas")
 
 [node name="placement_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_x8nun")
 
 [node name="texture" type="TextureRect" parent="."]
+self_modulate = Color(0.690196, 0.568627, 0.207843, 1)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -28,6 +32,7 @@ mouse_filter = 0
 texture = ExtResource("1_yv7tc")
 
 [node name="description" type="RichTextLabel" parent="texture"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 38.0
 offset_top = 213.0
@@ -37,6 +42,7 @@ mouse_filter = 2
 text = "On Draw: deal 10 damage to a target creature"
 
 [node name="title" type="RichTextLabel" parent="texture"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 18.0
 offset_top = 8.0
@@ -58,6 +64,14 @@ theme_override_colors/default_color = Color(0, 0.941176, 1, 1)
 theme_override_fonts/normal_font = ExtResource("4_nsi76")
 text = "5
 "
+
+[node name="portrait" type="TextureRect" parent="texture"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 45.0
+offset_right = 239.0
+offset_bottom = 195.0
+texture = ExtResource("6_ae3jx")
 
 [connection signal="mouse_entered" from="texture" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="texture" to="." method="_on_mouse_exited"]

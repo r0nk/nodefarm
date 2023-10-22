@@ -150,6 +150,7 @@ target_position = Vector3(0, 0, -4000)
 
 [node name="hammer" type="Node3D" parent="camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13498, -0.137537, -2.30578)
+visible = false
 script = ExtResource("4_fa86n")
 
 [node name="cast" type="RayCast3D" parent="camera/hammer"]
@@ -161,7 +162,6 @@ mesh = SubResource("ArrayMesh_xujob")
 
 [node name="rifle" type="CSGBox3D" parent="camera"]
 transform = Transform3D(0.999841, -1.54521e-09, 0.0178538, 0.000318136, 0.999841, -0.017816, -0.0178509, 0.0178189, 0.999682, 0.5021, -0.65926, -0.842095)
-visible = false
 size = Vector3(0.154796, 0.225773, 1)
 script = ExtResource("2_tf0d1")
 
