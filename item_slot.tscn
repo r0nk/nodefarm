@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="2_0fvh3"]
 [ext_resource type="Script" path="res://item_slot.gd" id="2_pgph2"]
 
-[node name="slot" type="Button"]
+[node name="slot" type="Button" groups=["slot"]]
 offset_left = 8.0
 offset_top = 5.0
 offset_right = 70.0

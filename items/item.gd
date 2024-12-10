@@ -4,4 +4,5 @@ extends Resource
 @export var id:StringName
 @export var max_stacks: int = 100
 @export var count: int = 1
+@export var equipped_scene: PackedScene
 

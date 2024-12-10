@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bskgf4o3omyjl"]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_2cfg0"]
+[ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="2_frvig"]
+
+[resource]
+resource_name = "coin"
+script = ExtResource("1_2cfg0")
+texture = ExtResource("2_frvig")
+id = &"coin"
+max_stacks = 1000
+count = 1

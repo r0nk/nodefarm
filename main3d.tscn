@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=25 format=4 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://noise.tres" id="1_mrgqy"]
 [ext_resource type="PackedScene" uid="uid://b7v7ddihhufc3" path="res://player.tscn" id="4_hcxq1"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://crafting_station.gd" id="9_v6mkj"]
 [ext_resource type="Script" path="res://door.gd" id="10_8cswp"]
 [ext_resource type="PackedScene" uid="uid://cs2ah7vcdnj78" path="res://item.tscn" id="11_7gk8q"]
+[ext_resource type="Resource" uid="uid://bskgf4o3omyjl" path="res://items/laser_gun.tres" id="12_g06pc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xp1vo"]
 
@@ -153,6 +154,7 @@ shadow_enabled = true
 directional_shadow_max_distance = 500.0
 
 [node name="crafting_station" type="Area3D" parent="." groups=["interactibles"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.52963, -25.6167)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("9_v6mkj")
@@ -174,6 +176,7 @@ script = ExtResource("10_8cswp")
 
 [node name="item" parent="." instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -10)
+resource = ExtResource("12_g06pc")
 
 [node name="item2" parent="." instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -19.6952)

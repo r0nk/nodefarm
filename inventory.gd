@@ -19,7 +19,9 @@ func update_view():
 	if not $view.visible:
 		return
 	for s in $view/hotbar.get_children():
-		s.item=slots[s.name]
+		if(s.is_in_group("slot")):
+			s.item=slots[s.name]
 
 func _process(delta):
 	update_view()
+

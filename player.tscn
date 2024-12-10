@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=16 format=3 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" path="res://player.gd" id="1"]
 [ext_resource type="Script" path="res://HUD.gd" id="2_3y5t6"]
-[ext_resource type="Script" path="res://rifle.gd" id="2_tf0d1"]
 [ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://sfx/snap.ogg" id="3_aa11l"]
-[ext_resource type="Script" path="res://hammer.gd" id="4_fa86n"]
-[ext_resource type="AudioStream" uid="uid://c7iqm4cxcu18h" path="res://sfx/pew.ogg" id="5_qlpic"]
+[ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="4_2p1ay"]
+[ext_resource type="Script" path="res://equipped.gd" id="4_rpf0k"]
+[ext_resource type="Script" path="res://hotbar.gd" id="7_b8fk5"]
 [ext_resource type="Script" path="res://inventory.gd" id="7_ct2ou"]
 [ext_resource type="Resource" uid="uid://nc5i3sm4k3ob" path="res://items/item.tres" id="8_0wu3p"]
 [ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://item_slot.tscn" id="8_2unrw"]
@@ -13,54 +13,12 @@
 [ext_resource type="Script" path="res://collect.gd" id="8_y7er0"]
 [ext_resource type="AudioStream" uid="uid://2qhm3lvv2h0d" path="res://sfx/pickup.ogg" id="9_8busv"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_16gqa"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nu4c1"]
-noise = SubResource("FastNoiseLite_16gqa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx1xm"]
-albedo_color = Color(0.627451, 0.627451, 0.627451, 1)
-albedo_texture = SubResource("NoiseTexture2D_nu4c1")
-metallic = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xiux"]
-albedo_color = Color(1, 0.552941, 0, 1)
-albedo_texture = SubResource("NoiseTexture2D_nu4c1")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_xujob"]
-_surfaces = [{
-"aabb": AABB(-0.254828, -0.139421, -0.140992, 0.509667, 0.278852, 0.281994),
-"attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAXi2mPn+BGD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAgD9J16Y+bx0ZP14tpj5/gRg/AAAAAAAAgD8AAIA/AACAP0nXpj5vHRk/SdemPm8dGT8AAIA/AACAP2wdGT9sHRk/J8XNPifFzT4AAAAAAAAAAEl+pT6Orc0+AAAAAAAAAABeLaY+f4EYP0l+pT6Orc0+AACAPwAAgD8AAIA/AAAAAIRkLT9sHRk/bB0ZP2wdGT8AAIA/AACAP4RkLT9sHRk/AACAPwAAAAAAAAAAAAAAAF6ULD8nxc0+AZcsP+IKzz6EZC0/bB0ZPwAAgD8AAAAAAACAPwAAAABelCw/J8XNPgGXLD/iCs8+J8XNPifFzT5elCw/J8XNPgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAA"),
-"format": 34359738391,
-"material": SubResource("StandardMaterial3D_vx1xm"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 66,
-"vertex_data": PackedByteArray("4XiCPnDEDj41YBA+4XiCPnDEDj41YBC+4XiCPnDEDr41YBC+4XiCPnDEDr41YBC+4XiCPnDEDr41YBA+4XiCPnDEDj41YBA+4XiCPnDEDj41YBA+4XiCvnDEDj41YBA+4XiCvnDEDj41YBC+4XiCvnDEDj41YBC+4XiCPnDEDj41YBC+4XiCPnDEDj41YBA+4XiCPnDEDj41YBA+4XiCPnDEDr41YBA+4XiCvnDEDr41YBA+4XiCvnDEDr41YBA+4XiCvnDEDj41YBA+4XiCPnDEDj41YBA+4XiCvnDEDj41YBC+4XiCvnDEDj41YBA+4XiCvnDEDr41YBA+4XiCvnDEDr41YBA+4XiCvnDEDr41YBC+4XiCvnDEDj41YBC+sCFJPXDEDr7MzEw94XiCvnDEDr41YBA+4XiCPnDEDr41YBA+4XiCPnDEDr41YBA+0MxMPXDEDr6sIUk9sCFJPXDEDr7MzEw94XiCPnDEDr41YBA+4XiCPnDEDr41YBC+0MxMPXDEDr6sIUk90MxMPXDEDr6sIUk94XiCPnDEDr41YBC+0MxMPXDEDr7Qn+K8zMxMvXDEDr7Qn+I84XiCvnDEDr41YBA+zMxMvXDEDr7MzEw94XiCvnDEDr41YBA+sCFJPXDEDr7MzEw9zMxMvXDEDr7MzEw94XiCPnDEDr41YBC+4XiCvnDEDr41YBC+zMxMPXDEDr7MzEy90MxMPXDEDr7Qn+K84XiCPnDEDr41YBC+zMxMPXDEDr7MzEy94XiCvnDEDr41YBC+4XiCvnDEDr41YBA+0MxMvXDEDr6sIUm9qCFJvXDEDr7MzEy9zMxMPXDEDr7MzEy94XiCvnDEDr41YBC+4XiCvnDEDr41YBC+0MxMvXDEDr6sIUm9qCFJvXDEDr7MzEy9zMxMvXDEDr7Qn+I80MxMvXDEDr6sIUm94XiCvnDEDr41YBA+4XiCPnDEDr41YBC+4XiCPnDEDj41YBC+4XiCvnDEDj41YBC+4XiCvnDEDj41YBC+4XiCvnDEDr41YBC+4XiCPnDEDr41YBC+////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5//3//////AAD/f/////8AAP9//////wAA/3//////AAD/f/////8AAP9//////wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAAAA3wP/fwAA//8BAP9/AAD//wMA/38AAP//AwD/fwAAAAAyBv9/AAAAAN8D/38AAP//AwD/fwAA//8AAP9/AAAAADIG/38AAAAAMgb/fwAA//8AAP9/AAD//wAA/38AAAAAFgD/fwAA//8BAP9/AAAAAEMA/38AAP//AQD/fwAAAADfA/9/AAAAAEMA/38AAP//AAD/fwAA//8DAP9/AAD//wwA/38AAP//AAD/fwAA//8AAP9/AAD//wwA/38AAP//AwD/fwAA//8BAP9/AAAAAAAH/38AAAAABQT/fwAA//8MAP9/AAD//wMA/38AAP//AwD/fwAAAAAAB/9/AAAAAAUE/38AAAAAFgD/fwAAAAAAB/9/AAD//wEA/////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8/")
-}, {
-"aabb": AABB(-0.05, -0.932256, -0.05, 0.10001, 0.792845, 0.1),
-"attribute_data": PackedByteArray("Kb0SPAAAgD8AAIA/AACAPyq9Ejzw0UY/Kr0SPPDRRj8AAIA/AACAP0C9EjxAvRI8AACAPwAAgD8AAIA/AAAAAAC9EjwAAAAAAAAAACm9EjwAAAAAAACAPwAAgD8AAIA//7wSPP+8EjwAAIA/AACAPwAAgD8AvRI8Kb0SPAAAgD8AAIA/AACAPyi9Ejzy0UY/KL0SPPLRRj8AAIA/AACAP0C9EjxAvRI8AACAPwAAgD8AAIA/AAAAAAC9EjwAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAADLV9Pwy1fT8AAAAAAAAAAAAAAAAMtX0/AACAPwu1fT8AAIA/AAAAAAAAAAAAAAAA"),
-"format": 34359738391,
-"material": SubResource("StandardMaterial3D_7xiux"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 36,
-"vertex_data": PackedByteArray("zMxMPXDEDr7MzEy9zcxMPViobr/NzEy90MxMPXDEDr7Qn+K80MxMPXDEDr7Qn+K8zcxMPViobr/NzEy90MxMPXDEDr6sIUk9zcxMPViobr/NzEy9zcxMPViobr/NzEw9zcxMPXDEDr7NzEw9zcxMPXDEDr7NzEw9zcxMPViobr/NzEw9zcxMvViobr/NzEw9sCFJPXDEDr7MzEw9zcxMvViobr/NzEw9zMxMvXDEDr7MzEw9zMxMvXDEDr7MzEw9zcxMvViobr/NzEw9zMxMvXDEDr7Qn+I8zMxMvXDEDr7Qn+I8zcxMvViobr/NzEw90MxMvXDEDr6sIUm9zcxMvViobr/NzEw9zcxMvViobr/NzEy9zcxMvXDEDr7NzEy9zcxMvViobr/NzEw9zcxMPViobr/NzEw9zcxMPViobr/NzEy9zcxMPViobr/NzEy9zcxMvViobr/NzEy9zcxMvViobr/NzEw9qCFJvXDEDr7MzEy9zcxMPViobr/NzEy9zMxMPXDEDr7MzEy9zcxMvXDEDr7NzEy9zcxMvViobr/NzEy9zcxMPViobr/NzEy9////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5/AAD/f/9//n8AAP9//3/+fwAA/3//f/5/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8/")
-}]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpo0g"]
-shading_mode = 0
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_x3o0q"]
-size = Vector3(0.2, 200, 0.2)
-
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
 height = 3.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f3r10"]
-radius = 1.0
+radius = 3.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qvraq"]
 radius = 10.0
@@ -130,42 +88,15 @@ collide_with_areas = true
 [node name="sfx" type="AudioStreamPlayer" parent="camera/interact_cast"]
 stream = ExtResource("3_aa11l")
 
-[node name="hammer" type="Node3D" parent="camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13498, -0.137537, -2.30578)
-visible = false
-script = ExtResource("4_fa86n")
-
-[node name="cast" type="RayCast3D" parent="camera/hammer"]
-target_position = Vector3(0, 0, -20)
-
-[node name="CSGBox3D" type="MeshInstance3D" parent="camera/hammer"]
-transform = Transform3D(0.0994945, 0.451044, -0.886939, 0.0273341, 0.889787, 0.455558, 0.994663, -0.0695692, 0.0762, 0.758757, -0.297001, 1.29425)
-mesh = SubResource("ArrayMesh_xujob")
-
-[node name="rifle" type="CSGBox3D" parent="camera"]
+[node name="equipped" type="Node3D" parent="camera"]
 transform = Transform3D(0.999841, -1.54521e-09, 0.0178538, 0.000318136, 0.999841, -0.017816, -0.0178509, 0.0178189, 0.999682, 0.5021, -0.65926, -0.842095)
-size = Vector3(0.154796, 0.225773, 1)
-script = ExtResource("2_tf0d1")
+script = ExtResource("4_rpf0k")
 
-[node name="sight" type="CSGBox3D" parent="camera/rifle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0.0513422, -0.460795)
-size = Vector3(0.0310372, 0.225773, 0.0497531)
-
-[node name="laser_body" type="CSGBox3D" parent="camera/rifle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32458e-06, -0.0107685, -25.3695)
-size = Vector3(0.068, 0.244, 50)
-material = SubResource("StandardMaterial3D_qpo0g")
-
-[node name="ray" type="ShapeCast3D" parent="camera/rifle"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 8.70228e-06, 0, -99.6683)
-shape = SubResource("BoxShape3D_x3o0q")
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="fire_sfx" type="AudioStreamPlayer3D" parent="camera/rifle"]
-transform = Transform3D(1, -4.65661e-10, -6.70552e-08, 0, 1, -6.51926e-08, -3.72529e-09, -3.72529e-09, 1, 0.0104026, -0.0103838, -0.58256)
-stream = ExtResource("5_qlpic")
-volume_db = -20.0
+[node name="sprite" type="Sprite3D" parent="camera/equipped"]
+transform = Transform3D(0.561116, -0.0146074, -0.827608, 0.0148866, 0.999861, -0.00755459, 0.827603, -0.00808126, 0.561255, 0.133466, 0, 0.00238329)
+pixel_size = 0.03
+texture_filter = 0
+texture = ExtResource("4_2p1ay")
 
 [node name="cs" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657689, 0)
@@ -187,16 +118,18 @@ offset_top = 535.0
 offset_right = 95.0
 offset_bottom = 575.0
 
-[node name="hotbar" type="Panel" parent="inventory/view"]
+[node name="hotbar" type="Panel" parent="inventory/view" node_paths=PackedStringArray("selected")]
 layout_mode = 0
 offset_right = 1056.0
 offset_bottom = 74.0
+script = ExtResource("7_b8fk5")
+selected = NodePath("one")
 
 [node name="one" parent="inventory/view/hotbar" instance=ExtResource("8_2unrw")]
 layout_mode = 0
-offset_left = 0.0
+offset_left = 5.0
 offset_top = 0.0
-offset_right = 62.0
+offset_right = 67.0
 offset_bottom = 63.0
 
 [node name="two" parent="inventory/view/hotbar" instance=ExtResource("8_2unrw")]
@@ -215,6 +148,22 @@ offset_right = 208.0
 offset_bottom = 69.0
 icon = null
 
+[node name="select_box" type="ColorRect" parent="inventory/view/hotbar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -528.0
+offset_top = -37.0
+offset_right = -458.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(35, 35)
+
 [node name="collect" type="Area3D" parent="inventory"]
 script = ExtResource("8_y7er0")
 target_group = &"item"
@@ -227,8 +176,9 @@ stream = ExtResource("9_8busv")
 
 [node name="pull" type="Area3D" parent="inventory"]
 script = ExtResource("8_ccg7v")
-speed = 10.0
 target_group = &"item"
 
 [node name="cs" type="CollisionShape3D" parent="inventory/pull"]
 shape = SubResource("SphereShape3D_qvraq")
+
+[connection signal="selection_changed" from="inventory/view/hotbar" to="camera/equipped" method="selection_changed"]
