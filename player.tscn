@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=23 format=4 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" path="res://player.gd" id="1"]
 [ext_resource type="Script" path="res://HUD.gd" id="2_3y5t6"]
@@ -6,6 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://sfx/snap.ogg" id="3_aa11l"]
 [ext_resource type="Script" path="res://hammer.gd" id="4_fa86n"]
 [ext_resource type="AudioStream" uid="uid://c7iqm4cxcu18h" path="res://sfx/pew.ogg" id="5_qlpic"]
+[ext_resource type="Script" path="res://inventory.gd" id="7_ct2ou"]
+[ext_resource type="Resource" uid="uid://nc5i3sm4k3ob" path="res://items/item.tres" id="8_0wu3p"]
+[ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://item_slot.tscn" id="8_2unrw"]
+[ext_resource type="Script" path="res://pull.gd" id="8_ccg7v"]
+[ext_resource type="Script" path="res://collect.gd" id="8_y7er0"]
+[ext_resource type="AudioStream" uid="uid://2qhm3lvv2h0d" path="res://sfx/pickup.ogg" id="9_8busv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_16gqa"]
 
@@ -52,6 +58,12 @@ size = Vector3(0.2, 200, 0.2)
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
 height = 3.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f3r10"]
+radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qvraq"]
+radius = 10.0
 
 [node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1")
@@ -158,3 +170,63 @@ volume_db = -20.0
 [node name="cs" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657689, 0)
 shape = SubResource("3")
+
+[node name="inventory" type="Node3D" parent="."]
+script = ExtResource("7_ct2ou")
+slots = {
+"one": ExtResource("8_0wu3p"),
+"three": null,
+"two": null
+}
+
+[node name="view" type="Control" parent="inventory"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 55.0
+offset_top = 535.0
+offset_right = 95.0
+offset_bottom = 575.0
+
+[node name="hotbar" type="Panel" parent="inventory/view"]
+layout_mode = 0
+offset_right = 1056.0
+offset_bottom = 74.0
+
+[node name="one" parent="inventory/view/hotbar" instance=ExtResource("8_2unrw")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 62.0
+offset_bottom = 63.0
+
+[node name="two" parent="inventory/view/hotbar" instance=ExtResource("8_2unrw")]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 6.0
+offset_right = 139.0
+offset_bottom = 69.0
+
+[node name="three" parent="inventory/view/hotbar" instance=ExtResource("8_2unrw")]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 6.0
+offset_right = 208.0
+offset_bottom = 69.0
+
+[node name="collect" type="Area3D" parent="inventory"]
+script = ExtResource("8_y7er0")
+target_group = &"item"
+
+[node name="cs" type="CollisionShape3D" parent="inventory/collect"]
+shape = SubResource("SphereShape3D_f3r10")
+
+[node name="sfx" type="AudioStreamPlayer3D" parent="inventory/collect"]
+stream = ExtResource("9_8busv")
+
+[node name="pull" type="Area3D" parent="inventory"]
+script = ExtResource("8_ccg7v")
+speed = 10.0
+target_group = &"item"
+
+[node name="cs" type="CollisionShape3D" parent="inventory/pull"]
+shape = SubResource("SphereShape3D_qvraq")

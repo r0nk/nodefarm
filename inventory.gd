@@ -1,11 +1,20 @@
-extends Node
+extends Node3D
 
-var slots = []
+@export var slots = {"one":null,"two":null,"three":null}
 
 @export var max_slots = 9
 
+@export var filled_slots = 0
+
 func add(thing):
-	if(slots.size>max_slots):
-		print("cannot add over max slots")
+	slots["one"].count+=1
+
+func update_view():
+	if not $view.visible:
 		return
-	slots.append(thing)
+	$view/hotbar/one.icon=slots["one"].texture
+	$view/hotbar/one/count.text=str(slots["one"].count)
+
+func _process(delta):
+	update_view()
+

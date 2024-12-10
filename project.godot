@@ -30,6 +30,7 @@ import/blender/enabled=false
 [global_group]
 
 interactibles="Player calls interact() by pressing T"
+item="These will be pulled to nearest inventories"
 
 [gui]
 
@@ -136,6 +137,7 @@ interact={
 
 3d_physics/layer_1="Physical"
 3d_physics/layer_2="Interact"
+3d_physics/layer_3="Items"
 
 [physics]
 

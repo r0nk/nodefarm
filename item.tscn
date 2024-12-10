@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs2ah7vcdnj78"]
+
+[ext_resource type="Script" path="res://item.gd" id="1_chu6v"]
+[ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="1_vpwue"]
+[ext_resource type="Resource" uid="uid://dt60ihw5rs5ld" path="res://items/laser_gun.tres" id="2_oqmpo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5idrt"]
+
+[node name="item" type="CharacterBody3D" groups=["item"]]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_chu6v")
+resource = ExtResource("2_oqmpo")
+
+[node name="sprite" type="Sprite3D" parent="."]
+pixel_size = 0.03
+texture_filter = 0
+texture = ExtResource("1_vpwue")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_5idrt")

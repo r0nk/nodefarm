@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dt60ihw5rs5ld"]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_f8w2m"]
+[ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="2_4o55x"]
+
+[resource]
+resource_name = "laser_gun"
+script = ExtResource("1_f8w2m")
+texture = ExtResource("2_4o55x")
+max_stacks = 1

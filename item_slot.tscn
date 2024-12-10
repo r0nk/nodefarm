@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce002723oqobr"]
+
+[ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="1_w2j1f"]
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="2_0fvh3"]
+
+[node name="slot" type="Button"]
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 70.0
+offset_bottom = 68.0
+icon = ExtResource("1_w2j1f")
+icon_alignment = 1
+expand_icon = true
+
+[node name="count" type="RichTextLabel" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 3.0
+offset_top = 24.0
+offset_right = 64.0
+offset_bottom = 64.0
+theme = ExtResource("2_0fvh3")
+text = "500"
