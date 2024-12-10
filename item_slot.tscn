@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce002723oqobr"]
+[gd_scene load_steps=4 format=3 uid="uid://ce002723oqobr"]
 
 [ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="1_w2j1f"]
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="2_0fvh3"]
+[ext_resource type="Script" path="res://item_slot.gd" id="2_pgph2"]
 
 [node name="slot" type="Button"]
 offset_left = 8.0
@@ -11,6 +12,7 @@ offset_bottom = 68.0
 icon = ExtResource("1_w2j1f")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("2_pgph2")
 
 [node name="count" type="RichTextLabel" parent="."]
 z_index = 2

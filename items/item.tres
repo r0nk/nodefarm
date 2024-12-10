@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_ub7hj")
 texture = ExtResource("2_ne8aj")
+id = &""
 max_stacks = 100
 count = 1

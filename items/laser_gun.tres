@@ -7,4 +7,6 @@
 resource_name = "laser_gun"
 script = ExtResource("1_f8w2m")
 texture = ExtResource("2_4o55x")
-max_stacks = 1
+id = &"laser_gun"
+max_stacks = 10
+count = 1

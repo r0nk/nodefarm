@@ -175,6 +175,21 @@ script = ExtResource("10_8cswp")
 [node name="item" parent="." instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -10)
 
+[node name="item2" parent="." instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -19.6952)
+
+[node name="item3" parent="." instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -36.2578)
+
+[node name="item4" parent="." instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5089, -3.16766, -36.2578)
+
+[node name="item5" parent="." instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5089, -3.16766, -21.9035)
+
+[node name="item6" parent="." instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5089, -3.16766, -9.79207)
+
 [connection signal="hurted" from="training_dummy/Node2/body2/hurtbox" to="training_dummy/AnimationPlayer" method="hurted"]
 [connection signal="hurted" from="training_dummy/Node2/body2/arms2/hurtbox2" to="training_dummy/AnimationPlayer" method="hurted"]
 [connection signal="hurted" from="training_dummy/Node2/body2/head2/hurtbox" to="training_dummy/AnimationPlayer" method="hurted"]

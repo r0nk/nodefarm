@@ -7,14 +7,19 @@ extends Node3D
 @export var filled_slots = 0
 
 func add(thing):
-	slots["one"].count+=1
+	for key in slots.keys():
+		if not slots[key]:
+			slots[key]=thing
+			break
+		if(slots[key].id==thing.id and (slots[key].count<slots[key].max_stacks)):
+			slots[key].count+=1
+			break
 
 func update_view():
 	if not $view.visible:
 		return
-	$view/hotbar/one.icon=slots["one"].texture
-	$view/hotbar/one/count.text=str(slots["one"].count)
+	for s in $view/hotbar.get_children():
+		s.item=slots[s.name]
 
 func _process(delta):
 	update_view()
-

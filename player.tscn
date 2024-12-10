@@ -205,6 +205,7 @@ offset_left = 77.0
 offset_top = 6.0
 offset_right = 139.0
 offset_bottom = 69.0
+icon = null
 
 [node name="three" parent="inventory/view/hotbar" instance=ExtResource("8_2unrw")]
 layout_mode = 0
@@ -212,6 +213,7 @@ offset_left = 146.0
 offset_top = 6.0
 offset_right = 208.0
 offset_bottom = 69.0
+icon = null
 
 [node name="collect" type="Area3D" parent="inventory"]
 script = ExtResource("8_y7er0")
