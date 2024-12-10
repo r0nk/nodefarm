@@ -10,6 +10,8 @@ var is_player = true
 var dead = false
 var move_locked = false
 
+@export var speed = 5
+
 var shift_timer=0
 
 var jumps=0
@@ -72,7 +74,7 @@ func process_input(delta):
 #			$jump_sfx.play()
 		accel=Vector3(0,0,0)
 		velocity-=gravity_vector.normalized()*jump_force
-	input_direction = 10*input_direction.normalized().rotated(-gravity_vector.normalized(),$camera.rotation.y)
+	input_direction = input_direction.normalized().rotated(-gravity_vector.normalized(),$camera.rotation.y)
 
 func dialogic_event_handler(e):
 	if e == "unlock_player":
@@ -93,7 +95,7 @@ func _process(delta):
 
 	process_input(delta)
 	accel += gravity_vector*delta*7
-	velocity += (input_direction)+(accel*delta)
+	velocity += (speed*input_direction)+(accel*delta)
 	set_velocity(velocity)
 	set_up_direction(-gravity_vector.normalized())
 	move_and_slide()

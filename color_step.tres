@@ -1,0 +1,18 @@
+[gd_resource type="Shader" format=3 uid="uid://b75y1nv2uqhv6"]
+
+[resource]
+code = "shader_type spatial;
+
+uniform sampler2D t;
+
+
+void fragment() {
+	float tvalue=texture(t,UV).x+(mod(TIME,1)/5.0);
+	if (tvalue<0.5){
+		ALBEDO=vec3(1,0,0);
+	}else{
+		ALBEDO=vec3(0,1,0);
+	}
+
+}
+"

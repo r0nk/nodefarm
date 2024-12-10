@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cabrutidi3urg"]
+
+[ext_resource type="Shader" path="res://marble.gdshader" id="1_lahfg"]
+
+[sub_resource type="Gradient" id="Gradient_hqe6f"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jwyx3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e3lis"]
+color_ramp = SubResource("Gradient_hqe6f")
+noise = SubResource("FastNoiseLite_jwyx3")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lahfg")
+shader_parameter/t = SubResource("NoiseTexture2D_e3lis")

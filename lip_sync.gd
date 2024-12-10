@@ -22,6 +22,6 @@ func _process(delta):
 		var magnitude: float = spectrum.get_magnitude_for_frequency_range(prev_hz, hz).length()
 		var energy = clamp((MIN_DB + linear_to_db(magnitude)) / MIN_DB, 0, 1)
 		var height = energy * HEIGHT
-		if height !=0:
-			print(height)
+#		if height !=0:
+#			print(height)
 		prev_hz = hz

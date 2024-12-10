@@ -61,13 +61,24 @@ size = Vector3(100, 1, 100)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.3061, 0)
+light_color = Color(0, 0.847059, 1, 1)
 light_energy = 20.0
 omni_range = 43.0
 
 [node name="player" parent="." instance=ExtResource("4_hcxq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.32428, -4.98151, -8.60456)
+speed = 3
 extra_jumps = 3
 jump_force = 75
+
+[node name="bell" parent="." instance=ExtResource("9_qop5p")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -25.8818, 5.1866, 28.3716)
+
+[node name="bell3" parent="." instance=ExtResource("9_qop5p")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -33.9087, 5.1866, 28.3716)
+
+[node name="bell2" parent="." instance=ExtResource("9_qop5p")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -17.289, 5.1866, 28.3716)
 
 [node name="training_dummy" parent="." instance=ExtResource("6_1ll62")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -25.8818, -7.42798, 28.3716)
@@ -93,17 +104,13 @@ multiplier = 2.0
 [node name="AnimationPlayer" parent="training_dummy" index="1"]
 script = ExtResource("7_7rtep")
 
-[node name="bell" parent="training_dummy" instance=ExtResource("9_qop5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.20486, 0)
-
-[node name="bell3" parent="training_dummy" instance=ExtResource("9_qop5p")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.67564, 4.20486, 0)
-
-[node name="bell2" parent="training_dummy" instance=ExtResource("9_qop5p")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.86426, 4.20486, 0)
-
 [node name="lip_sync" type="Node3D" parent="."]
 script = ExtResource("8_so300")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.147343, 0.9639, 0.221782, -0.348402, -0.260438, 0.900438, 0.925692, 0.0554036, 0.374198, 52.898, 157.023, 47.1752)
+shadow_enabled = true
+directional_shadow_max_distance = 500.0
 
 [connection signal="hurted" from="training_dummy/Node2/body2/hurtbox" to="training_dummy/AnimationPlayer" method="hurted"]
 [connection signal="hurted" from="training_dummy/Node2/body2/arms2/hurtbox2" to="training_dummy/AnimationPlayer" method="hurted"]

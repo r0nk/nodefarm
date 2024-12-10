@@ -1,7 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://begeai5ycal36"]
+[gd_scene load_steps=27 format=3 uid="uid://begeai5ycal36"]
 
 [ext_resource type="Material" uid="uid://cdvcp345h4b48" path="res://materials/material_test.tres" id="1_nmq4l"]
 [ext_resource type="Script" path="res://spinner.gd" id="2_eafyh"]
+[ext_resource type="Material" uid="uid://bvokjdodn8nkt" path="res://a.tres" id="3_xnafl"]
+[ext_resource type="Shader" uid="uid://cnv4qlf0m0wi" path="res://visual_test.tres" id="4_lw1au"]
+[ext_resource type="Shader" path="res://wood.gdshader" id="4_mg4s5"]
+[ext_resource type="Shader" uid="uid://bj0y7rgdb4gig" path="res://brick.tres" id="5_ebhhj"]
+[ext_resource type="Material" uid="uid://cabrutidi3urg" path="res://marble.tres" id="6_6y2nj"]
+[ext_resource type="Shader" uid="uid://b75y1nv2uqhv6" path="res://color_step.tres" id="7_gn2xr"]
+[ext_resource type="Shader" path="res://fractal.gdshader" id="8_nvfps"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0v3hm"]
 lightmap_size_hint = Vector2i(104, 76)
@@ -34,6 +41,44 @@ noise = SubResource("FastNoiseLite_mnlm0")
 albedo_texture = SubResource("NoiseTexture2D_jsbfq")
 uv1_triplanar = true
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aip75"]
+render_priority = 0
+shader = ExtResource("4_mg4s5")
+shader_parameter/line_width = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bcerk"]
+render_priority = 0
+shader = ExtResource("5_ebhhj")
+
+[sub_resource type="Gradient" id="Gradient_gpgbc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c7qme"]
+noise_type = 0
+fractal_type = 3
+fractal_lacunarity = 20.0
+cellular_distance_function = 3
+cellular_return_type = 6
+domain_warp_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t5osf"]
+color_ramp = SubResource("Gradient_gpgbc")
+noise = SubResource("FastNoiseLite_c7qme")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsbob"]
+render_priority = 0
+shader = ExtResource("7_gn2xr")
+shader_parameter/t = SubResource("NoiseTexture2D_t5osf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpdxl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rps46"]
+render_priority = 0
+shader = ExtResource("8_nvfps")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkrnv"]
+render_priority = 0
+shader = ExtResource("4_lw1au")
+
 [node name="Node3D" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -45,7 +90,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -5.906
 mesh = SubResource("BoxMesh_0v3hm")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.780639, 0.624748, 0.0170878, -0.0218843, 1.20875e-08, 0.999761, 0.624599, -0.780826, 0.0136722, -3.54037, 2.20782, -0.776109)
+transform = Transform3D(0.959671, 0.280334, 0.0210068, -0.0218843, 1.20875e-08, 0.999761, 0.280267, -0.959902, 0.00613493, -3.54037, 2.20782, -0.776109)
 mesh = SubResource("SphereMesh_xi8yi")
 script = ExtResource("2_eafyh")
 
@@ -54,7 +99,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14502, 0)
 curve = SubResource("Curve3D_ptphr")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.0307373, 0.0100062, 0.999439, 0, 0.999952, -0.0100105, -0.999524, -0.000307709, -0.0307346, -2.31487, -0.633051, -1.7525)
+transform = Transform3D(0.0307372, 0.0100062, -0.999439, -4.6566e-10, 0.999952, 0.0100105, 0.999524, -0.000307708, 0.0307346, -2.31487, -0.633051, -1.7525)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Path3D/PathFollow3D"]
 light_color = Color(1, 0.929412, 0.643137, 1)
@@ -64,3 +109,81 @@ light_energy = 3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22022, 3.72544, 0)
 mesh = SubResource("CapsuleMesh_v2lye")
 surface_material_override/0 = SubResource("StandardMaterial3D_wkj7j")
+
+[node name="static ball" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 3.91924)
+material_override = ExtResource("3_xnafl")
+radius = 1.0
+radial_segments = 20
+rings = 20
+
+[node name="static ball3" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10487e-05, 4.22769, 9.31694)
+material_override = SubResource("ShaderMaterial_aip75")
+radius = 1.0
+radial_segments = 20
+rings = 20
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80288, 0, 0)
+
+[node name="static ball4" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 14.0653)
+material_override = SubResource("ShaderMaterial_bcerk")
+radius = 1.0
+radial_segments = 20
+rings = 20
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265598)
+
+[node name="static ball5" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 18.1374)
+material_override = ExtResource("6_6y2nj")
+radius = 1.0
+radial_segments = 20
+rings = 20
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265598)
+
+[node name="static ball6" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 22.3958)
+material_override = SubResource("ShaderMaterial_lsbob")
+radius = 1.0
+radial_segments = 20
+rings = 20
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265598)
+
+[node name="static ball7" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 26.2012)
+material_override = SubResource("ShaderMaterial_kpdxl")
+radius = 1.0
+radial_segments = 20
+rings = 20
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
+
+[node name="static ball8" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 29.4479)
+material_override = SubResource("ShaderMaterial_rps46")
+radius = 1.0
+radial_segments = 20
+rings = 20
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
+
+[node name="static ball2" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.91976, 4.22764, 7.76223)
+radius = 1.0
+radial_segments = 20
+rings = 20
+material = SubResource("ShaderMaterial_fkrnv")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(0.0307373, 0.0100062, -0.999477, -4.65661e-10, 0.99995, 0.0100109, 0.999528, -0.000307707, 0.0307357, -2.96055, 4.89025, 9.6051)
+light_energy = 3.0

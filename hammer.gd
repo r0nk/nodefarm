@@ -12,6 +12,8 @@ func build():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !visible:
+		return
 	if building == null:
 		building=building_scene.instantiate()
 		building.get_node("model").visible=false

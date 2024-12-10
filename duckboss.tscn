@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://btbmuu7mdt2ir"]
+
+[ext_resource type="PackedScene" uid="uid://gaxarb2n5mns" path="res://models/duckboss.gltf" id="1_ejy1t"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="model" parent="." instance=ExtResource("1_ejy1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186758, 0, 0.357961)
+
+[node name="head2" parent="model/Node" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.909265, -0.636086)
+
+[node name="head" parent="model/Node/head2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.848975, 0.700118)
+
+[node name="right_eye" parent="model/Node/head2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.848975, 0.700118)
+
+[node name="left_eye" parent="model/Node/head2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.848975, 0.700118)
+
+[node name="beak" parent="model/Node/head2" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.848975, 0.700118)
+
+[editable path="model"]
