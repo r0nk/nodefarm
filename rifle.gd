@@ -16,7 +16,7 @@ func _process(delta):
 		if $ray.is_colliding():
 			for i in range($ray.get_collision_count()):
 				var target = $ray.get_collider(i)
-				target.hurt(get_damage())
+				if(target.has_method('hurt')):
+					target.hurt(get_damage())
 	else:
 		$laser_body.visible=false
-

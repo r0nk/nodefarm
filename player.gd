@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 var input_direction = Vector3()
 var accel = Vector3(0,0,0)
 var gravity_vector = Vector3(0,-98,0)
@@ -44,7 +43,9 @@ func process_interactibles():
 	if $camera/interact_cast.is_colliding():
 		var body = $camera/interact_cast.get_collider()
 		if body.is_in_group("interactibles"):
-			pass
+			$camera/HUD/undercross.text="Press [T] to interact"
+			if Input.is_action_just_pressed("interact"):
+				body.interact()
 
 func process_input(delta):
 	input_direction = Vector3()

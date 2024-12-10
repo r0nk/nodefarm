@@ -110,8 +110,9 @@ text = "
 "
 
 [node name="interact_cast" type="RayCast3D" parent="camera"]
-visible = false
 target_position = Vector3(0, 0, -4000)
+collision_mask = 2
+collide_with_areas = true
 
 [node name="hammer" type="Node3D" parent="camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13498, -0.137537, -2.30578)

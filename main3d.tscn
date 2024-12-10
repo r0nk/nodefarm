@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=19 format=4 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://noise.tres" id="1_mrgqy"]
 [ext_resource type="PackedScene" uid="uid://b7v7ddihhufc3" path="res://player.tscn" id="4_hcxq1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dw032d3mhs81m" path="res://hurtbox.tscn" id="7_lup56"]
 [ext_resource type="Script" path="res://lip_sync.gd" id="8_so300"]
 [ext_resource type="PackedScene" uid="uid://cds2b4d2aptr3" path="res://bell.tscn" id="9_qop5p"]
+[ext_resource type="Script" path="res://crafting_station.gd" id="9_v6mkj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xp1vo"]
 
@@ -19,6 +20,34 @@ background_mode = 2
 sky = SubResource("Sky_iv4st")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 7.65
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3tdc2"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="Gradient" id="Gradient_y5v42"]
+colors = PackedColorArray(0.509286, 0.509286, 0.509286, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ol3py"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dtotd"]
+color_ramp = SubResource("Gradient_y5v42")
+noise = SubResource("FastNoiseLite_ol3py")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktdf5"]
+albedo_color = Color(0.734272, 0.419768, 0.253056, 1)
+albedo_texture = SubResource("NoiseTexture2D_dtotd")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_twsdg"]
+_surfaces = [{
+"aabb": AABB(-1.5, -1.5, -1.5, 3, 3, 3),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAA"),
+"format": 34359738391,
+"material": SubResource("StandardMaterial3D_ktdf5"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AADAPwAAwD8AAMA/AADAPwAAwD8AAMC/AADAPwAAwL8AAMC/AADAPwAAwL8AAMC/AADAPwAAwL8AAMA/AADAPwAAwD8AAMA/AADAPwAAwD8AAMA/AADAvwAAwD8AAMA/AADAvwAAwD8AAMC/AADAvwAAwD8AAMC/AADAPwAAwD8AAMC/AADAPwAAwD8AAMA/AADAPwAAwD8AAMA/AADAPwAAwL8AAMA/AADAvwAAwL8AAMA/AADAvwAAwL8AAMA/AADAvwAAwD8AAMA/AADAPwAAwD8AAMA/AADAvwAAwD8AAMC/AADAvwAAwD8AAMA/AADAvwAAwL8AAMA/AADAvwAAwL8AAMA/AADAvwAAwL8AAMC/AADAvwAAwD8AAMC/AADAvwAAwL8AAMA/AADAPwAAwL8AAMA/AADAPwAAwL8AAMC/AADAPwAAwL8AAMC/AADAvwAAwL8AAMC/AADAvwAAwL8AAMA/AADAPwAAwL8AAMC/AADAPwAAwD8AAMC/AADAvwAAwD8AAMC/AADAvwAAwD8AAMC/AADAvwAAwL8AAMC/AADAPwAAwL8AAMC/////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5//3//////AAD/f/////8AAP9//////wAA/3//////AAD/f/////8AAP9//////wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8/")
+}]
 
 [node name="Node3D" type="Node3D"]
 
@@ -111,6 +140,17 @@ script = ExtResource("8_so300")
 transform = Transform3D(-0.147343, 0.9639, 0.221782, -0.348402, -0.260438, 0.900438, 0.925692, 0.0554036, 0.374198, 52.898, 157.023, 47.1752)
 shadow_enabled = true
 directional_shadow_max_distance = 500.0
+
+[node name="crafting_station" type="Area3D" parent="." groups=["interactibles"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_v6mkj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="crafting_station"]
+shape = SubResource("BoxShape3D_3tdc2")
+
+[node name="model" type="MeshInstance3D" parent="crafting_station"]
+mesh = SubResource("ArrayMesh_twsdg")
 
 [connection signal="hurted" from="training_dummy/Node2/body2/hurtbox" to="training_dummy/AnimationPlayer" method="hurted"]
 [connection signal="hurted" from="training_dummy/Node2/body2/arms2/hurtbox2" to="training_dummy/AnimationPlayer" method="hurted"]
