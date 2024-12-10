@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=15 format=4 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" path="res://player.gd" id="1"]
 [ext_resource type="Script" path="res://HUD.gd" id="2_3y5t6"]
 [ext_resource type="Script" path="res://rifle.gd" id="2_tf0d1"]
+[ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://sfx/snap.ogg" id="3_aa11l"]
 [ext_resource type="Script" path="res://hammer.gd" id="4_fa86n"]
 [ext_resource type="AudioStream" uid="uid://c7iqm4cxcu18h" path="res://sfx/pew.ogg" id="5_qlpic"]
 
@@ -113,6 +114,9 @@ text = "
 target_position = Vector3(0, 0, -4000)
 collision_mask = 2
 collide_with_areas = true
+
+[node name="sfx" type="AudioStreamPlayer" parent="camera/interact_cast"]
+stream = ExtResource("3_aa11l")
 
 [node name="hammer" type="Node3D" parent="camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13498, -0.137537, -2.30578)

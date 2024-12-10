@@ -45,6 +45,7 @@ func process_interactibles():
 		if body.is_in_group("interactibles"):
 			$camera/HUD/undercross.text="Press [T] to interact"
 			if Input.is_action_just_pressed("interact"):
+				$camera/interact_cast/sfx.play()
 				body.interact()
 
 func process_input(delta):

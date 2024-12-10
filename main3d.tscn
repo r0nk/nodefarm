@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=23 format=4 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://noise.tres" id="1_mrgqy"]
 [ext_resource type="PackedScene" uid="uid://b7v7ddihhufc3" path="res://player.tscn" id="4_hcxq1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://lip_sync.gd" id="8_so300"]
 [ext_resource type="PackedScene" uid="uid://cds2b4d2aptr3" path="res://bell.tscn" id="9_qop5p"]
 [ext_resource type="Script" path="res://crafting_station.gd" id="9_v6mkj"]
+[ext_resource type="Script" path="res://door.gd" id="10_8cswp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xp1vo"]
 
@@ -48,6 +49,15 @@ _surfaces = [{
 "vertex_count": 36,
 "vertex_data": PackedByteArray("AADAPwAAwD8AAMA/AADAPwAAwD8AAMC/AADAPwAAwL8AAMC/AADAPwAAwL8AAMC/AADAPwAAwL8AAMA/AADAPwAAwD8AAMA/AADAPwAAwD8AAMA/AADAvwAAwD8AAMA/AADAvwAAwD8AAMC/AADAvwAAwD8AAMC/AADAPwAAwD8AAMC/AADAPwAAwD8AAMA/AADAPwAAwD8AAMA/AADAPwAAwL8AAMA/AADAvwAAwL8AAMA/AADAvwAAwL8AAMA/AADAvwAAwD8AAMA/AADAPwAAwD8AAMA/AADAvwAAwD8AAMC/AADAvwAAwD8AAMA/AADAvwAAwL8AAMA/AADAvwAAwL8AAMA/AADAvwAAwL8AAMC/AADAvwAAwD8AAMC/AADAvwAAwL8AAMA/AADAPwAAwL8AAMA/AADAPwAAwL8AAMC/AADAPwAAwL8AAMC/AADAvwAAwL8AAMC/AADAvwAAwL8AAMA/AADAPwAAwL8AAMC/AADAPwAAwD8AAMC/AADAvwAAwD8AAMC/AADAvwAAwD8AAMC/AADAvwAAwL8AAMC/AADAPwAAwL8AAMC/////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5//3//////AAD/f/////8AAP9//////wAA/3//////AAD/f/////8AAP9//////wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8/")
 }]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r2tf5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_daqtb"]
+noise = SubResource("FastNoiseLite_r2tf5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuxoy"]
+albedo_color = Color(0.384314, 1, 1, 1)
+albedo_texture = SubResource("NoiseTexture2D_daqtb")
 
 [node name="Node3D" type="Node3D"]
 
@@ -151,6 +161,15 @@ shape = SubResource("BoxShape3D_3tdc2")
 
 [node name="model" type="MeshInstance3D" parent="crafting_station"]
 mesh = SubResource("ArrayMesh_twsdg")
+
+[node name="door" type="CSGBox3D" parent="." groups=["interactibles"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6647, -3.34515, 0)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(0.2, 8, 3)
+material = SubResource("StandardMaterial3D_iuxoy")
+script = ExtResource("10_8cswp")
 
 [connection signal="hurted" from="training_dummy/Node2/body2/hurtbox" to="training_dummy/AnimationPlayer" method="hurted"]
 [connection signal="hurted" from="training_dummy/Node2/body2/arms2/hurtbox2" to="training_dummy/AnimationPlayer" method="hurted"]
