@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="2_7v3ni"]
 
 [resource]
+resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("1_2cfg0")
 texture = ExtResource("2_7v3ni")

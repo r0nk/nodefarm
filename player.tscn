@@ -71,6 +71,7 @@ offset_left = 6.0
 offset_top = 158.0
 offset_right = 932.0
 offset_bottom = 678.0
+mouse_filter = 2
 
 [node name="undercross" type="RichTextLabel" parent="camera/HUD"]
 offset_left = 735.0

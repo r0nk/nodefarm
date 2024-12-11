@@ -3,6 +3,8 @@ extends CharacterBody3D
 @export var resource:Resource
 
 func _ready():
+	resource=resource.duplicate()
+	print(name,": ",resource.id)
 	$sprite.texture=resource.texture
 
 func _process(delta):

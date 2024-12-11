@@ -21,5 +21,6 @@ offset_left = 3.0
 offset_top = 24.0
 offset_right = 64.0
 offset_bottom = 64.0
+mouse_filter = 2
 theme = ExtResource("2_0fvh3")
 text = "500"

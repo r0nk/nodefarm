@@ -21,6 +21,7 @@ size = Vector3(0.0310372, 0.225773, 0.0497531)
 
 [node name="laser_body" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32458e-06, -0.0107685, -25.3695)
+visible = false
 size = Vector3(0.068, 0.244, 50)
 material = SubResource("StandardMaterial3D_qpo0g")
 

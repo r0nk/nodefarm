@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=41 format=4 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://noise.tres" id="1_mrgqy"]
 [ext_resource type="PackedScene" uid="uid://b7v7ddihhufc3" path="res://player.tscn" id="4_hcxq1"]
@@ -9,9 +9,18 @@
 [ext_resource type="Script" path="res://lip_sync.gd" id="8_so300"]
 [ext_resource type="PackedScene" uid="uid://cds2b4d2aptr3" path="res://bell.tscn" id="9_qop5p"]
 [ext_resource type="Script" path="res://crafting_station.gd" id="9_v6mkj"]
+[ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://item_slot.tscn" id="10_2akwh"]
 [ext_resource type="Script" path="res://door.gd" id="10_8cswp"]
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="10_eiumv"]
 [ext_resource type="PackedScene" uid="uid://cs2ah7vcdnj78" path="res://item.tscn" id="11_7gk8q"]
-[ext_resource type="Resource" uid="uid://bskgf4o3omyjl" path="res://items/laser_gun.tres" id="12_g06pc"]
+[ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="12_nll17"]
+[ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="13_3r6xx"]
+[ext_resource type="PackedScene" uid="uid://dghdadngmf6qv" path="res://rifle.tscn" id="13_7dcma"]
+[ext_resource type="Texture2D" uid="uid://cqwheyim2uq4" path="res://images/inventory/hammer.png" id="13_e6yul"]
+[ext_resource type="Script" path="res://blueprint_selector.gd" id="14_gjvs3"]
+[ext_resource type="Script" path="res://items/item.gd" id="14_l0lyd"]
+[ext_resource type="Texture2D" uid="uid://b87nsk8q7hpn4" path="res://images/icons/search.png" id="14_yhwi1"]
+[ext_resource type="Resource" uid="uid://bskgf4o3omyjl" path="res://items/coin.tres" id="21_i8gqe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xp1vo"]
 
@@ -60,6 +69,76 @@ noise = SubResource("FastNoiseLite_r2tf5")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuxoy"]
 albedo_color = Color(0.384314, 1, 1, 1)
 albedo_texture = SubResource("NoiseTexture2D_daqtb")
+
+[sub_resource type="Resource" id="Resource_hrrvl"]
+resource_local_to_scene = true
+resource_name = "laser_gun"
+script = ExtResource("14_l0lyd")
+texture = ExtResource("13_3r6xx")
+id = &"laser_gun"
+max_stacks = 10
+count = 1
+equipped_scene = ExtResource("13_7dcma")
+
+[sub_resource type="Resource" id="Resource_p6j0e"]
+resource_local_to_scene = true
+resource_name = "laser_gun"
+script = ExtResource("14_l0lyd")
+texture = ExtResource("13_3r6xx")
+id = &"laser_gun"
+max_stacks = 10
+count = 1
+equipped_scene = ExtResource("13_7dcma")
+
+[sub_resource type="Resource" id="Resource_4w1nx"]
+resource_local_to_scene = true
+resource_name = "laser_gun"
+script = ExtResource("14_l0lyd")
+texture = ExtResource("13_3r6xx")
+id = &"laser_gun"
+max_stacks = 10
+count = 1
+equipped_scene = ExtResource("13_7dcma")
+
+[sub_resource type="Resource" id="Resource_0t1ar"]
+resource_local_to_scene = true
+resource_name = "laser_gun"
+script = ExtResource("14_l0lyd")
+texture = ExtResource("13_3r6xx")
+id = &"laser_gun"
+max_stacks = 10
+count = 1
+equipped_scene = ExtResource("13_7dcma")
+
+[sub_resource type="Resource" id="Resource_i6651"]
+resource_local_to_scene = true
+resource_name = "laser_gun"
+script = ExtResource("14_l0lyd")
+texture = ExtResource("13_3r6xx")
+id = &"laser_gun"
+max_stacks = 10
+count = 1
+equipped_scene = ExtResource("13_7dcma")
+
+[sub_resource type="Resource" id="Resource_6dsc4"]
+resource_local_to_scene = true
+resource_name = "laser_gun"
+script = ExtResource("14_l0lyd")
+texture = ExtResource("13_3r6xx")
+id = &"laser_gun"
+max_stacks = 10
+count = 1
+equipped_scene = ExtResource("13_7dcma")
+
+[sub_resource type="Resource" id="Resource_xb5v3"]
+resource_local_to_scene = true
+resource_name = "laser_gun"
+script = ExtResource("14_l0lyd")
+texture = ExtResource("13_3r6xx")
+id = &"laser_gun"
+max_stacks = 10
+count = 1
+equipped_scene = ExtResource("13_7dcma")
 
 [node name="Node3D" type="Node3D"]
 
@@ -165,6 +244,101 @@ shape = SubResource("BoxShape3D_3tdc2")
 [node name="model" type="MeshInstance3D" parent="crafting_station"]
 mesh = SubResource("ArrayMesh_twsdg")
 
+[node name="ui" type="Panel" parent="crafting_station"]
+offset_left = 110.0
+offset_top = 48.0
+offset_right = 1009.0
+offset_bottom = 482.0
+mouse_filter = 2
+
+[node name="blueprint_selector" type="ItemList" parent="crafting_station/ui"]
+z_index = 11
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.5
+offset_top = 71.0
+offset_right = 297.5
+offset_bottom = 401.0
+grow_horizontal = 2
+theme = ExtResource("10_eiumv")
+allow_reselect = true
+item_count = 3
+item_0/text = "Laser gun"
+item_0/icon = ExtResource("13_3r6xx")
+item_1/text = "Coin"
+item_1/icon = ExtResource("12_nll17")
+item_2/text = "Hammer"
+item_2/icon = ExtResource("13_e6yul")
+script = ExtResource("14_gjvs3")
+
+[node name="craft" type="Button" parent="crafting_station/ui"]
+layout_mode = 0
+offset_left = 769.0
+offset_top = 350.0
+offset_right = 883.0
+offset_bottom = 418.0
+theme = ExtResource("10_eiumv")
+text = "CRAFT"
+
+[node name="inputs" type="Control" parent="crafting_station/ui"]
+anchors_preset = 0
+offset_left = 814.0
+offset_top = 7.0
+offset_right = 854.0
+offset_bottom = 47.0
+
+[node name="slot1" parent="crafting_station/ui/inputs" instance=ExtResource("10_2akwh")]
+layout_mode = 0
+offset_left = -57.0
+offset_top = 57.0
+offset_right = 5.0
+offset_bottom = 120.0
+
+[node name="slot2" parent="crafting_station/ui/inputs" instance=ExtResource("10_2akwh")]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 57.0
+offset_right = 73.0
+offset_bottom = 120.0
+
+[node name="slot3" parent="crafting_station/ui/inputs" instance=ExtResource("10_2akwh")]
+layout_mode = 0
+offset_left = -57.0
+offset_top = 123.0
+offset_right = 5.0
+offset_bottom = 186.0
+
+[node name="slot4" parent="crafting_station/ui/inputs" instance=ExtResource("10_2akwh")]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 123.0
+offset_right = 73.0
+offset_bottom = 186.0
+
+[node name="label" type="RichTextLabel" parent="crafting_station/ui/inputs"]
+layout_mode = 0
+offset_left = -57.0
+offset_top = 4.0
+offset_right = 63.0
+offset_bottom = 44.0
+theme = ExtResource("10_eiumv")
+text = "INPUTS"
+
+[node name="search" type="LineEdit" parent="crafting_station/ui"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 11.0
+offset_right = 748.0
+offset_bottom = 57.0
+theme = ExtResource("10_eiumv")
+placeholder_text = "Search for..."
+
+[node name="icon" type="Sprite2D" parent="crafting_station/ui/search"]
+position = Vector2(-17, 20)
+texture = ExtResource("14_yhwi1")
+
 [node name="door" type="CSGBox3D" parent="." groups=["interactibles"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6647, -3.34515, 0)
 use_collision = true
@@ -174,27 +348,44 @@ size = Vector3(0.2, 8, 3)
 material = SubResource("StandardMaterial3D_iuxoy")
 script = ExtResource("10_8cswp")
 
-[node name="item" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -10)
-resource = ExtResource("12_g06pc")
-
 [node name="item2" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -19.6952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -17.0692)
+resource = SubResource("Resource_hrrvl")
 
 [node name="item3" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -36.2578)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6741, -3.16766, -17.0692)
+resource = ExtResource("21_i8gqe")
 
 [node name="item4" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5089, -3.16766, -36.2578)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, -17.0692)
+resource = SubResource("Resource_p6j0e")
 
 [node name="item5" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5089, -3.16766, -21.9035)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, -6.85489)
+resource = SubResource("Resource_4w1nx")
 
 [node name="item6" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5089, -3.16766, -9.79207)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, -0.324892)
+resource = SubResource("Resource_0t1ar")
+
+[node name="item7" parent="." instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, 6.60702)
+resource = SubResource("Resource_i6651")
+
+[node name="item8" parent="." instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, 11.7135)
+resource = SubResource("Resource_6dsc4")
+
+[node name="item" parent="." instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -0.89357)
+resource = SubResource("Resource_xb5v3")
+
+[node name="sprite" parent="item" index="0"]
+texture = ExtResource("13_3r6xx")
 
 [connection signal="hurted" from="training_dummy/Node2/body2/hurtbox" to="training_dummy/AnimationPlayer" method="hurted"]
 [connection signal="hurted" from="training_dummy/Node2/body2/arms2/hurtbox2" to="training_dummy/AnimationPlayer" method="hurted"]
 [connection signal="hurted" from="training_dummy/Node2/body2/head2/hurtbox" to="training_dummy/AnimationPlayer" method="hurted"]
 
 [editable path="training_dummy"]
+[editable path="item"]

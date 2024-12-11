@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cqwheyim2uq4" path="res://images/inventory/hammer.png" id="2_71tuk"]
 
 [resource]
+resource_local_to_scene = true
 resource_name = "hammer"
 script = ExtResource("1_2apk4")
 texture = ExtResource("2_71tuk")
