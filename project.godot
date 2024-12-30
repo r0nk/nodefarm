@@ -21,7 +21,7 @@ window/size/mode=3
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/character-controller/plugin.cfg", "res://addons/csgtomeshinstance/plugin.cfg")
+enabled=PackedStringArray("res://addons/csgtomeshinstance/plugin.cfg", "res://addons/fps_player/plugin.cfg")
 
 [filesystem]
 

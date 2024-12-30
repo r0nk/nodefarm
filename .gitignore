@@ -2,7 +2,8 @@
 .import/*
 .import/
 *.import
-addons/*
+addons/character-controller/*
+addons/csgtomeshinstance/*
 todo.txt
 qrcode.png
 .godot/*
