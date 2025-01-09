@@ -1,27 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=8 format=3 uid="uid://b7v7ddihhufc3"]
 
-[ext_resource type="Script" path="res://player.gd" id="1"]
-[ext_resource type="Script" path="res://HUD.gd" id="2_3y5t6"]
+[ext_resource type="Script" path="res://addons/fps_player/player.gd" id="1"]
+[ext_resource type="Script" path="res://addons/fps_player/HUD.gd" id="2_3y5t6"]
 [ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://sfx/snap.ogg" id="3_aa11l"]
 [ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="4_2p1ay"]
-[ext_resource type="Script" path="res://equipped.gd" id="4_rpf0k"]
-[ext_resource type="Script" path="res://hotbar.gd" id="7_b8fk5"]
-[ext_resource type="Script" path="res://inventory.gd" id="7_ct2ou"]
-[ext_resource type="Resource" uid="uid://nc5i3sm4k3ob" path="res://items/item.tres" id="8_0wu3p"]
-[ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://item_slot.tscn" id="8_2unrw"]
-[ext_resource type="Script" path="res://pull.gd" id="8_ccg7v"]
-[ext_resource type="Script" path="res://collect.gd" id="8_y7er0"]
-[ext_resource type="AudioStream" uid="uid://2qhm3lvv2h0d" path="res://sfx/pickup.ogg" id="9_8busv"]
+[ext_resource type="Script" path="res://addons/fps_player/equipped.gd" id="4_rpf0k"]
+[ext_resource type="PackedScene" uid="uid://pyi3khqxetpk" path="res://inventory.tscn" id="6_axg0w"]
 
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
 height = 3.0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_f3r10"]
-radius = 3.0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_qvraq"]
-radius = 10.0
 
 [node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1")
@@ -103,83 +91,43 @@ texture = ExtResource("4_2p1ay")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657689, 0)
 shape = SubResource("3")
 
-[node name="inventory" type="Node3D" parent="."]
-script = ExtResource("7_ct2ou")
-slots = {
-"one": ExtResource("8_0wu3p"),
-"three": null,
-"two": null
-}
+[node name="inventory" parent="." instance=ExtResource("6_axg0w")]
 
-[node name="view" type="Control" parent="inventory"]
+[node name="questlog" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 55.0
-offset_top = 535.0
-offset_right = 95.0
-offset_bottom = 575.0
+offset_left = 35.0
+offset_top = 21.0
+offset_right = 75.0
+offset_bottom = 61.0
 
-[node name="hotbar" type="Panel" parent="inventory/view" node_paths=PackedStringArray("selected")]
+[node name="Panel" type="Panel" parent="questlog"]
 layout_mode = 0
-offset_right = 1056.0
-offset_bottom = 74.0
-script = ExtResource("7_b8fk5")
-selected = NodePath("one")
+offset_right = 623.0
+offset_bottom = 430.0
 
-[node name="one" parent="inventory/view/hotbar" instance=ExtResource("8_2unrw")]
+[node name="list" type="ItemList" parent="questlog"]
+layout_mode = 2
+offset_right = 235.0
+offset_bottom = 413.0
+size_flags_horizontal = 0
+item_count = 3
+item_0/text = "Revenge of the tigers"
+item_1/text = "Thunderfury, blessed blade of the windseeker"
+item_2/text = "Cat in a tree"
+
+[node name="Button" type="Button" parent="questlog"]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 0.0
-offset_right = 67.0
-offset_bottom = 63.0
+offset_left = 458.0
+offset_top = 391.0
+offset_right = 616.0
+offset_bottom = 423.0
+text = "TRACK"
 
-[node name="two" parent="inventory/view/hotbar" instance=ExtResource("8_2unrw")]
-layout_mode = 0
-offset_left = 77.0
-offset_top = 6.0
-offset_right = 139.0
-offset_bottom = 69.0
-icon = null
-
-[node name="three" parent="inventory/view/hotbar" instance=ExtResource("8_2unrw")]
-layout_mode = 0
-offset_left = 146.0
-offset_top = 6.0
-offset_right = 208.0
-offset_bottom = 69.0
-icon = null
-
-[node name="select_box" type="ColorRect" parent="inventory/view/hotbar"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -528.0
-offset_top = -37.0
-offset_right = -458.0
-offset_bottom = 33.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(35, 35)
-
-[node name="collect" type="Area3D" parent="inventory"]
-script = ExtResource("8_y7er0")
-target_group = &"item"
-
-[node name="cs" type="CollisionShape3D" parent="inventory/collect"]
-shape = SubResource("SphereShape3D_f3r10")
-
-[node name="sfx" type="AudioStreamPlayer3D" parent="inventory/collect"]
-stream = ExtResource("9_8busv")
-
-[node name="pull" type="Area3D" parent="inventory"]
-script = ExtResource("8_ccg7v")
-target_group = &"item"
-
-[node name="cs" type="CollisionShape3D" parent="inventory/pull"]
-shape = SubResource("SphereShape3D_qvraq")
-
-[connection signal="selection_changed" from="inventory/view/hotbar" to="camera/equipped" method="selection_changed"]
+[node name="description" type="RichTextLabel" parent="questlog"]
+layout_mode = 2
+offset_left = 243.0
+offset_right = 613.0
+offset_bottom = 373.0
+size_flags_horizontal = 8
+text = "Tony got his cat stuck in a tree"

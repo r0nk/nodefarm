@@ -24,4 +24,3 @@ func update_view():
 
 func _process(delta):
 	update_view()
-

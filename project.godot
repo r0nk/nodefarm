@@ -15,13 +15,17 @@ run/main_scene="res://main3d.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
+[autoload]
+
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
 [display]
 
 window/size/mode=3
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/csgtomeshinstance/plugin.cfg", "res://addons/fps_player/plugin.cfg")
+enabled=PackedStringArray("res://addons/csgtomeshinstance/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fps_player/plugin.cfg")
 
 [filesystem]
 

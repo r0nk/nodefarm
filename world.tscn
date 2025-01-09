@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6hlg1085xlka"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_48ggu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xp1vo"]
+
+[sub_resource type="Sky" id="Sky_iv4st"]
+sky_material = SubResource("ProceduralSkyMaterial_xp1vo")
+
+[sub_resource type="Environment" id="Environment_6rrrx"]
+background_mode = 2
+sky = SubResource("Sky_iv4st")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 7.65
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_fwl3v"]
+
+[node name="world" type="WorldEnvironment"]
+environment = SubResource("Environment_6rrrx")
+script = ExtResource("1_48ggu")
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.810062, 0.523383, -0.26433, 0, 0.450809, 0.89262, 0.586345, 0.723077, -0.365183, 26.6295, 245.729, 10.8842)
+light_color = Color(0.992157, 0.984314, 0.827451, 1)
+shadow_enabled = true
+directional_shadow_max_distance = 500.0
+
+[node name="moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.903348, 0.281132, -0.323925, 0, 0.755231, 0.655459, 0.428909, 0.592107, -0.682236, 52.898, 157.023, 47.1752)
+visible = false
+light_energy = 0.1
+shadow_enabled = true
+directional_shadow_max_distance = 500.0
+sky_mode = 1
+
+[node name="west_boundry" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -47.477)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="west_boundry"]
+shape = SubResource("WorldBoundaryShape3D_fwl3v")
+
+[node name="east_boundry" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 47.1608)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="east_boundry"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_fwl3v")
+
+[node name="north_boundry" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 51.1034, 0, 0.392714)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="north_boundry"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_fwl3v")
+
+[node name="south_boundry" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -48.805, 0, 0.392714)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="south_boundry"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_fwl3v")
