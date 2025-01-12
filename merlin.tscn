@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://chwjftxgx6gkb"]
+
+[ext_resource type="Script" path="res://quest.gd" id="1_esw0q"]
+[ext_resource type="Texture2D" uid="uid://buk4tpy6alxp3" path="res://images/quill.png" id="1_mxmvu"]
+[ext_resource type="Script" path="res://talk_box.gd" id="2_14ypx"]
+[ext_resource type="Script" path="res://quest_resource.gd" id="2_nu2o7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4c35j"]
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgs45"]
+albedo_color = Color(0.68869, 0.000380233, 0.694362, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgoae"]
+albedo_color = Color(0.68869, 0.000380233, 0.694362, 1)
+
+[sub_resource type="Resource" id="Resource_if8tt"]
+script = ExtResource("2_nu2o7")
+name = "Fight the scarecrow"
+description = "Collect straw by hitting the scarecrow."
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwdr0"]
+size = Vector3(2, 2, 2)
+
+[node name="merlin" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458634, -4.25428, -0.257289)
+
+[node name="cs" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38335, 0)
+shape = SubResource("CapsuleShape3D_4c35j")
+
+[node name="head" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.663282, 0)
+
+[node name="hat" type="CSGCylinder3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.760015, 0)
+height = 1.0
+cone = true
+material = SubResource("StandardMaterial3D_fgs45")
+
+[node name="brim" type="CSGCylinder3D" parent="head/hat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.464147, 0)
+radius = 1.0
+height = 0.1
+cone = true
+material = SubResource("StandardMaterial3D_fgs45")
+
+[node name="body" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.12182, 0)
+material = SubResource("StandardMaterial3D_jgoae")
+
+[node name="quest" type="Node3D" parent="." groups=["quest"]]
+script = ExtResource("1_esw0q")
+r = SubResource("Resource_if8tt")
+
+[node name="indicator" type="Sprite3D" parent="quest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39876, 0)
+pixel_size = 0.03
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_mxmvu")
+
+[node name="title" type="Label3D" parent="quest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.730767, 0)
+billboard = 2
+text = "Revenge of the Tigers"
+
+[node name="talk" type="Area3D" parent="." groups=["interactibles"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.659344, 0.49816)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_14ypx")
+
+[node name="cs" type="CollisionShape3D" parent="talk"]
+shape = SubResource("BoxShape3D_hwdr0")

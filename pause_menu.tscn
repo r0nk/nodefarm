@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://dakhvn0iags08"]
+
+[ext_resource type="Script" path="res://pause_menu.gd" id="1_hvg5y"]
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="2_dlei1"]
+[ext_resource type="Script" path="res://return_button.gd" id="3_xxu13"]
+[ext_resource type="Script" path="res://exit_game_button.gd" id="4_2w81h"]
+
+[node name="pause_menu" type="Panel"]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -159.0
+offset_right = 196.0
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_hvg5y")
+
+[node name="label" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_right = 60.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme = ExtResource("2_dlei1")
+text = "PAUSED"
+
+[node name="return_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.165816
+anchor_top = 0.125786
+anchor_right = 0.806122
+anchor_bottom = 0.283019
+offset_bottom = -4.0
+theme = ExtResource("2_dlei1")
+text = "Return to Game"
+script = ExtResource("3_xxu13")
+
+[node name="settings_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.165816
+anchor_top = 0.301887
+anchor_right = 0.80102
+anchor_bottom = 0.446541
+theme = ExtResource("2_dlei1")
+text = "Settings
+"
+
+[node name="save_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.170918
+anchor_top = 0.493711
+anchor_right = 0.795918
+anchor_bottom = 0.638365
+offset_left = 1.52588e-05
+offset_right = 3.05176e-05
+offset_bottom = 1.52588e-05
+theme = ExtResource("2_dlei1")
+text = "Save/Load
+"
+
+[node name="exit_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.163265
+anchor_top = 0.581236
+anchor_right = 0.793367
+anchor_bottom = 0.686499
+offset_left = 2.99998
+offset_top = 33.167
+offset_right = 2.99997
+offset_bottom = 45.6934
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_dlei1")
+text = "Exit Game
+"
+script = ExtResource("4_2w81h")

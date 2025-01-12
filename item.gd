@@ -4,7 +4,7 @@ extends CharacterBody3D
 
 func _ready():
 	resource=resource.duplicate()
-	print(name,": ",resource.id)
+#	print(name,": ",resource.id)
 	$sprite.texture=resource.texture
 
 func _process(delta):

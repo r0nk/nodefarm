@@ -19,10 +19,6 @@ config/icon="res://icon.png"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
-[display]
-
-window/size/mode=3
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/csgtomeshinstance/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fps_player/plugin.cfg")
@@ -36,6 +32,8 @@ import/blender/enabled=false
 interactibles="Player calls interact() by pressing T"
 item="These will be pulled to nearest inventories"
 slot="An item can go in here."
+quest="This is a quest that the NPC will talk about."
+player=""
 
 [gui]
 
@@ -150,6 +148,11 @@ two={
 three={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"location":0,"echo":false,"script":null)
+]
+}
+open_questlog={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":76,"key_label":0,"unicode":108,"location":0,"echo":false,"script":null)
 ]
 }
 

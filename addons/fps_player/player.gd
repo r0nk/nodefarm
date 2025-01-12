@@ -20,7 +20,7 @@ var power=0
 
 var weapon_array = [[0,1]]
 
-var camera_speed=0.2
+var camera_speed=0.15
 
 signal player_killed
 
@@ -56,8 +56,8 @@ func process_input(delta):
 
 	var forward=Vector3(0,0,-1)
 
-	if Input.is_action_just_pressed("escape"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+#	if Input.is_action_just_pressed("escape"):
+#		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	if Input.is_action_pressed("up"):
 		input_direction+=forward
