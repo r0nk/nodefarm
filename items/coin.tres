@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="2_frvig"]
 
 [resource]
+resource_local_to_scene = true
 resource_name = "coin"
 script = ExtResource("1_2cfg0")
 texture = ExtResource("2_frvig")

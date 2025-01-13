@@ -6,6 +6,7 @@ func add_quests():
 	for child in children:
 		if child.is_in_group("quest"):
 			player.get_node("questlog").add_quest(child.r)
+			child.visible=false
 
 func interact():
 	add_quests()

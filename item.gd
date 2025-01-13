@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var resource:Resource
+@export var resource:Item
 
 func _ready():
 	resource=resource.duplicate()

@@ -129,3 +129,7 @@ offset_right = 613.0
 offset_bottom = 373.0
 size_flags_horizontal = 8
 text = "<alan please add Placeholder text>"
+
+[connection signal="selection_changed" from="inventory/view/hotbar" to="camera/equipped" method="selection_changed"]
+
+[editable path="inventory"]
