@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dakhvn0iags08"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_hvg5y"]
-[ext_resource type="Theme" path="res://tcg.tres" id="2_dlei1"]
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="2_dlei1"]
 [ext_resource type="Script" path="res://return_button.gd" id="3_xxu13"]
 [ext_resource type="Script" path="res://exit_game_button.gd" id="4_2w81h"]
 [ext_resource type="Script" path="res://settings_button.gd" id="4_di06c"]

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://addons/fps_player/equipped.gd" id="4_rpf0k"]
 [ext_resource type="PackedScene" uid="uid://pyi3khqxetpk" path="res://inventory.tscn" id="6_axg0w"]
 [ext_resource type="Script" path="res://addons/fps_player/questlog.gd" id="7_a0i7b"]
-[ext_resource type="Theme" path="res://tcg.tres" id="8_kbxqm"]
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="8_kbxqm"]
 
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
@@ -96,6 +96,7 @@ shape = SubResource("3")
 [node name="inventory" parent="." instance=ExtResource("6_axg0w")]
 
 [node name="questlog" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 35.0
@@ -105,24 +106,15 @@ offset_bottom = 61.0
 script = ExtResource("7_a0i7b")
 
 [node name="panel" type="Panel" parent="questlog"]
-visible = false
 layout_mode = 0
-offset_right = 623.0
-offset_bottom = 430.0
+offset_right = 812.0
+offset_bottom = 486.0
 
 [node name="list" type="ItemList" parent="questlog/panel"]
 layout_mode = 2
 offset_right = 235.0
-offset_bottom = 413.0
+offset_bottom = 481.0
 size_flags_horizontal = 0
-
-[node name="Button" type="Button" parent="questlog/panel"]
-layout_mode = 0
-offset_left = 458.0
-offset_top = 391.0
-offset_right = 616.0
-offset_bottom = 423.0
-text = "TRACK"
 
 [node name="description" type="RichTextLabel" parent="questlog/panel"]
 layout_mode = 2

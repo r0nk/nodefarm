@@ -63,18 +63,18 @@ func process_input(delta):
 #	if Input.is_action_just_pressed("escape"):
 #		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-	if Input.is_action_pressed("up"):
+	if Input.is_action_pressed("move_forward"):
 		input_direction+=forward
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed("move_backward"):
 		input_direction+=-forward
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("move_left"):
 		input_direction+=forward.rotated(-gravity_vector.normalized(),(3.14/2))
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("move_right"):
 		input_direction+=-forward.rotated(-gravity_vector.normalized(),(3.14/2))
 
 	if is_on_floor():
 		jumps=extra_jumps
-	if jumps>0 and Input.is_action_just_pressed("jump"):
+	if jumps>0 and Input.is_action_just_pressed("move_jump"):
 		jumps-=1
 #		if not is_on_floor():
 #			$jump_sfx.play()

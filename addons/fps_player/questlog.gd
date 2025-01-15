@@ -6,7 +6,6 @@ var quests = {} #indexed by quest name
 func task_string(task):
 	return "Collect %d/%d %s."%[task.progress,task.target_amount,task.target_item.id]
 
-
 #update the progress if this item is part of a quest line
 func item_picked_up(item):
 	for key in quests:
