@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://crafting_station.gd" id="9_v6mkj"]
 [ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://item_slot.tscn" id="10_2akwh"]
 [ext_resource type="Script" path="res://door.gd" id="10_8cswp"]
-[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="10_eiumv"]
+[ext_resource type="Theme" path="res://tcg.tres" id="10_eiumv"]
 [ext_resource type="PackedScene" uid="uid://cs2ah7vcdnj78" path="res://item.tscn" id="11_7gk8q"]
 [ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="12_nll17"]
 [ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="13_3r6xx"]
