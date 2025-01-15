@@ -174,7 +174,7 @@ _data = {
 "impact": SubResource("Animation_s7hua")
 }
 
-[sub_resource type="Resource" id="Resource_sc5wf"]
+[sub_resource type="Resource" id="Resource_w763a"]
 resource_local_to_scene = true
 resource_name = "coin"
 script = ExtResource("9_8u7ga")
@@ -183,10 +183,10 @@ id = &"coin"
 max_stacks = 1000
 count = 1
 
-[sub_resource type="Resource" id="Resource_h6r2r"]
+[sub_resource type="Resource" id="Resource_3hysg"]
 resource_local_to_scene = true
 script = ExtResource("9_udite")
-item = SubResource("Resource_sc5wf")
+item = SubResource("Resource_w763a")
 probability = 0.5
 
 [node name="training_dummy" type="Node3D"]
@@ -244,7 +244,7 @@ script = ExtResource("6_ubw7h")
 [node name="loot_drop" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.12267, 0)
 script = ExtResource("7_12r34")
-loot_entries = Array[ExtResource("9_udite")]([SubResource("Resource_h6r2r")])
+loot_entries = Array[ExtResource("9_udite")]([SubResource("Resource_3hysg")])
 
 [connection signal="hurted" from="Node2/body2/hurtbox" to="Thud" method="hurted"]
 [connection signal="hurted" from="Node2/body2/hurtbox" to="AnimationPlayer" method="hurted"]
