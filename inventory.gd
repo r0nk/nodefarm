@@ -6,7 +6,9 @@ extends Node3D
 
 @export var filled_slots = 0
 
-func add(thing):
+signal item_picked_up(item)
+
+func add(thing:Item):
 	for key in slots.keys():
 		if not slots[key]:
 			slots[key]=thing
@@ -14,6 +16,7 @@ func add(thing):
 		if(slots[key].id==thing.id and (slots[key].count<slots[key].max_stacks)):
 			slots[key].count+=1
 			break
+	item_picked_up.emit(thing)
 
 func update_view():
 	if not $view.visible:

@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://chwjftxgx6gkb"]
+[gd_scene load_steps=13 format=3 uid="uid://chwjftxgx6gkb"]
 
 [ext_resource type="Script" path="res://quest.gd" id="1_esw0q"]
 [ext_resource type="Texture2D" uid="uid://buk4tpy6alxp3" path="res://images/quill.png" id="1_mxmvu"]
 [ext_resource type="Script" path="res://talk_box.gd" id="2_14ypx"]
 [ext_resource type="Script" path="res://quest_resource.gd" id="2_nu2o7"]
 [ext_resource type="Script" path="res://quest_task.gd" id="3_i175t"]
+[ext_resource type="Resource" uid="uid://bskgf4o3omyjl" path="res://items/laser_gun.tres" id="4_45r63"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4c35j"]
 height = 4.0
@@ -15,19 +16,19 @@ albedo_color = Color(0.68869, 0.000380233, 0.694362, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgoae"]
 albedo_color = Color(0.68869, 0.000380233, 0.694362, 1)
 
-[sub_resource type="Resource" id="Resource_268hh"]
+[sub_resource type="Resource" id="Resource_o6ttn"]
 script = ExtResource("3_i175t")
-text = "Harvest"
-description = "Collect 10 coins"
 type = "collect"
 location = Vector3(0, 0, 0)
 target_amount = 10.0
+target_item = ExtResource("4_45r63")
+progress = 0.0
 
 [sub_resource type="Resource" id="Resource_if8tt"]
 script = ExtResource("2_nu2o7")
 name = "Fight the scarecrow"
-description = "Collect straw by hitting the scarecrow."
-task = SubResource("Resource_268hh")
+description = "Collect coins by hitting the scarecrow square in the face."
+tasks = Array[ExtResource("3_i175t")]([SubResource("Resource_o6ttn")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwdr0"]
 size = Vector3(2, 2, 2)

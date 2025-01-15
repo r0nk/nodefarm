@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dakhvn0iags08"]
+[gd_scene load_steps=7 format=3 uid="uid://dakhvn0iags08"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_hvg5y"]
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="2_dlei1"]
 [ext_resource type="Script" path="res://return_button.gd" id="3_xxu13"]
 [ext_resource type="Script" path="res://exit_game_button.gd" id="4_2w81h"]
+[ext_resource type="Script" path="res://settings_button.gd" id="4_di06c"]
+[ext_resource type="PackedScene" uid="uid://d0rsoc127lkdn" path="res://settings.tscn" id="5_paea0"]
 
 [node name="pause_menu" type="Panel"]
 process_mode = 3
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -57,6 +58,7 @@ anchor_bottom = 0.446541
 theme = ExtResource("2_dlei1")
 text = "Settings
 "
+script = ExtResource("4_di06c")
 
 [node name="save_button" type="Button" parent="."]
 layout_mode = 1
@@ -89,3 +91,12 @@ theme = ExtResource("2_dlei1")
 text = "Exit Game
 "
 script = ExtResource("4_2w81h")
+
+[node name="settings" parent="." groups=["submenu"] instance=ExtResource("5_paea0")]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_left = -178.0
+offset_top = -70.0
+offset_right = 528.0
+offset_bottom = 371.0

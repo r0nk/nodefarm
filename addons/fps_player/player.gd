@@ -24,6 +24,10 @@ var camera_speed=0.15
 
 signal player_killed
 
+func change_sensitivity(to):
+	assert((to<1 and to>-1),"Mouse Sensitivity too high or low")
+	camera_speed=to
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

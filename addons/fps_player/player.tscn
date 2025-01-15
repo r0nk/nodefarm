@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=10 format=3 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" path="res://addons/fps_player/player.gd" id="1"]
 [ext_resource type="Script" path="res://addons/fps_player/HUD.gd" id="2_3y5t6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://addons/fps_player/equipped.gd" id="4_rpf0k"]
 [ext_resource type="PackedScene" uid="uid://pyi3khqxetpk" path="res://inventory.tscn" id="6_axg0w"]
 [ext_resource type="Script" path="res://addons/fps_player/questlog.gd" id="7_a0i7b"]
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="8_kbxqm"]
 
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
@@ -103,18 +104,19 @@ offset_right = 75.0
 offset_bottom = 61.0
 script = ExtResource("7_a0i7b")
 
-[node name="Panel" type="Panel" parent="questlog"]
+[node name="panel" type="Panel" parent="questlog"]
+visible = false
 layout_mode = 0
 offset_right = 623.0
 offset_bottom = 430.0
 
-[node name="list" type="ItemList" parent="questlog"]
+[node name="list" type="ItemList" parent="questlog/panel"]
 layout_mode = 2
 offset_right = 235.0
 offset_bottom = 413.0
 size_flags_horizontal = 0
 
-[node name="Button" type="Button" parent="questlog"]
+[node name="Button" type="Button" parent="questlog/panel"]
 layout_mode = 0
 offset_left = 458.0
 offset_top = 391.0
@@ -122,7 +124,7 @@ offset_right = 616.0
 offset_bottom = 423.0
 text = "TRACK"
 
-[node name="description" type="RichTextLabel" parent="questlog"]
+[node name="description" type="RichTextLabel" parent="questlog/panel"]
 layout_mode = 2
 offset_left = 243.0
 offset_right = 613.0
@@ -130,6 +132,47 @@ offset_bottom = 373.0
 size_flags_horizontal = 8
 text = "<alan please add Placeholder text>"
 
+[node name="hud" type="Control" parent="questlog"]
+anchors_preset = 0
+offset_left = 832.0
+offset_top = 47.0
+offset_right = 872.0
+offset_bottom = 87.0
+
+[node name="title" type="RichTextLabel" parent="questlog/hud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 27.53
+anchor_bottom = 15.447
+offset_left = -35.0
+offset_top = -42.0
+offset_right = -777.2
+offset_bottom = -599.88
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("8_kbxqm")
+text = "QUEST TITLE"
+
+[node name="description" type="RichTextLabel" parent="questlog/hud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 27.53
+anchor_bottom = 15.447
+offset_left = -37.0
+offset_right = -834.2
+offset_bottom = -439.88
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("8_kbxqm")
+theme_override_font_sizes/normal_font_size = 32
+text = "Collect 0/8 eggs.
+"
+
+[connection signal="item_picked_up" from="inventory" to="questlog" method="item_picked_up"]
 [connection signal="selection_changed" from="inventory/view/hotbar" to="camera/equipped" method="selection_changed"]
 
 [editable path="inventory"]

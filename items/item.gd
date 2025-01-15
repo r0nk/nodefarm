@@ -7,3 +7,6 @@ class_name Item
 @export var count: int = 1
 @export var equipped_scene: PackedScene
 
+func _init():
+	resource_local_to_scene=true
+

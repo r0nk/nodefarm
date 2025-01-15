@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0rsoc127lkdn"]
+
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="1_3iw2s"]
+[ext_resource type="Script" path="res://volume_slider.gd" id="2_7pilv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r5b0"]
+bg_color = Color(0.169245, 0.169245, 0.169245, 1)
+
+[node name="settings" type="Panel"]
+process_mode = 3
+offset_left = 182.0
+offset_top = 44.0
+offset_right = 888.0
+offset_bottom = 485.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7r5b0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 2.0
+offset_right = 141.0
+offset_bottom = 40.0
+theme = ExtResource("1_3iw2s")
+text = "Settings
+"
+
+[node name="volume_slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 75.0
+offset_right = 628.0
+offset_bottom = 91.0
+max_value = 1.0
+step = 0.01
+tick_count = 10
+script = ExtResource("2_7pilv")
+
+[node name="Label" type="Label" parent="volume_slider"]
+layout_mode = 0
+offset_left = -181.0
+offset_right = -117.0
+offset_bottom = 23.0
+text = "Volume:
+"
+
+[node name="sensitivity_slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 114.0
+offset_right = 628.0
+offset_bottom = 130.0
+min_value = 0.02
+max_value = 0.7
+step = 0.005
+value = 0.15
+tick_count = 10
+
+[node name="Label" type="Label" parent="sensitivity_slider"]
+layout_mode = 0
+offset_left = -181.0
+offset_right = -47.0
+offset_bottom = 23.0
+text = "Mouse sensitivity
+"
