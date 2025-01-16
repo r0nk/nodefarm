@@ -1,5 +1,6 @@
 extends Area3D
 
+
 func add_quests():
 	var player = get_tree().get_nodes_in_group("player")[0]
 	var children = get_parent().get_children()

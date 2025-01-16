@@ -106,7 +106,7 @@ func register_inputs():
 			})
 
 	var result = ProjectSettings.save()
-	assert(result == OK, "Failed to save project settings"
+	assert(result == OK, "Failed to save project settings")
 
 
 func _enter_tree() -> void: # Initialization of the plugin goes here.

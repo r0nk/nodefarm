@@ -1,6 +1,5 @@
 extends Node3D
 
-#TODO make this an array of entries that the drop checks
 @export var loot_entries:Array[LootEntry]
 
 var item_scene = preload("res://item.tscn")

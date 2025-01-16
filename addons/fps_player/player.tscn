@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=11 format=3 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" path="res://addons/fps_player/player.gd" id="1"]
 [ext_resource type="Script" path="res://addons/fps_player/HUD.gd" id="2_3y5t6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://pyi3khqxetpk" path="res://inventory.tscn" id="6_axg0w"]
 [ext_resource type="Script" path="res://addons/fps_player/questlog.gd" id="7_a0i7b"]
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="8_kbxqm"]
+[ext_resource type="AudioStream" uid="uid://bkb4ln1ntblmu" path="res://sfx/ding.ogg" id="9_6k6ct"]
 
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
@@ -96,7 +97,6 @@ shape = SubResource("3")
 [node name="inventory" parent="." instance=ExtResource("6_axg0w")]
 
 [node name="questlog" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 35.0
@@ -163,6 +163,9 @@ theme = ExtResource("8_kbxqm")
 theme_override_font_sizes/normal_font_size = 32
 text = "Collect 0/8 eggs.
 "
+
+[node name="quest_complete_sfx" type="AudioStreamPlayer" parent="questlog"]
+stream = ExtResource("9_6k6ct")
 
 [connection signal="item_picked_up" from="inventory" to="questlog" method="item_picked_up"]
 [connection signal="selection_changed" from="inventory/view/hotbar" to="camera/equipped" method="selection_changed"]

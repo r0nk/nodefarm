@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://chwjftxgx6gkb"]
+[gd_scene load_steps=15 format=3 uid="uid://chwjftxgx6gkb"]
 
 [ext_resource type="Script" path="res://quest.gd" id="1_esw0q"]
 [ext_resource type="Texture2D" uid="uid://buk4tpy6alxp3" path="res://images/quill.png" id="1_mxmvu"]
 [ext_resource type="Script" path="res://talk_box.gd" id="2_14ypx"]
 [ext_resource type="Script" path="res://quest_resource.gd" id="2_nu2o7"]
 [ext_resource type="Script" path="res://quest_task.gd" id="3_i175t"]
-[ext_resource type="Resource" uid="uid://bskgf4o3omyjl" path="res://items/laser_gun.tres" id="4_45r63"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_sbo3f"]
+[ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="5_ecgmf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4c35j"]
 height = 4.0
@@ -16,19 +17,29 @@ albedo_color = Color(0.68869, 0.000380233, 0.694362, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgoae"]
 albedo_color = Color(0.68869, 0.000380233, 0.694362, 1)
 
-[sub_resource type="Resource" id="Resource_o6ttn"]
+[sub_resource type="Resource" id="Resource_sanre"]
+resource_local_to_scene = true
+resource_name = "coin"
+script = ExtResource("4_sbo3f")
+texture = ExtResource("5_ecgmf")
+id = &"coin"
+max_stacks = 1000
+count = 1
+
+[sub_resource type="Resource" id="Resource_6lype"]
+resource_local_to_scene = true
 script = ExtResource("3_i175t")
 type = "collect"
 location = Vector3(0, 0, 0)
 target_amount = 10.0
-target_item = ExtResource("4_45r63")
+target_item = SubResource("Resource_sanre")
 progress = 0.0
 
 [sub_resource type="Resource" id="Resource_if8tt"]
 script = ExtResource("2_nu2o7")
 name = "Fight the scarecrow"
 description = "Collect coins by hitting the scarecrow square in the face."
-tasks = Array[ExtResource("3_i175t")]([SubResource("Resource_o6ttn")])
+tasks = Array[ExtResource("3_i175t")]([SubResource("Resource_6lype")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwdr0"]
 size = Vector3(2, 2, 2)
