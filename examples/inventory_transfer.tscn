@@ -1,13 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwu4vhba7uc2m"]
+[gd_scene load_steps=14 format=3 uid="uid://dwu4vhba7uc2m"]
 
-[ext_resource type="Script" path="res://addons/gloot/ctrl_inventory.gd" id="1"]
-[ext_resource type="Script" path="res://addons/gloot/inventory.gd" id="2"]
 [ext_resource type="Resource" uid="uid://nnxjxxu47mtj" path="res://tests/data/item_definitions_basic.tres" id="3"]
 [ext_resource type="Script" path="res://examples/inventory_transfer.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://bju6hohmp15ua" path="res://images/item_key.png" id="5"]
-[ext_resource type="Script" path="res://addons/gloot/ctrl_item_slot.gd" id="6"]
-[ext_resource type="Script" path="res://addons/gloot/item_slot.gd" id="7"]
-[ext_resource type="Script" path="res://addons/gloot/inventory_item.gd" id="8"]
+
+[sub_resource type="Resource" id="Resource_deitb"]
+metadata/__load_path__ = "res://addons/gloot/ctrl_inventory.gd"
+
+[sub_resource type="Resource" id="Resource_5sx25"]
+metadata/__load_path__ = "res://addons/gloot/ctrl_inventory.gd"
+
+[sub_resource type="Resource" id="Resource_61otn"]
+metadata/__load_path__ = "res://addons/gloot/ctrl_item_slot.gd"
+
+[sub_resource type="Resource" id="Resource_quyh4"]
+metadata/__load_path__ = "res://addons/gloot/inventory.gd"
+
+[sub_resource type="Resource" id="Resource_rv1g5"]
+metadata/__load_path__ = "res://addons/gloot/inventory_item.gd"
+
+[sub_resource type="Resource" id="Resource_dig1e"]
+metadata/__load_path__ = "res://addons/gloot/inventory_item.gd"
+
+[sub_resource type="Resource" id="Resource_j4jm4"]
+metadata/__load_path__ = "res://addons/gloot/inventory.gd"
+
+[sub_resource type="Resource" id="Resource_digvh"]
+metadata/__load_path__ = "res://addons/gloot/inventory_item.gd"
+
+[sub_resource type="Resource" id="Resource_jwxu7"]
+metadata/__load_path__ = "res://addons/gloot/inventory_item.gd"
+
+[sub_resource type="Resource" id="Resource_n6n1p"]
+metadata/__load_path__ = "res://addons/gloot/item_slot.gd"
 
 [node name="InventoryTransfer" type="Control"]
 layout_mode = 3
@@ -35,7 +60,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1")
+script = SubResource("Resource_deitb")
 inventory_path = NodePath("../../../Inventory")
 default_item_icon = ExtResource("5")
 
@@ -43,7 +68,7 @@ default_item_icon = ExtResource("5")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1")
+script = SubResource("Resource_5sx25")
 inventory_path = NodePath("../../../Inventory2")
 default_item_icon = ExtResource("5")
 
@@ -60,7 +85,7 @@ layout_mode = 2
 [node name="CtrlItemSlot" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3/HBoxContainer/PanelContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-script = ExtResource("6")
+script = SubResource("Resource_61otn")
 item_slot_path = NodePath("../../../../../ItemSlot")
 label_visible = false
 
@@ -91,33 +116,33 @@ size_flags_horizontal = 3
 text = ">>>"
 
 [node name="Inventory" type="Node" parent="."]
-script = ExtResource("2")
+script = SubResource("Resource_quyh4")
 item_protoset = ExtResource("3")
 
 [node name="InventoryItem" type="Node" parent="Inventory"]
-script = ExtResource("8")
+script = SubResource("Resource_rv1g5")
 protoset = ExtResource("3")
 prototype_id = "item1"
 
 [node name="InventoryItem2" type="Node" parent="Inventory"]
-script = ExtResource("8")
+script = SubResource("Resource_dig1e")
 protoset = ExtResource("3")
 prototype_id = "item2"
 
 [node name="Inventory2" type="Node" parent="."]
-script = ExtResource("2")
+script = SubResource("Resource_j4jm4")
 item_protoset = ExtResource("3")
 
 [node name="InventoryItem3" type="Node" parent="Inventory2"]
-script = ExtResource("8")
+script = SubResource("Resource_digvh")
 protoset = ExtResource("3")
 prototype_id = "item1"
 
 [node name="InventoryItem4" type="Node" parent="Inventory2"]
-script = ExtResource("8")
+script = SubResource("Resource_jwxu7")
 protoset = ExtResource("3")
 prototype_id = "item2"
 
 [node name="ItemSlot" type="Node" parent="."]
-script = ExtResource("7")
+script = SubResource("Resource_n6n1p")
 inventory_path = NodePath("../Inventory")

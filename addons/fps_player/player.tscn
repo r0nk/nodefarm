@@ -140,6 +140,16 @@ shape = SubResource("3")
 
 [node name="inventory" parent="." instance=ExtResource("6_axg0w")]
 
+[node name="view" parent="inventory" index="0"]
+offset_right = 55.0
+offset_bottom = 535.0
+
+[node name="select_box" parent="inventory/view/hotbar" index="0"]
+offset_top = 26.0
+
+[node name="one" parent="inventory/view/hotbar" index="1"]
+tooltip_text = "TESTS JLAKJSDLKASJDLAKSJD"
+
 [node name="game_menu" type="TabBar" parent="."]
 process_mode = 3
 offset_left = 55.0

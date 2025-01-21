@@ -1,5 +1,5 @@
-[gd_scene format=2]
+[gd_scene format=3 uid="uid://v58vjprke0en"]
 
 [node name="AND_gate" type="Polygon2D"]
-position = Vector2( -3, -1 )
-polygon = PackedVector2Array( -18, -33, -18, 48, 44, 47, 69, 30, 79, 10, 71, -16, 45, -34 )
+position = Vector2(-3, -1)
+polygon = PackedVector2Array(-18, -33, -18, 48, 44, 47, 69, 30, 79, 10, 71, -16, 45, -34)

@@ -33,9 +33,10 @@ func add_quest(quest):
 	quests[quest.name]=quest
 	for task in quest.tasks:
 		print(task.target_item.id)
-	$panel/list.add_item(quest.name)
-	if(!$panel/list.is_anything_selected()):
-		$hud/description.text=task_string(quest.tasks[0])
+	$list.add_item(quest.name)
+	if(!$list.is_anything_selected()):
+		pass
+#		$hud/description.text=task_string(quest.tasks[0])
 
 func _input(_event):
 	if Input.is_action_just_pressed("open_questlog"):

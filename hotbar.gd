@@ -10,7 +10,7 @@ func check_switch(slot):
 		selection_changed.emit(selected.item)
 
 func _process(_delta):
-	$select_box.position=selected.position-Vector2(2,2)
+	$select_box.position=selected.position-Vector2(2,-64)
 	check_switch("one")
 	check_switch("two")
 	check_switch("three")
