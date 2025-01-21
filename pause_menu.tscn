@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dakhvn0iags08"]
+[gd_scene load_steps=10 format=3 uid="uid://dakhvn0iags08"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_hvg5y"]
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="2_dlei1"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://exit_game_button.gd" id="4_2w81h"]
 [ext_resource type="Script" path="res://settings_button.gd" id="4_di06c"]
 [ext_resource type="PackedScene" uid="uid://d0rsoc127lkdn" path="res://settings.tscn" id="5_paea0"]
+[ext_resource type="FontFile" uid="uid://dqcewehdefg67" path="res://m5x7.ttf" id="6_m4syv"]
+[ext_resource type="StyleBox" uid="uid://c3tx0ewjdmm4r" path="res://settings.tres" id="6_ndb32"]
+[ext_resource type="PackedScene" uid="uid://b3s1qnsxbgbvq" path="res://remap_button.tscn" id="7_4bgss"]
 
 [node name="pause_menu" type="Panel"]
 process_mode = 3
@@ -15,9 +18,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -196.0
-offset_top = -159.0
+offset_top = -249.0
 offset_right = 196.0
-offset_bottom = 159.0
+offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -43,7 +46,10 @@ anchor_left = 0.165816
 anchor_top = 0.125786
 anchor_right = 0.806122
 anchor_bottom = 0.283019
-offset_bottom = -4.0
+offset_left = 0.00012207
+offset_top = -5.91187
+offset_right = 0.000183105
+offset_bottom = -9.91187
 theme = ExtResource("2_dlei1")
 text = "Return to Game"
 script = ExtResource("3_xxu13")
@@ -55,10 +61,31 @@ anchor_left = 0.165816
 anchor_top = 0.301887
 anchor_right = 0.80102
 anchor_bottom = 0.446541
+offset_left = 0.00012207
+offset_top = -23.1888
+offset_right = 0.00012207
+offset_bottom = -23.1888
 theme = ExtResource("2_dlei1")
 text = "Settings
 "
 script = ExtResource("4_di06c")
+
+[node name="keybinds_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.165816
+anchor_top = 0.301887
+anchor_right = 0.80102
+anchor_bottom = 0.446541
+offset_left = 0.00012207
+offset_top = 52.8112
+offset_right = 0.00012207
+offset_bottom = 52.8112
+theme = ExtResource("2_dlei1")
+text = "Keybinds
+"
+script = ExtResource("4_di06c")
+target = NodePath("../keybinds")
 
 [node name="save_button" type="Button" parent="."]
 layout_mode = 1
@@ -67,9 +94,10 @@ anchor_left = 0.170918
 anchor_top = 0.493711
 anchor_right = 0.795918
 anchor_bottom = 0.638365
-offset_left = 1.52588e-05
-offset_right = 3.05176e-05
-offset_bottom = 1.52588e-05
+offset_left = -1.99986
+offset_top = 26.2954
+offset_right = 2.00015
+offset_bottom = 26.4968
 theme = ExtResource("2_dlei1")
 text = "Save/Load
 "
@@ -81,16 +109,78 @@ anchor_left = 0.163265
 anchor_top = 0.581236
 anchor_right = 0.793367
 anchor_bottom = 0.686499
-offset_left = 2.99998
-offset_top = 33.167
-offset_right = 2.99997
-offset_bottom = 45.6934
+offset_left = 1.0001
+offset_top = 56.4323
+offset_right = 3.00012
+offset_bottom = 69.2745
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_dlei1")
 text = "Exit Game
 "
 script = ExtResource("4_2w81h")
+
+[node name="keybinds" type="Panel" parent="." groups=["submenu"]]
+z_index = 3
+layout_mode = 0
+offset_left = -335.0
+offset_top = -43.0
+offset_right = 735.0
+offset_bottom = 550.0
+theme_override_styles/panel = ExtResource("6_ndb32")
+
+[node name="remap_button" parent="keybinds" instance=ExtResource("7_4bgss")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 71.0
+offset_right = 986.0
+offset_bottom = 117.0
+
+[node name="remap_button2" parent="keybinds" instance=ExtResource("7_4bgss")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 110.0
+offset_right = 986.0
+offset_bottom = 156.0
+text = "Move backward W"
+action = "move_backward"
+
+[node name="remap_button3" parent="keybinds" instance=ExtResource("7_4bgss")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 156.0
+offset_right = 986.0
+offset_bottom = 202.0
+text = "Move backward W"
+action = "move_left"
+
+[node name="remap_button4" parent="keybinds" instance=ExtResource("7_4bgss")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 202.0
+offset_right = 986.0
+offset_bottom = 248.0
+text = "Move right W"
+action = "move_right"
+
+[node name="remap_button5" parent="keybinds" instance=ExtResource("7_4bgss")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 248.0
+offset_right = 986.0
+offset_bottom = 294.0
+text = "Move right W"
+action = "move_jump"
+
+[node name="Label" type="Label" parent="keybinds"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 10.0
+offset_right = 156.0
+offset_bottom = 48.0
+theme = ExtResource("2_dlei1")
+theme_override_fonts/font = ExtResource("6_m4syv")
+text = "Keybinds"
 
 [node name="settings" parent="." groups=["submenu"] instance=ExtResource("5_paea0")]
 visible = false

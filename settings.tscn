@@ -1,10 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0rsoc127lkdn"]
 
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="1_3iw2s"]
+[ext_resource type="StyleBox" uid="uid://c3tx0ewjdmm4r" path="res://settings.tres" id="1_twtt7"]
 [ext_resource type="Script" path="res://volume_slider.gd" id="2_7pilv"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r5b0"]
-bg_color = Color(0.169245, 0.169245, 0.169245, 1)
 
 [node name="settings" type="Panel"]
 process_mode = 3
@@ -12,7 +10,7 @@ offset_left = 182.0
 offset_top = 44.0
 offset_right = 888.0
 offset_bottom = 485.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_7r5b0")
+theme_override_styles/panel = ExtResource("1_twtt7")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0

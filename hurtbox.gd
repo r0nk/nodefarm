@@ -11,6 +11,7 @@ func hurt(damage):
 	instance.text=str(damage*multiplier)
 	if(multiplier>1):
 		instance.modulate="#FFFF00"
+	instance.global_position=global_position+Vector3(randf(),randf(),randf())
 	get_parent().add_child(instance)
 	hurted.emit()
 	$flash_box.visible=true

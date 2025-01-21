@@ -1,7 +1,9 @@
 extends Button
 
+@export var target: NodePath = "../settings"
+
 func activate():
-	$"../settings".visible=true
+	get_node(target).visible=true
 
 func _ready():
 	pressed.connect(activate)

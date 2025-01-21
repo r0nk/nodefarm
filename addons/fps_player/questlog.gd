@@ -24,8 +24,8 @@ func item_picked_up(item):
 					task.finished=true
 					if(finished(quest)):
 						$quest_complete_sfx.play()
-				if(quest.name==key):
-					$hud/description.text=task_string(task)
+#				if(quest.name==key):
+#					$hud/description.text=task_string(task)
 
 func add_quest(quest):
 	if(quests.has(quest.name)):
@@ -39,4 +39,4 @@ func add_quest(quest):
 
 func _input(_event):
 	if Input.is_action_just_pressed("open_questlog"):
-		$panel.visible=!$panel.visible
+		get_parent().toggle_from_child(name)

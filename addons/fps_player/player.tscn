@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=13 format=3 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" path="res://addons/fps_player/player.gd" id="1"]
 [ext_resource type="Script" path="res://addons/fps_player/HUD.gd" id="2_3y5t6"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://addons/fps_player/equipped.gd" id="4_rpf0k"]
 [ext_resource type="PackedScene" uid="uid://pyi3khqxetpk" path="res://inventory.tscn" id="6_axg0w"]
 [ext_resource type="Script" path="res://addons/fps_player/questlog.gd" id="7_a0i7b"]
+[ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://item_slot.tscn" id="8_6rfk8"]
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="8_kbxqm"]
+[ext_resource type="Script" path="res://addons/fps_player/game_menu.gd" id="8_sq0p4"]
 [ext_resource type="AudioStream" uid="uid://bkb4ln1ntblmu" path="res://sfx/ding.ogg" id="9_6k6ct"]
 
 [sub_resource type="CapsuleShape3D" id="3"]
@@ -72,6 +74,48 @@ offset_bottom = 797.0
 text = "
 "
 
+[node name="quest_tracker" type="Control" parent="camera/HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 893.0
+offset_top = 25.0
+offset_right = 933.0
+offset_bottom = 65.0
+
+[node name="title" type="RichTextLabel" parent="camera/HUD/quest_tracker"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 27.53
+anchor_bottom = 15.447
+offset_left = -35.0
+offset_top = -42.0
+offset_right = -777.2
+offset_bottom = -599.88
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("8_kbxqm")
+text = "QUEST TITLE"
+
+[node name="description" type="RichTextLabel" parent="camera/HUD/quest_tracker"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 27.53
+anchor_bottom = 15.447
+offset_left = -34.0
+offset_top = -15.0
+offset_right = -831.2
+offset_bottom = -454.88
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("8_kbxqm")
+theme_override_font_sizes/normal_font_size = 32
+text = "Collect 0/8 eggs.
+"
+
 [node name="interact_cast" type="RayCast3D" parent="camera"]
 target_position = Vector3(0, 0, -4000)
 collision_mask = 2
@@ -96,78 +140,248 @@ shape = SubResource("3")
 
 [node name="inventory" parent="." instance=ExtResource("6_axg0w")]
 
-[node name="questlog" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 35.0
-offset_top = 21.0
-offset_right = 75.0
-offset_bottom = 61.0
+[node name="game_menu" type="TabBar" parent="."]
+process_mode = 3
+offset_left = 55.0
+offset_top = 36.0
+offset_right = 400.0
+offset_bottom = 94.0
+theme = ExtResource("8_kbxqm")
+current_tab = 1
+clip_tabs = false
+scrolling_enabled = false
+tab_count = 2
+tab_0/title = "Quests"
+tab_1/title = "Inventory"
+script = ExtResource("8_sq0p4")
+
+[node name="Inventory" type="Panel" parent="game_menu"]
+visible = false
+layout_mode = 0
+offset_top = 59.0
+offset_right = 812.0
+offset_bottom = 492.0
+
+[node name="hat" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 20.0
+offset_right = 193.0
+offset_bottom = 83.0
+
+[node name="Label" type="Label" parent="game_menu/Inventory/hat"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = 17.0
+offset_right = -10.0
+offset_bottom = 55.0
+text = "HAT:"
+
+[node name="cloak" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 91.0
+offset_right = 192.0
+offset_bottom = 154.0
+
+[node name="Label" type="Label" parent="game_menu/Inventory/cloak"]
+layout_mode = 0
+offset_left = -104.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = 54.0
+text = "CLOAK:"
+
+[node name="shoes" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 163.0
+offset_right = 193.0
+offset_bottom = 226.0
+
+[node name="Label" type="Label" parent="game_menu/Inventory/shoes"]
+layout_mode = 0
+offset_left = -104.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = 54.0
+text = "SHOES:"
+
+[node name="1" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 20.0
+offset_right = 364.0
+offset_bottom = 83.0
+
+[node name="2" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 20.0
+offset_right = 431.0
+offset_bottom = 83.0
+
+[node name="3" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 20.0
+offset_right = 503.0
+offset_bottom = 83.0
+
+[node name="4" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 20.0
+offset_right = 575.0
+offset_bottom = 83.0
+
+[node name="5" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 20.0
+offset_right = 647.0
+offset_bottom = 83.0
+
+[node name="6" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 657.0
+offset_top = 20.0
+offset_right = 719.0
+offset_bottom = 83.0
+
+[node name="7" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 729.0
+offset_top = 20.0
+offset_right = 791.0
+offset_bottom = 83.0
+
+[node name="8" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 91.0
+offset_right = 364.0
+offset_bottom = 154.0
+
+[node name="9" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 91.0
+offset_right = 431.0
+offset_bottom = 154.0
+
+[node name="10" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 91.0
+offset_right = 503.0
+offset_bottom = 154.0
+
+[node name="11" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 91.0
+offset_right = 575.0
+offset_bottom = 154.0
+
+[node name="12" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 91.0
+offset_right = 647.0
+offset_bottom = 154.0
+
+[node name="13" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 657.0
+offset_top = 91.0
+offset_right = 719.0
+offset_bottom = 154.0
+
+[node name="14" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 729.0
+offset_top = 91.0
+offset_right = 791.0
+offset_bottom = 154.0
+
+[node name="15" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 163.0
+offset_right = 367.0
+offset_bottom = 226.0
+
+[node name="16" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 163.0
+offset_right = 434.0
+offset_bottom = 226.0
+
+[node name="17" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 163.0
+offset_right = 506.0
+offset_bottom = 226.0
+
+[node name="18" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 163.0
+offset_right = 578.0
+offset_bottom = 226.0
+
+[node name="19" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 163.0
+offset_right = 650.0
+offset_bottom = 226.0
+
+[node name="20" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 163.0
+offset_right = 722.0
+offset_bottom = 226.0
+
+[node name="21" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 163.0
+offset_right = 794.0
+offset_bottom = 226.0
+
+[node name="Quests" type="Panel" parent="game_menu"]
+layout_mode = 0
+offset_top = 58.0
+offset_right = 843.0
+offset_bottom = 479.0
 script = ExtResource("7_a0i7b")
 
-[node name="panel" type="Panel" parent="questlog"]
-layout_mode = 0
-offset_right = 812.0
-offset_bottom = 486.0
+[node name="quest_complete_sfx" type="AudioStreamPlayer" parent="game_menu/Quests"]
+stream = ExtResource("9_6k6ct")
 
-[node name="list" type="ItemList" parent="questlog/panel"]
+[node name="list" type="ItemList" parent="game_menu/Quests"]
 layout_mode = 2
-offset_right = 235.0
-offset_bottom = 481.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 243.0
+offset_bottom = 413.0
 size_flags_horizontal = 0
 
-[node name="description" type="RichTextLabel" parent="questlog/panel"]
+[node name="description" type="RichTextLabel" parent="game_menu/Quests"]
 layout_mode = 2
-offset_left = 243.0
-offset_right = 613.0
-offset_bottom = 373.0
+offset_left = 256.0
+offset_top = 5.0
+offset_right = 832.0
+offset_bottom = 405.0
 size_flags_horizontal = 8
 text = "<alan please add Placeholder text>"
 
-[node name="hud" type="Control" parent="questlog"]
-anchors_preset = 0
-offset_left = 832.0
-offset_top = 47.0
-offset_right = 872.0
-offset_bottom = 87.0
-
-[node name="title" type="RichTextLabel" parent="questlog/hud"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 27.53
-anchor_bottom = 15.447
-offset_left = -35.0
-offset_top = -42.0
-offset_right = -777.2
-offset_bottom = -599.88
-grow_horizontal = 0
-grow_vertical = 2
-theme = ExtResource("8_kbxqm")
-text = "QUEST TITLE"
-
-[node name="description" type="RichTextLabel" parent="questlog/hud"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 27.53
-anchor_bottom = 15.447
-offset_left = -37.0
-offset_right = -834.2
-offset_bottom = -439.88
-grow_horizontal = 0
-grow_vertical = 2
-theme = ExtResource("8_kbxqm")
-theme_override_font_sizes/normal_font_size = 32
-text = "Collect 0/8 eggs.
-"
-
-[node name="quest_complete_sfx" type="AudioStreamPlayer" parent="questlog"]
-stream = ExtResource("9_6k6ct")
-
-[connection signal="item_picked_up" from="inventory" to="questlog" method="item_picked_up"]
+[connection signal="item_picked_up" from="inventory" to="game_menu/Quests" method="item_picked_up"]
 [connection signal="selection_changed" from="inventory/view/hotbar" to="camera/equipped" method="selection_changed"]
 
 [editable path="inventory"]

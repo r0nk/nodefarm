@@ -12,7 +12,7 @@ var fade_cutoff=0.7
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	timer-=delta
-	position.y+=delta*10
+	position.y+=delta*20
 	if(timer<fade_cutoff):
 		modulate.a=timer*(1/fade_cutoff)
 		outline_modulate.a=timer*(1/fade_cutoff)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3s1qnsxbgbvq"]
+
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="1_vp6oh"]
+[ext_resource type="Script" path="res://remap_button.gd" id="2_l6rju"]
+
+[node name="remap_button" type="Button"]
+offset_left = 21.0
+offset_top = 56.0
+offset_right = 1007.0
+offset_bottom = 102.0
+theme = ExtResource("1_vp6oh")
+text = "Move Forward: W"
+script = ExtResource("2_l6rju")
+action = "move_forward"

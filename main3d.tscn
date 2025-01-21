@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=40 format=4 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fps_player/world.tscn" id="1_3kllw"]
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://noise.tres" id="1_mrgqy"]
@@ -20,6 +20,8 @@
 [ext_resource type="Script" path="res://blueprint_selector.gd" id="14_gjvs3"]
 [ext_resource type="Script" path="res://items/item.gd" id="14_l0lyd"]
 [ext_resource type="Texture2D" uid="uid://b87nsk8q7hpn4" path="res://images/icons/search.png" id="14_yhwi1"]
+[ext_resource type="PackedScene" uid="uid://pa7y6i67npuf" path="res://models/phil.tscn" id="21_1nw2n"]
+[ext_resource type="Script" path="res://models/phil.gd" id="22_65fwc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3tdc2"]
 size = Vector3(3, 3, 3)
@@ -58,7 +60,7 @@ noise = SubResource("FastNoiseLite_r2tf5")
 albedo_color = Color(0.384314, 1, 1, 1)
 albedo_texture = SubResource("NoiseTexture2D_daqtb")
 
-[sub_resource type="Resource" id="Resource_wkr4v"]
+[sub_resource type="Resource" id="Resource_d01ds"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -68,7 +70,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_og7bb"]
+[sub_resource type="Resource" id="Resource_8w8tv"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -78,7 +80,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_bkb31"]
+[sub_resource type="Resource" id="Resource_dhgv6"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -88,7 +90,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_ef1gg"]
+[sub_resource type="Resource" id="Resource_4426w"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -98,7 +100,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_ysg8b"]
+[sub_resource type="Resource" id="Resource_c3oc8"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -108,7 +110,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_4joqg"]
+[sub_resource type="Resource" id="Resource_217to"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -118,7 +120,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_2si4m"]
+[sub_resource type="Resource" id="Resource_l4o5m"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -128,7 +130,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_m36mk"]
+[sub_resource type="Resource" id="Resource_sra27"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -305,37 +307,42 @@ script = ExtResource("10_8cswp")
 
 [node name="item2" parent="." instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -17.0692)
-resource = SubResource("Resource_wkr4v")
+resource = SubResource("Resource_d01ds")
 
 [node name="item3" parent="." instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6741, -3.16766, -17.0692)
-resource = SubResource("Resource_og7bb")
+resource = SubResource("Resource_8w8tv")
 
 [node name="item4" parent="." instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, -17.0692)
-resource = SubResource("Resource_bkb31")
+resource = SubResource("Resource_dhgv6")
 
 [node name="item5" parent="." instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, -6.85489)
-resource = SubResource("Resource_ef1gg")
+resource = SubResource("Resource_4426w")
 
 [node name="item6" parent="." instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, -0.324892)
-resource = SubResource("Resource_ysg8b")
+resource = SubResource("Resource_c3oc8")
 
 [node name="item7" parent="." instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, 6.60702)
-resource = SubResource("Resource_4joqg")
+resource = SubResource("Resource_217to")
 
 [node name="item8" parent="." instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, 11.7135)
-resource = SubResource("Resource_2si4m")
+resource = SubResource("Resource_l4o5m")
 
 [node name="item" parent="." instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -0.89357)
-resource = SubResource("Resource_m36mk")
+resource = SubResource("Resource_sra27")
 
 [node name="sprite" parent="item" index="0"]
 texture = ExtResource("13_3r6xx")
 
+[node name="phil" parent="." instance=ExtResource("21_1nw2n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 11)
+script = ExtResource("22_65fwc")
+
 [editable path="item"]
+[editable path="phil"]
