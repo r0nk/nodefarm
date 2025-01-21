@@ -2,7 +2,7 @@ extends CSGCylinder3D
 
 @export var controller_number = 70
 @export var value = 0
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	OS.open_midi_inputs()
 	print(OS.get_connected_midi_inputs())
