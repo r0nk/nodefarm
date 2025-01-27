@@ -1,6 +1,7 @@
 extends Node3D
 
-#this handles the stuff the player holds in their hand
+#this handles the scenes the player equips.
+#actual item data is stored in the item slot ui element
 
 var node:Node
 

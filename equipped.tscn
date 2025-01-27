@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5p8hchuic3ed"]
+
+[ext_resource type="Script" path="res://addons/fps_player/equipped.gd" id="1_h81hn"]
+[ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="2_2deon"]
+
+[node name="equipped" type="Node3D"]
+transform = Transform3D(0.999841, -1.54521e-09, 0.0178538, 0.000318136, 0.999841, -0.017816, -0.0178509, 0.0178189, 0.999682, 0.5021, -0.65926, -0.842095)
+script = ExtResource("1_h81hn")
+
+[node name="sprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.561116, -0.0146074, -0.827608, 0.0148866, 0.999861, -0.00755459, 0.827603, -0.00808126, 0.561255, 0.133466, 0, 0.00238329)
+pixel_size = 0.03
+texture_filter = 0
+texture = ExtResource("2_2deon")

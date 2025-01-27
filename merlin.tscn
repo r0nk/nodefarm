@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://chwjftxgx6gkb"]
+[gd_scene load_steps=18 format=3 uid="uid://chwjftxgx6gkb"]
 
 [ext_resource type="Script" path="res://quest.gd" id="1_esw0q"]
 [ext_resource type="Texture2D" uid="uid://buk4tpy6alxp3" path="res://images/quill.png" id="1_mxmvu"]
 [ext_resource type="Script" path="res://talk_box.gd" id="2_14ypx"]
 [ext_resource type="Script" path="res://quest_resource.gd" id="2_nu2o7"]
 [ext_resource type="Script" path="res://quest_task.gd" id="3_i175t"]
+[ext_resource type="PackedScene" uid="uid://dmioofegnneta" path="res://items/wizard_hat.tscn" id="3_k1sv8"]
+[ext_resource type="Texture2D" uid="uid://d2ely8jf7661i" path="res://images/inventory/wizards_hat.png" id="3_ttgly"]
 [ext_resource type="Script" path="res://items/item.gd" id="4_sbo3f"]
 [ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="5_ecgmf"]
 
@@ -16,6 +18,17 @@ albedo_color = Color(0.68869, 0.000380233, 0.694362, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgoae"]
 albedo_color = Color(0.68869, 0.000380233, 0.694362, 1)
+
+[sub_resource type="Resource" id="Resource_t0awl"]
+resource_local_to_scene = true
+script = ExtResource("4_sbo3f")
+texture = ExtResource("3_ttgly")
+id = &"wizardhat"
+description = "Slows Fall Rate"
+flavor = "Pinky was always clumsy."
+max_stacks = 100
+count = 1
+equipped_scene = ExtResource("3_k1sv8")
 
 [sub_resource type="Resource" id="Resource_sanre"]
 resource_local_to_scene = true
@@ -38,10 +51,12 @@ target_item = SubResource("Resource_sanre")
 progress = 0.0
 
 [sub_resource type="Resource" id="Resource_if8tt"]
+resource_local_to_scene = true
 script = ExtResource("2_nu2o7")
 name = "Fight the scarecrow"
 description = "Collect coins by hitting the scarecrow square in the face."
 tasks = Array[ExtResource("3_i175t")]([SubResource("Resource_6lype")])
+rewards = Array[ExtResource("4_sbo3f")]([SubResource("Resource_t0awl")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwdr0"]
 size = Vector3(2, 2, 2)

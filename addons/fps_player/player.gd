@@ -3,9 +3,10 @@ extends CharacterBody3D
 var input_direction = Vector3()
 var accel = Vector3(0,0,0)
 var gravity_vector = Vector3(0,-98,0)
+var slow_fall = false
+
 var health = 100
 #probably a better way of doing this but yolo lmao
-var is_player = true
 var dead = false
 var move_locked = false
 
@@ -100,6 +101,10 @@ func _process(delta):
 		return
 
 	process_input(delta)
+	if(slow_fall):
+		gravity_vector = Vector3(0,-38,0)
+	else:
+		gravity_vector = Vector3(0,-98,0)
 	accel += gravity_vector*delta*7
 	velocity += (speed*input_direction)+(accel*delta)
 	set_velocity(velocity)

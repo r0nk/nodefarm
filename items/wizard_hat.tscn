@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmioofegnneta"]
+
+[ext_resource type="Script" path="res://items/wizard_hat.gd" id="1_sjts3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4rk50"]
+albedo_color = Color(0.68869, 0.000380233, 0.694362, 1)
+
+[node name="wizard_hat" type="Node3D"]
+script = ExtResource("1_sjts3")
+
+[node name="hat" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.760015, 0)
+height = 1.0
+cone = true
+material = SubResource("StandardMaterial3D_4rk50")
+
+[node name="brim" type="CSGCylinder3D" parent="hat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.464147, 0)
+radius = 1.0
+height = 0.1
+cone = true
+material = SubResource("StandardMaterial3D_4rk50")

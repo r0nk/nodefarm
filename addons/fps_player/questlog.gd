@@ -3,6 +3,8 @@ extends Control
 var tracked:String = "Fight the scarecrow"
 var quests = {} #indexed by quest name
 
+@export var inventory:NodePath
+
 func task_string(task):
 	return "Collect %d/%d %s."%[task.progress,task.target_amount,task.target_item.id]
 
@@ -11,6 +13,18 @@ func finished(quest):
 		if not task.finished:
 			return false
 	return true
+
+func give_rewards(quest):
+	for item in quest.rewards:
+		get_node(inventory).add(item)
+
+
+func finish_task(quest,task):
+	task.finished=true
+	if(finished(quest)):
+		$quest_complete_sfx.play()
+		give_rewards(quest)
+
 
 #update the progress if this item is part of a quest line
 func item_picked_up(item):
@@ -21,9 +35,7 @@ func item_picked_up(item):
 				task.progress+=item.count
 				#print("Collected quest item,",task.progress,"/",task.target_amount);
 				if(task.progress>=task.target_amount and not task.finished):
-					task.finished=true
-					if(finished(quest)):
-						$quest_complete_sfx.play()
+					finish_task(quest,task)
 #				if(quest.name==key):
 #					$hud/description.text=task_string(task)
 
