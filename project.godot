@@ -34,6 +34,7 @@ item="These will be pulled to nearest inventories"
 slot="An item can go in here."
 quest="This is a quest that the NPC will talk about."
 player=""
+equipment_slot="These slots are directly linked to equiping items."
 
 [gui]
 

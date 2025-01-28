@@ -171,7 +171,7 @@ offset_top = 59.0
 offset_right = 812.0
 offset_bottom = 492.0
 
-[node name="hat" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="hat" parent="game_menu/Inventory" groups=["equipment_slot"] instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 131.0
 offset_top = 20.0
@@ -186,7 +186,7 @@ offset_right = -10.0
 offset_bottom = 55.0
 text = "HAT:"
 
-[node name="cloak" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="cloak" parent="game_menu/Inventory" groups=["equipment_slot"] instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 130.0
 offset_top = 91.0
@@ -201,7 +201,7 @@ offset_right = -8.0
 offset_bottom = 54.0
 text = "CLOAK:"
 
-[node name="shoes" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="shoes" parent="game_menu/Inventory" groups=["equipment_slot"] instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 131.0
 offset_top = 163.0
