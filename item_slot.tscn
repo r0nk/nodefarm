@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bfibi3pnmjjer" path="res://tooltip.tscn" id="3_yk26h"]
 
 [node name="slot" type="Button" groups=["slot"]]
-offset_left = 8.0
-offset_top = 5.0
-offset_right = 70.0
-offset_bottom = 68.0
+offset_left = -31.0
+offset_top = -31.0
+offset_right = 31.0
+offset_bottom = 32.0
 icon = ExtResource("1_w2j1f")
 icon_alignment = 1
 expand_icon = true
@@ -33,3 +33,6 @@ offset_bottom = 64.0
 mouse_filter = 2
 theme = ExtResource("2_0fvh3")
 text = "500"
+
+[connection signal="button_down" from="." to="." method="start_drag"]
+[connection signal="button_up" from="." to="." method="stop_drag"]
