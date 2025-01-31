@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://e0x6arn5duy3"]
+
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="1_8p5mj"]
+[ext_resource type="Script" path="res://save_slot.gd" id="2_hlvxu"]
+
+[node name="save_slot" type="Panel"]
+offset_right = 1032.0
+offset_bottom = 103.0
+theme = ExtResource("1_8p5mj")
+script = ExtResource("2_hlvxu")
+
+[node name="label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 580.0
+offset_bottom = 89.0
+theme = ExtResource("1_8p5mj")
+text = "FILE 2
+Last Saved 2025-01-31 5:30PM"
+
+[node name="save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 573.0
+offset_top = 19.0
+offset_right = 781.0
+offset_bottom = 84.0
+text = "SAVE"
+
+[node name="load" type="Button" parent="."]
+layout_mode = 0
+offset_left = 799.0
+offset_top = 19.0
+offset_right = 1014.0
+offset_bottom = 84.0
+text = "LOAD
+"

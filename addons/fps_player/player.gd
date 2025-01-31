@@ -25,6 +25,16 @@ var camera_speed=0.15
 
 signal player_killed
 
+func save():
+	var saved = {
+		"filename":get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"pos_z" : position.z,
+		}
+	return saved
+
 func change_sensitivity(to):
 	assert((to<1 and to>-1),"Mouse Sensitivity too high or low")
 	camera_speed=to
