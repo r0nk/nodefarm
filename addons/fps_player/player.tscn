@@ -392,5 +392,6 @@ text = "<alan please add Placeholder text>"
 
 [connection signal="item_picked_up" from="inventory" to="game_menu/Quests" method="item_picked_up"]
 [connection signal="selection_changed" from="inventory/view/hotbar" to="camera/hand" method="selection_changed"]
+[connection signal="item_changed" from="game_menu/Inventory/hat" to="camera/hat" method="selection_changed"]
 
 [editable path="inventory"]

@@ -6,6 +6,8 @@ var origin
 var dragging=false
 var hovering=false
 
+signal item_changed(item)
+
 func hover_on():
 	hovering=true
 	if not item or dragging:
@@ -31,9 +33,13 @@ func stop_drag():
 	var m = get_global_mouse_position()
 	var slots = get_tree().get_nodes_in_group("slot")
 	slots = slots.filter(func(s):return s.hovering)
+	if !slots[0]:
+		return
 	var buf = item
 	item=slots[0].item
 	slots[0].item=buf
+	slots[0].item_changed.emit(slots[0].item)
+	item_changed.emit(item)
 
 func _ready():
 	origin=position
