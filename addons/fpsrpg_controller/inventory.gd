@@ -9,7 +9,7 @@ func add(thing:Item):
 	slots = slots.filter(func(s):return not s.is_in_group("equipment_slot"))
 	#slots.map(print)
 	for slot in slots:
-		if(!slot.item):
+		if not slot.item:
 			continue
 		if(slot.item.id==thing.id and (slot.item.count<slot.item.max_stacks)):
 			slot.item.count+=1

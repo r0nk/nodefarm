@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://chwjftxgx6gkb"]
 
-[ext_resource type="Script" path="res://quest.gd" id="1_esw0q"]
+[ext_resource type="Script" path="res://addons/fpsrpg_controller/quest.gd" id="1_esw0q"]
 [ext_resource type="Texture2D" uid="uid://buk4tpy6alxp3" path="res://images/quill.png" id="1_mxmvu"]
 [ext_resource type="Script" path="res://talk_box.gd" id="2_14ypx"]
-[ext_resource type="Script" path="res://quest_resource.gd" id="2_nu2o7"]
-[ext_resource type="Script" path="res://quest_task.gd" id="3_i175t"]
+[ext_resource type="Script" path="res://addons/fpsrpg_controller/quest_resource.gd" id="2_nu2o7"]
+[ext_resource type="Script" path="res://addons/fpsrpg_controller/quest_task.gd" id="3_i175t"]
 [ext_resource type="PackedScene" uid="uid://dmioofegnneta" path="res://items/wizard_hat.tscn" id="3_k1sv8"]
 [ext_resource type="Texture2D" uid="uid://d2ely8jf7661i" path="res://images/inventory/wizards_hat.png" id="3_ttgly"]
 [ext_resource type="Script" path="res://items/item.gd" id="4_sbo3f"]

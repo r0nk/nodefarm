@@ -131,5 +131,7 @@ func _process(delta):
 #		accel=-get_floor_normal()*10
 		accel*=1-delta
 		velocity*=1-(delta*10)
+		if(input_direction==Vector3(0,0,0)): #instant stop on the ground with no input
+			velocity*=0
 	else:
 		velocity*=1-(delta*8)

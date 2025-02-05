@@ -72,6 +72,15 @@ const CHARACTER_CONTROLLER_FLY_MODE := {
 	]
 }
 
+const CHARACTER_CONTROLLER_OPEN_QUESTLOG := {
+	"name": "open_questlog",
+	"events": [
+		{
+			"physical_keycode": KEY_L,
+		}
+	]
+}
+
 func register_inputs():
 	#most of this is taken from Expresso Bits and Whimfoome character_controller addon
 	const ACTIONS = [

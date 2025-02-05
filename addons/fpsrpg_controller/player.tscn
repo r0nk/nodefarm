@@ -1,15 +1,15 @@
 [gd_scene load_steps=12 format=3 uid="uid://b7v7ddihhufc3"]
 
-[ext_resource type="Script" path="res://addons/fps_player/player.gd" id="1"]
-[ext_resource type="Script" path="res://addons/fps_player/HUD.gd" id="2_3y5t6"]
-[ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://sfx/snap.ogg" id="3_aa11l"]
+[ext_resource type="Script" path="res://addons/fpsrpg_controller/player.gd" id="1"]
+[ext_resource type="Script" path="res://addons/fpsrpg_controller/HUD.gd" id="2_3y5t6"]
+[ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://addons/fpsrpg_controller/sfx/snap.ogg" id="3_aa11l"]
 [ext_resource type="PackedScene" uid="uid://c5p8hchuic3ed" path="res://equipped.tscn" id="5_yhe1a"]
-[ext_resource type="PackedScene" uid="uid://pyi3khqxetpk" path="res://inventory.tscn" id="6_axg0w"]
-[ext_resource type="Script" path="res://addons/fps_player/questlog.gd" id="7_a0i7b"]
-[ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://item_slot.tscn" id="8_6rfk8"]
+[ext_resource type="PackedScene" uid="uid://pyi3khqxetpk" path="res://addons/fpsrpg_controller/inventory.tscn" id="6_axg0w"]
+[ext_resource type="Script" path="res://addons/fpsrpg_controller/questlog.gd" id="7_a0i7b"]
+[ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://addons/fpsrpg_controller/item_slot.tscn" id="8_6rfk8"]
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="8_kbxqm"]
-[ext_resource type="Script" path="res://addons/fps_player/game_menu.gd" id="8_sq0p4"]
-[ext_resource type="AudioStream" uid="uid://bkb4ln1ntblmu" path="res://sfx/ding.ogg" id="9_6k6ct"]
+[ext_resource type="Script" path="res://addons/fpsrpg_controller/game_menu.gd" id="8_sq0p4"]
+[ext_resource type="AudioStream" uid="uid://bkb4ln1ntblmu" path="res://addons/fpsrpg_controller/sfx/ding.ogg" id="9_6k6ct"]
 
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116

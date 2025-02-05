@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://pyi3khqxetpk"]
+[gd_scene load_steps=9 format=3 uid="uid://pyi3khqxetpk"]
 
-[ext_resource type="Script" path="res://inventory.gd" id="1_g3dk6"]
-[ext_resource type="Resource" uid="uid://nc5i3sm4k3ob" path="res://items/item.tres" id="2_p277w"]
+[ext_resource type="Script" path="res://addons/fpsrpg_controller/inventory.gd" id="1_g3dk6"]
 [ext_resource type="Script" path="res://hotbar.gd" id="3_kuj32"]
-[ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://item_slot.tscn" id="4_300j4"]
-[ext_resource type="Script" path="res://collect.gd" id="5_exdhn"]
+[ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://addons/fpsrpg_controller/item_slot.tscn" id="4_300j4"]
+[ext_resource type="Script" path="res://addons/fpsrpg_controller/collect.gd" id="5_exdhn"]
 [ext_resource type="AudioStream" uid="uid://2qhm3lvv2h0d" path="res://sfx/pickup.ogg" id="6_6wq8a"]
 [ext_resource type="Script" path="res://pull.gd" id="7_7miwd"]
 
@@ -16,11 +15,6 @@ radius = 10.0
 
 [node name="inventory" type="Node3D"]
 script = ExtResource("1_g3dk6")
-slots = {
-"one": ExtResource("2_p277w"),
-"three": null,
-"two": null
-}
 
 [node name="view" type="Control" parent="."]
 layout_mode = 3
@@ -76,11 +70,12 @@ offset_right = 208.0
 offset_bottom = 69.0
 icon = null
 
-[node name="collect" type="Area3D" parent="."]
+[node name="collect" type="Area3D" parent="." node_paths=PackedStringArray("target_inventory")]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("5_exdhn")
 target_group = &"item"
+target_inventory = NodePath("..")
 
 [node name="cs" type="CollisionShape3D" parent="collect"]
 shape = SubResource("SphereShape3D_f3r10")
