@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Blueprint" load_steps=5 format=3 uid="uid://qwypu3ujpsja"]
 
 [ext_resource type="Script" path="res://items/blueprints/blueprint.gd" id="1_3yxxp"]
-[ext_resource type="Script" path="res://items/item.gd" id="1_p32sm"]
+[ext_resource type="Script" path="res://addons/fpsrpg_controller/item_resource.gd" id="1_p32sm"]
 [ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="2_q33jh"]
 
 [sub_resource type="Resource" id="Resource_2hpjl"]

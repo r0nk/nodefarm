@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://y4hnjox44anj" path="res://models/scarecrow_0.png" id="5_yng0f"]
 [ext_resource type="Script" path="res://training_dummy_animations.gd" id="6_ubw7h"]
 [ext_resource type="Script" path="res://addons/fpsrpg_controller/loot_drop.gd" id="7_12r34"]
-[ext_resource type="Script" path="res://items/item.gd" id="9_8u7ga"]
+[ext_resource type="Script" path="res://addons/fpsrpg_controller/item_resource.gd" id="9_8u7ga"]
 [ext_resource type="Script" path="res://addons/fpsrpg_controller/loot_entry.gd" id="9_udite"]
 [ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="10_nwuy7"]
 

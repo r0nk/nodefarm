@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/fpsrpg_controller/player.gd" id="1"]
 [ext_resource type="Script" path="res://addons/fpsrpg_controller/HUD.gd" id="2_3y5t6"]
 [ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://addons/fpsrpg_controller/sfx/snap.ogg" id="3_aa11l"]
-[ext_resource type="PackedScene" uid="uid://c5p8hchuic3ed" path="res://equipped.tscn" id="5_yhe1a"]
+[ext_resource type="PackedScene" uid="uid://c5p8hchuic3ed" path="res://addons/fpsrpg_controller/equipped.tscn" id="5_yhe1a"]
 [ext_resource type="PackedScene" uid="uid://pyi3khqxetpk" path="res://addons/fpsrpg_controller/inventory.tscn" id="6_axg0w"]
 [ext_resource type="Script" path="res://addons/fpsrpg_controller/questlog.gd" id="7_a0i7b"]
 [ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://addons/fpsrpg_controller/item_slot.tscn" id="8_6rfk8"]

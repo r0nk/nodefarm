@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://addons/fpsrpg_controller/quest_task.gd" id="3_i175t"]
 [ext_resource type="PackedScene" uid="uid://dmioofegnneta" path="res://items/wizard_hat.tscn" id="3_k1sv8"]
 [ext_resource type="Texture2D" uid="uid://d2ely8jf7661i" path="res://images/inventory/wizards_hat.png" id="3_ttgly"]
-[ext_resource type="Script" path="res://items/item.gd" id="4_sbo3f"]
+[ext_resource type="Script" path="res://addons/fpsrpg_controller/item_resource.gd" id="4_sbo3f"]
 [ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="5_ecgmf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4c35j"]
