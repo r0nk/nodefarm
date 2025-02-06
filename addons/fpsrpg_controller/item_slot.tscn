@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="1_w2j1f"]
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="2_0fvh3"]
 [ext_resource type="Script" path="res://addons/fpsrpg_controller/item_slot.gd" id="2_pgph2"]
-[ext_resource type="PackedScene" uid="uid://bfibi3pnmjjer" path="res://tooltip.tscn" id="3_yk26h"]
+[ext_resource type="PackedScene" uid="uid://bfibi3pnmjjer" path="res://addons/fpsrpg_controller/tooltip.tscn" id="3_yk26h"]
 
 [node name="slot" type="Button" groups=["slot"]]
 offset_left = -31.0
