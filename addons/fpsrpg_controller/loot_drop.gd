@@ -2,7 +2,7 @@ extends Node3D
 
 @export var loot_entries:Array[LootEntry]
 
-var item_scene = preload("res://item.tscn")
+var item_scene = preload("res://addons/fpsrpg_controller/item.tscn")
 
 func drop():
 	for l in loot_entries:

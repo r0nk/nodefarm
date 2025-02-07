@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://chwjftxgx6gkb"]
+[gd_scene load_steps=17 format=3 uid="uid://chwjftxgx6gkb"]
 
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/quest.gd" id="1_esw0q"]
-[ext_resource type="Texture2D" uid="uid://buk4tpy6alxp3" path="res://images/quill.png" id="1_mxmvu"]
+[ext_resource type="PackedScene" uid="uid://bkkfy25a2uhk" path="res://addons/fpsrpg_controller/quest.tscn" id="1_jec28"]
 [ext_resource type="Script" path="res://talk_box.gd" id="2_14ypx"]
 [ext_resource type="Script" path="res://addons/fpsrpg_controller/quest_resource.gd" id="2_nu2o7"]
 [ext_resource type="Script" path="res://addons/fpsrpg_controller/quest_task.gd" id="3_i175t"]
@@ -19,7 +18,7 @@ albedo_color = Color(0.68869, 0.000380233, 0.694362, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgoae"]
 albedo_color = Color(0.68869, 0.000380233, 0.694362, 1)
 
-[sub_resource type="Resource" id="Resource_t0awl"]
+[sub_resource type="Resource" id="Resource_2jr0v"]
 resource_local_to_scene = true
 script = ExtResource("4_sbo3f")
 texture = ExtResource("3_ttgly")
@@ -30,7 +29,7 @@ max_stacks = 100
 count = 1
 equipped_scene = ExtResource("3_k1sv8")
 
-[sub_resource type="Resource" id="Resource_sanre"]
+[sub_resource type="Resource" id="Resource_3am2a"]
 resource_local_to_scene = true
 resource_name = "coin"
 script = ExtResource("4_sbo3f")
@@ -41,22 +40,22 @@ flavor = ""
 max_stacks = 1000
 count = 1
 
-[sub_resource type="Resource" id="Resource_6lype"]
+[sub_resource type="Resource" id="Resource_f4iwv"]
 resource_local_to_scene = true
 script = ExtResource("3_i175t")
 type = "collect"
 location = Vector3(0, 0, 0)
 target_amount = 10.0
-target_item = SubResource("Resource_sanre")
+target_item = SubResource("Resource_3am2a")
 progress = 0.0
 
-[sub_resource type="Resource" id="Resource_if8tt"]
+[sub_resource type="Resource" id="Resource_gdecw"]
 resource_local_to_scene = true
 script = ExtResource("2_nu2o7")
 name = "Fight the scarecrow"
 description = "Collect coins by hitting the scarecrow square in the face."
-tasks = Array[ExtResource("3_i175t")]([SubResource("Resource_6lype")])
-rewards = Array[ExtResource("4_sbo3f")]([SubResource("Resource_t0awl")])
+tasks = Array[ExtResource("3_i175t")]([SubResource("Resource_f4iwv")])
+rewards = Array[ExtResource("4_sbo3f")]([SubResource("Resource_2jr0v")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwdr0"]
 size = Vector3(2, 2, 2)
@@ -88,21 +87,8 @@ material = SubResource("StandardMaterial3D_fgs45")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.12182, 0)
 material = SubResource("StandardMaterial3D_jgoae")
 
-[node name="quest" type="Node3D" parent="." groups=["quest"]]
-script = ExtResource("1_esw0q")
-r = SubResource("Resource_if8tt")
-
-[node name="indicator" type="Sprite3D" parent="quest"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39876, 0)
-pixel_size = 0.03
-billboard = 2
-texture_filter = 0
-texture = ExtResource("1_mxmvu")
-
-[node name="title" type="Label3D" parent="quest"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.730767, 0)
-billboard = 2
-text = "Revenge of the Tigers"
+[node name="quest" parent="." instance=ExtResource("1_jec28")]
+r = SubResource("Resource_gdecw")
 
 [node name="talk" type="Area3D" parent="." groups=["interactibles"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.659344, 0.49816)

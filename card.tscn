@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://oi8p5g4t3m4c" path="res://images/trading_card.png" id="1_yv7tc"]
 [ext_resource type="Script" path="res://card.gd" id="2_0pvee"]
 [ext_resource type="Resource" uid="uid://lduh0resxr2w" path="res://cards/bob.tres" id="2_jslas"]
-[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="3_dvy5s"]
-[ext_resource type="FontFile" uid="uid://dqcewehdefg67" path="res://m5x7.ttf" id="4_nsi76"]
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="3_dvy5s"]
+[ext_resource type="FontFile" uid="uid://dqcewehdefg67" path="res://addons/menus/fonts/m5x7.ttf" id="4_nsi76"]
 [ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://addons/fpsrpg_controller/sfx/snap.ogg" id="5_x8nun"]
 [ext_resource type="Texture2D" uid="uid://bv84cdr4jv5l4" path="res://images/portraits/steve.png" id="6_ae3jx"]
 

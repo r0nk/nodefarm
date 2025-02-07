@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://bvokjdodn8nkt"]
 
-[ext_resource type="Shader" path="res://material_test.gdshader" id="1_bp4gq"]
+[ext_resource type="Shader" path="res://materials/material_test.gdshader" id="1_785e5"]
 
 [sub_resource type="Gradient" id="Gradient_ctm00"]
 colors = PackedColorArray(0, 0, 0, 1, 0.236626, 0.275394, 0.314713, 1)
@@ -22,6 +22,6 @@ noise = SubResource("FastNoiseLite_ik35r")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_bp4gq")
+shader = ExtResource("1_785e5")
 shader_parameter/texer = SubResource("NoiseTexture2D_uivm5")
 shader_parameter/albedo_texture = SubResource("NoiseTexture2D_mj12b")

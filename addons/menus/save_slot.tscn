@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://e0x6arn5duy3"]
 
-[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://tcg.tres" id="1_8p5mj"]
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="1_8p5mj"]
 [ext_resource type="Script" path="res://save_slot.gd" id="2_hlvxu"]
 
 [node name="save_slot" type="Panel"]

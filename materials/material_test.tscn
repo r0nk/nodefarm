@@ -1,13 +1,13 @@
 [gd_scene load_steps=27 format=3 uid="uid://begeai5ycal36"]
 
 [ext_resource type="Material" uid="uid://cdvcp345h4b48" path="res://materials/material_test.tres" id="1_nmq4l"]
-[ext_resource type="Material" uid="uid://bvokjdodn8nkt" path="res://a.tres" id="3_xnafl"]
-[ext_resource type="Shader" uid="uid://cnv4qlf0m0wi" path="res://visual_test.tres" id="4_lw1au"]
-[ext_resource type="Shader" path="res://wood.gdshader" id="4_mg4s5"]
-[ext_resource type="Shader" uid="uid://bj0y7rgdb4gig" path="res://brick.tres" id="5_ebhhj"]
-[ext_resource type="Material" uid="uid://cabrutidi3urg" path="res://marble.tres" id="6_6y2nj"]
-[ext_resource type="Shader" uid="uid://b75y1nv2uqhv6" path="res://color_step.tres" id="7_gn2xr"]
-[ext_resource type="Shader" path="res://fractal.gdshader" id="8_nvfps"]
+[ext_resource type="Material" uid="uid://bvokjdodn8nkt" path="res://materials/a.tres" id="3_xnafl"]
+[ext_resource type="Shader" uid="uid://cnv4qlf0m0wi" path="res://materials/visual_test.tres" id="4_lw1au"]
+[ext_resource type="Shader" path="res://materials/wood.gdshader" id="4_mg4s5"]
+[ext_resource type="Shader" uid="uid://bj0y7rgdb4gig" path="res://materials/brick.tres" id="5_ebhhj"]
+[ext_resource type="Material" uid="uid://cabrutidi3urg" path="res://materials/marble.tres" id="6_6y2nj"]
+[ext_resource type="Shader" uid="uid://b75y1nv2uqhv6" path="res://materials/color_step.tres" id="7_gn2xr"]
+[ext_resource type="Shader" path="res://materials/fractal.gdshader" id="8_nvfps"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0v3hm"]
 lightmap_size_hint = Vector2i(104, 76)
