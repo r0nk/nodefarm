@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://bell.gd" id="1_327kr"]
 [ext_resource type="PackedScene" uid="uid://cdp5hhuacuqwr" path="res://models/bell.gltf" id="2_ct0hl"]
-[ext_resource type="PackedScene" uid="uid://dw032d3mhs81m" path="res://hurtbox.tscn" id="4_mmojl"]
+[ext_resource type="PackedScene" uid="uid://dw032d3mhs81m" path="res://addons/combat/hurtbox.tscn" id="4_mmojl"]
 [ext_resource type="AudioStream" uid="uid://b41u5e28d281e" path="res://sfx/bell.ogg" id="5_rusp4"]
 
 [node name="bell" type="Node3D"]

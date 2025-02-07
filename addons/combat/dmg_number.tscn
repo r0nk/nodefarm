@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://4gmlk71w3fud"]
 
 [ext_resource type="FontFile" uid="uid://dqcewehdefg67" path="res://addons/menus/fonts/m5x7.ttf" id="1_dxkkl"]
-[ext_resource type="Script" path="res://dmg_number.gd" id="2_6hwsd"]
+[ext_resource type="Script" path="res://addons/combat/dmg_number.gd" id="2_6hwsd"]
 
 [node name="dmg_number" type="Label3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00575542, 0.757162, 0)

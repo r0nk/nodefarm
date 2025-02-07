@@ -1,0 +1,85 @@
+[gd_scene load_steps=14 format=3 uid="uid://c3f6u51vx4g5k"]
+
+[ext_resource type="Script" path="res://addons/combat/health.gd" id="1_d8kha"]
+[ext_resource type="AudioStream" uid="uid://fshtfjqf32hk" path="res://sfx/hit.ogg" id="2_0o5sg"]
+[ext_resource type="AudioStream" uid="uid://dy61qkjmnuyqu" path="res://sfx/shield.wav" id="3_8270s"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ua7cu"]
+viewport_path = NodePath("sv")
+
+[sub_resource type="Gradient" id="Gradient_ikev5"]
+colors = PackedColorArray(0.737603, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q0xdd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ucwxo"]
+width = 150
+height = 30
+color_ramp = SubResource("Gradient_ikev5")
+noise = SubResource("FastNoiseLite_q0xdd")
+
+[sub_resource type="Gradient" id="Gradient_g46bk"]
+colors = PackedColorArray(0, 0, 0, 1, 0.208088, 0.208088, 0.208088, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_si1rb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3xpaf"]
+width = 160
+height = 40
+color_ramp = SubResource("Gradient_g46bk")
+noise = SubResource("FastNoiseLite_si1rb")
+
+[sub_resource type="Gradient" id="Gradient_7mqmv"]
+colors = PackedColorArray(1, 1, 1, 1, 0.839433, 0.839433, 0.839433, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1wvmj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i61hp"]
+width = 150
+height = 30
+color_ramp = SubResource("Gradient_7mqmv")
+noise = SubResource("FastNoiseLite_1wvmj")
+
+[node name="health" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21117, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_ua7cu")
+script = ExtResource("1_d8kha")
+
+[node name="hurt_sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_0o5sg")
+
+[node name="deshield_sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_8270s")
+pitch_scale = 0.5
+
+[node name="sv" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+
+[node name="bar" type="TextureProgressBar" parent="sv"]
+z_index = 2
+offset_left = 175.0
+offset_top = 200.0
+offset_right = 325.0
+offset_bottom = 230.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.0
+value = 100.0
+texture_progress = SubResource("NoiseTexture2D_ucwxo")
+texture_progress_offset = Vector2(5, 5)
+
+[node name="follow_bar" type="TextureProgressBar" parent="sv"]
+z_index = 1
+offset_left = 175.0
+offset_top = 200.0
+offset_right = 325.0
+offset_bottom = 230.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.0
+value = 100.0
+texture_under = SubResource("NoiseTexture2D_3xpaf")
+texture_progress = SubResource("NoiseTexture2D_i61hp")
+texture_progress_offset = Vector2(5, 5)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dw032d3mhs81m"]
 
-[ext_resource type="Script" path="res://hurtbox.gd" id="1_vbf5y"]
+[ext_resource type="Script" path="res://addons/combat/hurtbox.gd" id="1_vbf5y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1c3w7"]
 
