@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://drcjga1ml4tuk"]
+
+[ext_resource type="Shader" uid="uid://0mm6b6ohqafa" path="res://materials/skyboxes/nightsky.tres" id="1_rdl51"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wvku7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jmryg"]
+noise = SubResource("FastNoiseLite_wvku7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xham"]
+albedo_texture = SubResource("NoiseTexture2D_jmryg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4e2hr"]
+shader = ExtResource("1_rdl51")
+
+[sub_resource type="Sky" id="Sky_yog3t"]
+sky_material = SubResource("ShaderMaterial_4e2hr")
+
+[sub_resource type="Environment" id="Environment_py2xj"]
+background_mode = 2
+sky = SubResource("Sky_yog3t")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.905273)
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_4xham")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_py2xj")

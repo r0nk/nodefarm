@@ -1,0 +1,68 @@
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://bwhkuki2d641d"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_5wvj8"]
+output_port_for_preview = 0
+input_name = "vertex"
+
+[sub_resource type="Gradient" id="Gradient_armi6"]
+colors = PackedColorArray(0.695503, 0.695503, 0.695503, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_543iy"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w3nax"]
+seamless_blend_skirt = 0.0
+color_ramp = SubResource("Gradient_armi6")
+noise = SubResource("FastNoiseLite_543iy")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ey46o"]
+texture = SubResource("NoiseTexture2D_w3nax")
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_it3ka"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_7hdh6"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1.2, 1.2, 1.2)]
+operator = 2
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_vtx_6;
+
+
+
+void vertex() {
+// Input:5
+	vec3 n_out5p0 = VERTEX;
+
+
+// Texture2D:6
+	vec4 n_out6p0 = texture(tex_vtx_6, vec2(n_out5p0.xy));
+
+
+// VectorOp:7
+	vec3 n_out7p0 = vec3(n_out6p0.xyz) * n_out5p0;
+
+
+// VectorOp:8
+	vec3 n_in8p1 = vec3(1.20000, 1.20000, 1.20000);
+	vec3 n_out8p0 = n_out7p0 * n_in8p1;
+
+
+// Output:0
+	VERTEX = n_out8p0;
+
+
+}
+"
+nodes/vertex/0/position = Vector2(1080, 380)
+nodes/vertex/5/node = SubResource("VisualShaderNodeInput_5wvj8")
+nodes/vertex/5/position = Vector2(-520, 640)
+nodes/vertex/6/node = SubResource("VisualShaderNodeTexture_ey46o")
+nodes/vertex/6/position = Vector2(-120, 280)
+nodes/vertex/7/node = SubResource("VisualShaderNodeVectorOp_it3ka")
+nodes/vertex/7/position = Vector2(420, 500)
+nodes/vertex/8/node = SubResource("VisualShaderNodeVectorOp_7hdh6")
+nodes/vertex/8/position = Vector2(738.447, 438.537)
+nodes/vertex/connections = PackedInt32Array(5, 0, 6, 0, 5, 0, 7, 1, 7, 0, 8, 0, 8, 0, 0, 0, 6, 0, 7, 0)

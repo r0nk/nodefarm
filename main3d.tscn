@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=33 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://materials/noise.tres" id="1_mrgqy"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="13_3r6xx"]
 [ext_resource type="PackedScene" uid="uid://dghdadngmf6qv" path="res://addons/combat/rifle.tscn" id="13_7dcma"]
 [ext_resource type="Script" path="res://addons/fpsrpg_controller/item_resource.gd" id="14_l0lyd"]
+[ext_resource type="Script" path="res://addons/tools/abstractor.gd" id="16_2blp7"]
+[ext_resource type="Script" path="res://addons/tools/modifier.gd" id="17_1bcx6"]
 [ext_resource type="PackedScene" uid="uid://pa7y6i67npuf" path="res://models/phil.tscn" id="21_1nw2n"]
 [ext_resource type="Script" path="res://models/phil.gd" id="22_65fwc"]
 
@@ -25,7 +27,7 @@ noise = SubResource("FastNoiseLite_r2tf5")
 albedo_color = Color(0.384314, 1, 1, 1)
 albedo_texture = SubResource("NoiseTexture2D_daqtb")
 
-[sub_resource type="Resource" id="Resource_hhkhy"]
+[sub_resource type="Resource" id="Resource_hkiik"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -37,7 +39,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_onixv"]
+[sub_resource type="Resource" id="Resource_m1pnu"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -49,7 +51,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_hl5d5"]
+[sub_resource type="Resource" id="Resource_dlorj"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -61,7 +63,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_t2oyp"]
+[sub_resource type="Resource" id="Resource_ug0w2"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -73,7 +75,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_yqgpl"]
+[sub_resource type="Resource" id="Resource_t3igm"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -85,7 +87,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_j3mvb"]
+[sub_resource type="Resource" id="Resource_5wyf7"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -97,7 +99,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_maaac"]
+[sub_resource type="Resource" id="Resource_8vnqk"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -109,7 +111,7 @@ max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
 
-[sub_resource type="Resource" id="Resource_s5ats"]
+[sub_resource type="Resource" id="Resource_k8ib5"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -120,8 +122,33 @@ flavor = ""
 max_stacks = 10
 count = 1
 equipped_scene = ExtResource("13_7dcma")
+
+[sub_resource type="Curve" id="Curve_k2x5w"]
+max_value = 10.0
+_data = [Vector2(0.292237, 2.63736), 0.0, 0.0, 0, 0, Vector2(0.538813, 7.25275), 0.0, 0.0, 0, 0, Vector2(0.835616, 2.85714), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_8skbo"]
+script = ExtResource("17_1bcx6")
+node_path = NodePath("OmniLight3D")
+variable = "light_energy"
+curve = SubResource("Curve_k2x5w")
+
+[sub_resource type="Curve" id="Curve_422kk"]
+max_value = 10.0
+_data = [Vector2(0.0684932, 10), 0.0, 0.0, 0, 0, Vector2(0.506849, 0.54945), 0.0, 0.0, 0, 0, Vector2(0.931507, 10), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_glwyj"]
+script = ExtResource("17_1bcx6")
+node_path = NodePath("OmniLight3D2")
+variable = "light_energy"
+curve = SubResource("Curve_422kk")
 
 [node name="main" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.1847, 0, -42.6539)
 
 [node name="world" parent="." instance=ExtResource("1_3kllw")]
 world_radius = 100
@@ -178,44 +205,61 @@ size = Vector3(0.2, 8, 3)
 material = SubResource("StandardMaterial3D_iuxoy")
 script = ExtResource("10_8cswp")
 
-[node name="item2" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -17.0692)
-resource = SubResource("Resource_hhkhy")
+[node name="items" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6647, -3.34515, 0)
 
-[node name="item3" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6741, -3.16766, -17.0692)
-resource = SubResource("Resource_onixv")
+[node name="item2" parent="items" instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6647, 0.17749, -17.0692)
+resource = SubResource("Resource_hkiik")
 
-[node name="item4" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, -17.0692)
-resource = SubResource("Resource_hl5d5")
+[node name="item3" parent="items" instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0094, 0.17749, -17.0692)
+resource = SubResource("Resource_m1pnu")
 
-[node name="item5" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, -6.85489)
-resource = SubResource("Resource_t2oyp")
+[node name="item4" parent="items" instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8513, 0.17749, -17.0692)
+resource = SubResource("Resource_dlorj")
 
-[node name="item6" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, -0.324892)
-resource = SubResource("Resource_yqgpl")
+[node name="item5" parent="items" instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8513, 0.17749, -6.85489)
+resource = SubResource("Resource_ug0w2")
 
-[node name="item7" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, 6.60702)
-resource = SubResource("Resource_j3mvb")
+[node name="item6" parent="items" instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8513, 0.17749, -0.324892)
+resource = SubResource("Resource_t3igm")
 
-[node name="item8" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.516, -3.16766, 11.7135)
-resource = SubResource("Resource_maaac")
+[node name="item7" parent="items" instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8513, 0.17749, 6.60702)
+resource = SubResource("Resource_5wyf7")
 
-[node name="item" parent="." instance=ExtResource("11_7gk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3.16766, -0.89357)
-resource = SubResource("Resource_s5ats")
+[node name="item8" parent="items" instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8513, 0.17749, 11.7135)
+resource = SubResource("Resource_8vnqk")
 
-[node name="sprite" parent="item" index="0"]
+[node name="item" parent="items" instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6647, 0.17749, -0.89357)
+resource = SubResource("Resource_k8ib5")
+
+[node name="sprite" parent="items/item" index="0"]
 texture = ExtResource("13_3r6xx")
 
 [node name="phil" parent="." instance=ExtResource("21_1nw2n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 11)
 script = ExtResource("22_65fwc")
 
-[editable path="item"]
+[node name="abstractor" type="Node" parent="."]
+script = ExtResource("16_2blp7")
+value = 0.541
+modifiers = Array[ExtResource("17_1bcx6")]([SubResource("Resource_8skbo"), SubResource("Resource_glwyj")])
+
+[node name="OmniLight3D" type="OmniLight3D" parent="abstractor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.491994, -4.79785, 53.3772)
+light_energy = 3.39903
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="abstractor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.21293, -4.79785, 53.3772)
+light_color = Color(0.771813, 1.20327e-06, 0.386149, 1)
+light_energy = 6.95458
+
+[editable path="items/item"]
 [editable path="phil"]

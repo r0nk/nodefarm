@@ -1,0 +1,105 @@
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://b0df1xjrloes"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_48a4v"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(20, 4)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_vtddr"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0.5)]
+op_type = 0
+operator = 1
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_j4dee"]
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_n0mjn"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, 0.5, 2, 0.1, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_563b0"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_6mrt8"]
+output_port_for_preview = 1
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_2mj0d"]
+output_port_for_preview = 0
+function = 0
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+
+void fragment() {
+// Input:4
+	vec2 n_out4p0 = UV;
+
+
+// VectorOp:11
+	vec2 n_in11p1 = vec2(0.00000, 0.50000);
+	vec2 n_out11p0 = n_out4p0 - n_in11p1;
+
+
+// VectorOp:10
+	vec2 n_in10p1 = vec2(20.00000, 4.00000);
+	vec2 n_out10p0 = n_out11p0 * n_in10p1;
+
+
+// VectorDecompose:5
+	float n_out5p0 = n_out10p0.x;
+	float n_out5p1 = n_out10p0.y;
+
+
+// FloatFunc:9
+	float n_out9p0 = sin(n_out5p0);
+
+
+// ColorConstant:2
+	vec4 n_out2p0 = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+	vec3 n_out3p0;
+// If:3
+	float n_in3p2 = 0.10000;
+	vec3 n_in3p4 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_in3p5 = vec3(0.00000, 0.00000, 0.00000);
+	if(abs(n_out5p1 - n_out9p0) < n_in3p2)
+	{
+		n_out3p0 = vec3(n_out2p0.xyz);
+	}
+	else if(n_out5p1 < n_out9p0)
+	{
+		n_out3p0 = n_in3p5;
+	}
+	else
+	{
+		n_out3p0 = n_in3p4;
+	}
+
+
+// Output:0
+	ALBEDO = n_out3p0;
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorConstant_j4dee")
+nodes/fragment/2/position = Vector2(-600, 500)
+nodes/fragment/3/node = SubResource("VisualShaderNodeIf_n0mjn")
+nodes/fragment/3/position = Vector2(-220, 60)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_563b0")
+nodes/fragment/4/position = Vector2(-2160, -60)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorDecompose_6mrt8")
+nodes/fragment/5/position = Vector2(-1320, -120)
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatFunc_2mj0d")
+nodes/fragment/9/position = Vector2(-920, -240)
+nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_48a4v")
+nodes/fragment/10/position = Vector2(-1580, -120)
+nodes/fragment/11/node = SubResource("VisualShaderNodeVectorOp_vtddr")
+nodes/fragment/11/position = Vector2(-1820, -120)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 3, 3, 0, 0, 0, 9, 0, 3, 1, 5, 0, 9, 0, 5, 1, 3, 0, 10, 0, 5, 0, 4, 0, 11, 0, 11, 0, 10, 0)

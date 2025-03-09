@@ -1,5 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://begeai5ycal36"]
+[gd_scene load_steps=46 format=3 uid="uid://begeai5ycal36"]
 
+[ext_resource type="Shader" uid="uid://c4mlcnawn1pi8" path="res://materials/displacement_map.tres" id="1_3virq"]
 [ext_resource type="Material" uid="uid://cdvcp345h4b48" path="res://materials/material_test.tres" id="1_nmq4l"]
 [ext_resource type="Material" uid="uid://bvokjdodn8nkt" path="res://materials/a.tres" id="3_xnafl"]
 [ext_resource type="Shader" uid="uid://cnv4qlf0m0wi" path="res://materials/visual_test.tres" id="4_lw1au"]
@@ -8,6 +9,15 @@
 [ext_resource type="Material" uid="uid://cabrutidi3urg" path="res://materials/marble.tres" id="6_6y2nj"]
 [ext_resource type="Shader" uid="uid://b75y1nv2uqhv6" path="res://materials/color_step.tres" id="7_gn2xr"]
 [ext_resource type="Shader" path="res://materials/fractal.gdshader" id="8_nvfps"]
+[ext_resource type="Shader" path="res://materials/wiggle.gdshader" id="8_wo6xc"]
+[ext_resource type="Shader" uid="uid://bwhkuki2d641d" path="res://materials/wiggle.tres" id="9_mxgon"]
+[ext_resource type="Shader" uid="uid://sx65tcnhgosv" path="res://materials/stepwave.tres" id="10_pmhyp"]
+[ext_resource type="Shader" uid="uid://b0df1xjrloes" path="res://materials/sine.tres" id="11_tgbu4"]
+[ext_resource type="Shader" path="res://materials/voronoi.gdshader" id="12_nfqir"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4sx8f"]
+render_priority = 0
+shader = ExtResource("1_3virq")
 
 [sub_resource type="BoxMesh" id="BoxMesh_0v3hm"]
 lightmap_size_hint = Vector2i(104, 76)
@@ -16,9 +26,6 @@ size = Vector3(10, 2, 10)
 
 [sub_resource type="SphereMesh" id="SphereMesh_xi8yi"]
 material = ExtResource("1_nmq4l")
-
-[sub_resource type="Resource" id="Resource_pwqx2"]
-metadata/__load_path__ = "res://spinner.gd"
 
 [sub_resource type="Curve3D" id="Curve3D_ptphr"]
 _data = {
@@ -73,6 +80,61 @@ shader_parameter/t = SubResource("NoiseTexture2D_t5osf")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kpdxl"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cd2ta"]
+render_priority = 0
+shader = ExtResource("1_3virq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xbhsi"]
+render_priority = 0
+shader = ExtResource("8_wo6xc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jk6s2"]
+render_priority = 0
+shader = ExtResource("8_wo6xc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mc5fm"]
+render_priority = 0
+shader = ExtResource("9_mxgon")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsjtg"]
+render_priority = 0
+shader = ExtResource("9_mxgon")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfj2y"]
+render_priority = 0
+shader = ExtResource("10_pmhyp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwcsm"]
+render_priority = 0
+shader = ExtResource("11_tgbu4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_exx3q"]
+render_priority = 0
+shader = ExtResource("11_tgbu4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sk3ss"]
+render_priority = 0
+shader = ExtResource("12_nfqir")
+
+[sub_resource type="Gradient" id="Gradient_cq6a6"]
+offsets = PackedFloat32Array(0, 0.272727, 0.363636, 0.454545, 0.636364, 0.818182, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.909091, 0.909091, 0.909091, 1, 1, 1, 1, 1, 0.366837, 0.756158, 0, 1, 0.950571, 0, 0.500494, 1, 0, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 11
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_av4ji"]
+noise_type = 2
+frequency = 0.055
+fractal_type = 0
+cellular_return_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g2wek"]
+color_ramp = SubResource("Gradient_cq6a6")
+noise = SubResource("FastNoiseLite_av4ji")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvbs3"]
+albedo_texture = SubResource("NoiseTexture2D_g2wek")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rps46"]
 render_priority = 0
 shader = ExtResource("8_nvfps")
@@ -82,6 +144,11 @@ render_priority = 0
 shader = ExtResource("4_lw1au")
 
 [node name="Node3D" type="Node3D"]
+
+[node name="water" type="CSGBox3D" parent="."]
+transform = Transform3D(0.999942, 0.0107336, 0, -0.0107336, 0.999942, 0, 0, 0, 1, 6.37547, 0.0961935, -0.957619)
+size = Vector3(4.64563, 2.30457, 4.92566)
+material = SubResource("ShaderMaterial_4sx8f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.941034, 0, 0.464869)
@@ -94,7 +161,6 @@ mesh = SubResource("BoxMesh_0v3hm")
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.959671, 0.280334, 0.0210068, -0.0218843, 1.20875e-08, 0.999761, 0.280267, -0.959902, 0.00613493, -3.54037, 2.20782, -0.776109)
 mesh = SubResource("SphereMesh_xi8yi")
-script = SubResource("Resource_pwqx2")
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14502, 0)
@@ -168,6 +234,82 @@ rings = 20
 
 [node name="CSGBox3D" type="CSGBox3D" parent="static ball7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
+
+[node name="static ball9" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 32.8451)
+radius = 1.0
+radial_segments = 20
+rings = 20
+material = SubResource("ShaderMaterial_cd2ta")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball9"]
+transform = Transform3D(0.999942, 0.0107336, 0, -0.0107336, 0.999942, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
+material = SubResource("ShaderMaterial_4sx8f")
+
+[node name="static ball10" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 36.0447)
+radius = 1.0
+radial_segments = 20
+rings = 20
+material = SubResource("ShaderMaterial_xbhsi")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball10"]
+transform = Transform3D(0.999942, 0.0107336, 0, -0.0107336, 0.999942, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
+material = SubResource("ShaderMaterial_jk6s2")
+
+[node name="static ball11" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 38.9394)
+radius = 1.0
+radial_segments = 20
+rings = 20
+material = SubResource("ShaderMaterial_mc5fm")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball11"]
+transform = Transform3D(0.999942, 0.0107336, 0, -0.0107336, 0.999942, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
+material = SubResource("ShaderMaterial_fsjtg")
+
+[node name="static ball12" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 42.032)
+radius = 1.0
+radial_segments = 20
+rings = 20
+material = SubResource("ShaderMaterial_kfj2y")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball12"]
+transform = Transform3D(0.999942, 0.0107336, 0, -0.0107336, 0.999942, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
+material = SubResource("ShaderMaterial_kfj2y")
+
+[node name="static ball13" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 44.9079)
+radius = 1.0
+radial_segments = 20
+rings = 20
+material = SubResource("ShaderMaterial_jwcsm")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball13"]
+transform = Transform3D(0.999942, 0.0107336, 0, -0.0107336, 0.999942, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
+material = SubResource("ShaderMaterial_exx3q")
+
+[node name="static ball14" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 47.2843)
+radius = 1.0
+radial_segments = 20
+rings = 20
+material = SubResource("ShaderMaterial_sk3ss")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball14"]
+transform = Transform3D(0.999942, 0.0107336, 0, -0.0107336, 0.999942, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
+material = SubResource("ShaderMaterial_sk3ss")
+
+[node name="static ball15" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 49.765)
+radius = 1.0
+radial_segments = 20
+rings = 20
+material = SubResource("StandardMaterial3D_qvbs3")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball15"]
+transform = Transform3D(0.999942, 0.0107336, 0, -0.0107336, 0.999942, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
 
 [node name="static ball8" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 29.4479)

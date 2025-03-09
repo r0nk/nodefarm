@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccdc7thk4s5tx"]
+
+[ext_resource type="Shader" path="res://loading_screen.gdshader" id="1_2f1pp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eemwk"]
+shader = ExtResource("1_2f1pp")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mlqu6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7xcth"]
+noise = SubResource("FastNoiseLite_mlqu6")
+
+[node name="loading_screen" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_eemwk")
+position = Vector2(580.5, 332.5)
+scale = Vector2(2.33008, 1.33398)
+texture = SubResource("NoiseTexture2D_7xcth")
