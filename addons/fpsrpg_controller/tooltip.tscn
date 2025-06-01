@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfibi3pnmjjer"]
 
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="1_qby88"]
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/stayonscreen.gd" id="2_acejt"]
+[ext_resource type="Script" uid="uid://bkhr3syjvh1u" path="res://addons/fpsrpg_controller/stayonscreen.gd" id="2_acejt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohwyq"]
 bg_color = Color(0.10748, 0.10748, 0.10748, 1)

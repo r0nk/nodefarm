@@ -1,14 +1,14 @@
 [gd_scene load_steps=23 format=4 uid="uid://c4mojw8cw1g63"]
 
-[ext_resource type="Script" path="res://addons/combat/training_dummy.gd" id="1_kl8m4"]
+[ext_resource type="Script" uid="uid://c4uyflb3mpn6u" path="res://addons/combat/training_dummy.gd" id="1_kl8m4"]
 [ext_resource type="AudioStream" uid="uid://c6puwd25ptwbn" path="res://sfx/thud.ogg" id="2_fpsne"]
-[ext_resource type="Script" path="res://thud.gd" id="3_vmoty"]
+[ext_resource type="Script" uid="uid://nrf2lxrm7cb8" path="res://thud.gd" id="3_vmoty"]
 [ext_resource type="PackedScene" uid="uid://dw032d3mhs81m" path="res://addons/combat/hurtbox.tscn" id="4_esi82"]
 [ext_resource type="Texture2D" uid="uid://y4hnjox44anj" path="res://models/scarecrow_0.png" id="5_yng0f"]
-[ext_resource type="Script" path="res://addons/combat/training_dummy_animations.gd" id="6_ubw7h"]
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/loot_drop.gd" id="7_12r34"]
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/item_resource.gd" id="9_8u7ga"]
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/loot_entry.gd" id="9_udite"]
+[ext_resource type="Script" uid="uid://s3100lwownc1" path="res://addons/combat/training_dummy_animations.gd" id="6_ubw7h"]
+[ext_resource type="Script" uid="uid://cyprpegq0bk0a" path="res://addons/fpsrpg_controller/loot_drop.gd" id="7_12r34"]
+[ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="9_8u7ga"]
+[ext_resource type="Script" uid="uid://cyne3xynkfafa" path="res://addons/fpsrpg_controller/loot_entry.gd" id="9_udite"]
 [ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="10_nwuy7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4bk86"]
@@ -170,8 +170,8 @@ tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ykl8t"]
 _data = {
-"idle": SubResource("Animation_gmg6p"),
-"impact": SubResource("Animation_s7hua")
+&"idle": SubResource("Animation_gmg6p"),
+&"impact": SubResource("Animation_s7hua")
 }
 
 [sub_resource type="Resource" id="Resource_fgkmv"]

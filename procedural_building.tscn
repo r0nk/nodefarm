@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://tet0xaxus0e3"]
+
+[ext_resource type="Script" uid="uid://dnfocwrdglfwu" path="res://procedural_building.gd" id="1_cp7ub"]
+[ext_resource type="PackedScene" uid="uid://nibrebu3t2ot" path="res://subtraction.tscn" id="2_47puk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_47puk"]
+
+[sub_resource type="Sky" id="Sky_khpr1"]
+sky_material = SubResource("ProceduralSkyMaterial_47puk")
+
+[sub_resource type="Environment" id="Environment_s1f0i"]
+background_mode = 2
+sky = SubResource("Sky_khpr1")
+
+[node name="procedural_building" type="CSGBox3D"]
+use_collision = true
+size = Vector3(11, 1, 11)
+script = ExtResource("1_cp7ub")
+
+[node name="subtraction" parent="." instance=ExtResource("2_47puk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.31439, 0, 0)
+size = Vector3(3.37122, 1, 10)
+
+[node name="subtraction2" parent="." instance=ExtResource("2_47puk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06567, 0, 0)
+size = Vector3(5.86865, 1, 10)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.70508, 0.531867, -0.46902, 3.27849e-08, 0.661404, 0.75003, 0.709128, -0.528831, 0.466342, -6.87726, 5.67201, 5.96341)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(0.656461, -0.65067, 0.38169, 0.628265, 0.751642, 0.200791, -0.417543, 0.107991, 0.902217, 1.85978, -1.34061, 0.964777)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Camera3D"]
+environment = SubResource("Environment_s1f0i")

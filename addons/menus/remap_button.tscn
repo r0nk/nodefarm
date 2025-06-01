@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3s1qnsxbgbvq"]
 
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="1_vp6oh"]
-[ext_resource type="Script" path="res://addons/menus/remap_button.gd" id="2_l6rju"]
+[ext_resource type="Script" uid="uid://bpnixbt7t3bca" path="res://addons/menus/remap_button.gd" id="2_l6rju"]
 
 [node name="remap_button" type="Button"]
 offset_left = 21.0

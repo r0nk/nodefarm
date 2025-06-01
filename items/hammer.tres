@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://drip8mwacd1h4"]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://drip8mwacd1h4"]
 
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/item_resource.gd" id="1_2apk4"]
+[ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="1_2apk4"]
 [ext_resource type="Texture2D" uid="uid://cqwheyim2uq4" path="res://images/inventory/hammer.png" id="2_71tuk"]
 
 [resource]
@@ -9,5 +9,7 @@ resource_name = "hammer"
 script = ExtResource("1_2apk4")
 texture = ExtResource("2_71tuk")
 id = &"hammer"
+description = ""
+flavor = ""
 max_stacks = 1000
 count = 1

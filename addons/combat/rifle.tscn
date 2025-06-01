@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dghdadngmf6qv"]
 
-[ext_resource type="Script" path="res://addons/combat/rifle.gd" id="1_s1k7c"]
+[ext_resource type="Script" uid="uid://2et07oxe0iey" path="res://addons/combat/rifle.gd" id="1_s1k7c"]
 [ext_resource type="AudioStream" uid="uid://c7iqm4cxcu18h" path="res://sfx/pew.ogg" id="2_hun75"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpo0g"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cipc1ogxd5qvo"]
 
 [ext_resource type="Texture2D" uid="uid://oi8p5g4t3m4c" path="res://images/trading_card.png" id="1_yv7tc"]
-[ext_resource type="Script" path="res://card.gd" id="2_0pvee"]
+[ext_resource type="Script" uid="uid://dour81b5i6af" path="res://card.gd" id="2_0pvee"]
 [ext_resource type="Resource" uid="uid://lduh0resxr2w" path="res://cards/bob.tres" id="2_jslas"]
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="3_dvy5s"]
 [ext_resource type="FontFile" uid="uid://dqcewehdefg67" path="res://addons/menus/fonts/m5x7.ttf" id="4_nsi76"]

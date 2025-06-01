@@ -1,24 +1,26 @@
 [gd_scene load_steps=27 format=3 uid="uid://jd4h3x06dw1r"]
 
 [ext_resource type="PackedScene" uid="uid://b7v7ddihhufc3" path="res://addons/fpsrpg_controller/player.tscn" id="1"]
-[ext_resource type="Script" path="res://cam.gd" id="2"]
-[ext_resource type="Script" path="res://selection_box.gd" id="3"]
+[ext_resource type="Script" uid="uid://2sugwhyli2hm" path="res://cam.gd" id="2"]
+[ext_resource type="Script" uid="uid://skhb3l5tt7sv" path="res://selection_box.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://bw3wo673nynvg" path="res://images/qrcode.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://djb7mbah6tw8e" path="res://images/background.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://tkk53vo1x2u3" path="res://images/factory.png" id="6"]
-[ext_resource type="Script" path="res://factory.gd" id="7"]
-[ext_resource type="Script" path="res://servo.gd" id="9"]
-[ext_resource type="Script" path="res://force_field.gd" id="10"]
+[ext_resource type="Script" uid="uid://deaoxyac86td0" path="res://factory.gd" id="7"]
+[ext_resource type="Script" uid="uid://bomjiwtix8pr5" path="res://servo.gd" id="9"]
+[ext_resource type="Script" uid="uid://cob5v47lboj5s" path="res://force_field.gd" id="10"]
 [ext_resource type="PackedScene" uid="uid://slbt5ui4q7ai" path="res://wire.tscn" id="11"]
 [ext_resource type="PackedScene" uid="uid://cxwxcueifewei" path="res://NOT_gate.tscn" id="12"]
 [ext_resource type="PackedScene" uid="uid://v58vjprke0en" path="res://AND_gate.tscn" id="13"]
-[ext_resource type="Texture2D" path="res://pressure_plate.png" id="14"]
-[ext_resource type="Script" path="res://pressure_palte.gd" id="15"]
+[ext_resource type="Script" uid="uid://cvx7oai47swf6" path="res://pressure_palte.gd" id="15"]
 [ext_resource type="Texture2D" uid="uid://feuxp6uplkbl" path="res://images/shark.png" id="16"]
-[ext_resource type="Script" path="res://movement.gd" id="17"]
+[ext_resource type="Script" uid="uid://jkptvfccjpw4" path="res://movement.gd" id="17"]
 
 [sub_resource type="Resource" id="Resource_j43ud"]
 metadata/__load_path__ = "res://random.gd"
+
+[sub_resource type="Resource" id="Resource_vivmo"]
+metadata/__load_path__ = "res://pressure_plate.png"
 
 [sub_resource type="RectangleShape2D" id="3"]
 size = Vector2(32, 32)
@@ -64,7 +66,7 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("15")
 
 [node name="sprite" type="Sprite2D" parent="pressure_palte"]
-texture = ExtResource("14")
+texture = SubResource("Resource_vivmo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pressure_palte"]
 shape = SubResource("3")

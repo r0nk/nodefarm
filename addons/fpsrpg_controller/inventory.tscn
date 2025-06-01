@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://pyi3khqxetpk"]
 
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/inventory.gd" id="1_g3dk6"]
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/hotbar.gd" id="3_kuj32"]
+[ext_resource type="Script" uid="uid://cl05t1txvtygi" path="res://addons/fpsrpg_controller/inventory.gd" id="1_g3dk6"]
+[ext_resource type="Script" uid="uid://dx6230pmh0oy7" path="res://addons/fpsrpg_controller/hotbar.gd" id="3_kuj32"]
 [ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://addons/fpsrpg_controller/item_slot.tscn" id="4_300j4"]
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/collect.gd" id="5_exdhn"]
+[ext_resource type="Script" uid="uid://cqppo5578eygk" path="res://addons/fpsrpg_controller/collect.gd" id="5_exdhn"]
 [ext_resource type="AudioStream" uid="uid://2qhm3lvv2h0d" path="res://addons/fpsrpg_controller/sfx/pickup.ogg" id="6_6wq8a"]
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/pull.gd" id="7_7miwd"]
+[ext_resource type="Script" uid="uid://b3uwsq3e05xwg" path="res://addons/fpsrpg_controller/pull.gd" id="7_7miwd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f3r10"]
 radius = 3.0

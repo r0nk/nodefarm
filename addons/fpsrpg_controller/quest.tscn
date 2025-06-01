@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://bkkfy25a2uhk"]
 
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/quest.gd" id="1_alchk"]
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/item_resource.gd" id="2_urvyi"]
+[ext_resource type="Script" uid="uid://cyywwb3tfjvdf" path="res://addons/fpsrpg_controller/quest.gd" id="1_alchk"]
+[ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="2_urvyi"]
 [ext_resource type="PackedScene" uid="uid://dmioofegnneta" path="res://items/wizard_hat.tscn" id="3_evvhq"]
 [ext_resource type="Texture2D" uid="uid://d2ely8jf7661i" path="res://images/inventory/wizards_hat.png" id="4_gya5j"]
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/quest_resource.gd" id="5_3whwv"]
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/quest_task.gd" id="6_qsnet"]
+[ext_resource type="Script" uid="uid://ogpi40jk57jq" path="res://addons/fpsrpg_controller/quest_resource.gd" id="5_3whwv"]
+[ext_resource type="Script" uid="uid://bwfptbym3syq6" path="res://addons/fpsrpg_controller/quest_task.gd" id="6_qsnet"]
 [ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="7_wcv74"]
 [ext_resource type="Texture2D" uid="uid://buk4tpy6alxp3" path="res://addons/fpsrpg_controller/quill.png" id="8_eberq"]
 

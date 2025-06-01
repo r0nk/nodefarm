@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://slbt5ui4q7ai"]
 
-[ext_resource type="Script" path="res://wire.gd" id="1"]
+[ext_resource type="Script" uid="uid://diqsq7c0uiqkr" path="res://wire.gd" id="1"]
 
 [node name="wire" type="Line2D"]
 position = Vector2(-22, 480)

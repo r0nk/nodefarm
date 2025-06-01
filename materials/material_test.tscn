@@ -4,16 +4,16 @@
 [ext_resource type="Material" uid="uid://cdvcp345h4b48" path="res://materials/material_test.tres" id="1_nmq4l"]
 [ext_resource type="Material" uid="uid://bvokjdodn8nkt" path="res://materials/a.tres" id="3_xnafl"]
 [ext_resource type="Shader" uid="uid://cnv4qlf0m0wi" path="res://materials/visual_test.tres" id="4_lw1au"]
-[ext_resource type="Shader" path="res://materials/wood.gdshader" id="4_mg4s5"]
+[ext_resource type="Shader" uid="uid://cu6exwlf46xcg" path="res://materials/wood.gdshader" id="4_mg4s5"]
 [ext_resource type="Shader" uid="uid://bj0y7rgdb4gig" path="res://materials/brick.tres" id="5_ebhhj"]
 [ext_resource type="Material" uid="uid://cabrutidi3urg" path="res://materials/marble.tres" id="6_6y2nj"]
 [ext_resource type="Shader" uid="uid://b75y1nv2uqhv6" path="res://materials/color_step.tres" id="7_gn2xr"]
-[ext_resource type="Shader" path="res://materials/fractal.gdshader" id="8_nvfps"]
-[ext_resource type="Shader" path="res://materials/wiggle.gdshader" id="8_wo6xc"]
+[ext_resource type="Shader" uid="uid://l6s58rsp0pks" path="res://materials/fractal.gdshader" id="8_nvfps"]
+[ext_resource type="Shader" uid="uid://bglsl1ja8xe2j" path="res://materials/wiggle.gdshader" id="8_wo6xc"]
 [ext_resource type="Shader" uid="uid://bwhkuki2d641d" path="res://materials/wiggle.tres" id="9_mxgon"]
 [ext_resource type="Shader" uid="uid://sx65tcnhgosv" path="res://materials/stepwave.tres" id="10_pmhyp"]
 [ext_resource type="Shader" uid="uid://b0df1xjrloes" path="res://materials/sine.tres" id="11_tgbu4"]
-[ext_resource type="Shader" path="res://materials/voronoi.gdshader" id="12_nfqir"]
+[ext_resource type="Shader" uid="uid://xnmdbjg1ots0" path="res://materials/voronoi.gdshader" id="12_nfqir"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4sx8f"]
 render_priority = 0
@@ -309,6 +309,15 @@ rings = 20
 material = SubResource("StandardMaterial3D_qvbs3")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="static ball15"]
+transform = Transform3D(0.999942, 0.0107336, 0, -0.0107336, 0.999942, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
+
+[node name="static ball16" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 52.2863)
+radius = 1.0
+radial_segments = 20
+rings = 20
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball16"]
 transform = Transform3D(0.999942, 0.0107336, 0, -0.0107336, 0.999942, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
 
 [node name="static ball8" type="CSGSphere3D" parent="."]

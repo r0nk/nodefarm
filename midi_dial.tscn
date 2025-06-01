@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bn7b72h3m1tjr"]
 
-[ext_resource type="Script" path="res://midi_dial.gd" id="1_e1q55"]
+[ext_resource type="Script" uid="uid://bgwjoakqfx2jv" path="res://midi_dial.gd" id="1_e1q55"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v514q"]
 albedo_color = Color(0, 0, 0, 1)

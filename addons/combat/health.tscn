@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://c3f6u51vx4g5k"]
 
-[ext_resource type="Script" path="res://addons/combat/health.gd" id="1_d8kha"]
+[ext_resource type="Script" uid="uid://d13rh7wcam43f" path="res://addons/combat/health.gd" id="1_d8kha"]
 [ext_resource type="AudioStream" uid="uid://fshtfjqf32hk" path="res://sfx/hit.ogg" id="2_0o5sg"]
 [ext_resource type="AudioStream" uid="uid://dy61qkjmnuyqu" path="res://sfx/shield.wav" id="3_8270s"]
 

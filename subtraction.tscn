@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://nibrebu3t2ot"]
+
+[node name="subtraction" type="CSGBox3D"]
+operation = 2
+size = Vector3(10, 1, 10)

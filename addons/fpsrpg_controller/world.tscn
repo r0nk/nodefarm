@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6hlg1085xlka"]
 
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/world.gd" id="1_48ggu"]
+[ext_resource type="Script" uid="uid://7tj3yna2oxru" path="res://addons/fpsrpg_controller/world.gd" id="1_48ggu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xp1vo"]
 

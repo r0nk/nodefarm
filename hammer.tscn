@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://cc0t5pw7103aq"]
 
-[ext_resource type="Script" path="res://hammer.gd" id="1_gdelt"]
+[ext_resource type="Script" uid="uid://c71e0fqrlm5y3" path="res://hammer.gd" id="1_gdelt"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_16gqa"]
 

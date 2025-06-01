@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cabrutidi3urg"]
 
-[ext_resource type="Shader" path="res://materials/marble.gdshader" id="1_lahfg"]
+[ext_resource type="Shader" uid="uid://bg8dthxnerher" path="res://materials/marble.gdshader" id="1_lahfg"]
 
 [sub_resource type="Gradient" id="Gradient_hqe6f"]
 

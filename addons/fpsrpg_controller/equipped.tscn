@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5p8hchuic3ed"]
 
-[ext_resource type="Script" path="res://addons/fpsrpg_controller/equipped.gd" id="1_h81hn"]
+[ext_resource type="Script" uid="uid://c60llu148o3dy" path="res://addons/fpsrpg_controller/equipped.gd" id="1_h81hn"]
 [ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="2_2deon"]
 
 [node name="equipped" type="Node3D"]
