@@ -2,7 +2,7 @@ extends Area3D
 
 @export var multiplier = 1.0
 
-var dmgn = load("res://dmg_number.tscn")
+var dmgn = load("res://addons/combat/dmg_number.tscn")
 
 signal hurted
 

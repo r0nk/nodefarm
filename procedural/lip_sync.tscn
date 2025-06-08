@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c41m00wtjfjkx"]
+
+[ext_resource type="Script" uid="uid://c5b6qtv0kdn3e" path="res://lip_sync.gd" id="1_jhiti"]
+
+[node name="lip_sync" type="Node3D"]
+script = ExtResource("1_jhiti")

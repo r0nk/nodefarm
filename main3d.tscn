@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=33 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://materials/noise.tres" id="1_mrgqy"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dakhvn0iags08" path="res://addons/menus/pause_menu.tscn" id="4_s30wn"]
 [ext_resource type="PackedScene" uid="uid://tet0xaxus0e3" path="res://procedural_building.tscn" id="5_aef38"]
 [ext_resource type="PackedScene" uid="uid://c4mojw8cw1g63" path="res://addons/combat/training_dummy.tscn" id="7_vtvai"]
-[ext_resource type="Script" uid="uid://c5b6qtv0kdn3e" path="res://lip_sync.gd" id="8_so300"]
 [ext_resource type="PackedScene" uid="uid://cds2b4d2aptr3" path="res://bell.tscn" id="9_qop5p"]
 [ext_resource type="Script" uid="uid://c7n22iy4m4fr1" path="res://door.gd" id="10_8cswp"]
 [ext_resource type="PackedScene" uid="uid://cs2ah7vcdnj78" path="res://addons/fpsrpg_controller/item.tscn" id="11_7gk8q"]
@@ -196,9 +195,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -17.289, 5.1866, 28.371
 
 [node name="training_dummy" parent="." instance=ExtResource("7_vtvai")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16, -7.30634, 37)
-
-[node name="lip_sync" type="Node3D" parent="."]
-script = ExtResource("8_so300")
 
 [node name="door" type="CSGBox3D" parent="." groups=["interactibles"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6647, -3.34515, 0)
