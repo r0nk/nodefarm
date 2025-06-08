@@ -18,3 +18,7 @@ func selection_changed(item):
 			$sprite.visible=false
 			node=item.equipped_scene.instantiate()
 			add_child(node)
+
+func _ready():
+	if(!is_instance_valid(node)):
+		selection_changed(null)

@@ -16,6 +16,7 @@ func _ready():
 		current_tab=1
 		get_node(get_tab_title(current_tab)).visible=true
 	tab_changed.connect(_tab_changed)
+	visible=false
 
 func activate():
 	get_tree().paused=true
