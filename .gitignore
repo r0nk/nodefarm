@@ -4,6 +4,7 @@
 *.import
 addons/character-controller/*
 addons/csgtomeshinstance/*
+addons/dialogue_manager/*
 todo.txt
 qrcode.png
 .godot/*

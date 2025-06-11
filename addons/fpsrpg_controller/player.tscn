@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=13 format=3 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" uid="uid://i20n6ku8iy5v" path="res://addons/fpsrpg_controller/player.gd" id="1"]
 [ext_resource type="Script" uid="uid://c72oyuju4lp25" path="res://addons/fpsrpg_controller/HUD.gd" id="2_3y5t6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="8_kbxqm"]
 [ext_resource type="Script" uid="uid://db0ct40egj7ue" path="res://addons/fpsrpg_controller/game_menu.gd" id="8_sq0p4"]
 [ext_resource type="AudioStream" uid="uid://bkb4ln1ntblmu" path="res://addons/fpsrpg_controller/sfx/ding.ogg" id="9_6k6ct"]
+[ext_resource type="PackedScene" uid="uid://cwryw2vxb3by0" path="res://perk.tscn" id="11_veejb"]
 
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
@@ -165,6 +166,7 @@ tab_1/title = "Inventory"
 script = ExtResource("8_sq0p4")
 
 [node name="Inventory" type="Panel" parent="game_menu"]
+visible = false
 layout_mode = 0
 offset_top = 59.0
 offset_right = 812.0
@@ -366,8 +368,8 @@ offset_bottom = 226.0
 visible = false
 layout_mode = 0
 offset_top = 58.0
-offset_right = 843.0
-offset_bottom = 479.0
+offset_right = 811.0
+offset_bottom = 492.0
 script = ExtResource("7_a0i7b")
 inventory = NodePath("../../inventory")
 
@@ -386,13 +388,53 @@ size_flags_horizontal = 0
 layout_mode = 2
 offset_left = 256.0
 offset_top = 5.0
-offset_right = 832.0
+offset_right = 804.0
 offset_bottom = 405.0
 size_flags_horizontal = 8
 text = "<alan please add Placeholder text>"
+
+[node name="Perks" type="Panel" parent="game_menu"]
+z_index = -3
+layout_mode = 0
+offset_top = 58.0
+offset_right = 811.0
+offset_bottom = 492.0
+script = ExtResource("7_a0i7b")
+inventory = NodePath("../../inventory")
+
+[node name="perk" parent="game_menu/Perks" instance=ExtResource("11_veejb")]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 92.0
+offset_right = 347.0
+offset_bottom = 138.0
+prerequisites = Array[NodePath]([NodePath("../perk2"), NodePath("../perk3")])
+
+[node name="Line2D" parent="game_menu/Perks/perk" index="0"]
+show_behind_parent = true
+position = Vector2(-136, -121)
+points = PackedVector2Array(168, 146, 305, 172, 352, 251)
+default_color = Color(0.485703, 0.485704, 0.485703, 1)
+
+[node name="perk2" parent="game_menu/Perks" instance=ExtResource("11_veejb")]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 257.0
+offset_right = 537.0
+offset_bottom = 303.0
+prerequisites = Array[NodePath]([])
+
+[node name="perk3" parent="game_menu/Perks" instance=ExtResource("11_veejb")]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 257.0
+offset_right = 225.0
+offset_bottom = 303.0
+prerequisites = Array[NodePath]([])
 
 [connection signal="item_picked_up" from="inventory" to="game_menu/Quests" method="item_picked_up"]
 [connection signal="selection_changed" from="inventory/view/hotbar" to="camera/hand" method="selection_changed"]
 [connection signal="item_changed" from="game_menu/Inventory/hat" to="camera/hat" method="selection_changed"]
 
 [editable path="inventory"]
+[editable path="game_menu/Perks/perk"]

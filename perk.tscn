@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwryw2vxb3by0"]
+
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="1_6eow2"]
+[ext_resource type="Script" uid="uid://bc2vcm8iidlrh" path="res://addons/fpsrpg_controller/perk.gd" id="1_41s64"]
+
+[node name="perk" type="Button" groups=["perk"]]
+offset_left = 158.0
+offset_top = 79.0
+offset_right = 238.0
+offset_bottom = 125.0
+theme = ExtResource("1_6eow2")
+text = "PERK"
+script = ExtResource("1_41s64")
+prerequisites = Array[NodePath]([NodePath("")])
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-158, -79)
+points = PackedVector2Array(168, 146, 352, 251)
