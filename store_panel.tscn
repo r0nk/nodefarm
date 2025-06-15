@@ -110,5 +110,6 @@ script = ExtResource("6_qd3hi")
 [node name="buy_sfx" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("7_mp13e")
+volume_db = -10.0
 
 [connection signal="text_changed" from="Buy/search" to="Buy" method="search_changed"]

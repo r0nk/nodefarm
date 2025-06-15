@@ -153,7 +153,6 @@ offset_top = 26.0
 
 [node name="game_menu" type="TabBar" parent="."]
 process_mode = 3
-visible = false
 offset_left = 55.0
 offset_top = 36.0
 offset_right = 400.0
@@ -168,7 +167,6 @@ tab_1/title = "Inventory"
 script = ExtResource("8_sq0p4")
 
 [node name="Inventory" type="Panel" parent="game_menu"]
-visible = false
 layout_mode = 0
 offset_top = 59.0
 offset_right = 812.0
@@ -396,6 +394,7 @@ size_flags_horizontal = 8
 text = "<alan please add Placeholder text>"
 
 [node name="Perks" type="Panel" parent="game_menu"]
+visible = false
 z_index = -3
 layout_mode = 0
 offset_top = 58.0
@@ -405,6 +404,7 @@ script = ExtResource("7_a0i7b")
 inventory = NodePath("../../inventory")
 
 [node name="perk" parent="game_menu/Perks" instance=ExtResource("11_veejb")]
+visible = false
 layout_mode = 0
 offset_left = 267.0
 offset_top = 92.0
