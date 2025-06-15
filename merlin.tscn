@@ -27,6 +27,7 @@ description = "Slows Fall Rate"
 flavor = "Pinky was always clumsy."
 max_stacks = 100
 count = 1
+price = 20
 equipped_scene = ExtResource("3_k1sv8")
 
 [sub_resource type="Resource" id="Resource_3am2a"]
@@ -39,6 +40,7 @@ description = ""
 flavor = ""
 max_stacks = 1000
 count = 1
+price = 20
 
 [sub_resource type="Resource" id="Resource_f4iwv"]
 resource_local_to_scene = true

@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=3 uid="uid://wa2x28i0xlnp"]
+
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="1_c1pg0"]
+[ext_resource type="Script" uid="uid://db0ct40egj7ue" path="res://addons/fpsrpg_controller/game_menu.gd" id="2_c1pg0"]
+[ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://addons/fpsrpg_controller/item_slot.tscn" id="3_hwpdm"]
+[ext_resource type="Script" uid="uid://d2ak0va4a3x88" path="res://addons/fpsrpg_controller/item_list.gd" id="3_qd3hi"]
+[ext_resource type="Script" uid="uid://cbu180rtyuex6" path="res://transaction_button.gd" id="4_oec7o"]
+[ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="4_pp5ij"]
+[ext_resource type="Script" uid="uid://c0iv8b0dr5kxe" path="res://shop_logic.gd" id="6_qd3hi"]
+[ext_resource type="AudioStream" uid="uid://dpq0ojme5e66a" path="res://addons/fpsrpg_controller/sfx/buy.wav" id="7_mp13e"]
+
+[sub_resource type="Gradient" id="Gradient_hwpdm"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qd3hi"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mp13e"]
+color_ramp = SubResource("Gradient_hwpdm")
+noise = SubResource("FastNoiseLite_qd3hi")
+
+[sub_resource type="Resource" id="Resource_oec7o"]
+script = ExtResource("4_pp5ij")
+texture = SubResource("NoiseTexture2D_mp13e")
+id = &"testthing"
+description = "This thing is totally rad"
+flavor = "and totally illegal"
+max_stacks = 100
+count = 1
+price = 20
+metadata/_custom_type_script = "uid://bytx0l7rkwx08"
+
+[node name="TabBar" type="TabBar"]
+process_mode = 2
+offset_left = 39.0
+offset_top = 31.0
+offset_right = 330.0
+offset_bottom = 77.0
+theme = ExtResource("1_c1pg0")
+current_tab = 0
+tab_count = 3
+tab_0/title = "Buy"
+tab_1/title = "Sell"
+tab_2/title = "Buyback"
+script = ExtResource("2_c1pg0")
+
+[node name="Buy" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 46.0
+offset_right = 716.0
+offset_bottom = 520.0
+script = ExtResource("3_qd3hi")
+
+[node name="scroll" type="VScrollBar" parent="Buy"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 69.0
+offset_right = 29.0
+offset_bottom = 450.0
+max_value = 10.0
+step = 1.0
+page = 1.0
+
+[node name="search" type="LineEdit" parent="Buy"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 15.0
+offset_right = 696.0
+offset_bottom = 61.0
+placeholder_text = "Search items..."
+
+[node name="transaction_button" type="Button" parent="Buy"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 69.0
+offset_right = 696.0
+offset_bottom = 132.0
+text = "Totally rad $50"
+script = ExtResource("4_oec7o")
+
+[node name="slot" parent="Buy/transaction_button" instance=ExtResource("3_hwpdm")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 62.0
+offset_bottom = 63.0
+mouse_filter = 1
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+disabled = true
+item = SubResource("Resource_oec7o")
+
+[node name="Sell" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 46.0
+offset_right = 716.0
+offset_bottom = 520.0
+theme = ExtResource("1_c1pg0")
+
+[node name="Buyback" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 46.0
+offset_right = 716.0
+offset_bottom = 520.0
+theme = ExtResource("1_c1pg0")
+
+[node name="shop_logic" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_qd3hi")
+
+[node name="buy_sfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_mp13e")
+
+[connection signal="text_changed" from="Buy/search" to="Buy" method="search_changed"]

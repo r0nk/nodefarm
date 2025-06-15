@@ -7,6 +7,7 @@ class_name Item
 @export var flavor:String #Some spicy lore for the tooltip
 @export var max_stacks: int = 100
 @export var count: int = 1
+@export var price: int = 20
 @export var equipped_scene: PackedScene
 
 func _init():

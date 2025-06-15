@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=14 format=3 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" uid="uid://i20n6ku8iy5v" path="res://addons/fpsrpg_controller/player.gd" id="1"]
 [ext_resource type="Script" uid="uid://c72oyuju4lp25" path="res://addons/fpsrpg_controller/HUD.gd" id="2_3y5t6"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://db0ct40egj7ue" path="res://addons/fpsrpg_controller/game_menu.gd" id="8_sq0p4"]
 [ext_resource type="AudioStream" uid="uid://bkb4ln1ntblmu" path="res://addons/fpsrpg_controller/sfx/ding.ogg" id="9_6k6ct"]
 [ext_resource type="PackedScene" uid="uid://cwryw2vxb3by0" path="res://perk.tscn" id="11_veejb"]
+[ext_resource type="PackedScene" uid="uid://wa2x28i0xlnp" path="res://store_panel.tscn" id="12_l73am"]
 
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
@@ -152,6 +153,7 @@ offset_top = 26.0
 
 [node name="game_menu" type="TabBar" parent="."]
 process_mode = 3
+visible = false
 offset_left = 55.0
 offset_top = 36.0
 offset_right = 400.0
@@ -431,6 +433,9 @@ offset_top = 257.0
 offset_right = 225.0
 offset_bottom = 303.0
 prerequisites = Array[NodePath]([])
+
+[node name="store_panel" parent="." instance=ExtResource("12_l73am")]
+visible = false
 
 [connection signal="item_picked_up" from="inventory" to="game_menu/Quests" method="item_picked_up"]
 [connection signal="selection_changed" from="inventory/view/hotbar" to="camera/hand" method="selection_changed"]

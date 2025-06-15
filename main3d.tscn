@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=41 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://materials/noise.tres" id="1_mrgqy"]
@@ -19,10 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://baxwsx50bpkmm" path="res://models/shopkeeper.png" id="19_81346"]
 [ext_resource type="Script" uid="uid://kvnu0efjkskd" path="res://shopkeep.gd" id="19_cuacs"]
 [ext_resource type="PackedScene" uid="uid://pa7y6i67npuf" path="res://models/phil.tscn" id="21_1nw2n"]
-[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="21_3vnk6"]
+[ext_resource type="Script" uid="uid://bj8fjtkppp1oj" path="res://store.gd" id="21_gylqs"]
 [ext_resource type="Script" uid="uid://byrt30315r7ig" path="res://models/phil.gd" id="22_65fwc"]
-[ext_resource type="Texture2D" uid="uid://b151fbu5c6rnu" path="res://images/undo.png" id="22_gylqs"]
-[ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://addons/fpsrpg_controller/item_slot.tscn" id="22_pnyrs"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_r2tf5"]
 
@@ -32,6 +30,32 @@ noise = SubResource("FastNoiseLite_r2tf5")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuxoy"]
 albedo_color = Color(0.384314, 1, 1, 1)
 albedo_texture = SubResource("NoiseTexture2D_daqtb")
+
+[sub_resource type="Resource" id="Resource_0dbvw"]
+resource_local_to_scene = true
+resource_name = "laser_gun"
+script = ExtResource("14_l0lyd")
+texture = ExtResource("13_3r6xx")
+id = &"laser_gun"
+description = ""
+flavor = ""
+max_stacks = 10
+count = 1
+price = 20
+equipped_scene = ExtResource("13_7dcma")
+
+[sub_resource type="Resource" id="Resource_3vnk6"]
+resource_local_to_scene = true
+resource_name = "laser_gun"
+script = ExtResource("14_l0lyd")
+texture = ExtResource("13_3r6xx")
+id = &"laser_gun"
+description = ""
+flavor = ""
+max_stacks = 10
+count = 1
+price = 20
+equipped_scene = ExtResource("13_7dcma")
 
 [sub_resource type="Resource" id="Resource_pnyrs"]
 resource_local_to_scene = true
@@ -43,6 +67,7 @@ description = ""
 flavor = ""
 max_stacks = 10
 count = 1
+price = 20
 equipped_scene = ExtResource("13_7dcma")
 
 [sub_resource type="Resource" id="Resource_gylqs"]
@@ -55,6 +80,7 @@ description = ""
 flavor = ""
 max_stacks = 10
 count = 1
+price = 20
 equipped_scene = ExtResource("13_7dcma")
 
 [sub_resource type="Resource" id="Resource_l8c4v"]
@@ -67,6 +93,7 @@ description = ""
 flavor = ""
 max_stacks = 10
 count = 1
+price = 20
 equipped_scene = ExtResource("13_7dcma")
 
 [sub_resource type="Resource" id="Resource_tqase"]
@@ -79,6 +106,7 @@ description = ""
 flavor = ""
 max_stacks = 10
 count = 1
+price = 20
 equipped_scene = ExtResource("13_7dcma")
 
 [sub_resource type="Resource" id="Resource_1tr4g"]
@@ -91,6 +119,7 @@ description = ""
 flavor = ""
 max_stacks = 10
 count = 1
+price = 20
 equipped_scene = ExtResource("13_7dcma")
 
 [sub_resource type="Resource" id="Resource_00egg"]
@@ -103,30 +132,7 @@ description = ""
 flavor = ""
 max_stacks = 10
 count = 1
-equipped_scene = ExtResource("13_7dcma")
-
-[sub_resource type="Resource" id="Resource_ycrus"]
-resource_local_to_scene = true
-resource_name = "laser_gun"
-script = ExtResource("14_l0lyd")
-texture = ExtResource("13_3r6xx")
-id = &"laser_gun"
-description = ""
-flavor = ""
-max_stacks = 10
-count = 1
-equipped_scene = ExtResource("13_7dcma")
-
-[sub_resource type="Resource" id="Resource_3vtuw"]
-resource_local_to_scene = true
-resource_name = "laser_gun"
-script = ExtResource("14_l0lyd")
-texture = ExtResource("13_3r6xx")
-id = &"laser_gun"
-description = ""
-flavor = ""
-max_stacks = 10
-count = 1
+price = 20
 equipped_scene = ExtResource("13_7dcma")
 
 [sub_resource type="Curve" id="Curve_k2x5w"]
@@ -154,6 +160,22 @@ curve = SubResource("Curve_422kk")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cuacs"]
 albedo_texture = ExtResource("19_81346")
 
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3vtuw"]
+
+[sub_resource type="Resource" id="Resource_0mwmh"]
+script = ExtResource("14_l0lyd")
+texture = SubResource("NoiseTexture2D_3vtuw")
+id = &"cool_hat"
+description = "This item is a cool hat"
+flavor = "you should buy it"
+max_stacks = 100
+count = 1
+price = 20
+metadata/_custom_type_script = "uid://bytx0l7rkwx08"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
+size = Vector3(10, 10, 10)
+
 [node name="main" type="Node3D"]
 
 [node name="Node3D" type="Node3D" parent="."]
@@ -163,6 +185,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.1847, 0, -42.6539)
 world_radius = 100
 
 [node name="player" parent="." instance=ExtResource("4_hcxq1")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.32428, -4.98151, -8.60456)
 extra_jumps = 1
 jump_force = 75
@@ -219,35 +242,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6647, -3.34515, 0)
 
 [node name="item2" parent="items" instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6647, 0.17749, -17.0692)
-resource = SubResource("Resource_pnyrs")
+resource = SubResource("Resource_0dbvw")
 
 [node name="item3" parent="items" instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0094, 0.17749, -17.0692)
-resource = SubResource("Resource_gylqs")
+resource = SubResource("Resource_3vnk6")
 
 [node name="item4" parent="items" instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8513, 0.17749, -17.0692)
-resource = SubResource("Resource_l8c4v")
+resource = SubResource("Resource_pnyrs")
 
 [node name="item5" parent="items" instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8513, 0.17749, -6.85489)
-resource = SubResource("Resource_tqase")
+resource = SubResource("Resource_gylqs")
 
 [node name="item6" parent="items" instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8513, 0.17749, -0.324892)
-resource = SubResource("Resource_1tr4g")
+resource = SubResource("Resource_l8c4v")
 
 [node name="item7" parent="items" instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8513, 0.17749, 6.60702)
-resource = SubResource("Resource_00egg")
+resource = SubResource("Resource_tqase")
 
 [node name="item8" parent="items" instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8513, 0.17749, 11.7135)
-resource = SubResource("Resource_ycrus")
+resource = SubResource("Resource_1tr4g")
 
 [node name="item" parent="items" instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6647, 0.17749, -0.89357)
-resource = SubResource("Resource_3vtuw")
+resource = SubResource("Resource_00egg")
 
 [node name="sprite" parent="items/item" index="0"]
 texture = ExtResource("13_3r6xx")
@@ -282,99 +305,14 @@ bones/16/rotation = Quaternion(-0.384381, 0.377177, 0.679563, 0.49818)
 [node name="Cube" parent="shopkeep/Armature/Skeleton3D" index="0"]
 material_override = SubResource("StandardMaterial3D_cuacs")
 
-[node name="store_panel" type="Panel" parent="shopkeep"]
-visible = false
-offset_left = 45.0
-offset_top = 65.0
-offset_right = 1092.0
-offset_bottom = 516.0
+[node name="store" type="Area3D" parent="shopkeep" groups=["interactibles"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("21_gylqs")
+items = Array[ExtResource("14_l0lyd")]([SubResource("Resource_0mwmh")])
 
-[node name="Button" type="Button" parent="shopkeep/store_panel"]
-layout_mode = 0
-offset_left = 870.0
-offset_top = 10.0
-offset_right = 1015.0
-offset_bottom = 56.0
-theme = ExtResource("21_3vnk6")
-text = "Undo"
-icon = ExtResource("22_gylqs")
-
-[node name="search_bar" type="LineEdit" parent="shopkeep/store_panel"]
-layout_mode = 0
-offset_left = 198.0
-offset_top = 10.0
-offset_right = 863.0
-offset_bottom = 50.0
-placeholder_text = "Search items..."
-
-[node name="slot" parent="shopkeep/store_panel" instance=ExtResource("22_pnyrs")]
-layout_mode = 0
-offset_left = 31.0
-offset_top = 129.0
-offset_right = 93.0
-offset_bottom = 192.0
-
-[node name="slot2" parent="shopkeep/store_panel" instance=ExtResource("22_pnyrs")]
-layout_mode = 0
-offset_left = 31.0
-offset_top = 211.0
-offset_right = 93.0
-offset_bottom = 274.0
-
-[node name="slot3" parent="shopkeep/store_panel" instance=ExtResource("22_pnyrs")]
-layout_mode = 0
-offset_left = 31.0
-offset_top = 287.0
-offset_right = 93.0
-offset_bottom = 350.0
-
-[node name="slot4" parent="shopkeep/store_panel" instance=ExtResource("22_pnyrs")]
-layout_mode = 0
-offset_left = 545.0
-offset_top = 132.0
-offset_right = 607.0
-offset_bottom = 195.0
-
-[node name="slot5" parent="shopkeep/store_panel" instance=ExtResource("22_pnyrs")]
-layout_mode = 0
-offset_left = 545.0
-offset_top = 214.0
-offset_right = 607.0
-offset_bottom = 277.0
-
-[node name="slot6" parent="shopkeep/store_panel" instance=ExtResource("22_pnyrs")]
-layout_mode = 0
-offset_left = 545.0
-offset_top = 290.0
-offset_right = 607.0
-offset_bottom = 353.0
-
-[node name="sell_label" type="Label" parent="shopkeep/store_panel"]
-layout_mode = 0
-offset_left = 545.0
-offset_top = 74.0
-offset_right = 635.0
-offset_bottom = 112.0
-theme = ExtResource("21_3vnk6")
-text = "Sell"
-
-[node name="buy_label" type="Label" parent="shopkeep/store_panel"]
-layout_mode = 0
-offset_left = 26.0
-offset_top = 70.0
-offset_right = 116.0
-offset_bottom = 108.0
-theme = ExtResource("21_3vnk6")
-text = "Buy"
-
-[node name="Label" type="Label" parent="shopkeep/store_panel"]
-layout_mode = 0
-offset_left = 31.0
-offset_top = 10.0
-offset_right = 121.0
-offset_bottom = 48.0
-theme = ExtResource("21_3vnk6")
-text = "STORE"
+[node name="cs" type="CollisionShape3D" parent="shopkeep/store"]
+shape = SubResource("BoxShape3D_0fjb1")
 
 [editable path="items/item"]
 [editable path="phil"]
