@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://pyi3khqxetpk"]
+[gd_scene load_steps=11 format=3 uid="uid://pyi3khqxetpk"]
 
 [ext_resource type="Script" uid="uid://cl05t1txvtygi" path="res://addons/fpsrpg_controller/inventory.gd" id="1_g3dk6"]
 [ext_resource type="Script" uid="uid://dx6230pmh0oy7" path="res://addons/fpsrpg_controller/hotbar.gd" id="3_kuj32"]
 [ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://addons/fpsrpg_controller/item_slot.tscn" id="4_300j4"]
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="4_qbeb7"]
 [ext_resource type="Script" uid="uid://cqppo5578eygk" path="res://addons/fpsrpg_controller/collect.gd" id="5_exdhn"]
+[ext_resource type="Script" uid="uid://cfjobfw5eu2fb" path="res://addons/fpsrpg_controller/value_watcher.gd" id="5_g87bg"]
 [ext_resource type="AudioStream" uid="uid://2qhm3lvv2h0d" path="res://addons/fpsrpg_controller/sfx/pickup.ogg" id="6_6wq8a"]
 [ext_resource type="Script" uid="uid://b3uwsq3e05xwg" path="res://addons/fpsrpg_controller/pull.gd" id="7_7miwd"]
 
@@ -26,7 +28,7 @@ offset_bottom = 575.0
 
 [node name="hotbar" type="Panel" parent="view" node_paths=PackedStringArray("selected")]
 layout_mode = 0
-offset_right = 1056.0
+offset_right = 518.0
 offset_bottom = 74.0
 script = ExtResource("3_kuj32")
 selected = NodePath("one")
@@ -39,10 +41,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -528.0
-offset_top = 25.0
-offset_right = -458.0
-offset_bottom = 33.0
+offset_left = -242.0
+offset_top = 27.0
+offset_right = -172.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(35, 35)
@@ -69,6 +71,35 @@ offset_top = 6.0
 offset_right = 208.0
 offset_bottom = 69.0
 icon = null
+
+[node name="four" parent="view/hotbar" instance=ExtResource("4_300j4")]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 6.0
+offset_right = 276.0
+offset_bottom = 69.0
+icon = null
+
+[node name="five" parent="view/hotbar" instance=ExtResource("4_300j4")]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 6.0
+offset_right = 346.0
+offset_bottom = 69.0
+icon = null
+
+[node name="cash" type="Label" parent="view/hotbar" node_paths=PackedStringArray("target")]
+process_mode = 3
+layout_mode = 0
+offset_left = 359.0
+offset_top = 6.0
+offset_right = 514.0
+offset_bottom = 64.0
+theme = ExtResource("4_qbeb7")
+text = "$20.00"
+script = ExtResource("5_g87bg")
+target = NodePath("../../..")
+variable = "cash"
 
 [node name="collect" type="Area3D" parent="." node_paths=PackedStringArray("target_inventory")]
 collision_layer = 4

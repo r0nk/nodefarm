@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce002723oqobr"]
+[gd_scene load_steps=4 format=3 uid="uid://ce002723oqobr"]
 
-[ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="1_w2j1f"]
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="2_0fvh3"]
 [ext_resource type="Script" uid="uid://c3rmgkjtwf13c" path="res://addons/fpsrpg_controller/item_slot.gd" id="2_pgph2"]
 [ext_resource type="PackedScene" uid="uid://bfibi3pnmjjer" path="res://addons/fpsrpg_controller/tooltip.tscn" id="3_yk26h"]
@@ -11,7 +10,6 @@ offset_top = -31.0
 offset_right = 31.0
 offset_bottom = 32.0
 focus_mode = 0
-icon = ExtResource("1_w2j1f")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_pgph2")
@@ -34,6 +32,13 @@ offset_bottom = 64.0
 mouse_filter = 2
 theme = ExtResource("2_0fvh3")
 text = "500"
+
+[node name="texture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 62.0
+offset_bottom = 63.0
+mouse_filter = 2
+expand_mode = 1
 
 [connection signal="button_down" from="." to="." method="start_drag"]
 [connection signal="button_up" from="." to="." method="stop_drag"]

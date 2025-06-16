@@ -24,16 +24,14 @@ func hover_off():
 
 func start_drag():
 	dragging=true
-	flat=dragging
 
 func stop_drag():
 	dragging=false
-	flat=dragging
-	position=origin
+	$texture.position=origin
 	var m = get_global_mouse_position()
 	var slots = get_tree().get_nodes_in_group("slot")
 	slots = slots.filter(func(s):return s.hovering)
-	if !slots[0]:
+	if len(slots)<=0:
 		return
 	var buf = item
 	item=slots[0].item
@@ -42,17 +40,17 @@ func stop_drag():
 	item_changed.emit(item)
 
 func _ready():
-	origin=position
+	origin=$texture.position
 	mouse_entered.connect(hover_on)
 	mouse_exited.connect(hover_off)
 
 func _process(_delta):
 	if(dragging):
-		global_position=get_global_mouse_position()
+		$texture.global_position=get_global_mouse_position()
 	if not item:
 		$count.text=""
-		icon=null
+		$texture.texture=null
 		return
-	icon=item.texture
+	$texture.texture=item.texture
 	$count.text=str(item.count)
 

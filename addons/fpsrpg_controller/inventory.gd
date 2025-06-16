@@ -2,14 +2,18 @@ extends Node3D
 
 signal item_picked_up(item)
 
+@export var cash:float = 20.0
+
 func get_slots():
 	var c = get_node("../game_menu/Inventory").get_children()
 	var ret = c.filter(func(n):return not n.is_in_group("equipment_slot"))
 	return ret
 
-
 func add(thing:Item):
 	thing = thing.duplicate()
+	if (thing.id=="coin"):
+		cash+=thing.price
+		return
 	var slots = get_slots()
 	slots.sort()
 	slots.reverse()
