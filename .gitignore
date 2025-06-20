@@ -5,6 +5,8 @@
 addons/character-controller/*
 addons/csgtomeshinstance/*
 addons/dialogue_manager/*
+addons/zylann.hterrain/*
+terrain/*
 todo.txt
 qrcode.png
 .godot/*

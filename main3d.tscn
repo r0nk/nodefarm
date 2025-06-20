@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=46 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://materials/noise.tres" id="1_mrgqy"]
@@ -14,12 +14,16 @@
 [ext_resource type="PackedScene" uid="uid://dghdadngmf6qv" path="res://addons/combat/rifle.tscn" id="13_7dcma"]
 [ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="14_l0lyd"]
 [ext_resource type="Script" uid="uid://cuwyvo41stbdt" path="res://addons/tools/abstractor.gd" id="16_2blp7"]
+[ext_resource type="Script" uid="uid://blejc45j8cdon" path="res://addons/zylann.hterrain/hterrain.gd" id="16_l8c4v"]
 [ext_resource type="Script" uid="uid://bpttcsmiyvpmo" path="res://addons/tools/modifier.gd" id="17_1bcx6"]
+[ext_resource type="Resource" uid="uid://c0oww8wprtfe4" path="res://terrain/data.hterrain" id="17_tqase"]
+[ext_resource type="Script" uid="uid://dnpcgkbg56666" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="18_1tr4g"]
 [ext_resource type="PackedScene" uid="uid://cwxt3wejw3t4g" path="res://models/shopkeep.glb" id="18_aef38"]
 [ext_resource type="Texture2D" uid="uid://baxwsx50bpkmm" path="res://models/shopkeeper.png" id="19_81346"]
 [ext_resource type="Script" uid="uid://kvnu0efjkskd" path="res://shopkeep.gd" id="19_cuacs"]
 [ext_resource type="PackedScene" uid="uid://pa7y6i67npuf" path="res://models/phil.tscn" id="21_1nw2n"]
 [ext_resource type="Script" uid="uid://bj8fjtkppp1oj" path="res://store.gd" id="21_gylqs"]
+[ext_resource type="Script" uid="uid://b6fcvk1yxur33" path="res://grammar.gd" id="22_3vnk6"]
 [ext_resource type="Script" uid="uid://byrt30315r7ig" path="res://models/phil.gd" id="22_65fwc"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_r2tf5"]
@@ -134,6 +138,11 @@ max_stacks = 10
 count = 1
 price = 20
 equipped_scene = ExtResource("13_7dcma")
+
+[sub_resource type="Resource" id="Resource_ycrus"]
+script = ExtResource("18_1tr4g")
+mode = 0
+textures = [[], []]
 
 [sub_resource type="Curve" id="Curve_k2x5w"]
 _limits = [0.0, 10.0, 0.0, 1.0]
@@ -278,6 +287,30 @@ texture = ExtResource("13_3r6xx")
 [node name="phil" parent="." instance=ExtResource("21_1nw2n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 11)
 script = ExtResource("22_65fwc")
+
+[node name="HTerrain" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+script = ExtResource("16_l8c4v")
+centered = true
+_terrain_data = ExtResource("17_tqase")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_ycrus")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+metadata/_custom_type_script = "uid://blejc45j8cdon"
+
+[node name="grammar" type="Node" parent="."]
+script = ExtResource("22_3vnk6")
 
 [node name="abstractor" type="Node" parent="."]
 script = ExtResource("16_2blp7")

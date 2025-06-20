@@ -62,7 +62,6 @@ offset_left = 77.0
 offset_top = 6.0
 offset_right = 139.0
 offset_bottom = 69.0
-icon = null
 
 [node name="three" parent="view/hotbar" instance=ExtResource("4_300j4")]
 layout_mode = 0
@@ -70,7 +69,6 @@ offset_left = 146.0
 offset_top = 6.0
 offset_right = 208.0
 offset_bottom = 69.0
-icon = null
 
 [node name="four" parent="view/hotbar" instance=ExtResource("4_300j4")]
 layout_mode = 0
@@ -78,7 +76,6 @@ offset_left = 214.0
 offset_top = 6.0
 offset_right = 276.0
 offset_bottom = 69.0
-icon = null
 
 [node name="five" parent="view/hotbar" instance=ExtResource("4_300j4")]
 layout_mode = 0
@@ -86,7 +83,6 @@ offset_left = 284.0
 offset_top = 6.0
 offset_right = 346.0
 offset_bottom = 69.0
-icon = null
 
 [node name="cash" type="Label" parent="view/hotbar" node_paths=PackedStringArray("target")]
 process_mode = 3

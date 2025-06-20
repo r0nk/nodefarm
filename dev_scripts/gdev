@@ -1,0 +1,50 @@
+#!/usr/bin/env -S just --working-directory . --justfile
+
+default:
+	@gdev --list --list-heading '' --list-prefix ''
+
+scenes:
+	@find . -type f -name '*.tscn' | grep -v addons | fzf
+
+instant:
+	@scene=$(gdev scenes | sed "s/\.\///g;s/\.tscn//g"); echo "var $(echo $scene)_scene = preload(\"res://$scene.tscn\") \nvar $scene = $(echo $scene)_scene.instantiate()"
+
+script:
+	@find . -type f -name '*.gd'   | grep -v addons | fzf
+
+tree:
+	#!/usr/bin/env python3
+	from godot_parser import load
+
+	def print_children(node,path):
+	    for child in node._children:
+	        print_children(child,path+'/'+node.name)
+	    print((path+'/'+node.name))
+
+	scene = load("../overmap.tscn")
+	with scene.use_tree() as tree:
+	    print_children(tree.root,'')
+
+get_plugin:
+	#find and copy the relevant files from nodefarm
+	mkdir -p addons
+	cp -r /home/r0nk/src/games/nodefarm/addons/$(ls /home/r0nk/src/games/nodefarm/addons | fzf) addons/
+
+get_sfx:
+	cp "$(find ~/assets/sfx | fzf --preview 'play {}')" .
+
+get_texture:
+	cp "$(find ~/assets/textures -type f | grep -v blend | fzf --preview 'catimg -w 500 {}')" .
+
+game_pipeline:
+	echo TODO
+	#trijam it
+	#if rating >=7
+	#	send to network to get players reviews
+	#	if weighted_review >= 7
+	#		larger scale production
+
+new name:
+	mkdir {{name}}
+	cd {{name}}
+	godot -e .
