@@ -21,9 +21,8 @@ func _ready():
 
 func _process(delta):
 	time_of_day+=(delta*day_speed)/3600.0
-	rotate_sun()
+	if(day_speed>0):
+		rotate_sun()
 
 func rotate_sun():
 	$sun.rotation_degrees.x=360*(time_of_day/24.0)
-
-
