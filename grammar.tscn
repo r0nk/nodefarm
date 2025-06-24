@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://2amsjs15phx2"]
+
+[ext_resource type="Script" uid="uid://b6fcvk1yxur33" path="res://grammar.gd" id="1_k3u7e"]
+
+[node name="grammar" type="Node"]
+script = ExtResource("1_k3u7e")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=35 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://materials/noise.tres" id="1_mrgqy"]
@@ -8,14 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://tet0xaxus0e3" path="res://procedural_building.tscn" id="5_aef38"]
 [ext_resource type="PackedScene" uid="uid://c4mojw8cw1g63" path="res://addons/combat/training_dummy.tscn" id="7_vtvai"]
 [ext_resource type="PackedScene" uid="uid://cds2b4d2aptr3" path="res://bell.tscn" id="9_qop5p"]
-[ext_resource type="Script" uid="uid://c7n22iy4m4fr1" path="res://door.gd" id="10_8cswp"]
 [ext_resource type="PackedScene" uid="uid://cs2ah7vcdnj78" path="res://addons/fpsrpg_controller/item.tscn" id="11_7gk8q"]
 [ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="13_3r6xx"]
 [ext_resource type="PackedScene" uid="uid://dghdadngmf6qv" path="res://addons/combat/rifle.tscn" id="13_7dcma"]
 [ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="14_l0lyd"]
-[ext_resource type="Script" uid="uid://cuwyvo41stbdt" path="res://addons/tools/abstractor.gd" id="16_2blp7"]
 [ext_resource type="Script" uid="uid://blejc45j8cdon" path="res://addons/zylann.hterrain/hterrain.gd" id="16_l8c4v"]
-[ext_resource type="Script" uid="uid://bpttcsmiyvpmo" path="res://addons/tools/modifier.gd" id="17_1bcx6"]
 [ext_resource type="Resource" uid="uid://c0oww8wprtfe4" path="res://terrain/data.hterrain" id="17_tqase"]
 [ext_resource type="Script" uid="uid://dnpcgkbg56666" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="18_1tr4g"]
 [ext_resource type="PackedScene" uid="uid://cwxt3wejw3t4g" path="res://models/shopkeep.glb" id="18_aef38"]
@@ -23,17 +20,26 @@
 [ext_resource type="Script" uid="uid://kvnu0efjkskd" path="res://shopkeep.gd" id="19_cuacs"]
 [ext_resource type="PackedScene" uid="uid://pa7y6i67npuf" path="res://models/phil.tscn" id="21_1nw2n"]
 [ext_resource type="Script" uid="uid://bj8fjtkppp1oj" path="res://store.gd" id="21_gylqs"]
-[ext_resource type="Script" uid="uid://b6fcvk1yxur33" path="res://grammar.gd" id="22_3vnk6"]
 [ext_resource type="Script" uid="uid://byrt30315r7ig" path="res://models/phil.gd" id="22_65fwc"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_r2tf5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cuacs"]
+albedo_texture = ExtResource("19_81346")
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_daqtb"]
-noise = SubResource("FastNoiseLite_r2tf5")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3vtuw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuxoy"]
-albedo_color = Color(0.384314, 1, 1, 1)
-albedo_texture = SubResource("NoiseTexture2D_daqtb")
+[sub_resource type="Resource" id="Resource_0mwmh"]
+script = ExtResource("14_l0lyd")
+texture = SubResource("NoiseTexture2D_3vtuw")
+id = &"cool_hat"
+description = "This item is a cool hat"
+flavor = "you should buy it"
+max_stacks = 100
+count = 1
+price = 20
+metadata/_custom_type_script = "uid://bytx0l7rkwx08"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
+size = Vector3(10, 10, 10)
 
 [sub_resource type="Resource" id="Resource_0dbvw"]
 resource_local_to_scene = true
@@ -144,54 +150,9 @@ script = ExtResource("18_1tr4g")
 mode = 0
 textures = [[], []]
 
-[sub_resource type="Curve" id="Curve_k2x5w"]
-_limits = [0.0, 10.0, 0.0, 1.0]
-_data = [Vector2(0.292237, 2.63736), 0.0, 0.0, 0, 0, Vector2(0.538813, 7.25275), 0.0, 0.0, 0, 0, Vector2(0.835616, 2.85714), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Resource" id="Resource_8skbo"]
-script = ExtResource("17_1bcx6")
-node_path = NodePath("OmniLight3D")
-variable = "light_energy"
-curve = SubResource("Curve_k2x5w")
-
-[sub_resource type="Curve" id="Curve_422kk"]
-_limits = [0.0, 10.0, 0.0, 1.0]
-_data = [Vector2(0.0684932, 10), 0.0, 0.0, 0, 0, Vector2(0.506849, 0.54945), 0.0, 0.0, 0, 0, Vector2(0.931507, 10), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Resource" id="Resource_glwyj"]
-script = ExtResource("17_1bcx6")
-node_path = NodePath("OmniLight3D2")
-variable = "light_energy"
-curve = SubResource("Curve_422kk")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cuacs"]
-albedo_texture = ExtResource("19_81346")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3vtuw"]
-
-[sub_resource type="Resource" id="Resource_0mwmh"]
-script = ExtResource("14_l0lyd")
-texture = SubResource("NoiseTexture2D_3vtuw")
-id = &"cool_hat"
-description = "This item is a cool hat"
-flavor = "you should buy it"
-max_stacks = 100
-count = 1
-price = 20
-metadata/_custom_type_script = "uid://bytx0l7rkwx08"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
-size = Vector3(10, 10, 10)
-
 [node name="main" type="Node3D"]
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.1847, 0, -42.6539)
-
 [node name="world" parent="." instance=ExtResource("1_3kllw")]
-world_radius = 100
 
 [node name="player" parent="." instance=ExtResource("4_hcxq1")]
 unique_name_in_owner = true
@@ -202,7 +163,31 @@ jump_force = 75
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 7.35845e-08, 0.539932, 0.841709, -4.72023e-08, 0.841709, -0.539932, -10.9166, 7.09611, -2.98215)
 
-[node name="merlin" parent="." instance=ExtResource("2_tg236")]
+[node name="characters" type="Node3D" parent="."]
+transform = Transform3D(0.228983, 0, 0, 0, 0.228983, 0, 0, 0, 0.228983, 51.1328, -5.00432, -50.3553)
+
+[node name="shopkeep" parent="characters" instance=ExtResource("18_aef38")]
+script = ExtResource("19_cuacs")
+
+[node name="Skeleton3D" parent="characters/shopkeep/Armature" index="0"]
+bones/0/rotation = Quaternion(5.83084e-05, -6.38029e-09, 1, -0.000819982)
+bones/8/rotation = Quaternion(-0.758423, 0.0783967, -0.0238234, 0.646592)
+bones/16/rotation = Quaternion(-0.384381, 0.377177, 0.679563, 0.49818)
+
+[node name="Cube" parent="characters/shopkeep/Armature/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_cuacs")
+
+[node name="store" type="Area3D" parent="characters/shopkeep" groups=["interactibles"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("21_gylqs")
+items = Array[ExtResource("14_l0lyd")]([SubResource("Resource_0mwmh")])
+
+[node name="cs" type="CollisionShape3D" parent="characters/shopkeep/store"]
+shape = SubResource("BoxShape3D_0fjb1")
+
+[node name="merlin" parent="characters" instance=ExtResource("2_tg236")]
+transform = Transform3D(4.36714, 0, 0, 0, 4.36714, 0, 0, 0, 4.36714, 19.4368, 3.27553, 0.509155)
 
 [node name="map" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458634, 0, -0.257289)
@@ -225,26 +210,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.21355, -57.3397)
 [node name="pause_menu" parent="." instance=ExtResource("4_s30wn")]
 visible = false
 
-[node name="bell" parent="." instance=ExtResource("9_qop5p")]
+[node name="whackables" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -25.8818, 5.1866, 28.3716)
 
-[node name="bell3" parent="." instance=ExtResource("9_qop5p")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -33.9087, 5.1866, 28.3716)
+[node name="bell" parent="whackables" instance=ExtResource("9_qop5p")]
 
-[node name="bell2" parent="." instance=ExtResource("9_qop5p")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -17.289, 5.1866, 28.3716)
+[node name="bell3" parent="whackables" instance=ExtResource("9_qop5p")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.67563, 0, 0)
 
-[node name="training_dummy" parent="." instance=ExtResource("7_vtvai")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16, -7.30634, 37)
+[node name="bell2" parent="whackables" instance=ExtResource("9_qop5p")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.86427, 0, 0)
 
-[node name="door" type="CSGBox3D" parent="." groups=["interactibles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6647, -3.34515, 0)
-use_collision = true
-collision_layer = 3
-collision_mask = 3
-size = Vector3(0.2, 8, 3)
-material = SubResource("StandardMaterial3D_iuxoy")
-script = ExtResource("10_8cswp")
+[node name="training_dummy" parent="whackables" instance=ExtResource("7_vtvai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.29393, -4.16431, 2.87613)
 
 [node name="items" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6647, -3.34515, 0)
@@ -291,6 +269,7 @@ script = ExtResource("22_65fwc")
 [node name="HTerrain" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 script = ExtResource("16_l8c4v")
+map_scale = Vector3(5, 5, 5)
 centered = true
 _terrain_data = ExtResource("17_tqase")
 chunk_size = 32
@@ -309,44 +288,6 @@ shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://blejc45j8cdon"
 
-[node name="grammar" type="Node" parent="."]
-script = ExtResource("22_3vnk6")
-
-[node name="abstractor" type="Node" parent="."]
-script = ExtResource("16_2blp7")
-value = 0.541
-modifiers = Array[ExtResource("17_1bcx6")]([SubResource("Resource_8skbo"), SubResource("Resource_glwyj")])
-
-[node name="OmniLight3D" type="OmniLight3D" parent="abstractor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.491994, -4.79785, 53.3772)
-light_energy = 3.39902
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="abstractor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.21293, -4.79785, 53.3772)
-light_color = Color(0.771813, 1.20327e-06, 0.386149, 1)
-light_energy = 6.95458
-
-[node name="shopkeep" parent="." instance=ExtResource("18_aef38")]
-transform = Transform3D(0.228983, 0, 0, 0, 0.228983, 0, 0, 0, 0.228983, 51.1328, -5.00432, -50.3553)
-script = ExtResource("19_cuacs")
-
-[node name="Skeleton3D" parent="shopkeep/Armature" index="0"]
-bones/0/rotation = Quaternion(5.83084e-05, -6.38029e-09, 1, -0.000819982)
-bones/8/rotation = Quaternion(-0.758423, 0.0783967, -0.0238234, 0.646592)
-bones/16/rotation = Quaternion(-0.384381, 0.377177, 0.679563, 0.49818)
-
-[node name="Cube" parent="shopkeep/Armature/Skeleton3D" index="0"]
-material_override = SubResource("StandardMaterial3D_cuacs")
-
-[node name="store" type="Area3D" parent="shopkeep" groups=["interactibles"]]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("21_gylqs")
-items = Array[ExtResource("14_l0lyd")]([SubResource("Resource_0mwmh")])
-
-[node name="cs" type="CollisionShape3D" parent="shopkeep/store"]
-shape = SubResource("BoxShape3D_0fjb1")
-
+[editable path="characters/shopkeep"]
 [editable path="items/item"]
 [editable path="phil"]
-[editable path="shopkeep"]

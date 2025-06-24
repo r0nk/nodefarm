@@ -1,5 +1,8 @@
 extends CSGBox3D
 
+# Based on https://vanwijk.win.tue.nl/stm.pdf
+# and https://ar5iv.labs.arxiv.org/html/1211.5842
+
 var s_scene = preload("res://subtraction.tscn")
 
 @export var seed = "random starting string"
@@ -9,6 +12,12 @@ var s_scene = preload("res://subtraction.tscn")
 var rng = RandomNumberGenerator.new()
 
 var rooms = []
+
+func r(array):
+	return " "+array.pick_random()
+
+func generate_seed():
+	return r(["A","The"])+r(["big","ugly","kind","weird","cool","wicked"])+r(["cat","dog","bird","hotdog","banana"])
 
 func connectivity_graph(rooms):
 	var graph = [[0,1],[1,2]]
@@ -29,10 +38,20 @@ func generate_rooms():
 		]
 	return rooms
 
-func worst_ratio():
+func layout(row):
 	pass
 
+func worst_ratio(room):
+	ret = []
+#	for rect in layout(sizes,x,y,dx,dy):
+#		ret.append([rect.dx/rect.dy,rect.dy/rect.dx].max())
+	return ret.max()
+
 func squarify(rooms):
+	#recursive function, place one room, then return that + squarify_rest
+	#if(worst(row
+
+	#return room+squarify(rest)
 	pass
 
 func generate():
@@ -51,8 +70,10 @@ func generate():
 		instance.size.z=room[1]/2+randf_range(0,room[2]/2)
 		rooms.append(instance)
 	var graph = connectivity_graph(rooms)
+	squarify(rooms)
 
 func _ready():
+	seed=generate_seed()
 	generate()
 
 #siblings should only intersect if one's a door or window
@@ -60,6 +81,3 @@ func _ready():
 #subtractions should try to snap to walls if possible
 
 #procedural subdivider
-
-
-

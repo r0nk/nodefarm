@@ -4,9 +4,9 @@ extends WorldEnvironment
 var time_of_day = 12
 
 #how fast do days progress relative to earth?
-@export var day_speed = 200.0
+@export var day_speed = 0.0
 
-@export var world_radius = 50
+@export var world_radius = 500
 
 var day = 0
 

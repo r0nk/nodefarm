@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2uhq1mtr01q"]
+
+[ext_resource type="Script" uid="uid://cuwyvo41stbdt" path="res://addons/tools/abstractor.gd" id="1_0ihs7"]
+[ext_resource type="Script" uid="uid://bpttcsmiyvpmo" path="res://addons/tools/modifier.gd" id="2_0j43a"]
+
+[sub_resource type="Curve" id="Curve_k2x5w"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0.292237, 2.63736), 0.0, 0.0, 0, 0, Vector2(0.538813, 7.25275), 0.0, 0.0, 0, 0, Vector2(0.835616, 2.85714), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_8skbo"]
+script = ExtResource("2_0j43a")
+node_path = NodePath("OmniLight3D")
+variable = "light_energy"
+curve = SubResource("Curve_k2x5w")
+
+[sub_resource type="Curve" id="Curve_422kk"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0.0684932, 10), 0.0, 0.0, 0, 0, Vector2(0.506849, 0.54945), 0.0, 0.0, 0, 0, Vector2(0.931507, 10), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_glwyj"]
+script = ExtResource("2_0j43a")
+node_path = NodePath("OmniLight3D2")
+variable = "light_energy"
+curve = SubResource("Curve_422kk")
+
+[node name="abstractor" type="Node"]
+script = ExtResource("1_0ihs7")
+value = 0.541
+modifiers = Array[ExtResource("2_0j43a")]([SubResource("Resource_8skbo"), SubResource("Resource_glwyj")])
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.491994, -4.79785, 53.3772)
+light_energy = 3.39902
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.21293, -4.79785, 53.3772)
+light_color = Color(0.771813, 1.20327e-06, 0.386149, 1)
+light_energy = 6.95458
