@@ -1,5 +1,7 @@
 #!/usr/bin/env -S just --working-directory . --justfile
 
+#TODO figure out good way of recording work sessions
+
 default:
 	@gdev --list --list-heading '' --list-prefix ''
 
@@ -47,4 +49,6 @@ game_pipeline:
 new name:
 	mkdir {{name}}
 	cd {{name}}
+	#just copy all of nodefarm to the directory
+	#TODO use git branches instead
 	godot -e .
