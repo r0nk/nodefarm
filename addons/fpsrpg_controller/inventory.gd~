@@ -27,8 +27,6 @@ func auto_equip(thing):
 	return ret
 
 func add(thing:Item):
-	if not thing:
-		return
 	thing = thing.duplicate()
 	if (thing.id=="coin"):
 		cash+=thing.price
@@ -52,26 +50,21 @@ func add(thing:Item):
 			item_picked_up.emit(thing)
 			return
 
+
 func contains(item):
-	if not item:
-		return false
 	var slots = get_slots()
 	for slot in slots:
-		if not slot.item:
-			continue
 		if slot.item.id==item.id and slot.item.count>=slot.item.count:
 			return true
 	return false
 
 func remove(item):
-	if not item:
-		return false
 	var slots = get_slots()
 	for slot in slots:
 		if slot.item.id==item.id and slot.item.count>=slot.item.count:
-			slot.item.count-=item.count
-			assert(slot.item.count>=0,"We shouldn't be able to remove more then exists")
-			if(slot.item.count ==0):
+			slot.count-=item.slot.count
+			assert(slot.count>=0,"We shouldn't be able to remove more then exists")
+			if(slot.count ==0):
 				slot.item = null
 			return true
 	return false

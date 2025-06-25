@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=19 format=3 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" uid="uid://i20n6ku8iy5v" path="res://addons/fpsrpg_controller/player.gd" id="1"]
 [ext_resource type="Script" uid="uid://c72oyuju4lp25" path="res://addons/fpsrpg_controller/HUD.gd" id="2_3y5t6"]
@@ -11,11 +11,21 @@
 [ext_resource type="Script" uid="uid://db0ct40egj7ue" path="res://addons/fpsrpg_controller/game_menu.gd" id="8_sq0p4"]
 [ext_resource type="AudioStream" uid="uid://bkb4ln1ntblmu" path="res://addons/fpsrpg_controller/sfx/ding.ogg" id="9_6k6ct"]
 [ext_resource type="PackedScene" uid="uid://cwryw2vxb3by0" path="res://perk.tscn" id="11_veejb"]
+[ext_resource type="Script" uid="uid://ba6t10ydn5cx3" path="res://addons/fpsrpg_controller/blueprint_button.gd" id="12_07xsm"]
 [ext_resource type="PackedScene" uid="uid://wa2x28i0xlnp" path="res://store_panel.tscn" id="12_l73am"]
+[ext_resource type="Script" uid="uid://cr0qtnq7axohb" path="res://items/blueprints/blueprint.gd" id="13_oi151"]
+[ext_resource type="Resource" uid="uid://bskgf4o3omyjl" path="res://items/laser_gun.tres" id="13_ykiit"]
+[ext_resource type="Resource" uid="uid://drip8mwacd1h4" path="res://items/hammer.tres" id="14_stu41"]
 
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
 height = 3.0
+
+[sub_resource type="Resource" id="Resource_ykiit"]
+script = ExtResource("13_oi151")
+input1 = ExtResource("13_ykiit")
+output = ExtResource("14_stu41")
+metadata/_custom_type_script = "uid://cr0qtnq7axohb"
 
 [node name="player" type="CharacterBody3D" groups=["Persist", "player"]]
 script = ExtResource("1")
@@ -153,6 +163,7 @@ offset_top = 26.0
 
 [node name="game_menu" type="TabBar" parent="."]
 process_mode = 3
+visible = false
 offset_left = 55.0
 offset_top = 36.0
 offset_right = 400.0
@@ -436,6 +447,89 @@ offset_top = 257.0
 offset_right = 225.0
 offset_bottom = 303.0
 prerequisites = Array[NodePath]([])
+
+[node name="crafting_menu" type="TabBar" parent="."]
+process_mode = 3
+visible = false
+offset_left = 55.0
+offset_top = 36.0
+offset_right = 400.0
+offset_bottom = 94.0
+theme = ExtResource("8_kbxqm")
+current_tab = 0
+clip_tabs = false
+scrolling_enabled = false
+tab_count = 2
+tab_0/title = "Crafting"
+script = ExtResource("8_sq0p4")
+
+[node name="Crafting" type="Panel" parent="crafting_menu"]
+layout_mode = 0
+offset_top = 58.0
+offset_right = 806.0
+offset_bottom = 466.0
+
+[node name="crafting_button" type="Button" parent="crafting_menu/Crafting"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 21.0
+offset_right = 777.0
+offset_bottom = 92.0
+text = "Cool pickaxe"
+script = ExtResource("12_07xsm")
+blueprint = SubResource("Resource_ykiit")
+
+[node name="inputs" type="Control" parent="crafting_menu/Crafting/crafting_button"]
+anchors_preset = 0
+offset_right = 240.0
+offset_bottom = 71.0
+
+[node name="slot1" parent="crafting_menu/Crafting/crafting_button/inputs" instance=ExtResource("8_6rfk8")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.15
+offset_left = 5.0
+offset_top = 5.0
+offset_bottom = 68.0
+disabled = true
+
+[node name="slot2" parent="crafting_menu/Crafting/crafting_button/inputs" instance=ExtResource("8_6rfk8")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.15
+offset_left = 72.0
+offset_top = 5.0
+offset_right = 98.0
+offset_bottom = 68.0
+disabled = true
+
+[node name="slot3" parent="crafting_menu/Crafting/crafting_button/inputs" instance=ExtResource("8_6rfk8")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.15
+offset_left = 140.0
+offset_top = 5.0
+offset_right = 166.0
+offset_bottom = 68.0
+disabled = true
+
+[node name="slot4" parent="crafting_menu/Crafting/crafting_button/inputs" instance=ExtResource("8_6rfk8")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.15
+offset_left = 204.0
+offset_top = 5.0
+offset_right = 230.0
+offset_bottom = 68.0
+disabled = true
+
+[node name="output" parent="crafting_menu/Crafting/crafting_button" instance=ExtResource("8_6rfk8")]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 5.0
+offset_right = 730.0
+offset_bottom = 68.0
+disabled = true
 
 [node name="store_panel" parent="." instance=ExtResource("12_l73am")]
 visible = false

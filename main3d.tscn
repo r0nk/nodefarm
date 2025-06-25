@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=30 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://materials/noise.tres" id="1_mrgqy"]
@@ -8,10 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://tet0xaxus0e3" path="res://procedural_building.tscn" id="5_aef38"]
 [ext_resource type="PackedScene" uid="uid://c4mojw8cw1g63" path="res://addons/combat/training_dummy.tscn" id="7_vtvai"]
 [ext_resource type="PackedScene" uid="uid://cds2b4d2aptr3" path="res://bell.tscn" id="9_qop5p"]
+[ext_resource type="Script" uid="uid://cjxjnigc6ym10" path="res://crafter.gd" id="11_3vnk6"]
 [ext_resource type="PackedScene" uid="uid://cs2ah7vcdnj78" path="res://addons/fpsrpg_controller/item.tscn" id="11_7gk8q"]
 [ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="13_3r6xx"]
+[ext_resource type="PackedScene" uid="uid://dghdadngmf6qv" path="res://addons/combat/rifle.tscn" id="13_7dcma"]
 [ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="14_l0lyd"]
-[ext_resource type="Resource" uid="uid://bskgf4o3omyjl" path="res://items/laser_gun.tres" id="15_0dbvw"]
 [ext_resource type="Script" uid="uid://blejc45j8cdon" path="res://addons/zylann.hterrain/hterrain.gd" id="16_l8c4v"]
 [ext_resource type="Resource" uid="uid://c0oww8wprtfe4" path="res://terrain/data.hterrain" id="17_tqase"]
 [ext_resource type="Script" uid="uid://dnpcgkbg56666" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="18_1tr4g"]
@@ -41,6 +42,22 @@ metadata/_custom_type_script = "uid://bytx0l7rkwx08"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
 size = Vector3(10, 10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0dbvw"]
+
+[sub_resource type="Resource" id="Resource_3vnk6"]
+resource_local_to_scene = true
+resource_name = "laser_gun"
+script = ExtResource("14_l0lyd")
+texture = ExtResource("13_3r6xx")
+id = &"laser_gun"
+type = &"tool"
+description = ""
+flavor = ""
+max_stacks = 10
+count = 1
+price = 20
+equipped_scene = ExtResource("13_7dcma")
 
 [sub_resource type="Resource" id="Resource_ycrus"]
 script = ExtResource("18_1tr4g")
@@ -86,6 +103,19 @@ shape = SubResource("BoxShape3D_0fjb1")
 [node name="merlin" parent="characters" instance=ExtResource("2_tg236")]
 transform = Transform3D(4.36714, 0, 0, 0, 4.36714, 0, 0, 0, 4.36714, 19.4368, 3.27553, 0.509155)
 
+[node name="phil" parent="characters" instance=ExtResource("21_1nw2n")]
+transform = Transform3D(-0.287146, 0, -4.35769, 0, 4.36714, 0, 4.35769, 0, -0.287146, -22.5013, -4.34827, -1.4967)
+script = ExtResource("22_65fwc")
+
+[node name="crafter" type="Area3D" parent="characters/phil" groups=["interactibles"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("11_3vnk6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="characters/phil/crafter" groups=["interactibles"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01255, 0)
+shape = SubResource("BoxShape3D_0dbvw")
+
 [node name="map" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458634, 0, -0.257289)
 
@@ -128,14 +158,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6647, -3.34515, 0)
 
 [node name="item" parent="items" instance=ExtResource("11_7gk8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6647, 0.17749, -0.89357)
-resource = ExtResource("15_0dbvw")
+resource = SubResource("Resource_3vnk6")
 
 [node name="sprite" parent="items/item" index="0"]
 texture = ExtResource("13_3r6xx")
-
-[node name="phil" parent="." instance=ExtResource("21_1nw2n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 11)
-script = ExtResource("22_65fwc")
 
 [node name="HTerrain" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
@@ -160,5 +186,5 @@ shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://blejc45j8cdon"
 
 [editable path="characters/shopkeep"]
+[editable path="characters/phil"]
 [editable path="items/item"]
-[editable path="phil"]
