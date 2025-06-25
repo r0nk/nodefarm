@@ -6,7 +6,24 @@ signal item_picked_up(item)
 
 func get_slots():
 	var c = get_node("../game_menu/Inventory").get_children()
-	var ret = c.filter(func(n):return not n.is_in_group("equipment_slot"))
+	var ret = c.filter(func(n):
+		return not n.is_in_group("equipment_slot") and n.is_in_group("slot"))
+	return ret
+
+func try_equip_to(thing,slots):
+	var equipment_slots = slots.filter(func(n):
+		return  n.is_in_group("equipment_slot") and n.is_in_group("slot"))
+	equipment_slots.sort()
+	for e in equipment_slots:
+		if not e.item and e.type == thing.type:
+			e.item=thing
+			return true
+	return false
+
+func auto_equip(thing):
+	var ret = false
+	ret = ret or try_equip_to(thing,get_node("../game_menu/Inventory").get_children())
+	ret = ret or try_equip_to(thing,$"view/hotbar".get_children())
 	return ret
 
 func add(thing:Item):
@@ -14,10 +31,11 @@ func add(thing:Item):
 	if (thing.id=="coin"):
 		cash+=thing.price
 		return
+	if auto_equip(thing):
+		return
 	var slots = get_slots()
 	slots.sort()
 	slots.reverse()
-	slots = slots.filter(func(s):return not s.is_in_group("equipment_slot"))
 	#slots.map(print)
 	for slot in slots:
 		if not slot.item:

@@ -6,6 +6,8 @@ var origin
 var dragging=false
 var hovering=false
 
+@export var type:StringName = ""
+
 signal item_changed(item)
 
 func hover_on():
@@ -25,19 +27,25 @@ func hover_off():
 func start_drag():
 	dragging=true
 
+func swap(slot):
+	if slot.type != "" and slot.type != item.type:
+		print("incorrect slot type: ",slot.type," , ",item.type);
+		return
+	var buf = item
+	item=slot.item
+	slot.item=buf
+	slot.item_changed.emit(slot.item)
+	item_changed.emit(item)
+
 func stop_drag():
 	dragging=false
 	$texture.position=origin
 	var m = get_global_mouse_position()
 	var slots = get_tree().get_nodes_in_group("slot")
 	slots = slots.filter(func(s):return s.hovering)
-	if len(slots)<=0:
+	if len(slots)<=0 or not item:
 		return
-	var buf = item
-	item=slots[0].item
-	slots[0].item=buf
-	slots[0].item_changed.emit(slots[0].item)
-	item_changed.emit(item)
+	swap(slots[0])
 
 func _ready():
 	origin=$texture.position

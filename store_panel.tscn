@@ -21,6 +21,7 @@ noise = SubResource("FastNoiseLite_qd3hi")
 script = ExtResource("4_pp5ij")
 texture = SubResource("NoiseTexture2D_mp13e")
 id = &"testthing"
+type = &""
 description = "This thing is totally rad"
 flavor = "and totally illegal"
 max_stacks = 100

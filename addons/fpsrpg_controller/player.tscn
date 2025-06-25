@@ -178,6 +178,7 @@ offset_left = 131.0
 offset_top = 20.0
 offset_right = 193.0
 offset_bottom = 83.0
+type = &"hat"
 
 [node name="Label" type="Label" parent="game_menu/Inventory/hat"]
 layout_mode = 0
@@ -193,6 +194,7 @@ offset_left = 130.0
 offset_top = 91.0
 offset_right = 192.0
 offset_bottom = 154.0
+type = &"cloak"
 
 [node name="Label" type="Label" parent="game_menu/Inventory/cloak"]
 layout_mode = 0
@@ -208,6 +210,7 @@ offset_left = 131.0
 offset_top = 163.0
 offset_right = 193.0
 offset_bottom = 226.0
+type = &"shoes"
 
 [node name="Label" type="Label" parent="game_menu/Inventory/shoes"]
 layout_mode = 0

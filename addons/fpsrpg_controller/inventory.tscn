@@ -49,40 +49,45 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(35, 35)
 
-[node name="one" parent="view/hotbar" instance=ExtResource("4_300j4")]
+[node name="one" parent="view/hotbar" groups=["equipment_slot"] instance=ExtResource("4_300j4")]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 0.0
 offset_right = 67.0
 offset_bottom = 63.0
+type = &"tool"
 
-[node name="two" parent="view/hotbar" instance=ExtResource("4_300j4")]
+[node name="two" parent="view/hotbar" groups=["equipment_slot"] instance=ExtResource("4_300j4")]
 layout_mode = 0
 offset_left = 77.0
 offset_top = 6.0
 offset_right = 139.0
 offset_bottom = 69.0
+type = &"tool"
 
-[node name="three" parent="view/hotbar" instance=ExtResource("4_300j4")]
+[node name="three" parent="view/hotbar" groups=["equipment_slot"] instance=ExtResource("4_300j4")]
 layout_mode = 0
 offset_left = 146.0
 offset_top = 6.0
 offset_right = 208.0
 offset_bottom = 69.0
+type = &"tool"
 
-[node name="four" parent="view/hotbar" instance=ExtResource("4_300j4")]
+[node name="four" parent="view/hotbar" groups=["equipment_slot"] instance=ExtResource("4_300j4")]
 layout_mode = 0
 offset_left = 214.0
 offset_top = 6.0
 offset_right = 276.0
 offset_bottom = 69.0
+type = &"tool"
 
-[node name="five" parent="view/hotbar" instance=ExtResource("4_300j4")]
+[node name="five" parent="view/hotbar" groups=["equipment_slot"] instance=ExtResource("4_300j4")]
 layout_mode = 0
 offset_left = 284.0
 offset_top = 6.0
 offset_right = 346.0
 offset_bottom = 69.0
+type = &"tool"
 
 [node name="cash" type="Label" parent="view/hotbar" node_paths=PackedStringArray("target")]
 process_mode = 3

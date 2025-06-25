@@ -42,7 +42,7 @@ func layout(row):
 	pass
 
 func worst_ratio(room):
-	ret = []
+	var ret = []
 #	for rect in layout(sizes,x,y,dx,dy):
 #		ret.append([rect.dx/rect.dy,rect.dy/rect.dx].max())
 	return ret.max()

@@ -180,6 +180,7 @@ resource_name = "coin"
 script = ExtResource("9_8u7ga")
 texture = ExtResource("10_nwuy7")
 id = &"coin"
+type = &""
 description = ""
 flavor = ""
 max_stacks = 1000
