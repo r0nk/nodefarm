@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://wa2x28i0xlnp"]
+[gd_scene load_steps=14 format=3 uid="uid://wa2x28i0xlnp"]
 
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="1_c1pg0"]
 [ext_resource type="Script" uid="uid://db0ct40egj7ue" path="res://addons/fpsrpg_controller/game_menu.gd" id="2_c1pg0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cbu180rtyuex6" path="res://transaction_button.gd" id="4_oec7o"]
 [ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="4_pp5ij"]
 [ext_resource type="Script" uid="uid://c0iv8b0dr5kxe" path="res://shop_logic.gd" id="6_qd3hi"]
+[ext_resource type="Script" uid="uid://qi3kabtnft0q" path="res://addons/fpsrpg_controller/sell_junk.gd" id="7_govum"]
 [ext_resource type="AudioStream" uid="uid://dpq0ojme5e66a" path="res://addons/fpsrpg_controller/sfx/buy.wav" id="7_mp13e"]
 
 [sub_resource type="Gradient" id="Gradient_hwpdm"]
@@ -44,6 +45,7 @@ tab_2/title = "Buyback"
 script = ExtResource("2_c1pg0")
 
 [node name="Buy" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_top = 46.0
 offset_right = 716.0
@@ -89,12 +91,21 @@ disabled = true
 item = SubResource("Resource_oec7o")
 
 [node name="Sell" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_top = 46.0
 offset_right = 716.0
 offset_bottom = 520.0
 theme = ExtResource("1_c1pg0")
+
+[node name="sell_junk" type="Button" parent="Sell"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 15.0
+offset_right = 205.0
+offset_bottom = 61.0
+text = "Sell all junk
+"
+script = ExtResource("7_govum")
 
 [node name="Buyback" type="Panel" parent="."]
 visible = false

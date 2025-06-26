@@ -18,6 +18,7 @@ func hover_on():
 	$tooltip/title.text=item.id
 	$tooltip/description.text=item.description
 	$tooltip/flavor.text=item.flavor
+	$tooltip/type.text=item.type
 	$tooltip.visible=true
 
 func hover_off():

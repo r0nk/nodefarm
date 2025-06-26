@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbq1a156kma7s"]
+
+[ext_resource type="Script" uid="uid://b3kiujisjfi4h" path="res://items/camera.gd" id="1_806j5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pxkh"]
+albedo_color = Color(0.419813, 0.419813, 0.419813, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_806j5"]
+albedo_color = Color(0, 0.678136, 0.646353, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vb0t"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="camera" type="Node3D"]
+script = ExtResource("1_806j5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.469511, 0, 0, 0, 0.469511, 0, 0, 0, 0.469511, -0.0277633, 0, 0.200195)
+size = Vector3(1.40247, 1, 0.599609)
+material = SubResource("StandardMaterial3D_6pxkh")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -3.58357e-08, -0.42674)
+radius = 0.39502
+height = 0.360352
+material = SubResource("StandardMaterial3D_6pxkh")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGBox3D/CSGCylinder3D"]
+operation = 2
+radius = 0.353027
+height = 0.360352
+material = SubResource("StandardMaterial3D_6pxkh")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGBox3D/CSGCylinder3D/CSGCylinder3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0781172, -3.41461e-09)
+operation = 2
+radius = 0.353027
+height = 0.360352
+material = SubResource("StandardMaterial3D_806j5")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00214776, 0.310291, 0.269836)
+operation = 2
+size = Vector3(0.390076, 0.241211, 0.0599365)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.437309, 0.0753218, 0.0206441)
+size = Vector3(0.316162, 1, 0.381348)
+material = SubResource("StandardMaterial3D_1vb0t")

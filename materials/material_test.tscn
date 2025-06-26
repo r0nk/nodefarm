@@ -1,6 +1,6 @@
 [gd_scene load_steps=46 format=3 uid="uid://begeai5ycal36"]
 
-[ext_resource type="Shader" uid="uid://c4mlcnawn1pi8" path="res://materials/displacement_map.tres" id="1_3virq"]
+[ext_resource type="Shader" uid="uid://puhdowohnfii" path="res://materials/displacement_map.tres" id="1_3virq"]
 [ext_resource type="Material" uid="uid://cdvcp345h4b48" path="res://materials/material_test.tres" id="1_nmq4l"]
 [ext_resource type="Material" uid="uid://bvokjdodn8nkt" path="res://materials/a.tres" id="3_xnafl"]
 [ext_resource type="Shader" uid="uid://cnv4qlf0m0wi" path="res://materials/visual_test.tres" id="4_lw1au"]
@@ -18,6 +18,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4sx8f"]
 render_priority = 0
 shader = ExtResource("1_3virq")
+shader_parameter/ColorParameter = Color(0.517184, 0.517184, 0.517184, 1)
+shader_parameter/scale = 100.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_0v3hm"]
 lightmap_size_hint = Vector2i(104, 76)
@@ -83,6 +85,8 @@ shader_parameter/t = SubResource("NoiseTexture2D_t5osf")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cd2ta"]
 render_priority = 0
 shader = ExtResource("1_3virq")
+shader_parameter/ColorParameter = Color(0.136235, 0.165263, 0.299585, 1)
+shader_parameter/scale = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xbhsi"]
 render_priority = 0
@@ -236,7 +240,7 @@ rings = 20
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
 
 [node name="static ball9" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 32.8451)
+transform = Transform3D(1, 0, 0, 0, 0.99975, 0.0223558, 0, -0.0223558, 0.99975, 0, 4.22764, 32.8451)
 radius = 1.0
 radial_segments = 20
 rings = 20

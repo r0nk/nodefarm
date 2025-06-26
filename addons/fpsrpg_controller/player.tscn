@@ -534,6 +534,14 @@ disabled = true
 [node name="store_panel" parent="." instance=ExtResource("12_l73am")]
 visible = false
 
+[node name="picture" type="TextureRect" parent="."]
+offset_left = 243.0
+offset_top = 43.0
+offset_right = 753.0
+offset_bottom = 487.0
+mouse_filter = 2
+expand_mode = 1
+
 [connection signal="item_picked_up" from="inventory" to="game_menu/Quests" method="item_picked_up"]
 [connection signal="selection_changed" from="inventory/view/hotbar" to="camera/hand" method="selection_changed"]
 [connection signal="item_changed" from="game_menu/Inventory/hat" to="camera/hat" method="selection_changed"]

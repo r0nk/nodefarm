@@ -68,6 +68,8 @@ func remove(item):
 		return false
 	var slots = get_slots()
 	for slot in slots:
+		if not slot.item:
+			continue
 		if slot.item.id==item.id and slot.item.count>=slot.item.count:
 			slot.item.count-=item.count
 			assert(slot.item.count>=0,"We shouldn't be able to remove more then exists")
@@ -76,3 +78,9 @@ func remove(item):
 			return true
 	return false
 
+
+func items_matching_type(type):
+	var slots = get_slots()
+	var matching_slots = slots.filter(func(s): return s.item and s.item.type==type)
+	var ret = matching_slots.map(func(s): return s.item)
+	return ret
