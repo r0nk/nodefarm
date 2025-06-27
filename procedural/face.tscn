@@ -197,7 +197,7 @@ sprite_frames = SubResource("SpriteFrames_hxjx1")
 transform = Transform3D(0.0825994, 0, 0.996583, 0, 1, 0, -0.996583, 0, 0.0825994, 5.0084, -0.889848, 0)
 pixel_size = 0.05
 sprite_frames = SubResource("SpriteFrames_xa8ba")
-frame = 1
+frame = 8
 
 [node name="left_brow" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46989, 1.4004, -2.29285)

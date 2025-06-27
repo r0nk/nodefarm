@@ -7,7 +7,6 @@ func _input(event):
 			print("HOTKEY")
 			var player = get_tree().get_nodes_in_group("player")[0]
 			EditorInterface.edit_node(player)
-		print(event.as_text())
 
 func selection_changed():
 	pass
