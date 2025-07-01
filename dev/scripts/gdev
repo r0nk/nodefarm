@@ -37,18 +37,3 @@ get_sfx:
 
 get_texture:
 	cp "$(find ~/assets/textures -type f | grep -v blend | fzf --preview 'catimg -w 500 {}')" .
-
-game_pipeline:
-	echo TODO
-	#trijam it
-	#if rating >=7
-	#	send to network to get players reviews
-	#	if weighted_review >= 7
-	#		larger scale production
-
-new name:
-	mkdir {{name}}
-	cd {{name}}
-	#just copy all of nodefarm to the directory
-	#TODO use git branches instead
-	godot -e .

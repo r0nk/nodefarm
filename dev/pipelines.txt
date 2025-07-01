@@ -1,0 +1,6 @@
+items
+characters
+dialogues
+perks
+quests
+locations

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3603xnb1smn6"]
+
+[ext_resource type="Script" uid="uid://c65ldm04eq1on" path="res://spawner.gd" id="1_ttk4a"]
+[ext_resource type="PackedScene" uid="uid://c4mojw8cw1g63" path="res://addons/combat/training_dummy.tscn" id="2_mcln3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3vnk6"]
+size = Vector3(50, 0.001, 50)
+
+[node name="spawner" type="Area3D"]
+transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 0, 0, 0)
+script = ExtResource("1_ttk4a")
+scene = ExtResource("2_mcln3")
+max_spawned = 5
+
+[node name="area" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3vnk6")
+debug_color = Color(0.747716, 1.92523e-07, 0.400166, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="spawn"]
