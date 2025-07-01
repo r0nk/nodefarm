@@ -6,6 +6,7 @@ addons/character-controller/*
 addons/csgtomeshinstance/*
 addons/dialogue_manager/*
 addons/zylann.hterrain/*
+addons/cyclops_level_builder/*
 terrain/*
 todo.txt
 qrcode.png
