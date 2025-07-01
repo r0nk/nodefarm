@@ -3,6 +3,8 @@ extends Control
 var tracked:String = "Fight the scarecrow"
 var quests = {} #indexed by quest name
 
+
+@export var starting_quest:Quest
 @export var inventory:NodePath
 
 func task_string(task):
@@ -40,6 +42,7 @@ func item_picked_up(item):
 #					$hud/description.text=task_string(task)
 
 func add_quest(quest):
+	assert(quest,"tried to add a quest that doesn't exist.")
 	if(quests.has(quest.name)):
 		return
 	quests[quest.name]=quest
@@ -53,3 +56,7 @@ func add_quest(quest):
 func _input(_event):
 	if Input.is_action_just_pressed("open_questlog"):
 		get_parent().toggle_from_child(name)
+
+func _ready():
+	if starting_quest:
+		add_quest(starting_quest)

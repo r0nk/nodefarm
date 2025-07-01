@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=24 format=3 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" uid="uid://i20n6ku8iy5v" path="res://addons/fpsrpg_controller/player.gd" id="1"]
 [ext_resource type="Script" uid="uid://c72oyuju4lp25" path="res://addons/fpsrpg_controller/HUD.gd" id="2_3y5t6"]
@@ -10,8 +10,11 @@
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="8_kbxqm"]
 [ext_resource type="Script" uid="uid://db0ct40egj7ue" path="res://addons/fpsrpg_controller/game_menu.gd" id="8_sq0p4"]
 [ext_resource type="AudioStream" uid="uid://bkb4ln1ntblmu" path="res://addons/fpsrpg_controller/sfx/ding.ogg" id="9_6k6ct"]
+[ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="10_cwk8v"]
+[ext_resource type="Script" uid="uid://ogpi40jk57jq" path="res://addons/fpsrpg_controller/quest_resource.gd" id="11_tvy6y"]
 [ext_resource type="PackedScene" uid="uid://cwryw2vxb3by0" path="res://perk.tscn" id="11_veejb"]
 [ext_resource type="Script" uid="uid://ba6t10ydn5cx3" path="res://addons/fpsrpg_controller/blueprint_button.gd" id="12_07xsm"]
+[ext_resource type="Script" uid="uid://bwfptbym3syq6" path="res://addons/fpsrpg_controller/quest_task.gd" id="12_ds02g"]
 [ext_resource type="PackedScene" uid="uid://wa2x28i0xlnp" path="res://store_panel.tscn" id="12_l73am"]
 [ext_resource type="Script" uid="uid://cr0qtnq7axohb" path="res://items/blueprints/blueprint.gd" id="13_oi151"]
 [ext_resource type="Resource" uid="uid://bskgf4o3omyjl" path="res://items/laser_gun.tres" id="13_ykiit"]
@@ -20,6 +23,23 @@
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
 height = 3.0
+
+[sub_resource type="Resource" id="Resource_00bt2"]
+script = ExtResource("12_ds02g")
+type = "collect"
+location = Vector3(0, 0, 0)
+target_amount = 1.0
+target_item = ExtResource("13_ykiit")
+progress = 0.0
+metadata/_custom_type_script = "uid://bwfptbym3syq6"
+
+[sub_resource type="Resource" id="Resource_ltudq"]
+script = ExtResource("11_tvy6y")
+name = "Revenge"
+description = "Get revenge on the banana"
+tasks = Array[ExtResource("12_ds02g")]([SubResource("Resource_00bt2")])
+rewards = Array[ExtResource("10_cwk8v")]([])
+metadata/_custom_type_script = "uid://ogpi40jk57jq"
 
 [sub_resource type="Resource" id="Resource_ykiit"]
 script = ExtResource("13_oi151")
@@ -385,6 +405,7 @@ offset_top = 58.0
 offset_right = 811.0
 offset_bottom = 492.0
 script = ExtResource("7_a0i7b")
+starting_quest = SubResource("Resource_ltudq")
 inventory = NodePath("../../inventory")
 
 [node name="quest_complete_sfx" type="AudioStreamPlayer" parent="game_menu/Quests"]
