@@ -15,8 +15,8 @@ var move_locked = false
 var shift_timer=0
 
 var jumps=0
-@export var extra_jumps=0
-@export var jump_force=200
+@export var extra_jumps=1
+@export var jump_force=100
 var power=0
 
 var weapon_array = [[0,1]]
