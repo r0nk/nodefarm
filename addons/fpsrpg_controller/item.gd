@@ -2,6 +2,9 @@ extends CharacterBody3D
 
 @export var resource:Item
 
+func activate_collision():
+	$cs.disabled=false
+
 func _ready():
 	resource=resource.duplicate()
 #	print(name,": ",resource.id)

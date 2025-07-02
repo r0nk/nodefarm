@@ -22,10 +22,10 @@ price = 20
 metadata/_custom_type_script = "uid://bytx0l7rkwx08"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f3r10"]
-radius = 3.0
+radius = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qvraq"]
-radius = 10.0
+radius = 6.0
 
 [node name="inventory" type="Node3D"]
 script = ExtResource("1_g3dk6")

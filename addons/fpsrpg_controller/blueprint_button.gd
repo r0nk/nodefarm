@@ -14,8 +14,7 @@ func _process(delta):
 
 func _pressed() -> void:
 	#FIXME this is big stupid, blueprints should just have arrays of inputs and outputs
-	var player = get_tree().get_nodes_in_group("player")[0]
-	var inventory =  player.get_node("inventory")
+	var inventory =  Player.get_node("inventory")
 	var inputs = $inputs.get_children()
 	var missing_inputs = inputs.filter(func(i):
 		if not i.item:

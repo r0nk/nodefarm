@@ -19,6 +19,6 @@ pixel_size = 0.03
 texture_filter = 0
 texture = SubResource("CompressedTexture2D_bb5sb")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="cs" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.317897, 0)
 shape = SubResource("SphereShape3D_5idrt")

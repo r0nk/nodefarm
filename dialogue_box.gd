@@ -10,7 +10,6 @@ func start_dialogue():
 func interact():
 	balloon = load("res://dialogues/balloon/balloon.tscn").instantiate()
 	balloon.ready.connect(start_dialogue) # We have to wait for the balloon to finish loading
-	var player = get_tree().get_nodes_in_group("player")[0]
-	player.add_child(balloon)
-	player.move_locked=true
+	Player.add_child(balloon)
+	Player.move_locked=true
 

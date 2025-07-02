@@ -5,8 +5,7 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_M and event.ctrl_pressed:
 			print("HOTKEY")
-			var player = get_tree().get_nodes_in_group("player")[0]
-			EditorInterface.edit_node(player)
+#			EditorInterface.edit_node(Player)
 
 func selection_changed():
 	pass
