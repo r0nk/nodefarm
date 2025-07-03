@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://mtthy7ejs2tt"]
+
+[ext_resource type="Script" uid="uid://116i0nneu2cv" path="res://chicken.gd" id="1_isa2u"]
+[ext_resource type="PackedScene" uid="uid://do2lob14dwag5" path="res://models/chicken.glb" id="2_tl7hd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0obim"]
+radius = 1.68745
+
+[node name="chicken" type="CharacterBody3D"]
+transform = Transform3D(1.18106, 0, 0, 0, 1.18106, 0, 0, 0, 1.18106, 0, 0, 0)
+script = ExtResource("1_isa2u")
+
+[node name="model" parent="." instance=ExtResource("2_tl7hd")]
+transform = Transform3D(-5.29346e-09, 0, 0.1211, 0, 0.1211, 0, -0.1211, 0, -5.29346e-09, 0, 0, 0)
+
+[node name="cs" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_0obim")

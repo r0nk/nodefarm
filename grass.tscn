@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://7jcfjbwdr3ks"]
+
+[ext_resource type="Script" uid="uid://c0swtgp6r464l" path="res://grass.gd" id="1_mw2ei"]
+[ext_resource type="PackedScene" uid="uid://bsflwq6biaywm" path="res://models/grass.glb" id="2_2qnaq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_00egg"]
+radius = 4.84553
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mw2ei"]
+height = 3.23291
+radius = 2.0
+
+[node name="grass" type="StaticBody3D" groups=["grass"]]
+script = ExtResource("1_mw2ei")
+
+[node name="model" parent="." instance=ExtResource("2_2qnaq")]
+transform = Transform3D(0.0964498, 0, 0, 0, 0.0964498, 0, 0, 0, 0.0964498, 0, 1.11885, 0)
+
+[node name="cs" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.0964498, 0, 0, 0, 0.0964498, 0, 0, 0, 0.0964498, 0, 0.42656, 0)
+shape = SubResource("SphereShape3D_00egg")
+disabled = true
+
+[node name="seed_rotator" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.67808, 0)
+
+[node name="seedcast" type="RayCast3D" parent="seed_rotator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76888, -3.21022, 0)
+target_position = Vector3(0, -4, 0)
+
+[node name="personal" type="Area3D" parent="."]
+
+[node name="cs" type="CollisionShape3D" parent="personal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.616455, 0)
+shape = SubResource("CylinderShape3D_mw2ei")
