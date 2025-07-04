@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6hlg1085xlka"]
+[gd_scene load_steps=7 format=3 uid="uid://b6hlg1085xlka"]
 
+[ext_resource type="Texture2D" uid="uid://btpwt06li3404" path="res://materials/panorama_image.png" id="1_5ltl8"]
 [ext_resource type="Script" uid="uid://7tj3yna2oxru" path="res://addons/fpsrpg_controller/world.gd" id="1_48ggu"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xp1vo"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hoja3"]
+panorama = ExtResource("1_5ltl8")
 
-[sub_resource type="Sky" id="Sky_iv4st"]
-sky_material = SubResource("ProceduralSkyMaterial_xp1vo")
+[sub_resource type="Sky" id="Sky_6t7hb"]
+sky_material = SubResource("PanoramaSkyMaterial_hoja3")
 
 [sub_resource type="Environment" id="Environment_6rrrx"]
 background_mode = 2
-sky = SubResource("Sky_iv4st")
+sky = SubResource("Sky_6t7hb")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 7.65
 

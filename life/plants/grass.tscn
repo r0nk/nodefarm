@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://7jcfjbwdr3ks"]
 
-[ext_resource type="Script" uid="uid://crrapy72kywle" path="res://grass.gd" id="1_mw2ei"]
+[ext_resource type="Script" uid="uid://crrapy72kywle" path="res://life/plants/grass.gd" id="1_mw2ei"]
 [ext_resource type="PackedScene" uid="uid://bsflwq6biaywm" path="res://models/grass.glb" id="2_2qnaq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_00egg"]

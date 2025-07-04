@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://cq45bo01o0r86"]
+
+[ext_resource type="Script" uid="uid://dsl1sgpxly8b6" path="res://life/animals/grasshopper.gd" id="1_2ap0o"]
+[ext_resource type="Script" uid="uid://c7e6lndgt2s5" path="res://stomach.gd" id="2_upxpa"]
+[ext_resource type="Script" uid="uid://dwivu13usjvxc" path="res://mouth.gd" id="3_5f028"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_00egg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ap0o"]
+albedo_color = Color(0.126759, 0.313466, 0.0422872, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_upxpa"]
+albedo_color = Color(0.679516, 0.668247, 0.663403, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vtuw"]
+albedo_color = Color(0.984314, 0.8, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5f028"]
+shading_mode = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0mwmh"]
+
+[node name="firefly" type="CharacterBody3D" groups=["jarable"]]
+transform = Transform3D(0.409028, 0, 0, 0, 0.409028, 0, 0, 0, 0.409028, 0, 0, 0)
+script = ExtResource("1_2ap0o")
+jump_force = 20
+
+[node name="cs" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_00egg")
+
+[node name="model" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="model"]
+transform = Transform3D(0.449849, -0.893105, 0, 0.893105, 0.449849, 0, 0, 0, 1, 0, -0.0193231, 0)
+radius = 0.158691
+height = 1.09668
+material = SubResource("StandardMaterial3D_2ap0o")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="model"]
+transform = Transform3D(0.00114475, -0.997718, -1.18816e-08, 0.334614, 0.00341331, -2.99592e-08, 1.00384e-08, -1.17523e-08, 1, 0.130909, 0.103051, -0.175084)
+radius = 0.0922852
+height = 0.738281
+material = SubResource("StandardMaterial3D_upxpa")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="model"]
+transform = Transform3D(0.00114475, -0.997718, -1.18816e-08, 0.334614, 0.00341331, -2.99592e-08, 1.00384e-08, -1.17523e-08, 1, 0.130909, 0.103051, 0.168943)
+radius = 0.0922852
+height = 0.738281
+material = SubResource("StandardMaterial3D_upxpa")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="model"]
+transform = Transform3D(-0.313507, -0.111351, 0, 0.111351, -0.313507, 0, 0, 0, 0.332694, -0.429499, 0.263559, -0.1365)
+radius = 0.0922852
+height = 0.738281
+material = SubResource("StandardMaterial3D_3vtuw")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="model"]
+transform = Transform3D(-0.289577, -0.163801, 0, 0.163801, -0.289577, 0, 0, 0, 0.332694, -0.423436, 0.263559, 0.139208)
+radius = 0.0922852
+height = 0.738281
+material = SubResource("StandardMaterial3D_3vtuw")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="model"]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.410473, -0.206591, 1.79423e-08)
+radius = 0.206747
+material = SubResource("StandardMaterial3D_5f028")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="model/CSGSphere3D"]
+
+[node name="stomach" type="Node" parent="."]
+script = ExtResource("2_upxpa")
+hunger_rate = 1.0
+
+[node name="mouth" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.954356)
+script = ExtResource("3_5f028")
+
+[node name="cs" type="CollisionShape3D" parent="mouth"]
+shape = SubResource("BoxShape3D_0mwmh")

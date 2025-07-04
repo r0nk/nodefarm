@@ -3,7 +3,7 @@ extends StaticBody3D
 var rtimer
 
 func reproduce(at):
-	var gs = load("res://grass.tscn")
+	var gs = load("res://life/plants/grass.tscn")
 	var gsi = gs.instantiate()
 	get_parent().add_child(gsi)
 	gsi.rotation.y=randf()*360.0
@@ -20,7 +20,7 @@ func _ready():
 	rtimer.start()
 
 func spawn_grasshopper():
-	var gs = load("res://grasshopper.tscn")
+	var gs = load("res://life/animals/grasshopper.tscn")
 	var gsi = gs.instantiate()
 	get_parent().add_child(gsi)
 	gsi.rotation.y=randf()*360.0

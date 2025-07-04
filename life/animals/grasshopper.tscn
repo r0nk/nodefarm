@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://vmwsewha7pru"]
+[gd_scene load_steps=10 format=3 uid="uid://vmwsewha7pru"]
 
-[ext_resource type="Script" uid="uid://dsl1sgpxly8b6" path="res://grasshopper.gd" id="1_tap6v"]
+[ext_resource type="Script" uid="uid://dsl1sgpxly8b6" path="res://life/animals/grasshopper.gd" id="1_tap6v"]
 [ext_resource type="Script" uid="uid://c7e6lndgt2s5" path="res://stomach.gd" id="2_5ar48"]
 [ext_resource type="Script" uid="uid://dwivu13usjvxc" path="res://mouth.gd" id="3_6adcc"]
+[ext_resource type="Script" uid="uid://c4qr3hlpg7ajs" path="res://life/sex.gd" id="4_8o4nw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_00egg"]
 
@@ -13,6 +14,9 @@ albedo_color = Color(0.280729, 0.636718, 0.114388, 1)
 albedo_color = Color(0.984314, 0.8, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0mwmh"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o62v2"]
+radius = 3.0
 
 [node name="grasshopper" type="CharacterBody3D" groups=["jarable"]]
 transform = Transform3D(0.409028, 0, 0, 0, 0.409028, 0, 0, 0, 0.409028, 0, 0, 0)
@@ -64,3 +68,15 @@ script = ExtResource("3_6adcc")
 
 [node name="cs" type="CollisionShape3D" parent="mouth"]
 shape = SubResource("BoxShape3D_0mwmh")
+
+[node name="sex" type="Area3D" parent="."]
+script = ExtResource("4_8o4nw")
+mutations = Array[String](["res://life/animals/firefly.tscn"])
+
+[node name="cs" type="CollisionShape3D" parent="sex"]
+shape = SubResource("SphereShape3D_o62v2")
+
+[node name="jump_timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="jump_timer" to="." method="change_destination"]
