@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqdkv7twvfhca"]
+
+[ext_resource type="Script" uid="uid://bnf2fdho73r71" path="res://items/jar.gd" id="1_iq80l"]
+[ext_resource type="AudioStream" uid="uid://cv3crty3dluya" path="res://whoosh.ogg" id="2_r6s8k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dp68p"]
+transparency = 1
+albedo_color = Color(0.737255, 1, 1, 0.258824)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iq80l"]
+transparency = 1
+albedo_color = Color(0.737255, 1, 1, 0.258824)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6s8k"]
+albedo_color = Color(0.367583, 0.375235, 0.383995, 1)
+metallic = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dp68p"]
+radius = 10.0
+
+[node name="jar" type="Node3D"]
+script = ExtResource("1_iq80l")
+
+[node name="glass" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0949707, 0)
+radius = 0.22998
+height = 0.569824
+material = SubResource("StandardMaterial3D_dp68p")
+
+[node name="void" type="CSGCylinder3D" parent="glass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014952, 0)
+operation = 2
+radius = 0.22
+height = 0.569824
+material = SubResource("StandardMaterial3D_iq80l")
+
+[node name="lid" type="CSGCylinder3D" parent="." groups=["jarable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.400621, 0)
+radius = 0.244141
+height = 0.0734863
+material = SubResource("StandardMaterial3D_r6s8k")
+
+[node name="collection" type="Area3D" parent="."]
+
+[node name="cs" type="CollisionShape3D" parent="collection"]
+shape = SubResource("SphereShape3D_dp68p")
+
+[node name="sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_r6s8k")
+
+[node name="captured" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.078155, 0)

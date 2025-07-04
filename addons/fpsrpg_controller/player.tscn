@@ -157,6 +157,7 @@ collide_with_areas = true
 stream = ExtResource("3_aa11l")
 
 [node name="hand" parent="camera" instance=ExtResource("5_yhe1a")]
+hotkey = "fire"
 
 [node name="hat" parent="camera" instance=ExtResource("5_yhe1a")]
 transform = Transform3D(0.999841, -1.54521e-09, 0.0178538, 0.000318136, 0.999841, -0.017816, -0.0178509, 0.0178189, 0.999682, 0.0235594, 0.564326, 0.00839019)

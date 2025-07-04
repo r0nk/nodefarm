@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=89 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="Material" uid="uid://bps2vbqwdkc2b" path="res://materials/noise.tres" id="1_mrgqy"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://byrt30315r7ig" path="res://models/phil.gd" id="22_65fwc"]
 [ext_resource type="Script" uid="uid://dcdpcgd14sefm" path="res://addons/cyclops_level_builder/nodes/cyclops_block.gd" id="22_tqase"]
 [ext_resource type="Script" uid="uid://dwk5eiaa0qhyc" path="res://addons/cyclops_level_builder/resources/data_vector_byte.gd" id="23_1tr4g"]
+[ext_resource type="Resource" uid="uid://wtj2d67b6igk" path="res://items/jar.tres" id="23_ycrus"]
 [ext_resource type="Script" uid="uid://dsnx8cok0r114" path="res://addons/cyclops_level_builder/resources/data_vector_int.gd" id="24_00egg"]
 [ext_resource type="Script" uid="uid://bvgadrea280m2" path="res://addons/cyclops_level_builder/resources/data_vector_float.gd" id="25_ycrus"]
 [ext_resource type="PackedScene" uid="uid://mtthy7ejs2tt" path="res://chicken.tscn" id="26_1tr4g"]
@@ -705,6 +706,13 @@ resource = SubResource("Resource_el2fy")
 [node name="sprite" parent="items/item" index="0"]
 texture = ExtResource("13_3r6xx")
 
+[node name="jar" parent="items" instance=ExtResource("11_7gk8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34818, 0.17749, -0.89357)
+resource = ExtResource("23_ycrus")
+
+[node name="sprite" parent="items/jar" index="0"]
+texture = ExtResource("13_3r6xx")
+
 [node name="HTerrain" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 script = ExtResource("16_l8c4v")
@@ -731,9 +739,21 @@ metadata/_custom_type_script = "uid://blejc45j8cdon"
 transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 30.3947, -4.08935, 0)
 scene = ExtResource("26_1tr4g")
 
-[node name="grass" parent="." instance=ExtResource("28_00egg")]
-transform = Transform3D(0.0835957, 0, -0.0737177, 0, 0.111456, 0, 0.0737177, 0, 0.0835957, 37.3952, -7.31652, -4.72471)
+[node name="grass" type="Node3D" parent="."]
+
+[node name="grass" parent="grass" instance=ExtResource("28_00egg")]
+transform = Transform3D(0.75003, 0, -0.661404, 0, 1, 0, 0.661404, 0, 0.75003, 37.3952, -152.894, -4.72471)
+
+[node name="grass2" parent="grass" instance=ExtResource("28_00egg")]
+transform = Transform3D(0.75003, 0, -0.661404, 0, 1, 0, 0.661404, 0, 0.75003, 37.3952, -7.31652, 11.8296)
+
+[node name="grass3" parent="grass" instance=ExtResource("28_00egg")]
+transform = Transform3D(0.75003, 0, -0.661404, 0, 1, 0, 0.661404, 0, 0.75003, 59.4, -7.31652, 11.8296)
+
+[node name="grass4" parent="grass" instance=ExtResource("28_00egg")]
+transform = Transform3D(0.75003, 0, -0.661404, 0, 1, 0, 0.661404, 0, 0.75003, 59.4, -7.31652, -8.04739)
 
 [editable path="characters/shopkeep"]
 [editable path="characters/phil"]
 [editable path="items/item"]
+[editable path="items/jar"]

@@ -53,6 +53,8 @@ player=""
 equipment_slot="These slots are directly linked to equiping items."
 Persist="These objects are saved with the save/load system. They need save() functions."
 perk="Updated whenever any perk changes"
+grass=""
+jarable="These fit into jars and can be collected"
 
 [gui]
 

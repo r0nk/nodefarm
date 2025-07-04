@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://wtj2d67b6igk"]
+
+[ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="1_1k2hm"]
+[ext_resource type="PackedScene" uid="uid://dqdkv7twvfhca" path="res://items/jar.tscn" id="1_vjpsn"]
+[ext_resource type="Texture2D" uid="uid://jf7wg0aruy2y" path="res://images/inventory/jar.png" id="2_vjpsn"]
+
+[resource]
+script = ExtResource("1_1k2hm")
+texture = ExtResource("2_vjpsn")
+id = &"jar"
+type = &"tool"
+description = "This can hold all sorts of stuff. Like bugs."
+flavor = "...or moonshine."
+max_stacks = 100
+count = 1
+price = 20
+equipped_scene = ExtResource("1_vjpsn")
+metadata/_custom_type_script = "uid://bytx0l7rkwx08"
