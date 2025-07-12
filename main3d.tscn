@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://mtthy7ejs2tt" path="res://chicken.tscn" id="26_1tr4g"]
 [ext_resource type="Script" uid="uid://blhu85cw7xhu" path="res://addons/cyclops_level_builder/resources/mesh_vector_data.gd" id="26_3vtuw"]
 [ext_resource type="PackedScene" uid="uid://b3603xnb1smn6" path="res://spawner.tscn" id="27_00egg"]
-[ext_resource type="PackedScene" uid="uid://7jcfjbwdr3ks" path="res://grass.tscn" id="28_00egg"]
+[ext_resource type="PackedScene" uid="uid://7jcfjbwdr3ks" path="res://life/plants/grass.tscn" id="28_00egg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cuacs"]
 albedo_texture = ExtResource("19_81346")
@@ -598,9 +598,6 @@ textures = [[], []]
 [node name="main" type="Node3D"]
 
 [node name="world" parent="." instance=ExtResource("1_3kllw")]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 7.35845e-08, 0.539932, 0.841709, -4.72023e-08, 0.841709, -0.539932, -10.9166, 7.09611, -2.98215)
 
 [node name="characters" type="Node3D" parent="."]
 transform = Transform3D(0.228983, 0, 0, 0, 0.228983, 0, 0, 0, 0.228983, 51.1328, -5.00432, -50.3553)
