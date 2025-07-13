@@ -1,0 +1,143 @@
+[gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://c2kfgjln12wiu"]
+
+[ext_resource type="Texture2D" uid="uid://b8ipupucyxq81" path="res://images/Default/pattern_33.png" id="1_oe27g"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_k814q"]
+parameter_name = "one_out"
+default_value_enabled = true
+default_value = Color(1, 0.583333, 0, 1)
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_2wyru"]
+default_input_values = [0, 0.0, 1, 0.5, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
+
+[sub_resource type="VisualShaderNodeVectorDistance" id="VisualShaderNodeVectorDistance_xb7ia"]
+output_port_for_preview = 0
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_7qu4j"]
+parameter_name = "one_in2"
+default_value_enabled = true
+default_value = Color(0, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_4anxp"]
+parameter_name = "one_out2"
+default_value_enabled = true
+default_value = Color(4.81308e-08, 0.475758, 0.586611, 1)
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_fp8og"]
+default_input_values = [0, 0.0, 1, 0.5, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_flntv"]
+texture = ExtResource("1_oe27g")
+
+[sub_resource type="VisualShaderNodeVectorDistance" id="VisualShaderNodeVectorDistance_1ffkh"]
+output_port_for_preview = 0
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_ruv58"]
+parameter_name = "one_in"
+default_value_enabled = true
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform vec4 one_in2 : source_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
+uniform sampler2D tex_frg_2;
+uniform vec4 one_in : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform vec4 one_out : source_color = vec4(1.000000, 0.583333, 0.000000, 1.000000);
+uniform vec4 one_out2 : source_color = vec4(0.000000, 0.475758, 0.586611, 1.000000);
+
+
+
+void fragment() {
+// ColorParameter:13
+	vec4 n_out13p0 = one_in2;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// Distance:12
+	float n_out12p0 = distance(vec3(n_out13p0.xyz), vec3(n_out2p0.xyz));
+
+
+// ColorParameter:7
+	vec4 n_out7p0 = one_in;
+
+
+// Distance:5
+	float n_out5p0 = distance(vec3(n_out7p0.xyz), vec3(n_out2p0.xyz));
+
+
+// ColorParameter:10
+	vec4 n_out10p0 = one_out;
+
+
+	vec3 n_out11p0;
+// If:11
+	float n_in11p1 = 0.50000;
+	float n_in11p2 = 0.00001;
+	vec3 n_in11p3 = vec3(0.00000, 0.00000, 0.00000);
+	if(abs(n_out5p0 - n_in11p1) < n_in11p2)
+	{
+		n_out11p0 = n_in11p3;
+	}
+	else if(n_out5p0 < n_in11p1)
+	{
+		n_out11p0 = vec3(n_out10p0.xyz);
+	}
+	else
+	{
+		n_out11p0 = vec3(n_out2p0.xyz);
+	}
+
+
+// ColorParameter:14
+	vec4 n_out14p0 = one_out2;
+
+
+	vec3 n_out15p0;
+// If:15
+	float n_in15p1 = 0.50000;
+	float n_in15p2 = 0.00001;
+	vec3 n_in15p3 = vec3(0.00000, 0.00000, 0.00000);
+	if(abs(n_out12p0 - n_in15p1) < n_in15p2)
+	{
+		n_out15p0 = n_in15p3;
+	}
+	else if(n_out12p0 < n_in15p1)
+	{
+		n_out15p0 = vec3(n_out14p0.xyz);
+	}
+	else
+	{
+		n_out15p0 = n_out11p0;
+	}
+
+
+// Output:0
+	ALBEDO = n_out15p0;
+
+
+}
+"
+graph_offset = Vector2(-1351.96, -123.726)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_flntv")
+nodes/fragment/2/position = Vector2(-2040, 440)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorDistance_1ffkh")
+nodes/fragment/5/position = Vector2(-900, -60)
+nodes/fragment/7/node = SubResource("VisualShaderNodeColorParameter_ruv58")
+nodes/fragment/7/position = Vector2(-1280, -60)
+nodes/fragment/10/node = SubResource("VisualShaderNodeColorParameter_k814q")
+nodes/fragment/10/position = Vector2(-1280, 200)
+nodes/fragment/11/node = SubResource("VisualShaderNodeIf_2wyru")
+nodes/fragment/11/position = Vector2(-600, 160)
+nodes/fragment/12/node = SubResource("VisualShaderNodeVectorDistance_xb7ia")
+nodes/fragment/12/position = Vector2(-380, 560)
+nodes/fragment/13/node = SubResource("VisualShaderNodeColorParameter_7qu4j")
+nodes/fragment/13/position = Vector2(-760, 560)
+nodes/fragment/14/node = SubResource("VisualShaderNodeColorParameter_4anxp")
+nodes/fragment/14/position = Vector2(-760, 820)
+nodes/fragment/15/node = SubResource("VisualShaderNodeIf_fp8og")
+nodes/fragment/15/position = Vector2(-80, 780)
+nodes/fragment/connections = PackedInt32Array(5, 0, 11, 0, 10, 0, 11, 5, 2, 0, 11, 4, 2, 0, 5, 1, 7, 0, 5, 0, 12, 0, 15, 0, 14, 0, 15, 5, 13, 0, 12, 0, 2, 0, 12, 1, 11, 0, 15, 4, 15, 0, 0, 0)

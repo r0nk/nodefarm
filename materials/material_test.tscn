@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://begeai5ycal36"]
+[gd_scene load_steps=48 format=3 uid="uid://begeai5ycal36"]
 
 [ext_resource type="Shader" uid="uid://puhdowohnfii" path="res://materials/displacement_map.tres" id="1_3virq"]
 [ext_resource type="Material" uid="uid://cdvcp345h4b48" path="res://materials/material_test.tres" id="1_nmq4l"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" uid="uid://sx65tcnhgosv" path="res://materials/stepwave.tres" id="10_pmhyp"]
 [ext_resource type="Shader" uid="uid://b0df1xjrloes" path="res://materials/sine.tres" id="11_tgbu4"]
 [ext_resource type="Shader" uid="uid://xnmdbjg1ots0" path="res://materials/voronoi.gdshader" id="12_nfqir"]
+[ext_resource type="Shader" uid="uid://c2kfgjln12wiu" path="res://materials/color_mapper.tres" id="13_074gg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4sx8f"]
 render_priority = 0
@@ -138,6 +139,14 @@ noise = SubResource("FastNoiseLite_av4ji")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvbs3"]
 albedo_texture = SubResource("NoiseTexture2D_g2wek")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhhe1"]
+render_priority = 0
+shader = ExtResource("13_074gg")
+shader_parameter/one_in2 = Color(0, 0, 0, 1)
+shader_parameter/one_in = Color(1, 1, 1, 1)
+shader_parameter/one_out = Color(1, 0.566667, 0, 1)
+shader_parameter/one_out2 = Color(0, 0.475758, 0.586611, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rps46"]
 render_priority = 0
@@ -323,6 +332,17 @@ rings = 20
 
 [node name="CSGBox3D" type="CSGBox3D" parent="static ball16"]
 transform = Transform3D(0.999942, 0.0107336, 0, -0.0107336, 0.999942, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
+
+[node name="static ball17" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 55.0331)
+radius = 1.0
+radial_segments = 20
+rings = 20
+material = SubResource("ShaderMaterial_dhhe1")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="static ball17"]
+transform = Transform3D(0.999942, 0.0107336, 0, -0.0107336, 0.999942, 0, 0, 0, 1, -1.80099, 0.00715685, -0.00265503)
+material = SubResource("ShaderMaterial_dhhe1")
 
 [node name="static ball8" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22764, 29.4479)
