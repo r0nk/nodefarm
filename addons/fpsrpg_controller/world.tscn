@@ -14,7 +14,6 @@ background_mode = 2
 sky = SubResource("Sky_6t7hb")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 7.65
-fog_enabled = true
 fog_mode = 1
 fog_density = 1.0
 fog_depth_begin = 50.0

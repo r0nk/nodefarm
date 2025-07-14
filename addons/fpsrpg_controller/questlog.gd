@@ -1,8 +1,10 @@
 extends Control
 
-var tracked:String = "Fight the scarecrow"
+
 var quests = {} #indexed by quest name
 
+#quests[tracked]
+var tracked:String = "Fight the scarecrow"
 
 @export var starting_quest:Quest
 @export var inventory:NodePath
@@ -20,6 +22,11 @@ func give_rewards(quest):
 	for item in quest.rewards:
 		get_node(inventory).add(item)
 
+func update_tracker():
+	print(%quest_tracker);
+
+	%quest_tracker.get_node("title").text=tracked
+	%quest_tracker.get_node("description").text=quests[tracked].description
 
 func finish_task(quest,task):
 	task.finished=true
@@ -60,3 +67,5 @@ func _input(_event):
 func _ready():
 	if starting_quest:
 		add_quest(starting_quest)
+		tracked=starting_quest.name
+		update_tracker()

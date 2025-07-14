@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=20 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="PackedScene" uid="uid://chwjftxgx6gkb" path="res://merlin.tscn" id="2_tg236"]
 [ext_resource type="PackedScene" uid="uid://dakhvn0iags08" path="res://addons/menus/pause_menu.tscn" id="4_s30wn"]
-[ext_resource type="Script" uid="uid://bsghq5x6crhju" path="res://chunky.gd" id="11_00egg"]
 [ext_resource type="Script" uid="uid://cjxjnigc6ym10" path="res://crafter.gd" id="11_3vnk6"]
 [ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="14_l0lyd"]
 [ext_resource type="PackedScene" uid="uid://cwxt3wejw3t4g" path="res://models/shopkeep.glb" id="18_aef38"]
@@ -95,9 +94,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.92798, 0)
 use_collision = true
 size = Vector3(200, 1, 200)
 material = SubResource("StandardMaterial3D_cana4")
-
-[node name="chunky" type="Node3D" parent="map"]
-script = ExtResource("11_00egg")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00458634, 14.3061, 0.257289)
