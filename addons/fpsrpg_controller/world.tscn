@@ -14,6 +14,10 @@ background_mode = 2
 sky = SubResource("Sky_6t7hb")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 7.65
+fog_enabled = true
+fog_mode = 1
+fog_density = 1.0
+fog_depth_begin = 50.0
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_fwl3v"]
 
@@ -24,7 +28,6 @@ script = ExtResource("1_48ggu")
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.810062, 0.523383, -0.26433, 0, 0.450809, 0.89262, 0.586345, 0.723077, -0.365183, 26.6295, 245.729, 10.8842)
 light_color = Color(0.992157, 0.984314, 0.827451, 1)
-shadow_enabled = true
 directional_shadow_max_distance = 1000.0
 
 [node name="moon" type="DirectionalLight3D" parent="."]
@@ -38,26 +41,26 @@ sky_mode = 1
 [node name="west_boundry" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -47.477)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="west_boundry"]
+[node name="cs" type="CollisionShape3D" parent="west_boundry"]
 shape = SubResource("WorldBoundaryShape3D_fwl3v")
 
 [node name="east_boundry" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 47.1608)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="east_boundry"]
+[node name="cs" type="CollisionShape3D" parent="east_boundry"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_fwl3v")
 
 [node name="north_boundry" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 51.1034, 0, 0.392714)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="north_boundry"]
+[node name="cs" type="CollisionShape3D" parent="north_boundry"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_fwl3v")
 
 [node name="south_boundry" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -48.805, 0, 0.392714)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="south_boundry"]
+[node name="cs" type="CollisionShape3D" parent="south_boundry"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_fwl3v")

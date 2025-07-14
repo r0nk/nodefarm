@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1qflfnun33d6"]
+
+[ext_resource type="Texture2D" uid="uid://wjv5kkge3ik8" path="res://images/Default/pattern_54.png" id="1_qayhr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0kup"]
+albedo_color = Color(0.767346, 0.472114, 7.70092e-07, 1)
+albedo_texture = ExtResource("1_qayhr")
+
+[node name="tree" type="Node3D"]
+
+[node name="trunk" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.402, 0)
+use_collision = true
+height = 100.0
+material = SubResource("StandardMaterial3D_a0kup")

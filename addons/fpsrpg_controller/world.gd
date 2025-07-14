@@ -8,6 +8,8 @@ var time_of_day = 12
 
 @export var world_radius = 500
 
+@export var boundries = true
+
 var day = 0
 
 func set_boundries():
@@ -17,7 +19,12 @@ func set_boundries():
 	$north_boundry.position.x=world_radius
 
 func _ready():
-	set_boundries()
+	if boundries:
+		set_boundries()
+	$west_boundry/cs.disabled=not boundries
+	$east_boundry/cs.disabled=not boundries
+	$south_boundry/cs.disabled=not boundries
+	$north_boundry/cs.disabled=not boundries
 
 func _process(delta):
 	time_of_day+=(delta*day_speed)/3600.0
