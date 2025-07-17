@@ -10,7 +10,14 @@ var tracked:String = "Fight the scarecrow"
 @export var inventory:NodePath
 
 func task_string(task):
-	return "Collect %d/%d %s."%[task.progress,task.target_amount,task.target_item.id]
+	var r = "Collect %d/%d %s."%[task.progress,task.target_amount,task.target_item.id]
+	return r
+
+func quest_tasks_string(quest):
+	var r = ""
+	for task in quest.tasks:
+		r = r+task_string(task)+"\n"
+	return r
 
 func finished(quest):
 	for task in quest.tasks:
@@ -24,16 +31,14 @@ func give_rewards(quest):
 
 func update_tracker():
 	print(%quest_tracker);
-
 	%quest_tracker.get_node("title").text=tracked
-	%quest_tracker.get_node("description").text=quests[tracked].description
+	%quest_tracker.get_node("description").text=quest_tasks_string(quests[tracked])
 
 func finish_task(quest,task):
 	task.finished=true
 	if(finished(quest)):
 		$quest_complete_sfx.play()
 		give_rewards(quest)
-
 
 #update the progress if this item is part of a quest line
 func item_picked_up(item):
@@ -48,17 +53,20 @@ func item_picked_up(item):
 #				if(quest.name==key):
 #					$hud/description.text=task_string(task)
 
+func update_tracked(_index):
+	if($list.is_anything_selected()):
+		var index=$list.get_selected_items()[0]
+		tracked = $list.get_item_text(index)
+	$description.text=quests[tracked].description
+	update_tracker()
+
+
 func add_quest(quest):
 	assert(quest,"tried to add a quest that doesn't exist.")
 	if(quests.has(quest.name)):
 		return
 	quests[quest.name]=quest
-	for task in quest.tasks:
-		print(task.target_item.id)
 	$list.add_item(quest.name)
-	if(!$list.is_anything_selected()):
-		pass
-#		$hud/description.text=task_string(quest.tasks[0])
 
 func _input(_event):
 	if Input.is_action_just_pressed("open_questlog"):

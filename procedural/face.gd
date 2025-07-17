@@ -2,14 +2,14 @@
 extends Node3D
 
 func shuffle():
-	print("shuffling face.");
+	$head/nose.frame=randi_range(0,$head/nose.sprite_frames.get_frame_count("default"))
+	$torso.material.albedo_color=["red","green","blue","purple"].pick_random()
+	$head/hair.material.albedo_color=["red","green","blue","purple"].pick_random()
 
-	$nose.frame=randi_range(0,$nose.sprite_frames.get_frame_count("default"))
+@export_tool_button("randomize","Callable") var shuffle_action = shuffle
 
-@export_tool_button("shuffle face","Callable") var shuffle_action = shuffle
-
-@export_range(0.0,1.0) var confusion
+@export_range(0.0,1.0) var confusion = 0.0
 
 func _process(delta: float) -> void:
-	$left_brow.rotation.x=confusion
-	$right_brow.rotation.x=confusion
+	$head/left_brow.rotation.x=confusion
+	$head/right_brow.rotation.x=confusion

@@ -45,7 +45,7 @@ albedo_texture = SubResource("NoiseTexture2D_0mwmh")
 [node name="main" type="Node3D"]
 
 [node name="world" parent="." instance=ExtResource("1_3kllw")]
-boundries = false
+world_radius = 100
 
 [node name="characters" type="Node3D" parent="."]
 transform = Transform3D(0.228983, 0, 0, 0, 0.228983, 0, 0, 0, 0.228983, 51.1328, -5.00432, -50.3553)
