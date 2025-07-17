@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=21 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
+[ext_resource type="PackedScene" uid="uid://duqr81vc5wk51" path="res://procedural/human.tscn" id="2_5wety"]
 [ext_resource type="PackedScene" uid="uid://chwjftxgx6gkb" path="res://merlin.tscn" id="2_tg236"]
 [ext_resource type="PackedScene" uid="uid://dakhvn0iags08" path="res://addons/menus/pause_menu.tscn" id="4_s30wn"]
 [ext_resource type="Script" uid="uid://cjxjnigc6ym10" path="res://crafter.gd" id="11_3vnk6"]
@@ -43,6 +44,30 @@ noise = SubResource("FastNoiseLite_ycrus")
 albedo_texture = SubResource("NoiseTexture2D_0mwmh")
 
 [node name="main" type="Node3D"]
+
+[node name="human" parent="." instance=ExtResource("2_5wety")]
+transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 0, -4.28259, -62.136)
+
+[node name="human2" parent="." instance=ExtResource("2_5wety")]
+transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 3.09317, -4.28259, -62.136)
+
+[node name="human3" parent="." instance=ExtResource("2_5wety")]
+transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 7.25665, -4.28259, -62.136)
+
+[node name="human4" parent="." instance=ExtResource("2_5wety")]
+transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 7.25665, -4.28259, -57.961)
+
+[node name="human5" parent="." instance=ExtResource("2_5wety")]
+transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 2.90727, -4.28259, -57.961)
+
+[node name="human6" parent="." instance=ExtResource("2_5wety")]
+transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -0.975881, -4.28259, -57.961)
+
+[node name="human7" parent="." instance=ExtResource("2_5wety")]
+transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -3.97149, -4.28259, -57.961)
+
+[node name="human8" parent="." instance=ExtResource("2_5wety")]
+transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -7.50228, -4.28259, -57.961)
 
 [node name="world" parent="." instance=ExtResource("1_3kllw")]
 world_radius = 100

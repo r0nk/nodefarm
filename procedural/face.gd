@@ -11,5 +11,9 @@ func shuffle():
 @export_range(0.0,1.0) var confusion = 0.0
 
 func _process(delta: float) -> void:
-	$head/left_brow.rotation.x=confusion
-	$head/right_brow.rotation.x=confusion
+	pass
+
+func _ready():
+	$head/hair.material = $head/hair.material.duplicate()
+	$torso.material = $torso.material.duplicate()
+	shuffle()

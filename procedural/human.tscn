@@ -1,6 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://duqr81vc5wk51"]
+[gd_scene load_steps=36 format=3 uid="uid://duqr81vc5wk51"]
 
-[ext_resource type="Script" path="res://procedural/face.gd" id="1_vs72t"]
+[ext_resource type="Script" uid="uid://0mwgsfrjn1be" path="res://procedural/face.gd" id="1_vs72t"]
 [ext_resource type="Texture2D" uid="uid://bckg2cm7ilth5" path="res://images/face/iris_blue.png" id="2_pdc0f"]
 [ext_resource type="Texture2D" uid="uid://c6wltoohhunyh" path="res://images/face/mouth.png" id="3_8emqt"]
 [ext_resource type="Texture2D" uid="uid://bv8xpmr70j2ue" path="res://images/face/noses.png" id="4_n3io0"]
@@ -173,77 +173,147 @@ animations = [{
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdc0f"]
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(0.627451, 0.12549, 0.941176, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ontts"]
 resource_local_to_scene = true
-albedo_color = Color(0.627451, 0.12549, 0.941176, 1)
+albedo_color = Color(0, 1, 0, 1)
 albedo_texture = ExtResource("5_vs72t")
 
-[node name="human" type="Node3D"]
+[sub_resource type="Animation" id="Animation_vs72t"]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("torso/right_leg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.524978), Vector3(0, 0, -0.543792), Vector3(0, 0, 0.524978)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("torso/left_leg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.53236), Vector3(0, 0, 0.523599), Vector3(0, 0, -0.523599)]
+}
+
+[sub_resource type="Animation" id="Animation_pdc0f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("torso/right_leg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("torso/left_leg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdc0f"]
+_data = {
+&"RESET": SubResource("Animation_pdc0f"),
+&"walk": SubResource("Animation_vs72t")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vs72t"]
+radius = 1.35475
+height = 6.20861
+
+[node name="human" type="CharacterBody3D"]
 script = ExtResource("1_vs72t")
 
 [node name="head" type="CSGSphere3D" parent="."]
-radius = 5.0
+radius = 1.0
 
 [node name="left_eye" type="Sprite3D" parent="head"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.78118, 0.0702543, -1.9242)
-pixel_size = 0.03
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.01117, 0.0702543, -0.538427)
 texture = ExtResource("2_pdc0f")
 
 [node name="right_eye" type="Sprite3D" parent="head"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.78118, 0.0702543, 1.92876)
-pixel_size = 0.03
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.01117, 0.0702543, 0.483216)
 texture = ExtResource("2_pdc0f")
 
 [node name="mouth" type="AnimatedSprite3D" parent="head"]
-transform = Transform3D(0.0825994, 0, 0.996583, 0, 1, 0, -0.996583, 0, 0.0825994, 4.87297, -3.11148, 0)
-pixel_size = 0.04
+transform = Transform3D(0.0825994, 0, 0.996583, 0, 1, 0, -0.996583, 0, 0.0825994, 0.901685, -0.449824, 0)
+pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_hxjx1")
 
 [node name="nose" type="AnimatedSprite3D" parent="head"]
-transform = Transform3D(0.0825994, 0, 0.996583, 0, 1, 0, -0.996583, 0, 0.0825994, 5.0084, -0.889848, 0)
-pixel_size = 0.05
+transform = Transform3D(0.0825994, 0, 0.996583, 0, 1, 0, -0.996583, 0, 0.0825994, 1.01313, -0.0354975, 0)
 sprite_frames = SubResource("SpriteFrames_xa8ba")
-frame = 1
+frame = 10
 
 [node name="left_brow" type="CSGBox3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46989, 1.4004, -2.29285)
-size = Vector3(1, 0.563354, 2.45215)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.916339, 0.379338, -0.558259)
+size = Vector3(0.25, 0.141, 0.613)
 material = SubResource("StandardMaterial3D_7eyd4")
 
 [node name="right_brow" type="CSGBox3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46989, 1.4004, 2.10533)
-size = Vector3(1, 0.563354, 2.45215)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884403, 0.399568, 0.556473)
+size = Vector3(0.25, 0.141, 0.621)
 material = SubResource("StandardMaterial3D_7eyd4")
 
 [node name="hair" type="CSGSphere3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0502, 1.33125, 0)
-radius = 5.15708
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282228, 0.292474, 0)
+radius = 1.1
 material = SubResource("StandardMaterial3D_pdc0f")
 
 [node name="torso" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.629, 0)
-radius = 4.20215
-height = 13.4893
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.08486, 0)
 material = SubResource("StandardMaterial3D_ontts")
 
-[node name="left_leg" type="CSGCylinder3D" parent="torso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9721, -2.08955)
-radius = 1.41211
-height = 10.2637
+[node name="right_leg" type="Node3D" parent="torso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99703, 0.194518)
 
-[node name="right_leg" type="CSGCylinder3D" parent="torso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9721, 2.21014)
-radius = 1.41211
-height = 10.2637
+[node name="right_leg" type="CSGCylinder3D" parent="torso/right_leg"]
+transform = Transform3D(0.999983, 0, 0, 0, 0.999983, 0, 0, 0, 1, 0, -1.02487, 0)
+radius = 0.2
+
+[node name="left_leg" type="Node3D" parent="torso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99703, -0.249164)
+
+[node name="left_leg" type="CSGCylinder3D" parent="torso/left_leg"]
+transform = Transform3D(0.999987, 0, 0, 0, 0.999987, 0, 0, 0, 1, 0, -1.02487, 0)
+radius = 0.2
 
 [node name="right_arm" type="CSGCylinder3D" parent="torso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02978, 5.25387)
-radius = 1.0
-height = 11.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0176702, 0.715921)
+radius = 0.158203
 
 [node name="left_arm" type="CSGCylinder3D" parent="torso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17114, -4.78191)
-radius = 1.0
-height = 11.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00516653, -0.767643)
+radius = 0.176758
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pdc0f")
+}
+
+[node name="cs" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75114, 0)
+shape = SubResource("CapsuleShape3D_vs72t")
