@@ -110,6 +110,9 @@ func _process(delta):
 		return
 
 	process_input(delta)
+
+	$camera/hand.visible=!$climbing.active
+
 	if($climbing.active):
 		return #let the climbing script handle movement
 	$climbing.rotation=$camera.rotation
