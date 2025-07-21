@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=27 format=3 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" uid="uid://i20n6ku8iy5v" path="res://addons/fpsrpg_controller/player.gd" id="1"]
 [ext_resource type="Script" uid="uid://c72oyuju4lp25" path="res://addons/fpsrpg_controller/HUD.gd" id="2_3y5t6"]
 [ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://addons/fpsrpg_controller/sfx/snap.ogg" id="3_aa11l"]
+[ext_resource type="Script" uid="uid://bxad7srnphnvi" path="res://addons/fpsrpg_controller/climbing.gd" id="5_00bt2"]
 [ext_resource type="PackedScene" uid="uid://c5p8hchuic3ed" path="res://addons/fpsrpg_controller/equipped.tscn" id="5_yhe1a"]
 [ext_resource type="PackedScene" uid="uid://pyi3khqxetpk" path="res://addons/fpsrpg_controller/inventory.tscn" id="6_axg0w"]
 [ext_resource type="Script" uid="uid://5d1okwfswone" path="res://addons/fpsrpg_controller/questlog.gd" id="7_a0i7b"]
@@ -618,6 +619,23 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Hunger"
+
+[node name="climbing" type="Node3D" parent="."]
+transform = Transform3D(-1, 1.52574e-09, 8.74095e-08, 0, 0.999847, -0.0174524, -8.74228e-08, -0.0174524, -0.999848, 0, 0.813039, 0)
+script = ExtResource("5_00bt2")
+
+[node name="label" type="RichTextLabel" parent="climbing"]
+offset_left = 363.0
+offset_top = 232.0
+offset_right = 545.0
+offset_bottom = 285.0
+theme = ExtResource("8_kbxqm")
+bbcode_enabled = true
+text = "[wave] climbable [/wave]"
+
+[node name="start_ray" type="RayCast3D" parent="climbing"]
+transform = Transform3D(1, 0, -2.91038e-11, 0, -4.28408e-08, -1, 0, 1, -2.98023e-08, 0, 0, 0)
+target_position = Vector3(0, -1.5, 0)
 
 [connection signal="item_picked_up" from="inventory" to="game_menu/Quests" method="item_picked_up"]
 [connection signal="selection_changed" from="inventory/view/hotbar" to="camera/hand" method="selection_changed"]

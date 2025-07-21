@@ -173,11 +173,11 @@ animations = [{
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vs72t"]
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdc0f"]
 resource_local_to_scene = true
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(0.627451, 0.12549, 0.941176, 1)
 albedo_texture = ExtResource("5_vs72t")
 
 [sub_resource type="Animation" id="Animation_pdc0f"]
@@ -267,7 +267,7 @@ sprite_frames = SubResource("SpriteFrames_hxjx1")
 [node name="nose" type="AnimatedSprite3D" parent="head"]
 transform = Transform3D(0.0825994, 0, 0.996583, 0, 1, 0, -0.996583, 0, 0.0825994, 1.01313, -0.0354975, 0)
 sprite_frames = SubResource("SpriteFrames_xa8ba")
-frame = 8
+frame = 2
 
 [node name="left_brow" type="CSGBox3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.916339, 0.379338, -0.558259)

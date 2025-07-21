@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=30 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="PackedScene" uid="uid://duqr81vc5wk51" path="res://procedural/human.tscn" id="2_5wety"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://d3kmkfpogyrkl" path="res://items/gummy_shark.tres" id="8_81346"]
 [ext_resource type="Script" uid="uid://cjxjnigc6ym10" path="res://crafter.gd" id="11_3vnk6"]
 [ext_resource type="PackedScene" uid="uid://c1qflfnun33d6" path="res://life/plants/tree.tscn" id="13_2bldt"]
+[ext_resource type="Texture2D" uid="uid://c0mfx6y88qe27" path="res://images/Default/pattern_57.png" id="13_cuacs"]
 [ext_resource type="Texture2D" uid="uid://brg8wdosabelf" path="res://images/Default/pattern_58.png" id="13_d006i"]
 [ext_resource type="PackedScene" uid="uid://cs2ah7vcdnj78" path="res://addons/fpsrpg_controller/item.tscn" id="14_7rmuh"]
 [ext_resource type="PackedScene" uid="uid://c4mojw8cw1g63" path="res://addons/combat/training_dummy.tscn" id="14_jiv15"]
@@ -36,7 +37,11 @@ noise = SubResource("FastNoiseLite_ycrus")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cana4"]
 albedo_texture = SubResource("NoiseTexture2D_0mwmh")
 
-[sub_resource type="Resource" id="Resource_81346"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0dbvw"]
+albedo_texture = ExtResource("13_cuacs")
+uv1_scale = Vector3(10, 2, 1)
+
+[sub_resource type="Resource" id="Resource_3vnk6"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -119,6 +124,12 @@ light_color = Color(0, 0.847059, 1, 1)
 light_energy = 20.0
 omni_range = 43.0
 
+[node name="CSGBox3D" type="CSGBox3D" parent="map" groups=["climbable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.3304, 15.0073, 25.1001)
+use_collision = true
+size = Vector3(5, 50, 5)
+material = SubResource("StandardMaterial3D_0dbvw")
+
 [node name="pause_menu" parent="." instance=ExtResource("4_s30wn")]
 visible = false
 
@@ -127,7 +138,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -7.50597, 56.1246)
 
 [node name="item" parent="training_dummy" instance=ExtResource("14_7rmuh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654872, -4.54743)
-resource = SubResource("Resource_81346")
+resource = SubResource("Resource_3vnk6")
 
 [node name="chest" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5598, -6.42798, 0)

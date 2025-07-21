@@ -3,7 +3,6 @@ extends CharacterBody3D
 var input_direction = Vector3()
 var accel = Vector3(0,0,0)
 var gravity_vector = Vector3(0,-98,0)
-var slow_fall = false
 
 var health = 100
 #probably a better way of doing this but yolo lmao
@@ -111,27 +110,22 @@ func _process(delta):
 		return
 
 	process_input(delta)
-	if(slow_fall):
-		gravity_vector = Vector3(0,-38,0)
-	else:
-		gravity_vector = Vector3(0,-98,0)
+	if($climbing.active):
+		return #let the climbing script handle movement
+	$climbing.rotation=$camera.rotation
+
 	accel += gravity_vector*delta*7
 	velocity += (speed*input_direction)+(accel*delta)
 	set_velocity(velocity)
 	set_up_direction(-gravity_vector.normalized())
-	move_and_slide()
-#	velocity
-
 	global_transform=global_transform.interpolate_with(align_with_y(global_transform,-gravity_vector.normalized()),0.15)
-
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-
 	if is_on_floor():
 #		accel=-get_floor_normal()*10
 		accel*=1-delta
 		velocity*=1-(delta*10)
-		if(input_direction==Vector3(0,0,0)): #instant stop on the ground with no input
+		if(input_direction==Vector3(0,0,0) and velocity.y<=0): #instant stop on the ground with no input
 			velocity*=0
 	else:
 		velocity*=1-(delta*8)
+	move_and_slide()
+

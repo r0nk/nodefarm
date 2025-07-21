@@ -55,6 +55,7 @@ Persist="These objects are saved with the save/load system. They need save() fun
 perk="Updated whenever any perk changes"
 grass=""
 jarable="These fit into jars and can be collected"
+climbable="The player can climb things in this group."
 
 [gui]
 
