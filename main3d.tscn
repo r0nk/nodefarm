@@ -1,12 +1,19 @@
-[gd_scene load_steps=30 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=38 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="PackedScene" uid="uid://duqr81vc5wk51" path="res://procedural/human.tscn" id="2_5wety"]
 [ext_resource type="PackedScene" uid="uid://chwjftxgx6gkb" path="res://merlin.tscn" id="2_tg236"]
 [ext_resource type="PackedScene" uid="uid://dakhvn0iags08" path="res://addons/menus/pause_menu.tscn" id="4_s30wn"]
+[ext_resource type="PackedScene" uid="uid://bkkfy25a2uhk" path="res://addons/fpsrpg_controller/quest.tscn" id="7_gylqs"]
 [ext_resource type="Resource" uid="uid://d3kmkfpogyrkl" path="res://items/gummy_shark.tres" id="8_81346"]
+[ext_resource type="PackedScene" uid="uid://dmioofegnneta" path="res://items/wizard_hat.tscn" id="8_l8c4v"]
+[ext_resource type="Texture2D" uid="uid://d2ely8jf7661i" path="res://images/inventory/wizards_hat.png" id="9_tqase"]
+[ext_resource type="Script" uid="uid://ogpi40jk57jq" path="res://addons/fpsrpg_controller/quest_resource.gd" id="10_1tr4g"]
+[ext_resource type="Script" uid="uid://bwfptbym3syq6" path="res://addons/fpsrpg_controller/quest_task.gd" id="11_00egg"]
 [ext_resource type="Script" uid="uid://cjxjnigc6ym10" path="res://crafter.gd" id="11_3vnk6"]
+[ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="12_ycrus"]
 [ext_resource type="PackedScene" uid="uid://c1qflfnun33d6" path="res://life/plants/tree.tscn" id="13_2bldt"]
+[ext_resource type="Script" uid="uid://puda1cg1o17e" path="res://talk_box.gd" id="13_3vtuw"]
 [ext_resource type="Texture2D" uid="uid://c0mfx6y88qe27" path="res://images/Default/pattern_57.png" id="13_cuacs"]
 [ext_resource type="Texture2D" uid="uid://brg8wdosabelf" path="res://images/Default/pattern_58.png" id="13_d006i"]
 [ext_resource type="PackedScene" uid="uid://cs2ah7vcdnj78" path="res://addons/fpsrpg_controller/item.tscn" id="14_7rmuh"]
@@ -14,18 +21,58 @@
 [ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="14_l0lyd"]
 [ext_resource type="PackedScene" uid="uid://dghdadngmf6qv" path="res://addons/combat/rifle.tscn" id="15_aef38"]
 [ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="16_81346"]
-[ext_resource type="PackedScene" uid="uid://cwxt3wejw3t4g" path="res://models/shopkeep.glb" id="18_aef38"]
-[ext_resource type="Texture2D" uid="uid://baxwsx50bpkmm" path="res://models/shopkeeper.png" id="19_81346"]
-[ext_resource type="Script" uid="uid://kvnu0efjkskd" path="res://shopkeep.gd" id="19_cuacs"]
 [ext_resource type="PackedScene" uid="uid://pa7y6i67npuf" path="res://models/phil.tscn" id="21_1nw2n"]
 [ext_resource type="Script" uid="uid://bj8fjtkppp1oj" path="res://store.gd" id="21_gylqs"]
 [ext_resource type="Script" uid="uid://byrt30315r7ig" path="res://models/phil.gd" id="22_65fwc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cuacs"]
-albedo_texture = ExtResource("19_81346")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
 size = Vector3(10, 10, 10)
+
+[sub_resource type="Resource" id="Resource_2jr0v"]
+resource_local_to_scene = true
+script = ExtResource("14_l0lyd")
+texture = ExtResource("9_tqase")
+id = &"wizardhat"
+type = &""
+description = "Slows Fall Rate"
+flavor = "Pinky was always clumsy."
+max_stacks = 100
+count = 1
+price = 20
+equipped_scene = ExtResource("8_l8c4v")
+
+[sub_resource type="Resource" id="Resource_3am2a"]
+resource_local_to_scene = true
+resource_name = "coin"
+script = ExtResource("14_l0lyd")
+texture = ExtResource("12_ycrus")
+id = &"coin"
+type = &""
+description = ""
+flavor = ""
+max_stacks = 1000
+count = 1
+price = 20
+
+[sub_resource type="Resource" id="Resource_f4iwv"]
+resource_local_to_scene = true
+script = ExtResource("11_00egg")
+type = "collect"
+location = Vector3(0, 0, 0)
+target_amount = 10.0
+target_item = SubResource("Resource_3am2a")
+progress = 0.0
+
+[sub_resource type="Resource" id="Resource_0mwmh"]
+resource_local_to_scene = true
+script = ExtResource("10_1tr4g")
+name = "Fight the scarecrow"
+description = "Collect coins by hitting the scarecrow square in the face."
+tasks = Array[ExtResource("11_00egg")]([SubResource("Resource_f4iwv")])
+rewards = Array[ExtResource("14_l0lyd")]([SubResource("Resource_2jr0v")])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cana4"]
+size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0dbvw"]
 
@@ -41,7 +88,7 @@ albedo_texture = SubResource("NoiseTexture2D_0mwmh")
 albedo_texture = ExtResource("13_cuacs")
 uv1_scale = Vector3(10, 2, 1)
 
-[sub_resource type="Resource" id="Resource_3vnk6"]
+[sub_resource type="Resource" id="Resource_gylqs"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -73,18 +120,12 @@ world_radius = 100
 [node name="characters" type="Node3D" parent="."]
 transform = Transform3D(0.228983, 0, 0, 0, 0.228983, 0, 0, 0, 0.228983, 51.1328, -5.00432, -50.3553)
 
-[node name="shopkeep" parent="characters" instance=ExtResource("18_aef38")]
-script = ExtResource("19_cuacs")
-
-[node name="Skeleton3D" parent="characters/shopkeep/Armature" index="0"]
-bones/0/rotation = Quaternion(5.83084e-05, -6.38029e-09, 1, -0.000819982)
-bones/8/rotation = Quaternion(-0.758423, 0.0783967, -0.0238234, 0.646592)
-bones/16/rotation = Quaternion(-0.384381, 0.377177, 0.679563, 0.49818)
-
-[node name="Cube" parent="characters/shopkeep/Armature/Skeleton3D" index="0"]
-material_override = SubResource("StandardMaterial3D_cuacs")
+[node name="shopkeep" parent="characters" instance=ExtResource("2_5wety")]
+transform = Transform3D(-0.0716815, 0, -2.68371, 0, 2.68467, 0, 2.68371, 0, -0.0716815, -3.5237, 2.4508, 0.424118)
+seed = "shopkeep"
 
 [node name="store" type="Area3D" parent="characters/shopkeep" groups=["interactibles"]]
+transform = Transform3D(-0.0099455, 0, 0.372353, 0, 0.372486, 0, -0.372353, 0, -0.0099455, -0.163605, -0.0250101, -0.20874)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("21_gylqs")
@@ -95,6 +136,18 @@ shape = SubResource("BoxShape3D_0fjb1")
 
 [node name="merlin" parent="characters" instance=ExtResource("2_tg236")]
 transform = Transform3D(4.36714, 0, 0, 0, 4.36714, 0, 0, 0, 4.36714, 19.4368, 3.27553, 0.509155)
+
+[node name="quest" parent="characters/merlin" instance=ExtResource("7_gylqs")]
+r = SubResource("Resource_0mwmh")
+
+[node name="talk" type="Area3D" parent="characters/merlin" groups=["interactibles"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.659344, 0.49816)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("13_3vtuw")
+
+[node name="cs" type="CollisionShape3D" parent="characters/merlin/talk"]
+shape = SubResource("BoxShape3D_cana4")
 
 [node name="phil" parent="characters" instance=ExtResource("21_1nw2n")]
 transform = Transform3D(-0.287146, 0, -4.35769, 0, 4.36714, 0, 4.35769, 0, -0.287146, -22.5013, -4.34827, -1.4967)
@@ -138,7 +191,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -7.50597, 56.1246)
 
 [node name="item" parent="training_dummy" instance=ExtResource("14_7rmuh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654872, -4.54743)
-resource = SubResource("Resource_3vnk6")
+resource = SubResource("Resource_gylqs")
 
 [node name="chest" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5598, -6.42798, 0)
@@ -150,5 +203,4 @@ material = SubResource("StandardMaterial3D_jiv15")
 [node name="tree" parent="." instance=ExtResource("13_2bldt")]
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -9.53674e-07, -8.00182, -34.7872)
 
-[editable path="characters/shopkeep"]
 [editable path="characters/phil"]

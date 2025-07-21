@@ -245,6 +245,7 @@ radius = 1.35475
 height = 6.20861
 
 [node name="human" type="CharacterBody3D"]
+transform = Transform3D(0.614743, 0, 0, 0, 0.614743, 0, 0, 0, 0.614743, 0, 0, 0)
 script = ExtResource("1_vs72t")
 seed = ""
 

@@ -172,7 +172,7 @@ text = "Collect 0/8 eggs.
 scroll_active = false
 
 [node name="interact_cast" type="RayCast3D" parent="camera"]
-target_position = Vector3(0, 0, -4000)
+target_position = Vector3(0, 0, -6)
 collision_mask = 2
 collide_with_areas = true
 

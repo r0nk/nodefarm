@@ -30,6 +30,5 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("jump"):
 			active=false
 		if Input.is_action_pressed("move_forward"):
-			get_parent().velocity.y=5
-
+			get_parent().velocity.y=15
 		get_parent().move_and_slide()
