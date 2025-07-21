@@ -1,11 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=28 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="PackedScene" uid="uid://duqr81vc5wk51" path="res://procedural/human.tscn" id="2_5wety"]
 [ext_resource type="PackedScene" uid="uid://chwjftxgx6gkb" path="res://merlin.tscn" id="2_tg236"]
 [ext_resource type="PackedScene" uid="uid://dakhvn0iags08" path="res://addons/menus/pause_menu.tscn" id="4_s30wn"]
+[ext_resource type="Resource" uid="uid://d3kmkfpogyrkl" path="res://items/gummy_shark.tres" id="8_81346"]
 [ext_resource type="Script" uid="uid://cjxjnigc6ym10" path="res://crafter.gd" id="11_3vnk6"]
+[ext_resource type="PackedScene" uid="uid://c1qflfnun33d6" path="res://life/plants/tree.tscn" id="13_2bldt"]
+[ext_resource type="Texture2D" uid="uid://brg8wdosabelf" path="res://images/Default/pattern_58.png" id="13_d006i"]
+[ext_resource type="PackedScene" uid="uid://cs2ah7vcdnj78" path="res://addons/fpsrpg_controller/item.tscn" id="14_7rmuh"]
+[ext_resource type="PackedScene" uid="uid://c4mojw8cw1g63" path="res://addons/combat/training_dummy.tscn" id="14_jiv15"]
 [ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="14_l0lyd"]
+[ext_resource type="PackedScene" uid="uid://dghdadngmf6qv" path="res://addons/combat/rifle.tscn" id="15_aef38"]
+[ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="16_81346"]
 [ext_resource type="PackedScene" uid="uid://cwxt3wejw3t4g" path="res://models/shopkeep.glb" id="18_aef38"]
 [ext_resource type="Texture2D" uid="uid://baxwsx50bpkmm" path="res://models/shopkeeper.png" id="19_81346"]
 [ext_resource type="Script" uid="uid://kvnu0efjkskd" path="res://shopkeep.gd" id="19_cuacs"]
@@ -15,20 +22,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cuacs"]
 albedo_texture = ExtResource("19_81346")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3vtuw"]
-
-[sub_resource type="Resource" id="Resource_0mwmh"]
-script = ExtResource("14_l0lyd")
-texture = SubResource("NoiseTexture2D_3vtuw")
-id = &"cool_hat"
-type = &""
-description = "This item is a cool hat"
-flavor = "you should buy it"
-max_stacks = 100
-count = 1
-price = 20
-metadata/_custom_type_script = "uid://bytx0l7rkwx08"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
 size = Vector3(10, 10, 10)
@@ -43,6 +36,24 @@ noise = SubResource("FastNoiseLite_ycrus")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cana4"]
 albedo_texture = SubResource("NoiseTexture2D_0mwmh")
 
+[sub_resource type="Resource" id="Resource_81346"]
+resource_local_to_scene = true
+resource_name = "laser_gun"
+script = ExtResource("14_l0lyd")
+texture = ExtResource("16_81346")
+id = &"laser_gun"
+type = &"tool"
+description = ""
+flavor = ""
+max_stacks = 10
+count = 1
+price = 20
+equipped_scene = ExtResource("15_aef38")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jiv15"]
+albedo_color = Color(0.602803, 0.464921, 0.00543781, 1)
+albedo_texture = ExtResource("13_d006i")
+
 [node name="main" type="Node3D"]
 
 [node name="human" parent="." instance=ExtResource("2_5wety")]
@@ -50,24 +61,6 @@ transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0
 
 [node name="human2" parent="." instance=ExtResource("2_5wety")]
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 3.09317, -4.28259, -62.136)
-
-[node name="human3" parent="." instance=ExtResource("2_5wety")]
-transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 7.25665, -4.28259, -62.136)
-
-[node name="human4" parent="." instance=ExtResource("2_5wety")]
-transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 7.25665, -4.28259, -57.961)
-
-[node name="human5" parent="." instance=ExtResource("2_5wety")]
-transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 2.90727, -4.28259, -57.961)
-
-[node name="human6" parent="." instance=ExtResource("2_5wety")]
-transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -0.975881, -4.28259, -57.961)
-
-[node name="human7" parent="." instance=ExtResource("2_5wety")]
-transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -3.97149, -4.28259, -57.961)
-
-[node name="human8" parent="." instance=ExtResource("2_5wety")]
-transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -7.50228, -4.28259, -57.961)
 
 [node name="world" parent="." instance=ExtResource("1_3kllw")]
 world_radius = 100
@@ -90,7 +83,7 @@ material_override = SubResource("StandardMaterial3D_cuacs")
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("21_gylqs")
-items = Array[ExtResource("14_l0lyd")]([SubResource("Resource_0mwmh")])
+items = Array[ExtResource("14_l0lyd")]([ExtResource("8_81346")])
 
 [node name="cs" type="CollisionShape3D" parent="characters/shopkeep/store"]
 shape = SubResource("BoxShape3D_0fjb1")
@@ -128,6 +121,23 @@ omni_range = 43.0
 
 [node name="pause_menu" parent="." instance=ExtResource("4_s30wn")]
 visible = false
+
+[node name="training_dummy" parent="." instance=ExtResource("14_jiv15")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -7.50597, 56.1246)
+
+[node name="item" parent="training_dummy" instance=ExtResource("14_7rmuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654872, -4.54743)
+resource = SubResource("Resource_81346")
+
+[node name="chest" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5598, -6.42798, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="chest"]
+size = Vector3(2, 2, 3)
+material = SubResource("StandardMaterial3D_jiv15")
+
+[node name="tree" parent="." instance=ExtResource("13_2bldt")]
+transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -9.53674e-07, -8.00182, -34.7872)
 
 [editable path="characters/shopkeep"]
 [editable path="characters/phil"]

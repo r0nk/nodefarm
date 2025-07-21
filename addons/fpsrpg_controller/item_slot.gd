@@ -6,7 +6,7 @@ var origin
 var dragging=false
 var hovering=false
 
-@export var type:StringName = ""
+@export var types:Array[StringName]
 
 signal item_changed(item)
 

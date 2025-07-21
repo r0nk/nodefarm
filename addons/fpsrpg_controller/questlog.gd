@@ -30,7 +30,6 @@ func give_rewards(quest):
 		get_node(inventory).add(item)
 
 func update_tracker():
-	print(%quest_tracker);
 	%quest_tracker.get_node("title").text=tracked
 	%quest_tracker.get_node("description").text=quest_tasks_string(quests[tracked])
 

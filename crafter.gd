@@ -4,5 +4,5 @@ extends Area3D
 
 func interact():
 	#open up the store panel
-	var sp = %player.get_node("crafting_menu")
+	var sp = $player.get_node("crafting_menu")
 	sp.toggle_from_child("Crafting")

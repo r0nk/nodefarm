@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b7v7ddihhufc3"]
+[gd_scene load_steps=26 format=3 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" uid="uid://i20n6ku8iy5v" path="res://addons/fpsrpg_controller/player.gd" id="1"]
 [ext_resource type="Script" uid="uid://c72oyuju4lp25" path="res://addons/fpsrpg_controller/HUD.gd" id="2_3y5t6"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://cr0qtnq7axohb" path="res://items/blueprints/blueprint.gd" id="13_oi151"]
 [ext_resource type="Resource" uid="uid://bskgf4o3omyjl" path="res://items/laser_gun.tres" id="13_ykiit"]
 [ext_resource type="Resource" uid="uid://drip8mwacd1h4" path="res://items/hammer.tres" id="14_stu41"]
+[ext_resource type="Script" uid="uid://c7e6lndgt2s5" path="res://stomach.gd" id="20_ds02g"]
+[ext_resource type="Script" uid="uid://cx422m10xef2e" path="res://addons/fpsrpg_controller/hunger_bar.gd" id="21_00bt2"]
 
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
@@ -202,6 +204,21 @@ offset_bottom = 535.0
 [node name="select_box" parent="inventory/view/hotbar" index="0"]
 offset_top = 26.0
 
+[node name="one" parent="inventory/view/hotbar" index="1"]
+types = Array[StringName]([&"tool", &"consumable"])
+
+[node name="two" parent="inventory/view/hotbar" index="2"]
+types = Array[StringName]([&"tool", &"consumable"])
+
+[node name="three" parent="inventory/view/hotbar" index="3"]
+types = Array[StringName]([&"tool", &"consumable"])
+
+[node name="four" parent="inventory/view/hotbar" index="4"]
+types = Array[StringName]([&"tool", &"consumable"])
+
+[node name="five" parent="inventory/view/hotbar" index="5"]
+types = Array[StringName]([&"tool", &"consumable"])
+
 [node name="game_menu" type="TabBar" parent="."]
 process_mode = 3
 visible = false
@@ -231,7 +248,6 @@ offset_left = 131.0
 offset_top = 20.0
 offset_right = 193.0
 offset_bottom = 83.0
-type = &"hat"
 
 [node name="Label" type="Label" parent="game_menu/Inventory/hat"]
 layout_mode = 0
@@ -247,7 +263,6 @@ offset_left = 130.0
 offset_top = 91.0
 offset_right = 192.0
 offset_bottom = 154.0
-type = &"cloak"
 
 [node name="Label" type="Label" parent="game_menu/Inventory/cloak"]
 layout_mode = 0
@@ -263,7 +278,6 @@ offset_left = 131.0
 offset_top = 163.0
 offset_right = 193.0
 offset_bottom = 226.0
-type = &"shoes"
 
 [node name="Label" type="Label" parent="game_menu/Inventory/shoes"]
 layout_mode = 0
@@ -584,6 +598,26 @@ offset_right = 753.0
 offset_bottom = 487.0
 mouse_filter = 2
 expand_mode = 1
+
+[node name="stomach" type="Node" parent="."]
+script = ExtResource("20_ds02g")
+
+[node name="hunger_bar" type="ProgressBar" parent="stomach"]
+offset_left = 55.0
+offset_top = 502.0
+offset_right = 171.0
+offset_bottom = 529.0
+max_value = 1.0
+step = 0.001
+value = 0.5
+show_percentage = false
+script = ExtResource("21_00bt2")
+
+[node name="Label" type="Label" parent="stomach/hunger_bar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Hunger"
 
 [connection signal="item_picked_up" from="inventory" to="game_menu/Quests" method="item_picked_up"]
 [connection signal="selection_changed" from="inventory/view/hotbar" to="camera/hand" method="selection_changed"]

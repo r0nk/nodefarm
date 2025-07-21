@@ -172,40 +172,13 @@ animations = [{
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7eyd4"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vs72t"]
+albedo_color = Color(1, 0, 0, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdc0f"]
-albedo_color = Color(0.627451, 0.12549, 0.941176, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ontts"]
 resource_local_to_scene = true
-albedo_color = Color(0, 1, 0, 1)
+albedo_color = Color(0, 0, 1, 1)
 albedo_texture = ExtResource("5_vs72t")
-
-[sub_resource type="Animation" id="Animation_vs72t"]
-resource_name = "walk"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("torso/right_leg:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0.524978), Vector3(0, 0, -0.543792), Vector3(0, 0, 0.524978)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("torso/left_leg:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, -0.53236), Vector3(0, 0, 0.523599), Vector3(0, 0, -0.523599)]
-}
 
 [sub_resource type="Animation" id="Animation_pdc0f"]
 length = 0.001
@@ -234,6 +207,33 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_vs72t"]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("torso/right_leg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.524978), Vector3(0, 0, -0.543792), Vector3(0, 0, 0.524978)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("torso/left_leg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.53236), Vector3(0, 0, 0.523599), Vector3(0, 0, -0.523599)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdc0f"]
 _data = {
 &"RESET": SubResource("Animation_pdc0f"),
@@ -246,6 +246,7 @@ height = 6.20861
 
 [node name="human" type="CharacterBody3D"]
 script = ExtResource("1_vs72t")
+seed = ""
 
 [node name="head" type="CSGSphere3D" parent="."]
 radius = 1.0
@@ -266,7 +267,7 @@ sprite_frames = SubResource("SpriteFrames_hxjx1")
 [node name="nose" type="AnimatedSprite3D" parent="head"]
 transform = Transform3D(0.0825994, 0, 0.996583, 0, 1, 0, -0.996583, 0, 0.0825994, 1.01313, -0.0354975, 0)
 sprite_frames = SubResource("SpriteFrames_xa8ba")
-frame = 10
+frame = 8
 
 [node name="left_brow" type="CSGBox3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.916339, 0.379338, -0.558259)
@@ -281,11 +282,11 @@ material = SubResource("StandardMaterial3D_7eyd4")
 [node name="hair" type="CSGSphere3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282228, 0.292474, 0)
 radius = 1.1
-material = SubResource("StandardMaterial3D_pdc0f")
+material = SubResource("StandardMaterial3D_vs72t")
 
 [node name="torso" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.08486, 0)
-material = SubResource("StandardMaterial3D_ontts")
+material = SubResource("StandardMaterial3D_pdc0f")
 
 [node name="right_leg" type="Node3D" parent="torso"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99703, 0.194518)

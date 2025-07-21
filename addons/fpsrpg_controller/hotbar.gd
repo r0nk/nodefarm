@@ -11,6 +11,5 @@ func check_switch(slot):
 
 func _process(_delta):
 	$select_box.position=selected.position-Vector2(2,-64)
-	check_switch("one")
-	check_switch("two")
-	check_switch("three")
+	for hotkey in ["one","two","three","four","five"]:
+		check_switch(hotkey)

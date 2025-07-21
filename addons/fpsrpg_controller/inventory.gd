@@ -15,7 +15,11 @@ func try_equip_to(thing,slots):
 		return  n.is_in_group("equipment_slot") and n.is_in_group("slot"))
 	equipment_slots.sort()
 	for e in equipment_slots:
-		if not e.item and e.type == thing.type:
+		if e.item and e.item.id==thing.id and e.item.count< e.item.max_stacks:
+			e.item.count+=1
+			return true
+	for e in equipment_slots:
+		if not e.item and thing.type in e.types:
 			e.item=thing
 			return true
 	return false
@@ -62,6 +66,14 @@ func contains(item):
 		if slot.item.id==item.id and slot.item.count>=slot.item.count:
 			return true
 	return false
+
+func spend_active():
+	if not $view/hotbar.selected.item:
+		return
+	$view/hotbar.selected.item.count-=1
+	if $view/hotbar.selected.item.count<=0:
+		$view/hotbar.selected.item=null
+		$view/hotbar.selection_changed.emit(null)
 
 func remove(item):
 	if not item:
