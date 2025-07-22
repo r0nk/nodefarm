@@ -1,10 +1,60 @@
-[gd_scene load_steps=36 format=3 uid="uid://duqr81vc5wk51"]
+[gd_scene load_steps=43 format=3 uid="uid://duqr81vc5wk51"]
 
 [ext_resource type="Script" uid="uid://0mwgsfrjn1be" path="res://procedural/face.gd" id="1_vs72t"]
-[ext_resource type="Texture2D" uid="uid://bckg2cm7ilth5" path="res://images/face/iris_blue.png" id="2_pdc0f"]
+[ext_resource type="Texture2D" uid="uid://dd0rcliix6ogu" path="res://images/face/iris_blue-sheet.png" id="2_vs72t"]
 [ext_resource type="Texture2D" uid="uid://c6wltoohhunyh" path="res://images/face/mouth.png" id="3_8emqt"]
 [ext_resource type="Texture2D" uid="uid://bv8xpmr70j2ue" path="res://images/face/noses.png" id="4_n3io0"]
 [ext_resource type="Texture2D" uid="uid://dh15hvnc3rjvp" path="res://images/Default/pattern_06.png" id="5_vs72t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdc0f"]
+atlas = ExtResource("2_vs72t")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8emqt"]
+atlas = ExtResource("2_vs72t")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3io0"]
+atlas = ExtResource("2_vs72t")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mihaq"]
+atlas = ExtResource("2_vs72t")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yltg"]
+atlas = ExtResource("2_vs72t")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n68ar"]
+atlas = ExtResource("2_vs72t")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_63ooq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdc0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8emqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3io0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mihaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yltg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n68ar")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ontts"]
 atlas = ExtResource("3_8emqt")
@@ -172,12 +222,12 @@ animations = [{
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7eyd4"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vs72t"]
-albedo_color = Color(0, 1, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkgqm"]
+albedo_color = Color(1, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdc0f"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xr41b"]
 resource_local_to_scene = true
-albedo_color = Color(0.627451, 0.12549, 0.941176, 1)
+albedo_color = Color(0, 1, 0, 1)
 albedo_texture = ExtResource("5_vs72t")
 
 [sub_resource type="Animation" id="Animation_pdc0f"]
@@ -252,13 +302,18 @@ seed = ""
 [node name="head" type="CSGSphere3D" parent="."]
 radius = 1.0
 
-[node name="left_eye" type="Sprite3D" parent="head"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.01117, 0.0702543, -0.538427)
-texture = ExtResource("2_pdc0f")
-
-[node name="right_eye" type="Sprite3D" parent="head"]
+[node name="right_eye" type="AnimatedSprite3D" parent="head"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.01117, 0.0702543, 0.483216)
-texture = ExtResource("2_pdc0f")
+sprite_frames = SubResource("SpriteFrames_63ooq")
+animation = &"new_animation"
+frame = 1
+
+[node name="left_eye" type="AnimatedSprite3D" parent="head"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.01117, 0.0702543, -0.421259)
+flip_h = true
+sprite_frames = SubResource("SpriteFrames_63ooq")
+animation = &"new_animation"
+frame = 1
 
 [node name="mouth" type="AnimatedSprite3D" parent="head"]
 transform = Transform3D(0.0825994, 0, 0.996583, 0, 1, 0, -0.996583, 0, 0.0825994, 0.901685, -0.449824, 0)
@@ -268,7 +323,7 @@ sprite_frames = SubResource("SpriteFrames_hxjx1")
 [node name="nose" type="AnimatedSprite3D" parent="head"]
 transform = Transform3D(0.0825994, 0, 0.996583, 0, 1, 0, -0.996583, 0, 0.0825994, 1.01313, -0.0354975, 0)
 sprite_frames = SubResource("SpriteFrames_xa8ba")
-frame = 2
+frame = 3
 
 [node name="left_brow" type="CSGBox3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.916339, 0.379338, -0.558259)
@@ -283,11 +338,11 @@ material = SubResource("StandardMaterial3D_7eyd4")
 [node name="hair" type="CSGSphere3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282228, 0.292474, 0)
 radius = 1.1
-material = SubResource("StandardMaterial3D_vs72t")
+material = SubResource("StandardMaterial3D_rkgqm")
 
 [node name="torso" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.08486, 0)
-material = SubResource("StandardMaterial3D_pdc0f")
+material = SubResource("StandardMaterial3D_xr41b")
 
 [node name="right_leg" type="Node3D" parent="torso"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99703, 0.194518)
