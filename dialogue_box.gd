@@ -4,6 +4,10 @@ extends Area3D
 
 var balloon
 
+func _ready():
+	if dialogue == null:
+		$cs.disabled=true
+
 func start_dialogue():
 	balloon.start(dialogue,"start")
 
@@ -12,4 +16,3 @@ func interact():
 	balloon.ready.connect(start_dialogue) # We have to wait for the balloon to finish loading
 	Player.add_child(balloon)
 	Player.move_locked=true
-

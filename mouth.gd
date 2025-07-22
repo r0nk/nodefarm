@@ -1,12 +1,23 @@
-extends Area3D
+extends AnimatedSprite3D
 
-@export var target_group = "grass"
+@export var pitch_mod = 1.0
 
-signal eat(calories)
+@export var dialogue_name:StringName
 
-func _process(delta):
-	for area in get_overlapping_areas():
-		if(area.get_parent().is_in_group("grass")):
-			area.get_parent().queue_free()
-			eat.emit(20)
+func reset():
+	say(".")
 
+func say(letter):
+	match letter:
+		"a","h","k": frame=1
+		"o": frame=2
+		"e","i","d","x": frame=3
+		"w","r","y": frame=4
+		"t","s","c","z": frame=5
+		"l","n": frame=6
+		"u","q","g","j": frame=7
+		"m","b","p": frame=8
+		"f","v": frame=9
+		_: frame=0
+	$reset_timer.stop()
+	$reset_timer.start()

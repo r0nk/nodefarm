@@ -1,13 +1,16 @@
 extends AudioStreamPlayer
 
-func pitchmod():
+func get_mouth():
 	var speaker_name = get_parent().dialogue_line.character
-	var base = 1.0
+	for m in get_tree().get_nodes_in_group("lip_sync_mouth"):
+		if m.dialogue_name.to_lower()==speaker_name:
+			return m
+	return null
+
+func pitchmod():
+	var m = get_mouth()
+	var base = m.pitch_mod
 	var radius=0.1
-	match speaker_name:
-		"Ember":base=1.5
-		"Pops":base=1
-		"Lucy":base=0.8
 	pitch_scale=randf_range(base-radius,base+radius)
 
 func volumemod(letter):
@@ -17,10 +20,7 @@ func volumemod(letter):
 		volume_db=-10
 
 func lipsync(letter):
-	var speaker_name = get_parent().dialogue_line.character.to_lower()
-	for m in get_tree().get_nodes_in_group("lip_sync_mouth"):
-		if m.name.to_lower()==speaker_name:
-			m.say(letter)
+	get_mouth().say(letter)
 
 func speak(letter,index,speed):
 	if letter ==" ":

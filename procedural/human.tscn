@@ -1,10 +1,12 @@
-[gd_scene load_steps=43 format=3 uid="uid://duqr81vc5wk51"]
+[gd_scene load_steps=45 format=3 uid="uid://duqr81vc5wk51"]
 
 [ext_resource type="Script" uid="uid://0mwgsfrjn1be" path="res://procedural/face.gd" id="1_vs72t"]
 [ext_resource type="Texture2D" uid="uid://dd0rcliix6ogu" path="res://images/face/iris_blue-sheet.png" id="2_vs72t"]
 [ext_resource type="Texture2D" uid="uid://c6wltoohhunyh" path="res://images/face/mouth.png" id="3_8emqt"]
+[ext_resource type="Script" uid="uid://dwivu13usjvxc" path="res://mouth.gd" id="4_8emqt"]
 [ext_resource type="Texture2D" uid="uid://bv8xpmr70j2ue" path="res://images/face/noses.png" id="4_n3io0"]
 [ext_resource type="Texture2D" uid="uid://dh15hvnc3rjvp" path="res://images/Default/pattern_06.png" id="5_vs72t"]
+[ext_resource type="PackedScene" uid="uid://b8irfe3j3bv4m" path="res://dialogue_box.tscn" id="6_pdc0f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pdc0f"]
 atlas = ExtResource("2_vs72t")
@@ -52,7 +54,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_n68ar")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -222,12 +224,12 @@ animations = [{
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7eyd4"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkgqm"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xr41b"]
-resource_local_to_scene = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3io0"]
 albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mihaq"]
+resource_local_to_scene = true
+albedo_color = Color(0.627451, 0.12549, 0.941176, 1)
 albedo_texture = ExtResource("5_vs72t")
 
 [sub_resource type="Animation" id="Animation_pdc0f"]
@@ -304,26 +306,31 @@ radius = 1.0
 
 [node name="right_eye" type="AnimatedSprite3D" parent="head"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.01117, 0.0702543, 0.483216)
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_63ooq")
-animation = &"new_animation"
-frame = 1
+frame = 4
 
 [node name="left_eye" type="AnimatedSprite3D" parent="head"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.01117, 0.0702543, -0.421259)
 flip_h = true
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_63ooq")
-animation = &"new_animation"
-frame = 1
+frame = 4
 
-[node name="mouth" type="AnimatedSprite3D" parent="head"]
+[node name="mouth" type="AnimatedSprite3D" parent="head" groups=["lip_sync_mouth"]]
 transform = Transform3D(0.0825994, 0, 0.996583, 0, 1, 0, -0.996583, 0, 0.0825994, 0.901685, -0.449824, 0)
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_hxjx1")
+script = ExtResource("4_8emqt")
+
+[node name="reset_timer" type="Timer" parent="head/mouth"]
+wait_time = 0.4
 
 [node name="nose" type="AnimatedSprite3D" parent="head"]
 transform = Transform3D(0.0825994, 0, 0.996583, 0, 1, 0, -0.996583, 0, 0.0825994, 1.01313, -0.0354975, 0)
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_xa8ba")
-frame = 3
+frame = 10
 
 [node name="left_brow" type="CSGBox3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.916339, 0.379338, -0.558259)
@@ -338,11 +345,11 @@ material = SubResource("StandardMaterial3D_7eyd4")
 [node name="hair" type="CSGSphere3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282228, 0.292474, 0)
 radius = 1.1
-material = SubResource("StandardMaterial3D_rkgqm")
+material = SubResource("StandardMaterial3D_n3io0")
 
 [node name="torso" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.08486, 0)
-material = SubResource("StandardMaterial3D_xr41b")
+material = SubResource("StandardMaterial3D_mihaq")
 
 [node name="right_leg" type="Node3D" parent="torso"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99703, 0.194518)
@@ -374,3 +381,5 @@ libraries = {
 [node name="cs" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75114, 0)
 shape = SubResource("CapsuleShape3D_vs72t")
+
+[node name="dialogue_box" parent="." instance=ExtResource("6_pdc0f")]

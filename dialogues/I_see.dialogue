@@ -1,0 +1,5 @@
+~ start
+guy: I see you.
+guy: I Know what your doing...
+do Player.move_locked=false
+=> END
