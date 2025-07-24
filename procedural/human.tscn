@@ -1,8 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://duqr81vc5wk51"]
+[gd_scene load_steps=48 format=3 uid="uid://duqr81vc5wk51"]
 
 [ext_resource type="Script" uid="uid://0mwgsfrjn1be" path="res://procedural/face.gd" id="1_vs72t"]
 [ext_resource type="Texture2D" uid="uid://dd0rcliix6ogu" path="res://images/face/iris_blue-sheet.png" id="2_vs72t"]
 [ext_resource type="Texture2D" uid="uid://c6wltoohhunyh" path="res://images/face/mouth.png" id="3_8emqt"]
+[ext_resource type="Script" uid="uid://m3ek2b50k6db" path="res://procedural/eye.gd" id="3_mihaq"]
+[ext_resource type="Script" uid="uid://clk6sb6avqc8s" path="res://random_timer.gd" id="4_7yltg"]
 [ext_resource type="Script" uid="uid://dwivu13usjvxc" path="res://mouth.gd" id="4_8emqt"]
 [ext_resource type="Texture2D" uid="uid://bv8xpmr70j2ue" path="res://images/face/noses.png" id="4_n3io0"]
 [ext_resource type="Texture2D" uid="uid://dh15hvnc3rjvp" path="res://images/Default/pattern_06.png" id="5_vs72t"]
@@ -225,7 +227,7 @@ animations = [{
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7eyd4"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3io0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yltg"]
 albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="Animation" id="Animation_pdc0f"]
@@ -288,9 +290,9 @@ _data = {
 &"walk": SubResource("Animation_vs72t")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mihaq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n68ar"]
 resource_local_to_scene = true
-albedo_color = Color(0, 1, 0, 1)
+albedo_color = Color(0, 0, 1, 1)
 albedo_texture = ExtResource("5_vs72t")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vs72t"]
@@ -306,16 +308,33 @@ seed = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.86326, 0)
 radius = 1.0
 
-[node name="right_eye" type="AnimatedSprite3D" parent="head"]
-transform = Transform3D(-0.999996, 0, -0.00294968, 0, 1, 0, 0.00294968, 0, -0.999996, 0.480231, 0.0702538, -1.01259)
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_63ooq")
+[node name="eyes" type="Node3D" parent="head"]
+transform = Transform3D(-0.999995, 0, -0.00294962, 0, 1, 0, 0.00294962, 0, -0.999995, 0.0154785, 0.0702538, -1.01259)
 
-[node name="left_eye" type="AnimatedSprite3D" parent="head"]
-transform = Transform3D(-0.999996, 0, -0.00294968, 0, 1, 0, 0.00294968, 0, -0.999996, -0.42424, 0.0702538, -1.00992)
-flip_h = true
+[node name="right" type="AnimatedSprite3D" parent="head/eyes"]
+transform = Transform3D(1, 0, 2.32831e-10, 0, 1, 0, -2.32831e-10, 0, 1, -0.471303, 0, -0.00138998)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_63ooq")
+frame = 1
+script = ExtResource("3_mihaq")
+
+[node name="left" type="AnimatedSprite3D" parent="head/eyes"]
+transform = Transform3D(1, 0, 2.32831e-10, 0, 1, 0, -2.32831e-10, 0, 1, 0.413547, 0, 0.00122023)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_63ooq")
+frame = 1
+script = ExtResource("3_mihaq")
+
+[node name="blink_timer" type="Timer" parent="head/eyes"]
+wait_time = 4.0
+autostart = true
+script = ExtResource("4_7yltg")
+range = 1.0
+
+[node name="blink_duration" type="Timer" parent="head/eyes"]
+wait_time = 0.2
+one_shot = true
+script = ExtResource("4_7yltg")
 
 [node name="mouth" type="AnimatedSprite3D" parent="head" groups=["lip_sync_mouth"]]
 transform = Transform3D(-0.996822, 0, 0.0796595, 0, 1, 0, -0.0796595, 0, -0.996822, -0.00265964, -0.449824, -0.901681)
@@ -330,6 +349,7 @@ wait_time = 0.3
 transform = Transform3D(-0.996822, 0, 0.0796595, 0, 1, 0, -0.0796595, 0, -0.996822, -0.00298836, -0.0354972, -1.01313)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_xa8ba")
+frame = 5
 
 [node name="left_brow" type="CSGBox3D" parent="head"]
 transform = Transform3D(-0.00294963, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.00294963, -0.560959, 0.379338, -0.914688)
@@ -344,7 +364,7 @@ material = SubResource("StandardMaterial3D_7eyd4")
 [node name="hair" type="CSGSphere3D" parent="head"]
 transform = Transform3D(-0.00294963, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.00294963, 0.000832469, 0.292474, 0.282227)
 radius = 1.1
-material = SubResource("StandardMaterial3D_n3io0")
+material = SubResource("StandardMaterial3D_7yltg")
 
 [node name="legs" type="Node3D" parent="."]
 transform = Transform3D(-0.00294963, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.00294963, 0, 2.7784, 0)
@@ -375,7 +395,7 @@ path_height_offset = -1.0
 
 [node name="torso" type="CSGCylinder3D" parent="."]
 transform = Transform3D(-0.00294963, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.00294963, 0, 2.7784, 0)
-material = SubResource("StandardMaterial3D_mihaq")
+material = SubResource("StandardMaterial3D_n68ar")
 
 [node name="right_arm" type="CSGCylinder3D" parent="torso"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0176702, 0.715921)
@@ -392,4 +412,8 @@ shape = SubResource("CapsuleShape3D_vs72t")
 [node name="dialogue_box" parent="." instance=ExtResource("6_pdc0f")]
 transform = Transform3D(-0.00294963, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.00294963, 0, 4.86326, 0)
 
+[connection signal="timeout" from="head/eyes/blink_timer" to="head/eyes/right" method="blink"]
+[connection signal="timeout" from="head/eyes/blink_timer" to="head/eyes/left" method="blink"]
+[connection signal="timeout" from="head/eyes/blink_duration" to="head/eyes/right" method="unblink"]
+[connection signal="timeout" from="head/eyes/blink_duration" to="head/eyes/left" method="unblink"]
 [connection signal="timeout" from="head/mouth/reset_timer" to="head/mouth" method="reset"]

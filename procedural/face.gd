@@ -14,9 +14,9 @@ func shuffle():
 	if(seed == ""):
 		rng.randomize()
 	$head/nose.frame=rng.randi_range(0,$head/nose.sprite_frames.get_frame_count("default"))
-	var eye_frame = rng.randi_range(0,$head/right_eye.sprite_frames.get_frame_count("default"))
-	$head/right_eye.frame=eye_frame
-	$head/left_eye.frame=eye_frame
+	var eye_frame = rng.randi_range(0,$head/eyes/left.sprite_frames.get_frame_count("default"))
+	$head/eyes/right.frame=eye_frame
+	$head/eyes/left.frame=eye_frame
 	$torso.material.albedo_color=s_pick_random(["red","green","blue","purple"])
 	$head/hair.material.albedo_color=s_pick_random(["red","green","blue","purple"])
 

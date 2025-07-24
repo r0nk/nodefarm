@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dr0jh3r84h7ad"]
+
+[ext_resource type="Texture2D" uid="uid://dd0rcliix6ogu" path="res://images/face/iris_blue-sheet.png" id="1_epanq"]
+[ext_resource type="Script" uid="uid://m3ek2b50k6db" path="res://procedural/eye.gd" id="2_h8ecl"]
+[ext_resource type="Script" uid="uid://clk6sb6avqc8s" path="res://random_timer.gd" id="3_whhoy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdc0f"]
+atlas = ExtResource("1_epanq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8emqt"]
+atlas = ExtResource("1_epanq")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3io0"]
+atlas = ExtResource("1_epanq")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mihaq"]
+atlas = ExtResource("1_epanq")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yltg"]
+atlas = ExtResource("1_epanq")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n68ar"]
+atlas = ExtResource("1_epanq")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_63ooq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdc0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8emqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3io0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mihaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yltg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n68ar")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="right_eye" type="AnimatedSprite3D"]
+transform = Transform3D(-0.999996, 0, -0.00294968, 0, 1, 0, 0.00294968, 0, -0.999996, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_63ooq")
+frame = 5
+script = ExtResource("2_h8ecl")
+
+[node name="blink_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+script = ExtResource("3_whhoy")
+range = 2.0
+
+[node name="blink_duration" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="blink_timer" to="." method="blink"]
+[connection signal="timeout" from="blink_duration" to="." method="unblink"]
