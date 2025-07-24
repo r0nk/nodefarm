@@ -43,6 +43,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$camera/HUD/crosshair.position = get_viewport().size/2
 	$camera/HUD/sights.position = get_viewport().size/2
+	DialogueManager.dialogue_ended.connect(dialogue_ended)
 
 func _input(event):
 	if (event is InputEventMouseMotion) and not move_locked:
@@ -92,10 +93,6 @@ func process_input(delta):
 		velocity-=gravity_vector.normalized()*jump_force
 	input_direction = input_direction.normalized().rotated(-gravity_vector.normalized(),$camera.rotation.y)
 
-func dialogic_event_handler(e):
-	if e == "unlock_player":
-		move_locked=false
-
 #http://kidscancode.org/godot_recipes/3d/3d_align_surface/
 #I'm a kid okay
 func align_with_y(xform,new_y):
@@ -103,6 +100,9 @@ func align_with_y(xform,new_y):
 	xform.basis.x = -xform.basis.z.cross(new_y)
 	xform.basis = xform.basis.orthonormalized()
 	return xform
+
+func dialogue_ended(resource):
+	move_locked=false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

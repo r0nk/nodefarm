@@ -6,6 +6,8 @@ extends Node3D
 
 @onready var navigation_agent:NavigationAgent3D = $pathfind
 
+var move_locked=false
+
 func _ready():
 	navigation_agent.path_desired_distance=0.5
 	navigation_agent.target_desired_distance=0.5
@@ -22,7 +24,7 @@ func head_to(target_node):
 	navigation_agent.set_target_position(target.global_position)
 
 func _process(delta):
-	if navigation_agent.is_navigation_finished():
+	if navigation_agent.is_navigation_finished() or move_locked:
 		if $anim.is_playing():
 			$anim.play("RESET")
 		return

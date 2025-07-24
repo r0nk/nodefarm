@@ -26,11 +26,11 @@
 [ext_resource type="Script" uid="uid://byrt30315r7ig" path="res://models/phil.gd" id="22_65fwc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gylqs"]
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8c4v"]
 resource_local_to_scene = true
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(0, 1, 0, 1)
 albedo_texture = ExtResource("2_tqase")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
@@ -85,7 +85,7 @@ size = Vector3(2, 2, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0dbvw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_00egg"]
-vertices = PackedVector3Array(-3.75, -7.04549, -5.75, -2.25, -7.04549, -5.75, -2.5, -7.04549, -99, -4.25, -7.04549, -4.75, -99, -7.04549, -99, -99, -7.04549, -4.75, 13.5, -7.04549, -6, 13.5, -7.04549, -99, 14.5, -7.04549, -5.25, 14.5, -7.04549, -3.25, 99, -7.04549, -3.25, 99, -7.04549, -99, -3.75, -6.79549, 4.5, -2, -5.29549, 4.5, -2, -5.29549, -3.75, -3.75, -6.79549, -3.75, -4.25, -7.04549, 5.5, -99, -7.04549, 5.5, 12.5, -1.54549, 4, 12.5, -1.54549, -4, 3.8, -1.54549, -3.85, 3.8, -1.54549, 4.3, 5.75, -7.04549, -3.75, 5.75, -7.04549, 4, 12.25, -7.04549, 4, 12.25, -7.04549, -3.75, 14.5, -7.04549, 3.5, 99, -7.04549, 3.5, 14.5, -7.04549, 5.5, 13.75, -7.04549, 6.25, 12.5, -7.04549, 99, 99, -7.04549, 99, 12.25, -7.04549, 6.25, -3.5, -7.04549, 99, -3.5, -7.04549, 6.5, -99, -7.04549, 99)
+vertices = PackedVector3Array(-4, -7.06354, -5.75, -2.5, -7.06354, -5.75, -2.75, -7.06354, -99, -4.5, -7.06354, -4.75, -99, -7.06354, -99, -99, -7.06354, -4.75, 13.5, -7.06354, -6, 13.5, -7.06354, -99, 14.5, -7.06354, -5.25, 14.5, -7.06354, -3.25, 99, -7.06354, -3.25, 99, -7.06354, -99, -4, -6.81354, 4.5, -2.25, -5.56354, 4.5, -2.25, -5.56354, -3.75, -4, -6.81354, -3.75, -4.5, -7.06354, 5.5, -99, -7.06354, 5.5, 12.5, -1.56354, 4.25, 12.5, -1.56354, -4, 3.65, -1.56354, -3.85, 3.65, -1.56354, 4.4, 5.75, -7.06354, -3.75, 5.75, -7.06354, 4, 12.25, -7.06354, 4, 12.25, -7.06354, -3.75, 14.5, -7.06354, 3.5, 99, -7.06354, 3.5, 14.5, -7.06354, 5.5, 13.75, -7.06354, 6.25, 12.5, -7.06354, 99, 99, -7.06354, 99, 12.25, -7.06354, 6.25, -3.75, -7.06354, 99, -3.75, -7.06354, 6.5, -99, -7.06354, 99)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(6, 1, 7), PackedInt32Array(7, 1, 2), PackedInt32Array(10, 9, 8), PackedInt32Array(8, 6, 10), PackedInt32Array(10, 6, 7), PackedInt32Array(10, 7, 11), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(12, 16, 15), PackedInt32Array(15, 16, 3), PackedInt32Array(3, 16, 17), PackedInt32Array(3, 17, 5), PackedInt32Array(13, 14, 21), PackedInt32Array(21, 14, 20), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(25, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(9, 10, 26), PackedInt32Array(26, 10, 27), PackedInt32Array(28, 26, 27), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 31), PackedInt32Array(29, 31, 30), PackedInt32Array(30, 32, 29), PackedInt32Array(34, 33, 16), PackedInt32Array(16, 33, 17), PackedInt32Array(17, 33, 35), PackedInt32Array(34, 32, 33), PackedInt32Array(33, 32, 30)]
 agent_height = 4.0
 agent_radius = 1.0
@@ -124,16 +124,16 @@ transform = Transform3D(-0.0657351, -0.333891, 0.551225, 0, 0.554084, 0.335624, 
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 3.09317, -7.43304, -62.136)
 
 [node name="right_eye" parent="human2/head" index="0"]
-frame = 5
+frame = 3
 
 [node name="left_eye" parent="human2/head" index="1"]
-frame = 5
+frame = 3
 
 [node name="mouth" parent="human2/head" index="2"]
 dialogue_name = &"guy"
 
 [node name="nose" parent="human2/head" index="3"]
-frame = 9
+frame = 3
 
 [node name="hair" parent="human2/head" index="6"]
 material = SubResource("StandardMaterial3D_gylqs")
