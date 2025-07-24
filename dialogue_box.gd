@@ -16,3 +16,4 @@ func interact():
 	balloon.ready.connect(start_dialogue) # We have to wait for the balloon to finish loading
 	Player.add_child(balloon)
 	Player.move_locked=true
+

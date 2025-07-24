@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=39 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="PackedScene" uid="uid://duqr81vc5wk51" path="res://procedural/human.tscn" id="2_5wety"]
@@ -16,8 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="12_ycrus"]
 [ext_resource type="PackedScene" uid="uid://c1qflfnun33d6" path="res://life/plants/tree.tscn" id="13_2bldt"]
 [ext_resource type="Script" uid="uid://puda1cg1o17e" path="res://talk_box.gd" id="13_3vtuw"]
-[ext_resource type="Texture2D" uid="uid://c0mfx6y88qe27" path="res://images/Default/pattern_57.png" id="13_cuacs"]
-[ext_resource type="Texture2D" uid="uid://brg8wdosabelf" path="res://images/Default/pattern_58.png" id="13_d006i"]
 [ext_resource type="PackedScene" uid="uid://cs2ah7vcdnj78" path="res://addons/fpsrpg_controller/item.tscn" id="14_7rmuh"]
 [ext_resource type="PackedScene" uid="uid://c4mojw8cw1g63" path="res://addons/combat/training_dummy.tscn" id="14_jiv15"]
 [ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="14_l0lyd"]
@@ -27,12 +25,12 @@
 [ext_resource type="Script" uid="uid://bj8fjtkppp1oj" path="res://store.gd" id="21_gylqs"]
 [ext_resource type="Script" uid="uid://byrt30315r7ig" path="res://models/phil.gd" id="22_65fwc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqase"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gylqs"]
 albedo_color = Color(0, 0, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1tr4g"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8c4v"]
 resource_local_to_scene = true
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(0, 0, 1, 1)
 albedo_texture = ExtResource("2_tqase")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
@@ -86,6 +84,12 @@ size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0dbvw"]
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_00egg"]
+vertices = PackedVector3Array(-3.75, -7.04549, -5.75, -2.25, -7.04549, -5.75, -2.5, -7.04549, -99, -4.25, -7.04549, -4.75, -99, -7.04549, -99, -99, -7.04549, -4.75, 13.5, -7.04549, -6, 13.5, -7.04549, -99, 14.5, -7.04549, -5.25, 14.5, -7.04549, -3.25, 99, -7.04549, -3.25, 99, -7.04549, -99, -3.75, -6.79549, 4.5, -2, -5.29549, 4.5, -2, -5.29549, -3.75, -3.75, -6.79549, -3.75, -4.25, -7.04549, 5.5, -99, -7.04549, 5.5, 12.5, -1.54549, 4, 12.5, -1.54549, -4, 3.8, -1.54549, -3.85, 3.8, -1.54549, 4.3, 5.75, -7.04549, -3.75, 5.75, -7.04549, 4, 12.25, -7.04549, 4, 12.25, -7.04549, -3.75, 14.5, -7.04549, 3.5, 99, -7.04549, 3.5, 14.5, -7.04549, 5.5, 13.75, -7.04549, 6.25, 12.5, -7.04549, 99, 99, -7.04549, 99, 12.25, -7.04549, 6.25, -3.5, -7.04549, 99, -3.5, -7.04549, 6.5, -99, -7.04549, 99)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(6, 1, 7), PackedInt32Array(7, 1, 2), PackedInt32Array(10, 9, 8), PackedInt32Array(8, 6, 10), PackedInt32Array(10, 6, 7), PackedInt32Array(10, 7, 11), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(12, 16, 15), PackedInt32Array(15, 16, 3), PackedInt32Array(3, 16, 17), PackedInt32Array(3, 17, 5), PackedInt32Array(13, 14, 21), PackedInt32Array(21, 14, 20), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(25, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(9, 10, 26), PackedInt32Array(26, 10, 27), PackedInt32Array(28, 26, 27), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 31), PackedInt32Array(29, 31, 30), PackedInt32Array(30, 32, 29), PackedInt32Array(34, 33, 16), PackedInt32Array(16, 33, 17), PackedInt32Array(17, 33, 35), PackedInt32Array(34, 32, 33), PackedInt32Array(33, 32, 30)]
+agent_height = 4.0
+agent_radius = 1.0
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ycrus"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0mwmh"]
@@ -94,11 +98,7 @@ noise = SubResource("FastNoiseLite_ycrus")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cana4"]
 albedo_texture = SubResource("NoiseTexture2D_0mwmh")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0dbvw"]
-albedo_texture = ExtResource("13_cuacs")
-uv1_scale = Vector3(10, 2, 1)
-
-[sub_resource type="Resource" id="Resource_00egg"]
+[sub_resource type="Resource" id="Resource_tqase"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -112,34 +112,44 @@ count = 1
 price = 20
 equipped_scene = ExtResource("15_aef38")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jiv15"]
-albedo_color = Color(0.602803, 0.464921, 0.00543781, 1)
-albedo_texture = ExtResource("13_d006i")
-
 [node name="main" type="Node3D"]
 
 [node name="human" parent="." instance=ExtResource("2_5wety")]
-transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 0, -4.28259, -62.136)
+transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 0, -7.43304, -62.136)
+
+[node name="destination" type="Marker3D" parent="."]
+transform = Transform3D(-0.0657351, -0.333891, 0.551225, 0, 0.554084, 0.335624, -0.644463, 0.0340569, -0.0562248, 7.21039, 1.79103, -0.735459)
 
 [node name="human2" parent="." instance=ExtResource("2_5wety")]
-transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 3.09317, -4.28259, -62.136)
+transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 3.09317, -7.43304, -62.136)
 
 [node name="right_eye" parent="human2/head" index="0"]
-frame = 1
+frame = 5
 
 [node name="left_eye" parent="human2/head" index="1"]
-frame = 1
+frame = 5
 
 [node name="mouth" parent="human2/head" index="2"]
 dialogue_name = &"guy"
 
-[node name="hair" parent="human2/head" index="6"]
-material = SubResource("StandardMaterial3D_tqase")
+[node name="nose" parent="human2/head" index="3"]
+frame = 9
 
-[node name="torso" parent="human2" index="1"]
-material = SubResource("StandardMaterial3D_1tr4g")
+[node name="hair" parent="human2/head" index="6"]
+material = SubResource("StandardMaterial3D_gylqs")
+
+[node name="legs" parent="human2" index="1" node_paths=PackedStringArray("target")]
+target = NodePath("../../destination")
+
+[node name="pathfind" parent="human2/legs" index="3"]
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="torso" parent="human2" index="2"]
+material = SubResource("StandardMaterial3D_l8c4v")
 
 [node name="dialogue_box" parent="human2" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.04237, 0)
 dialogue = ExtResource("3_1tr4g")
 
 [node name="world" parent="." instance=ExtResource("1_3kllw")]
@@ -149,7 +159,7 @@ world_radius = 100
 transform = Transform3D(0.228983, 0, 0, 0, 0.228983, 0, 0, 0, 0.228983, 51.1328, -5.00432, -50.3553)
 
 [node name="shopkeep" parent="characters" instance=ExtResource("2_5wety")]
-transform = Transform3D(-0.0716815, 0, -2.68371, 0, 2.68467, 0, 2.68371, 0, -0.0716815, -3.5237, 2.4508, 0.424118)
+transform = Transform3D(-0.0716815, 0, -2.68371, 0, 2.68467, 0, 2.68371, 0, -0.0716815, -3.5237, -5.5173, 0.424118)
 seed = "shopkeep"
 
 [node name="store" type="Area3D" parent="characters/shopkeep" groups=["interactibles"]]
@@ -190,8 +200,9 @@ script = ExtResource("11_3vnk6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01255, 0)
 shape = SubResource("BoxShape3D_0dbvw")
 
-[node name="map" type="Node3D" parent="."]
+[node name="map" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458634, 0, -0.257289)
+navigation_mesh = SubResource("NavigationMesh_00egg")
 
 [node name="floor" type="CSGBox3D" parent="map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.92798, 0)
@@ -205,11 +216,15 @@ light_color = Color(0, 0.847059, 1, 1)
 light_energy = 20.0
 omni_range = 43.0
 
-[node name="CSGBox3D" type="CSGBox3D" parent="map" groups=["climbable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.3304, 15.0073, 25.1001)
+[node name="CSGBox3D" type="CSGBox3D" parent="map"]
+transform = Transform3D(0.584674, 0.811268, 0, -0.811268, 0.584674, 0, 0, 0, 1, 0.00458634, -5.75703, 0.257289)
 use_collision = true
-size = Vector3(5, 50, 5)
-material = SubResource("StandardMaterial3D_0dbvw")
+size = Vector3(2, 10, 10)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47081, -7.06354, 0.117708)
+use_collision = true
+size = Vector3(10, 10, 10)
 
 [node name="pause_menu" parent="." instance=ExtResource("4_s30wn")]
 visible = false
@@ -219,14 +234,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -7.50597, 56.1246)
 
 [node name="item" parent="training_dummy" instance=ExtResource("14_7rmuh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654872, -4.54743)
-resource = SubResource("Resource_00egg")
-
-[node name="chest" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5598, -6.42798, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="chest"]
-size = Vector3(2, 2, 3)
-material = SubResource("StandardMaterial3D_jiv15")
+resource = SubResource("Resource_tqase")
 
 [node name="tree" parent="." instance=ExtResource("13_2bldt")]
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -9.53674e-07, -8.00182, -34.7872)

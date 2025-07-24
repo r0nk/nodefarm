@@ -19,7 +19,6 @@ config/icon="res://icon.png"
 
 Player="*res://addons/fpsrpg_controller/player.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-CyclopsAutoload="*res://addons/cyclops_level_builder/cyclops_global_scene.tscn"
 
 [dialogue_manager]
 

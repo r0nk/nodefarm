@@ -3,6 +3,8 @@ extends Node3D
 
 @export var seed = "john smith"
 
+@export var target:Node
+
 var rng=RandomNumberGenerator.new()
 func s_pick_random(array):
 	return array[rng.randi()%array.size()]
