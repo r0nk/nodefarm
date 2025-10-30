@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk34c4luokle0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wex7u"]
+shading_mode = 0
+albedo_color = Color(0, 0.620466, 0.213987, 1)
+
+[node name="pay_gate" type="Node3D"]
+
+[node name="wall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.536883, 1.38236, -0.0101556)
+use_collision = true
+size = Vector3(1, 2, 0.5)
+
+[node name="wall2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.632617, 1.38236, -0.0101556)
+use_collision = true
+size = Vector3(1, 2, 0.5)
+
+[node name="box_right" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50354, 1.38236, 0.0526211)
+use_collision = true
+size = Vector3(1, 3, 4)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="box_right"]
+transform = Transform3D(1, 0, 0, 0, 0.606155, -0.795346, 0, 0.795346, 0.606155, 0, 1.41868, -1.77485)
+operation = 2
+size = Vector3(2, 2, 1)
+
+[node name="box_left" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53688, 1.38236, -0.0101556)
+use_collision = true
+size = Vector3(1, 3, 4)
+
+[node name="screen" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.999659, -2.63192e-09, 0.0261071, 0.0204189, 0.623129, 0.781852, -0.0162681, 0.782119, -0.622917, -1.48567, 2.47198, -1.29623)
+size = Vector3(0.8, 1, 0.1)
+material = SubResource("StandardMaterial3D_wex7u")
+
+[node name="text" type="Label3D" parent="screen"]
+transform = Transform3D(1, -9.31323e-10, -2.79397e-09, 3.72529e-09, 1, 2.08616e-07, 9.31323e-10, 0, 1, -0.00125492, -0.0173268, 0.0602674)
+pixel_size = 0.003
+text = "HELLO WORLD!
+this is a screen
+full of info
+and stuff 
+hows 
+it going"
+autowrap_mode = 3

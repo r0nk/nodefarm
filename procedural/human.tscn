@@ -292,7 +292,7 @@ _data = {
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n68ar"]
 resource_local_to_scene = true
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(1, 0, 0, 1)
 albedo_texture = ExtResource("5_vs72t")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vs72t"]
@@ -349,7 +349,7 @@ wait_time = 0.3
 transform = Transform3D(-0.996822, 0, 0.0796595, 0, 1, 0, -0.0796595, 0, -0.996822, -0.00298836, -0.0354972, -1.01313)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_xa8ba")
-frame = 5
+frame = 10
 
 [node name="left_brow" type="CSGBox3D" parent="head"]
 transform = Transform3D(-0.00294963, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.00294963, -0.560959, 0.379338, -0.914688)

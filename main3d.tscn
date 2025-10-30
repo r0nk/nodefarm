@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=40 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="PackedScene" uid="uid://duqr81vc5wk51" path="res://procedural/human.tscn" id="2_5wety"]
@@ -24,13 +24,14 @@
 [ext_resource type="PackedScene" uid="uid://pa7y6i67npuf" path="res://models/phil.tscn" id="21_1nw2n"]
 [ext_resource type="Script" uid="uid://bj8fjtkppp1oj" path="res://store.gd" id="21_gylqs"]
 [ext_resource type="Script" uid="uid://byrt30315r7ig" path="res://models/phil.gd" id="22_65fwc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gylqs"]
-albedo_color = Color(1, 0, 0, 1)
+[ext_resource type="PackedScene" uid="uid://bk34c4luokle0" path="res://pay_gate.tscn" id="25_l8c4v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8c4v"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqase"]
 resource_local_to_scene = true
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(0.627451, 0.12549, 0.941176, 1)
 albedo_texture = ExtResource("2_tqase")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
@@ -98,7 +99,7 @@ noise = SubResource("FastNoiseLite_ycrus")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cana4"]
 albedo_texture = SubResource("NoiseTexture2D_0mwmh")
 
-[sub_resource type="Resource" id="Resource_tqase"]
+[sub_resource type="Resource" id="Resource_1tr4g"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -123,20 +124,20 @@ transform = Transform3D(-0.0657351, -0.333891, 0.551225, 0, 0.554084, 0.335624, 
 [node name="human2" parent="." instance=ExtResource("2_5wety")]
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 3.09317, -7.43304, -62.136)
 
-[node name="right_eye" parent="human2/head" index="0"]
-frame = 3
+[node name="right" parent="human2/head/eyes" index="0"]
+frame = 5
 
-[node name="left_eye" parent="human2/head" index="1"]
-frame = 3
+[node name="left" parent="human2/head/eyes" index="1"]
+frame = 5
 
-[node name="mouth" parent="human2/head" index="2"]
+[node name="mouth" parent="human2/head" index="1"]
 dialogue_name = &"guy"
 
-[node name="nose" parent="human2/head" index="3"]
-frame = 7
+[node name="nose" parent="human2/head" index="2"]
+frame = 2
 
-[node name="hair" parent="human2/head" index="6"]
-material = SubResource("StandardMaterial3D_gylqs")
+[node name="hair" parent="human2/head" index="5"]
+material = SubResource("StandardMaterial3D_l8c4v")
 
 [node name="legs" parent="human2" index="1" node_paths=PackedStringArray("target")]
 target = NodePath("../../destination")
@@ -146,7 +147,7 @@ debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="torso" parent="human2" index="2"]
-material = SubResource("StandardMaterial3D_l8c4v")
+material = SubResource("StandardMaterial3D_tqase")
 
 [node name="dialogue_box" parent="human2" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.04237, 0)
@@ -234,10 +235,13 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -7.50597, 56.1246)
 
 [node name="item" parent="training_dummy" instance=ExtResource("14_7rmuh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654872, -4.54743)
-resource = SubResource("Resource_tqase")
+resource = SubResource("Resource_1tr4g")
 
 [node name="tree" parent="." instance=ExtResource("13_2bldt")]
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -9.53674e-07, -8.00182, -34.7872)
+
+[node name="pay_gate" parent="." instance=ExtResource("25_l8c4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.6758, -7.31034, 0)
 
 [editable path="human2"]
 [editable path="characters/phil"]
