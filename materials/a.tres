@@ -8,8 +8,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.236626, 0.275394, 0.314713, 1)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_frgsg"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mj12b"]
-color_ramp = SubResource("Gradient_ctm00")
 noise = SubResource("FastNoiseLite_frgsg")
+color_ramp = SubResource("Gradient_ctm00")
 
 [sub_resource type="Gradient" id="Gradient_lq1in"]
 offsets = PackedFloat32Array(0.715232, 0.788079)
@@ -17,8 +17,8 @@ offsets = PackedFloat32Array(0.715232, 0.788079)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ik35r"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uivm5"]
-color_ramp = SubResource("Gradient_lq1in")
 noise = SubResource("FastNoiseLite_ik35r")
+color_ramp = SubResource("Gradient_lq1in")
 
 [resource]
 render_priority = 0

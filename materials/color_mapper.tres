@@ -38,7 +38,7 @@ default_value_enabled = true
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform vec4 one_in2 : source_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
 uniform sampler2D tex_frg_2;

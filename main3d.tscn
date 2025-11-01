@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=43 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="PackedScene" uid="uid://duqr81vc5wk51" path="res://procedural/human.tscn" id="2_5wety"]
@@ -25,13 +25,14 @@
 [ext_resource type="Script" uid="uid://bj8fjtkppp1oj" path="res://store.gd" id="21_gylqs"]
 [ext_resource type="Script" uid="uid://byrt30315r7ig" path="res://models/phil.gd" id="22_65fwc"]
 [ext_resource type="PackedScene" uid="uid://bk34c4luokle0" path="res://pay_gate.tscn" id="25_l8c4v"]
+[ext_resource type="Script" uid="uid://dg3057go04lus" path="res://train.gd" id="26_tqase"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8c4v"]
-albedo_color = Color(0, 1, 0, 1)
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqase"]
 resource_local_to_scene = true
-albedo_color = Color(0.627451, 0.12549, 0.941176, 1)
+albedo_color = Color(0, 0, 1, 1)
 albedo_texture = ExtResource("2_tqase")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
@@ -42,12 +43,8 @@ resource_local_to_scene = true
 script = ExtResource("14_l0lyd")
 texture = ExtResource("9_tqase")
 id = &"wizardhat"
-type = &""
 description = "Slows Fall Rate"
 flavor = "Pinky was always clumsy."
-max_stacks = 100
-count = 1
-price = 20
 equipped_scene = ExtResource("8_l8c4v")
 
 [sub_resource type="Resource" id="Resource_3am2a"]
@@ -56,21 +53,14 @@ resource_name = "coin"
 script = ExtResource("14_l0lyd")
 texture = ExtResource("12_ycrus")
 id = &"coin"
-type = &""
-description = ""
-flavor = ""
 max_stacks = 1000
-count = 1
-price = 20
 
 [sub_resource type="Resource" id="Resource_f4iwv"]
 resource_local_to_scene = true
 script = ExtResource("11_00egg")
 type = "collect"
-location = Vector3(0, 0, 0)
 target_amount = 10.0
 target_item = SubResource("Resource_3am2a")
-progress = 0.0
 
 [sub_resource type="Resource" id="Resource_0mwmh"]
 resource_local_to_scene = true
@@ -106,12 +96,18 @@ script = ExtResource("14_l0lyd")
 texture = ExtResource("16_81346")
 id = &"laser_gun"
 type = &"tool"
-description = ""
-flavor = ""
 max_stacks = 10
-count = 1
-price = 20
 equipped_scene = ExtResource("15_aef38")
+
+[sub_resource type="Curve3D" id="Curve3D_00egg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 10, 0, 0, 10, 2, -10, 0, 0, 0, 0, 0, 0, 23.721, 2, -18.415, 10, 0, 0, 0, 0, 0, 22.069, 2, -33.815, 0, 0, 0, 0, 0, 0, -30.195541, 2, -72.41795, 0, 0, 0, 0, 0, 0, -66.972, 2, -5.265),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqase"]
+size = Vector3(10, 1, 10)
 
 [node name="main" type="Node3D"]
 
@@ -134,7 +130,7 @@ frame = 5
 dialogue_name = &"guy"
 
 [node name="nose" parent="human2/head" index="2"]
-frame = 2
+frame = 5
 
 [node name="hair" parent="human2/head" index="5"]
 material = SubResource("StandardMaterial3D_l8c4v")
@@ -242,6 +238,28 @@ transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0
 
 [node name="pay_gate" parent="." instance=ExtResource("25_l8c4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.6758, -7.31034, 0)
+
+[node name="misa_line" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2005043, 0.0369339, 0.19451714)
+curve = SubResource("Curve3D_00egg")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="misa_line"]
+transform = Transform3D(-1.3909066e-08, 0, -1.0000005, 0, 0.99999934, 0, 1.0000001, 0, -1.3909091e-08, 10, 2, -10)
+
+[node name="platform" type="CSGBox3D" parent="misa_line/AnimatableBody3D"]
+transform = Transform3D(0.99999976, 0, 2.9802322e-08, 0, 0.99999994, 0, -2.9802322e-08, 0, 0.99999976, 0, 0, 0)
+size = Vector3(10, 1, 10)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="misa_line/AnimatableBody3D"]
+shape = SubResource("BoxShape3D_tqase")
+
+[node name="train" type="PathFollow3D" parent="misa_line"]
+transform = Transform3D(-4.3711385e-08, 0, -1.0000002, 0, 0.99999934, 0, 0.9999999, 0, -4.37114e-08, 10, 2, -10)
+script = ExtResource("26_tqase")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="misa_line/train"]
+transform = Transform3D(1.0000002, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1.0000002, 0, 0, 0)
+remote_path = NodePath("../../AnimatableBody3D")
 
 [editable path="human2"]
 [editable path="characters/phil"]

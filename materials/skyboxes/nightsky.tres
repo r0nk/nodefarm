@@ -9,10 +9,10 @@ offsets = PackedFloat32Array(0.557196, 1)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vlgd6"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cqo17"]
+noise = SubResource("FastNoiseLite_vlgd6")
+color_ramp = SubResource("Gradient_dbrmx")
 seamless = true
 seamless_blend_skirt = 0.26
-color_ramp = SubResource("Gradient_dbrmx")
-noise = SubResource("FastNoiseLite_vlgd6")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_k8lb3"]
 output_port_for_preview = 0
@@ -30,9 +30,9 @@ frequency = 0.0565
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e2gqn"]
 width = 1024
 height = 1024
-seamless_blend_skirt = 1.0
-color_ramp = SubResource("Gradient_3ntim")
 noise = SubResource("FastNoiseLite_oahpa")
+color_ramp = SubResource("Gradient_3ntim")
+seamless_blend_skirt = 1.0
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_v3uu0"]
 output_port_for_preview = 0

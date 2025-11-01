@@ -22,8 +22,8 @@ operator = 2
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qpcuu"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aopj5"]
-color_ramp = SubResource("Gradient_2rwwd")
 noise = SubResource("FastNoiseLite_qpcuu")
+color_ramp = SubResource("Gradient_2rwwd")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_wauf7"]
 output_port_for_preview = 0
@@ -34,7 +34,7 @@ operator = 2
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform sampler2D tex_frg_6;
 

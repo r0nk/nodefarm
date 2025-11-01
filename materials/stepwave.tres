@@ -12,9 +12,9 @@ fractal_weighted_strength = 0.24
 fractal_ping_pong_strength = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e1ny0"]
+noise = SubResource("FastNoiseLite_hsvqc")
 seamless = true
 seamless_blend_skirt = 1.0
-noise = SubResource("FastNoiseLite_hsvqc")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ysstm"]
 texture = SubResource("NoiseTexture2D_e1ny0")
@@ -46,7 +46,7 @@ constant = 0.5
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform sampler2D tex_frg_2;
 

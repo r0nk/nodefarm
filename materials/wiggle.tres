@@ -10,9 +10,9 @@ colors = PackedColorArray(0.695503, 0.695503, 0.695503, 1, 1, 1, 1, 1)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_543iy"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w3nax"]
-seamless_blend_skirt = 0.0
-color_ramp = SubResource("Gradient_armi6")
 noise = SubResource("FastNoiseLite_543iy")
+color_ramp = SubResource("Gradient_armi6")
+seamless_blend_skirt = 0.0
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ey46o"]
 texture = SubResource("NoiseTexture2D_w3nax")
@@ -26,7 +26,7 @@ operator = 2
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform sampler2D tex_vtx_6;
 
