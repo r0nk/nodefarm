@@ -9,7 +9,7 @@ var health = 100
 var dead = false
 var move_locked = false
 
-@export var speed = 5
+@export var speed = 10
 
 var shift_timer=0
 
@@ -105,7 +105,7 @@ func dialogue_ended(resource):
 	move_locked=false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	if dead:
 		return
 

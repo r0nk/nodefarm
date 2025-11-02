@@ -1,6 +1,6 @@
 extends PathFollow3D
 
-var speed = 10
+var speed = 30
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	progress+=delta*speed

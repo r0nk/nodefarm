@@ -27,12 +27,12 @@
 [ext_resource type="PackedScene" uid="uid://bk34c4luokle0" path="res://pay_gate.tscn" id="25_l8c4v"]
 [ext_resource type="Script" uid="uid://dg3057go04lus" path="res://train.gd" id="26_tqase"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8c4v"]
-albedo_color = Color(1, 0, 0, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqase"]
+albedo_color = Color(0.627451, 0.1254902, 0.9411765, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1tr4g"]
 resource_local_to_scene = true
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(1, 0, 0, 1)
 albedo_texture = ExtResource("2_tqase")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
@@ -89,7 +89,7 @@ noise = SubResource("FastNoiseLite_ycrus")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cana4"]
 albedo_texture = SubResource("NoiseTexture2D_0mwmh")
 
-[sub_resource type="Resource" id="Resource_1tr4g"]
+[sub_resource type="Resource" id="Resource_00egg"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -100,11 +100,12 @@ max_stacks = 10
 equipped_scene = ExtResource("15_aef38")
 
 [sub_resource type="Curve3D" id="Curve3D_00egg"]
+closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 10, 0, 0, 10, 2, -10, 0, 0, 0, 0, 0, 0, 23.721, 2, -18.415, 10, 0, 0, 0, 0, 0, 22.069, 2, -33.815, 0, 0, 0, 0, 0, 0, -30.195541, 2, -72.41795, 0, 0, 0, 0, 0, 0, -66.972, 2, -5.265),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 10, 0, 0, -5.085724, 2, 7.5594997, 0, 0, 0, 0, 0, 0, 0.28778076, 2, -18.415, 10, 0, 0, 0, 0, 0, -10.664185, 2, -43.679665, 0, 0, 0, 0, 0, 0, -30.195541, 2, -48.075905, 2.8491974, 0.030853748, -13.975542, -2.8491974, -0.030853748, 13.975542, -66.47183, 3.0845108, -34.33098, -4.4549484, -0.19880009, -11.621262, 4.4549484, 0.19880009, 11.621262, -66.99817, 2.0177383, -5.4070396),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
-point_count = 5
+point_count = 6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tqase"]
 size = Vector3(10, 1, 10)
@@ -121,19 +122,19 @@ transform = Transform3D(-0.0657351, -0.333891, 0.551225, 0, 0.554084, 0.335624, 
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 3.09317, -7.43304, -62.136)
 
 [node name="right" parent="human2/head/eyes" index="0"]
-frame = 5
+frame = 0
 
 [node name="left" parent="human2/head/eyes" index="1"]
-frame = 5
+frame = 0
 
 [node name="mouth" parent="human2/head" index="1"]
 dialogue_name = &"guy"
 
 [node name="nose" parent="human2/head" index="2"]
-frame = 5
+frame = 2
 
 [node name="hair" parent="human2/head" index="5"]
-material = SubResource("StandardMaterial3D_l8c4v")
+material = SubResource("StandardMaterial3D_tqase")
 
 [node name="legs" parent="human2" index="1" node_paths=PackedStringArray("target")]
 target = NodePath("../../destination")
@@ -143,7 +144,7 @@ debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="torso" parent="human2" index="2"]
-material = SubResource("StandardMaterial3D_tqase")
+material = SubResource("StandardMaterial3D_1tr4g")
 
 [node name="dialogue_box" parent="human2" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.04237, 0)
@@ -231,7 +232,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -7.50597, 56.1246)
 
 [node name="item" parent="training_dummy" instance=ExtResource("14_7rmuh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654872, -4.54743)
-resource = SubResource("Resource_1tr4g")
+resource = SubResource("Resource_00egg")
 
 [node name="tree" parent="." instance=ExtResource("13_2bldt")]
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -9.53674e-07, -8.00182, -34.7872)
@@ -240,26 +241,41 @@ transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.6758, -7.31034, 0)
 
 [node name="misa_line" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2005043, 0.0369339, 0.19451714)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.04652, -6.841816, 21.908724)
 curve = SubResource("Curve3D_00egg")
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="misa_line"]
-transform = Transform3D(-1.3909066e-08, 0, -1.0000005, 0, 0.99999934, 0, 1.0000001, 0, -1.3909091e-08, 10, 2, -10)
+[node name="ab3d" type="AnimatableBody3D" parent="misa_line"]
+transform = Transform3D(-0.42024076, 0.02872523, 0.9069572, 0.01129878, 0.9995855, -0.026423696, -0.90734184, -0.00085680437, -0.42039165, -57.97849, 2.8813813, -43.19349)
 
-[node name="platform" type="CSGBox3D" parent="misa_line/AnimatableBody3D"]
-transform = Transform3D(0.99999976, 0, 2.9802322e-08, 0, 0.99999994, 0, -2.9802322e-08, 0, 0.99999976, 0, 0, 0)
-size = Vector3(10, 1, 10)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="misa_line/AnimatableBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="misa_line/ab3d"]
 shape = SubResource("BoxShape3D_tqase")
 
+[node name="platform" type="CSGBox3D" parent="misa_line/ab3d"]
+transform = Transform3D(0.9999998, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 0.9999998, 0, 0, 0)
+size = Vector3(10, 1, 10)
+
 [node name="train" type="PathFollow3D" parent="misa_line"]
-transform = Transform3D(-4.3711385e-08, 0, -1.0000002, 0, 0.99999934, 0, 0.9999999, 0, -4.37114e-08, 10, 2, -10)
+transform = Transform3D(-0.42024064, 0.02872523, 0.906957, 0.011298777, 0.9995855, -0.02642369, -0.9073416, -0.00085680437, -0.42039153, -57.97849, 2.8813813, -43.19349)
+progress = 107.04248
 script = ExtResource("26_tqase")
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="misa_line/train"]
 transform = Transform3D(1.0000002, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1.0000002, 0, 0, 0)
-remote_path = NodePath("../../AnimatableBody3D")
+remote_path = NodePath("../../ab3d")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="misa_line"]
+polygon = PackedVector2Array(0, -1, 0, 0, 1, 0, 1, -1)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = true
 
 [editable path="human2"]
 [editable path="characters/phil"]
