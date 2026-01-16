@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://dopejhti3ghal"]
+
+[ext_resource type="Script" uid="uid://dg3057go04lus" path="res://train.gd" id="1_q1lkx"]
+
+[sub_resource type="Curve3D" id="Curve3D_00egg"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 10, 0, 0, -5.085724, 2, 7.5594997, 0, 0, 0, 0, 0, 0, 0.28778076, 2, -18.415, 10, 0, 0, 0, 0, 0, -10.664185, 2, -43.679665, 0, 0, 0, 0, 0, 0, -30.195541, 2, -48.075905, 2.8491974, 0.030853748, -13.975542, -2.8491974, -0.030853748, 13.975542, -66.47183, 3.0845108, -34.33098, -4.4549484, -0.19880009, -11.621262, 4.4549484, 0.19880009, 11.621262, -66.99817, 2.0177383, -5.4070396),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqase"]
+size = Vector3(10, 1, 10)
+
+[node name="misa_line" type="Path3D"]
+curve = SubResource("Curve3D_00egg")
+
+[node name="ab3d" type="AnimatableBody3D" parent="."]
+transform = Transform3D(-0.42024064, 0.02872522, 0.90695715, 0.011298777, 0.9995852, -0.026423695, -0.90734154, -0.00085680414, -0.42039165, -57.97849, 2.8813813, -43.19349)
+
+[node name="cs" type="CollisionShape3D" parent="ab3d"]
+shape = SubResource("BoxShape3D_tqase")
+
+[node name="platform" type="CSGBox3D" parent="ab3d"]
+transform = Transform3D(0.9999998, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 0.9999998, 0, 0, 0)
+size = Vector3(10, 1, 10)
+
+[node name="train" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.42024052, 0.02872522, 0.9069569, 0.011298773, 0.9995852, -0.026423689, -0.9073413, -0.00085680414, -0.42039153, -57.97849, 2.8813813, -43.19349)
+progress = 107.04248
+script = ExtResource("1_q1lkx")
+
+[node name="rt3d" type="RemoteTransform3D" parent="train"]
+transform = Transform3D(1.0000002, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1.0000002, 0, 0, 0)
+remote_path = NodePath("../../ab3d")
+
+[node name="rail" type="CSGPolygon3D" parent="."]
+polygon = PackedVector2Array(0, -1, 0, 0, 1, 0, 1, -1)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = true

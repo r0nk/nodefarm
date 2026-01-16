@@ -104,7 +104,6 @@ func align_with_y(xform,new_y):
 func dialogue_ended(resource):
 	move_locked=false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if dead:
 		return

@@ -228,7 +228,7 @@ animations = [{
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yltg"]
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(0.627451, 0.1254902, 0.9411765, 1)
 
 [sub_resource type="Animation" id="Animation_pdc0f"]
 length = 0.001
@@ -292,7 +292,7 @@ _data = {
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n68ar"]
 resource_local_to_scene = true
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(0.627451, 0.1254902, 0.9411765, 1)
 albedo_texture = ExtResource("5_vs72t")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vs72t"]
@@ -315,14 +315,14 @@ transform = Transform3D(-0.999995, 0, -0.00294962, 0, 1, 0, 0.00294962, 0, -0.99
 transform = Transform3D(1, 0, 2.32831e-10, 0, 1, 0, -2.32831e-10, 0, 1, -0.471303, 0, -0.00138998)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_63ooq")
-frame = 1
+frame = 3
 script = ExtResource("3_mihaq")
 
 [node name="left" type="AnimatedSprite3D" parent="head/eyes"]
 transform = Transform3D(1, 0, 2.32831e-10, 0, 1, 0, -2.32831e-10, 0, 1, 0.413547, 0, 0.00122023)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_63ooq")
-frame = 1
+frame = 3
 script = ExtResource("3_mihaq")
 
 [node name="blink_timer" type="Timer" parent="head/eyes"]
@@ -349,7 +349,7 @@ wait_time = 0.3
 transform = Transform3D(-0.996822, 0, 0.0796595, 0, 1, 0, -0.0796595, 0, -0.996822, -0.00298836, -0.0354972, -1.01313)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_xa8ba")
-frame = 10
+frame = 3
 
 [node name="left_brow" type="CSGBox3D" parent="head"]
 transform = Transform3D(-0.00294963, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.00294963, -0.560959, 0.379338, -0.914688)
