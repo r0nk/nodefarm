@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=43 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="PackedScene" uid="uid://duqr81vc5wk51" path="res://procedural/human.tscn" id="2_5wety"]
@@ -27,13 +27,14 @@
 [ext_resource type="PackedScene" uid="uid://bk34c4luokle0" path="res://pay_gate.tscn" id="25_l8c4v"]
 [ext_resource type="PackedScene" uid="uid://dopejhti3ghal" path="res://subway.tscn" id="26_tqase"]
 [ext_resource type="Texture2D" uid="uid://bqi2ebixbg7nh" path="res://images/sprites/skeleton.png" id="27_1tr4g"]
+[ext_resource type="Script" uid="uid://cq2ox3u1mtqgn" path="res://grammerator.gd" id="28_00egg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1tr4g"]
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00egg"]
 resource_local_to_scene = true
-albedo_color = Color(0, 1, 0, 1)
+albedo_color = Color(0, 0, 1, 1)
 albedo_texture = ExtResource("2_tqase")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
@@ -112,16 +113,16 @@ transform = Transform3D(-0.0657351, -0.333891, 0.551225, 0, 0.554084, 0.335624, 
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 3.09317, -7.43304, -62.136)
 
 [node name="right" parent="human2/head/eyes" index="0"]
-frame = 0
+frame = 1
 
 [node name="left" parent="human2/head/eyes" index="1"]
-frame = 0
+frame = 1
 
 [node name="mouth" parent="human2/head" index="1"]
 dialogue_name = &"guy"
 
 [node name="nose" parent="human2/head" index="2"]
-frame = 1
+frame = 7
 
 [node name="hair" parent="human2/head" index="5"]
 material = SubResource("StandardMaterial3D_1tr4g")
@@ -238,6 +239,13 @@ pixel_size = 0.05
 billboard = 1
 texture_filter = 0
 texture = ExtResource("27_1tr4g")
+
+[node name="grammerator" type="Label3D" parent="."]
+transform = Transform3D(-0.9997759, 0, -0.021169186, 0, 1, 0, 0.021169186, 0, -0.9997759, 0, -4.404852, -26.475945)
+billboard = 2
+text = "TEST TEST TEST"
+font_size = 64
+script = ExtResource("28_00egg")
 
 [editable path="human2"]
 [editable path="characters/phil"]
