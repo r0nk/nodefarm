@@ -1,9 +1,11 @@
 extends Label3D
 
-
 var pretext
 
-var grammar = {"SUBJECT":["stuff","other stuff","cat","dog"],"VERB":["ran","jumped","went", "VERB and VERB"] }
+var grammar = {
+	"SUBJECT":["stuff","other stuff","cat","dog"],
+	"VERB":["ran","jumped","went", "VERB and VERB"],
+	}
 
 func generate():
 	text=pretext
