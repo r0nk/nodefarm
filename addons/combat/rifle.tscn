@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dghdadngmf6qv"]
+[gd_scene load_steps=6 format=3 uid="uid://dghdadngmf6qv"]
 
 [ext_resource type="Script" uid="uid://2et07oxe0iey" path="res://addons/combat/rifle.gd" id="1_s1k7c"]
 [ext_resource type="AudioStream" uid="uid://c7iqm4cxcu18h" path="res://sfx/pew.ogg" id="2_hun75"]
@@ -9,6 +9,9 @@ albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x3o0q"]
 size = Vector3(0.2, 200, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu7tx"]
+albedo_color = Color(0.14657047, 0.72002184, 0.99999994, 1)
 
 [node name="rifle" type="CSGBox3D"]
 transform = Transform3D(0.999841, -1.54521e-09, 0.0178538, 0.000318136, 0.999841, -0.017816, -0.0178509, 0.0178189, 0.999682, 0, 0, 0)
@@ -35,3 +38,17 @@ collide_with_bodies = false
 transform = Transform3D(1, -4.65661e-10, -6.70552e-08, 0, 1, -6.51926e-08, -3.72529e-09, -3.72529e-09, 1, 0.0104026, -0.0103838, -0.58256)
 stream = ExtResource("2_hun75")
 volume_db = -20.0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 2.1536835e-09, 2.7939677e-09, -4.284084e-08, -1, 0, 1, 1.359731e-07, 0.0056769606, 0.00082672527, -0.3179185)
+radius = 0.1430664
+height = 0.06542969
+sides = 16
+material = SubResource("StandardMaterial3D_vu7tx")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 2.1536835e-09, 2.8230716e-09, -4.284084e-08, -1, 0, 1, 1.3783574e-07, 0.0037203052, 0.0027798605, -0.20834272)
+radius = 0.1430664
+height = 0.06542969
+sides = 16
+material = SubResource("StandardMaterial3D_vu7tx")

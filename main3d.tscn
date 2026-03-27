@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene load_steps=45 format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="PackedScene" uid="uid://duqr81vc5wk51" path="res://procedural/human.tscn" id="2_5wety"]
@@ -28,11 +28,13 @@
 [ext_resource type="PackedScene" uid="uid://dopejhti3ghal" path="res://subway.tscn" id="26_tqase"]
 [ext_resource type="Texture2D" uid="uid://bqi2ebixbg7nh" path="res://images/sprites/skeleton.png" id="27_1tr4g"]
 [ext_resource type="Script" uid="uid://cq2ox3u1mtqgn" path="res://grammerator.gd" id="28_00egg"]
+[ext_resource type="MeshLibrary" uid="uid://2xjg0bsyswup" path="res://procedural/meshlib.tres" id="29_ycrus"]
+[ext_resource type="Script" uid="uid://3063y13b4csc" path="res://procgrid.gd" id="30_3vtuw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1tr4g"]
-albedo_color = Color(1, 0, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vtuw"]
+albedo_color = Color(0.627451, 0.1254902, 0.9411765, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00egg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mwmh"]
 resource_local_to_scene = true
 albedo_color = Color(0, 0, 1, 1)
 albedo_texture = ExtResource("2_tqase")
@@ -91,7 +93,7 @@ noise = SubResource("FastNoiseLite_ycrus")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cana4"]
 albedo_texture = SubResource("NoiseTexture2D_0mwmh")
 
-[sub_resource type="Resource" id="Resource_ycrus"]
+[sub_resource type="Resource" id="Resource_cana4"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -113,19 +115,19 @@ transform = Transform3D(-0.0657351, -0.333891, 0.551225, 0, 0.554084, 0.335624, 
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 3.09317, -7.43304, -62.136)
 
 [node name="right" parent="human2/head/eyes" index="0"]
-frame = 1
+frame = 5
 
 [node name="left" parent="human2/head/eyes" index="1"]
-frame = 1
+frame = 5
 
 [node name="mouth" parent="human2/head" index="1"]
 dialogue_name = &"guy"
 
 [node name="nose" parent="human2/head" index="2"]
-frame = 7
+frame = 8
 
 [node name="hair" parent="human2/head" index="5"]
-material = SubResource("StandardMaterial3D_1tr4g")
+material = SubResource("StandardMaterial3D_3vtuw")
 
 [node name="legs" parent="human2" index="1" node_paths=PackedStringArray("target")]
 target = NodePath("../../destination")
@@ -135,14 +137,14 @@ debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="torso" parent="human2" index="2"]
-material = SubResource("StandardMaterial3D_00egg")
+material = SubResource("StandardMaterial3D_0mwmh")
 
 [node name="dialogue_box" parent="human2" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.04237, 0)
 dialogue = ExtResource("3_1tr4g")
 
 [node name="world" parent="." instance=ExtResource("1_3kllw")]
-world_radius = 100
+world_radius = 1000
 
 [node name="characters" type="Node3D" parent="."]
 transform = Transform3D(0.228983, 0, 0, 0, 0.228983, 0, 0, 0, 0.228983, 51.1328, -5.00432, -50.3553)
@@ -223,7 +225,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -7.50597, 56.1246)
 
 [node name="item" parent="training_dummy" instance=ExtResource("14_7rmuh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654872, -4.54743)
-resource = SubResource("Resource_ycrus")
+resource = SubResource("Resource_cana4")
 
 [node name="tree" parent="." instance=ExtResource("13_2bldt")]
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -9.53674e-07, -8.00182, -34.7872)
@@ -246,6 +248,16 @@ billboard = 2
 text = "TEST TEST TEST"
 font_size = 64
 script = ExtResource("28_00egg")
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -5.541354, 42.482307)
+mesh_library = ExtResource("29_ycrus")
+cell_size = Vector3(10, 10, 10)
+bake_navigation = true
+data = {
+"cells": PackedInt32Array(4, 65534, 1, 65535, 65531, 1, 65535, 65530, 1, 65535, 65529, 0, 65535, 65528, 1, 65535, 65527, 1, 0, 65527, 1, 2, 65529, 0, 1, 65529, 0, 0, 65529, 0, 65534, 65529, 0, 65533, 65529, 0, 65532, 65529, 0, 65531, 65529, 0)
+}
+script = ExtResource("30_3vtuw")
 
 [editable path="human2"]
 [editable path="characters/phil"]
