@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://7tbtop2yyri8"]
+
+[ext_resource type="Script" uid="uid://bktkvm6k5drlg" path="res://lever.gd" id="1_1btnt"]
+[ext_resource type="Texture2D" uid="uid://bhg140lugarms" path="res://images/Default/pattern_42.png" id="2_7uavd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvsrp"]
+albedo_color = Color(0.42966908, 0.36595446, 0.29738015, 1)
+albedo_texture = ExtResource("2_7uavd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ih0mi"]
+albedo_color = Color(0.85126334, 0.7336048, 0.3308522, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6lewv"]
+size = Vector3(0.68408203, 1, 1)
+
+[node name="lever" type="Area3D" unique_id=637259742 groups=["interactibles"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_1btnt")
+
+[node name="base" type="CSGBox3D" parent="." unique_id=2124770283]
+size = Vector3(0.40820313, 1, 0.5839844)
+material = SubResource("StandardMaterial3D_tvsrp")
+
+[node name="handle" type="Node3D" parent="." unique_id=688293396]
+transform = Transform3D(-0.70710695, 0.70710677, -4.3711402e-08, -0.70710677, -0.70710695, -4.3711392e-08, -6.181726e-08, -3.5527137e-15, 1, 0.11463165, -0.0027403831, 0.010093689)
+
+[node name="model" type="CSGBox3D" parent="handle" unique_id=332087915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31478953, 0)
+size = Vector3(0.19726563, 0.6191406, 0.25024414)
+material = SubResource("StandardMaterial3D_ih0mi")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1415221433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15795898, 0.057085037, 0)
+shape = SubResource("BoxShape3D_6lewv")
