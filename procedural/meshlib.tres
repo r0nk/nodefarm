@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" load_steps=9 format=4 uid="uid://2xjg0bsyswup"]
+[gd_resource type="MeshLibrary" format=4 uid="uid://2xjg0bsyswup"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_re774"]
 _surfaces = [{

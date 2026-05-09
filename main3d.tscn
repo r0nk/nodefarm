@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ch6d8j0ivqwl6"]
+[gd_scene format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="PackedScene" uid="uid://duqr81vc5wk51" path="res://procedural/human.tscn" id="2_5wety"]
@@ -36,7 +36,7 @@ albedo_color = Color(0.627451, 0.1254902, 0.9411765, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mwmh"]
 resource_local_to_scene = true
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(1, 0, 0, 1)
 albedo_texture = ExtResource("2_tqase")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
@@ -66,7 +66,7 @@ type = "collect"
 target_amount = 10.0
 target_item = SubResource("Resource_3am2a")
 
-[sub_resource type="Resource" id="Resource_0mwmh"]
+[sub_resource type="Resource" id="Resource_cana4"]
 resource_local_to_scene = true
 script = ExtResource("10_1tr4g")
 name = "Fight the scarecrow"
@@ -93,7 +93,7 @@ noise = SubResource("FastNoiseLite_ycrus")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cana4"]
 albedo_texture = SubResource("NoiseTexture2D_0mwmh")
 
-[sub_resource type="Resource" id="Resource_cana4"]
+[sub_resource type="Resource" id="Resource_0fjb1"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -103,28 +103,28 @@ type = &"tool"
 max_stacks = 10
 equipped_scene = ExtResource("15_aef38")
 
-[node name="main" type="Node3D"]
+[node name="main" type="Node3D" unique_id=350322423]
 
-[node name="human" parent="." instance=ExtResource("2_5wety")]
+[node name="human" parent="." unique_id=754432865 instance=ExtResource("2_5wety")]
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 0, -7.43304, -62.136)
 
-[node name="destination" type="Marker3D" parent="."]
+[node name="destination" type="Marker3D" parent="." unique_id=112620516]
 transform = Transform3D(-0.0657351, -0.333891, 0.551225, 0, 0.554084, 0.335624, -0.644463, 0.0340569, -0.0562248, 7.21039, 1.79103, -0.735459)
 
-[node name="human2" parent="." instance=ExtResource("2_5wety")]
+[node name="human2" parent="." unique_id=231523595 instance=ExtResource("2_5wety")]
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 3.09317, -7.43304, -62.136)
 
 [node name="right" parent="human2/head/eyes" index="0"]
-frame = 5
+frame = 0
 
 [node name="left" parent="human2/head/eyes" index="1"]
-frame = 5
+frame = 0
 
 [node name="mouth" parent="human2/head" index="1"]
 dialogue_name = &"guy"
 
 [node name="nose" parent="human2/head" index="2"]
-frame = 8
+frame = 1
 
 [node name="hair" parent="human2/head" index="5"]
 material = SubResource("StandardMaterial3D_3vtuw")
@@ -143,113 +143,113 @@ material = SubResource("StandardMaterial3D_0mwmh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.04237, 0)
 dialogue = ExtResource("3_1tr4g")
 
-[node name="world" parent="." instance=ExtResource("1_3kllw")]
+[node name="world" parent="." unique_id=1135701814 instance=ExtResource("1_3kllw")]
 world_radius = 1000
 
-[node name="characters" type="Node3D" parent="."]
+[node name="characters" type="Node3D" parent="." unique_id=861941969]
 transform = Transform3D(0.228983, 0, 0, 0, 0.228983, 0, 0, 0, 0.228983, 51.1328, -5.00432, -50.3553)
 
-[node name="shopkeep" parent="characters" instance=ExtResource("2_5wety")]
+[node name="shopkeep" parent="characters" unique_id=26591392 instance=ExtResource("2_5wety")]
 transform = Transform3D(-0.0716815, 0, -2.68371, 0, 2.68467, 0, 2.68371, 0, -0.0716815, -3.5237, -5.5173, 0.424118)
 seed = "shopkeep"
 
-[node name="store" type="Area3D" parent="characters/shopkeep" groups=["interactibles"]]
+[node name="store" type="Area3D" parent="characters/shopkeep" unique_id=1512965156 groups=["interactibles"]]
 transform = Transform3D(-0.0099455, 0, 0.372353, 0, 0.372486, 0, -0.372353, 0, -0.0099455, -0.163605, -0.0250101, -0.20874)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("21_gylqs")
 items = Array[ExtResource("14_l0lyd")]([ExtResource("8_81346")])
 
-[node name="cs" type="CollisionShape3D" parent="characters/shopkeep/store"]
+[node name="cs" type="CollisionShape3D" parent="characters/shopkeep/store" unique_id=2132343548]
 shape = SubResource("BoxShape3D_0fjb1")
 
-[node name="merlin" parent="characters" instance=ExtResource("2_tg236")]
+[node name="merlin" parent="characters" unique_id=235611100 instance=ExtResource("2_tg236")]
 transform = Transform3D(4.36714, 0, 0, 0, 4.36714, 0, 0, 0, 4.36714, 19.4368, 3.27553, 0.509155)
 
-[node name="quest" parent="characters/merlin" instance=ExtResource("7_gylqs")]
-r = SubResource("Resource_0mwmh")
+[node name="quest" parent="characters/merlin" unique_id=871772850 instance=ExtResource("7_gylqs")]
+r = SubResource("Resource_cana4")
 
-[node name="talk" type="Area3D" parent="characters/merlin" groups=["interactibles"]]
+[node name="talk" type="Area3D" parent="characters/merlin" unique_id=884805968 groups=["interactibles"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.659344, 0.49816)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("13_3vtuw")
 
-[node name="cs" type="CollisionShape3D" parent="characters/merlin/talk"]
+[node name="cs" type="CollisionShape3D" parent="characters/merlin/talk" unique_id=1346981503]
 shape = SubResource("BoxShape3D_cana4")
 
-[node name="phil" parent="characters" instance=ExtResource("21_1nw2n")]
+[node name="phil" parent="characters" unique_id=2103212631 instance=ExtResource("21_1nw2n")]
 transform = Transform3D(-0.287146, 0, -4.35769, 0, 4.36714, 0, 4.35769, 0, -0.287146, -22.5013, -4.34827, -1.4967)
 script = ExtResource("22_65fwc")
 
-[node name="crafter" type="Area3D" parent="characters/phil" groups=["interactibles"]]
+[node name="crafter" type="Area3D" parent="characters/phil" unique_id=1484986962 groups=["interactibles"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("11_3vnk6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="characters/phil/crafter" groups=["interactibles"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="characters/phil/crafter" unique_id=1154665403 groups=["interactibles"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01255, 0)
 shape = SubResource("BoxShape3D_0dbvw")
 
-[node name="map" type="NavigationRegion3D" parent="."]
+[node name="map" type="NavigationRegion3D" parent="." unique_id=1569277179]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458634, 0, -0.257289)
 navigation_mesh = SubResource("NavigationMesh_00egg")
 
-[node name="floor" type="CSGBox3D" parent="map"]
+[node name="floor" type="CSGBox3D" parent="map" unique_id=648229934]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.92798, 0)
 use_collision = true
 size = Vector3(200, 1, 200)
 material = SubResource("StandardMaterial3D_cana4")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="map"]
+[node name="OmniLight3D" type="OmniLight3D" parent="map" unique_id=1874655407]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00458634, 14.3061, 0.257289)
 light_color = Color(0, 0.847059, 1, 1)
 light_energy = 20.0
 omni_range = 43.0
 
-[node name="CSGBox3D" type="CSGBox3D" parent="map"]
+[node name="CSGBox3D" type="CSGBox3D" parent="map" unique_id=2066752271]
 transform = Transform3D(0.584674, 0.811268, 0, -0.811268, 0.584674, 0, 0, 0, 1, 0.00458634, -5.75703, 0.257289)
 use_collision = true
 size = Vector3(2, 10, 10)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="map"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="map" unique_id=2131474797]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47081, -7.06354, 0.117708)
 use_collision = true
 size = Vector3(10, 10, 10)
 
-[node name="pause_menu" parent="." instance=ExtResource("4_s30wn")]
+[node name="pause_menu" parent="." unique_id=1753282911 instance=ExtResource("4_s30wn")]
 visible = false
 
-[node name="training_dummy" parent="." instance=ExtResource("14_jiv15")]
+[node name="training_dummy" parent="." unique_id=1973922606 instance=ExtResource("14_jiv15")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -7.50597, 56.1246)
 
-[node name="item" parent="training_dummy" instance=ExtResource("14_7rmuh")]
+[node name="item" parent="training_dummy" unique_id=987986552 instance=ExtResource("14_7rmuh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654872, -4.54743)
-resource = SubResource("Resource_cana4")
+resource = SubResource("Resource_0fjb1")
 
-[node name="tree" parent="." instance=ExtResource("13_2bldt")]
+[node name="tree" parent="." unique_id=1426359164 instance=ExtResource("13_2bldt")]
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -9.53674e-07, -8.00182, -34.7872)
 
-[node name="pay_gate" parent="." instance=ExtResource("25_l8c4v")]
+[node name="pay_gate" parent="." unique_id=506253907 instance=ExtResource("25_l8c4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.6758, -7.31034, 0)
 
-[node name="misa_line" parent="." instance=ExtResource("26_tqase")]
+[node name="misa_line" parent="." unique_id=1112722794 instance=ExtResource("26_tqase")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.04652, -6.841816, 21.908724)
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=298681834]
 pixel_size = 0.05
 billboard = 1
 texture_filter = 0
 texture = ExtResource("27_1tr4g")
 
-[node name="grammerator" type="Label3D" parent="."]
+[node name="grammerator" type="Label3D" parent="." unique_id=1288565577]
 transform = Transform3D(-0.9997759, 0, -0.021169186, 0, 1, 0, 0.021169186, 0, -0.9997759, 0, -4.404852, -26.475945)
 billboard = 2
 text = "TEST TEST TEST"
 font_size = 64
 script = ExtResource("28_00egg")
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="GridMap" type="GridMap" parent="." unique_id=1420361536]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -5.541354, 42.482307)
 mesh_library = ExtResource("29_ycrus")
 cell_size = Vector3(10, 10, 10)
