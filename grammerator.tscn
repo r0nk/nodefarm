@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ikuh6gcseslt"]
+
+[ext_resource type="Script" uid="uid://cq2ox3u1mtqgn" path="res://grammerator.gd" id="1_4ll2a"]
+
+[node name="grammerator" type="Label3D" unique_id=1320637100]
+transform = Transform3D(-0.9997759, 0, -0.021169186, 0, 1, 0, 0.021169186, 0, -0.9997759, 0, 0, 0)
+billboard = 2
+text = "TEST TEST TEST"
+font_size = 64
+script = ExtResource("1_4ll2a")
