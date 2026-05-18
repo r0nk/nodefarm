@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b7v7ddihhufc3"]
+[gd_scene format=3 uid="uid://b7v7ddihhufc3"]
 
 [ext_resource type="Script" uid="uid://i20n6ku8iy5v" path="res://addons/fpsrpg_controller/player.gd" id="1"]
 [ext_resource type="Script" uid="uid://c72oyuju4lp25" path="res://addons/fpsrpg_controller/HUD.gd" id="2_3y5t6"]
@@ -30,10 +30,7 @@ height = 3.0
 [sub_resource type="Resource" id="Resource_00bt2"]
 script = ExtResource("12_ds02g")
 type = "collect"
-location = Vector3(0, 0, 0)
-target_amount = 1.0
 target_item = ExtResource("13_ykiit")
-progress = 0.0
 metadata/_custom_type_script = "uid://bwfptbym3syq6"
 
 [sub_resource type="Resource" id="Resource_ltudq"]
@@ -59,7 +56,6 @@ as
 expected.
 "
 tasks = Array[ExtResource("12_ds02g")]([SubResource("Resource_00bt2")])
-rewards = Array[ExtResource("10_cwk8v")]([])
 metadata/_custom_type_script = "uid://ogpi40jk57jq"
 
 [sub_resource type="Resource" id="Resource_ykiit"]
@@ -68,58 +64,58 @@ input1 = ExtResource("13_ykiit")
 output = ExtResource("14_stu41")
 metadata/_custom_type_script = "uid://cr0qtnq7axohb"
 
-[node name="player" type="CharacterBody3D" groups=["Persist", "player"]]
+[node name="player" type="CharacterBody3D" unique_id=445463381 groups=["Persist", "player"]]
 script = ExtResource("1")
 
-[node name="camera" type="Camera3D" parent="."]
+[node name="camera" type="Camera3D" parent="." unique_id=947357870]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.53674e-07, 2.10365, 5.96046e-08)
 cull_mask = 2148532223
 current = true
 fov = 90.0
 far = 10000.0
 
-[node name="HUD" type="CanvasLayer" parent="camera"]
+[node name="HUD" type="CanvasLayer" parent="camera" unique_id=588202068]
 process_mode = 3
 script = ExtResource("2_3y5t6")
 
-[node name="sights" type="Node2D" parent="camera/HUD"]
+[node name="sights" type="Node2D" parent="camera/HUD" unique_id=1606066296]
 visible = false
 
-[node name="Line2D" type="Line2D" parent="camera/HUD/sights"]
+[node name="Line2D" type="Line2D" parent="camera/HUD/sights" unique_id=1280139192]
 z_index = 3
 position = Vector2(-533, -274)
 rotation = -1.23279
 points = PackedVector2Array(-246.863, 145.068, -85.7383, 592.219, -69.3421, 637.722, 98.5878, 1103.76)
 default_color = Color(0, 0, 0, 1)
 
-[node name="Line2D2" type="Line2D" parent="camera/HUD/sights"]
+[node name="Line2D2" type="Line2D" parent="camera/HUD/sights" unique_id=1158947477]
 z_index = 3
 position = Vector2(-535, -274)
 points = PackedVector2Array(546, 655, 537, -22)
 default_color = Color(0, 0, 0, 1)
 
-[node name="Polygon2D" type="Polygon2D" parent="camera/HUD/sights/Line2D2"]
+[node name="Polygon2D" type="Polygon2D" parent="camera/HUD/sights/Line2D2" unique_id=1864029419]
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(110, 599, 367, 704, 576, 693, 903, 623, 1101, 527, 1141, 265, 1076, 44, 858, -134, 627, -187, 263, -173, 54.9999, -102, -132, 25, -101, 270, -24.0001, 451, 67.9999, 574, -417, 1260, -694, 615, -564, -81, -366, -383, 279, -389, 978, -395, 1467, -338, 1767, -242, 2010, 103, 2013, 519, 2013, 827, 1934, 1062, 1775, 1229, 1150, 1379, 814, 1387, 251, 1410, -148, 1396, -369, 1351, -380, 1271)
 
-[node name="Polygon2D" type="Polygon2D" parent="camera/HUD/sights/Line2D2/Polygon2D"]
+[node name="Polygon2D" type="Polygon2D" parent="camera/HUD/sights/Line2D2/Polygon2D" unique_id=1482965870]
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-35.0001, 471, 146, 660, -380, 1365, -516, 1229)
 
-[node name="crosshair" type="Polygon2D" parent="camera/HUD"]
+[node name="crosshair" type="Polygon2D" parent="camera/HUD" unique_id=1736460772]
 position = Vector2(-5.96046e-08, 5.96046e-08)
 scale = Vector2(2, 2)
 color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(0, -1, 1, 0, 0, 1, -1, 0)
 
-[node name="status" type="RichTextLabel" parent="camera/HUD"]
+[node name="status" type="RichTextLabel" parent="camera/HUD" unique_id=28619586]
 offset_left = 6.0
 offset_top = 158.0
 offset_right = 932.0
 offset_bottom = 678.0
 mouse_filter = 2
 
-[node name="undercross" type="RichTextLabel" parent="camera/HUD"]
+[node name="undercross" type="RichTextLabel" parent="camera/HUD" unique_id=467190565]
 offset_left = 735.0
 offset_top = 574.0
 offset_right = 1188.0
@@ -127,7 +123,7 @@ offset_bottom = 797.0
 text = "
 "
 
-[node name="quest_tracker" type="Control" parent="camera/HUD"]
+[node name="quest_tracker" type="Control" parent="camera/HUD" unique_id=1777602140]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
@@ -136,7 +132,7 @@ offset_top = 25.0
 offset_right = 933.0
 offset_bottom = 65.0
 
-[node name="title" type="RichTextLabel" parent="camera/HUD/quest_tracker"]
+[node name="title" type="RichTextLabel" parent="camera/HUD/quest_tracker" unique_id=1672282098]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -152,7 +148,7 @@ grow_vertical = 2
 theme = ExtResource("8_kbxqm")
 text = "QUEST TITLE"
 
-[node name="description" type="RichTextLabel" parent="camera/HUD/quest_tracker"]
+[node name="description" type="RichTextLabel" parent="camera/HUD/quest_tracker" unique_id=2051610210]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -171,31 +167,31 @@ text = "Collect 0/8 eggs.
 "
 scroll_active = false
 
-[node name="interact_cast" type="RayCast3D" parent="camera"]
+[node name="interact_cast" type="RayCast3D" parent="camera" unique_id=1156468269]
 target_position = Vector3(0, 0, -6)
 collision_mask = 2
 collide_with_areas = true
 
-[node name="sfx" type="AudioStreamPlayer" parent="camera/interact_cast"]
+[node name="sfx" type="AudioStreamPlayer" parent="camera/interact_cast" unique_id=64483969]
 stream = ExtResource("3_aa11l")
 
-[node name="hand" parent="camera" instance=ExtResource("5_yhe1a")]
+[node name="hand" parent="camera" unique_id=301103073 instance=ExtResource("5_yhe1a")]
 hotkey = "fire"
 
-[node name="hat" parent="camera" instance=ExtResource("5_yhe1a")]
+[node name="hat" parent="camera" unique_id=1142339524 instance=ExtResource("5_yhe1a")]
 transform = Transform3D(0.999841, -1.54521e-09, 0.0178538, 0.000318136, 0.999841, -0.017816, -0.0178509, 0.0178189, 0.999682, 0.0235594, 0.564326, 0.00839019)
 
-[node name="cloak" parent="camera" instance=ExtResource("5_yhe1a")]
+[node name="cloak" parent="camera" unique_id=445143261 instance=ExtResource("5_yhe1a")]
 transform = Transform3D(0.999841, -1.54521e-09, 0.0178538, 0.000318136, 0.999841, -0.017816, -0.0178509, 0.0178189, 0.999682, 0.0235593, -0.893771, 0.770513)
 
-[node name="shoes" parent="camera" instance=ExtResource("5_yhe1a")]
+[node name="shoes" parent="camera" unique_id=531949392 instance=ExtResource("5_yhe1a")]
 transform = Transform3D(0.999841, -1.54521e-09, 0.0178538, 0.000318136, 0.999841, -0.017816, -0.0178509, 0.0178189, 0.999682, 0.0235594, -2.3359, -0.0858629)
 
-[node name="cs" type="CollisionShape3D" parent="."]
+[node name="cs" type="CollisionShape3D" parent="." unique_id=1706127817]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657689, 0)
 shape = SubResource("3")
 
-[node name="inventory" parent="." instance=ExtResource("6_axg0w")]
+[node name="inventory" parent="." unique_id=360550354 instance=ExtResource("6_axg0w")]
 
 [node name="view" parent="inventory" index="0"]
 process_mode = 3
@@ -220,7 +216,7 @@ types = Array[StringName]([&"tool", &"consumable"])
 [node name="five" parent="inventory/view/hotbar" index="5"]
 types = Array[StringName]([&"tool", &"consumable"])
 
-[node name="game_menu" type="TabBar" parent="."]
+[node name="game_menu" type="TabBar" parent="." unique_id=1401302199]
 process_mode = 3
 visible = false
 offset_left = 55.0
@@ -236,21 +232,21 @@ tab_0/title = "Quests"
 tab_1/title = "Inventory"
 script = ExtResource("8_sq0p4")
 
-[node name="Inventory" type="Panel" parent="game_menu"]
+[node name="Inventory" type="Panel" parent="game_menu" unique_id=2086449199]
 visible = false
 layout_mode = 0
 offset_top = 59.0
 offset_right = 812.0
 offset_bottom = 492.0
 
-[node name="hat" parent="game_menu/Inventory" groups=["equipment_slot"] instance=ExtResource("8_6rfk8")]
+[node name="hat" parent="game_menu/Inventory" unique_id=964405670 groups=["equipment_slot"] instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 131.0
 offset_top = 20.0
 offset_right = 193.0
 offset_bottom = 83.0
 
-[node name="Label" type="Label" parent="game_menu/Inventory/hat"]
+[node name="Label" type="Label" parent="game_menu/Inventory/hat" unique_id=1635953178]
 layout_mode = 0
 offset_left = -70.0
 offset_top = 17.0
@@ -258,14 +254,14 @@ offset_right = -10.0
 offset_bottom = 55.0
 text = "HAT:"
 
-[node name="cloak" parent="game_menu/Inventory" groups=["equipment_slot"] instance=ExtResource("8_6rfk8")]
+[node name="cloak" parent="game_menu/Inventory" unique_id=1045655757 groups=["equipment_slot"] instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 130.0
 offset_top = 91.0
 offset_right = 192.0
 offset_bottom = 154.0
 
-[node name="Label" type="Label" parent="game_menu/Inventory/cloak"]
+[node name="Label" type="Label" parent="game_menu/Inventory/cloak" unique_id=1280886241]
 layout_mode = 0
 offset_left = -104.0
 offset_top = 16.0
@@ -273,14 +269,14 @@ offset_right = -8.0
 offset_bottom = 54.0
 text = "CLOAK:"
 
-[node name="shoes" parent="game_menu/Inventory" groups=["equipment_slot"] instance=ExtResource("8_6rfk8")]
+[node name="shoes" parent="game_menu/Inventory" unique_id=136070716 groups=["equipment_slot"] instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 131.0
 offset_top = 163.0
 offset_right = 193.0
 offset_bottom = 226.0
 
-[node name="Label" type="Label" parent="game_menu/Inventory/shoes"]
+[node name="Label" type="Label" parent="game_menu/Inventory/shoes" unique_id=1588320552]
 layout_mode = 0
 offset_left = -104.0
 offset_top = 16.0
@@ -288,154 +284,154 @@ offset_right = -8.0
 offset_bottom = 54.0
 text = "SHOES:"
 
-[node name="1" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="1" parent="game_menu/Inventory" unique_id=1457084458 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 302.0
 offset_top = 20.0
 offset_right = 364.0
 offset_bottom = 83.0
 
-[node name="2" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="2" parent="game_menu/Inventory" unique_id=853209991 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 369.0
 offset_top = 20.0
 offset_right = 431.0
 offset_bottom = 83.0
 
-[node name="3" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="3" parent="game_menu/Inventory" unique_id=1020215732 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 441.0
 offset_top = 20.0
 offset_right = 503.0
 offset_bottom = 83.0
 
-[node name="4" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="4" parent="game_menu/Inventory" unique_id=2069660923 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 513.0
 offset_top = 20.0
 offset_right = 575.0
 offset_bottom = 83.0
 
-[node name="5" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="5" parent="game_menu/Inventory" unique_id=914679152 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 585.0
 offset_top = 20.0
 offset_right = 647.0
 offset_bottom = 83.0
 
-[node name="6" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="6" parent="game_menu/Inventory" unique_id=705969143 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 657.0
 offset_top = 20.0
 offset_right = 719.0
 offset_bottom = 83.0
 
-[node name="7" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="7" parent="game_menu/Inventory" unique_id=1873030011 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 729.0
 offset_top = 20.0
 offset_right = 791.0
 offset_bottom = 83.0
 
-[node name="8" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="8" parent="game_menu/Inventory" unique_id=634551244 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 302.0
 offset_top = 91.0
 offset_right = 364.0
 offset_bottom = 154.0
 
-[node name="9" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="9" parent="game_menu/Inventory" unique_id=695403738 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 369.0
 offset_top = 91.0
 offset_right = 431.0
 offset_bottom = 154.0
 
-[node name="10" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="10" parent="game_menu/Inventory" unique_id=938558705 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 441.0
 offset_top = 91.0
 offset_right = 503.0
 offset_bottom = 154.0
 
-[node name="11" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="11" parent="game_menu/Inventory" unique_id=1734123426 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 513.0
 offset_top = 91.0
 offset_right = 575.0
 offset_bottom = 154.0
 
-[node name="12" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="12" parent="game_menu/Inventory" unique_id=1594670855 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 585.0
 offset_top = 91.0
 offset_right = 647.0
 offset_bottom = 154.0
 
-[node name="13" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="13" parent="game_menu/Inventory" unique_id=18949825 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 657.0
 offset_top = 91.0
 offset_right = 719.0
 offset_bottom = 154.0
 
-[node name="14" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="14" parent="game_menu/Inventory" unique_id=2032879095 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 729.0
 offset_top = 91.0
 offset_right = 791.0
 offset_bottom = 154.0
 
-[node name="15" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="15" parent="game_menu/Inventory" unique_id=327319992 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 302.0
 offset_top = 163.0
 offset_right = 364.0
 offset_bottom = 226.0
 
-[node name="16" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="16" parent="game_menu/Inventory" unique_id=1924671906 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 370.0
 offset_top = 163.0
 offset_right = 432.0
 offset_bottom = 226.0
 
-[node name="17" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="17" parent="game_menu/Inventory" unique_id=1724581706 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 441.0
 offset_top = 163.0
 offset_right = 503.0
 offset_bottom = 226.0
 
-[node name="18" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="18" parent="game_menu/Inventory" unique_id=1208344838 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 513.0
 offset_top = 163.0
 offset_right = 575.0
 offset_bottom = 226.0
 
-[node name="19" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="19" parent="game_menu/Inventory" unique_id=513416501 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 585.0
 offset_top = 163.0
 offset_right = 647.0
 offset_bottom = 226.0
 
-[node name="20" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="20" parent="game_menu/Inventory" unique_id=556702398 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 657.0
 offset_top = 163.0
 offset_right = 719.0
 offset_bottom = 226.0
 
-[node name="21" parent="game_menu/Inventory" instance=ExtResource("8_6rfk8")]
+[node name="21" parent="game_menu/Inventory" unique_id=956062360 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 729.0
 offset_top = 163.0
 offset_right = 791.0
 offset_bottom = 226.0
 
-[node name="Quests" type="Panel" parent="game_menu"]
+[node name="Quests" type="Panel" parent="game_menu" unique_id=1164097374]
 layout_mode = 0
 offset_top = 58.0
 offset_right = 811.0
@@ -444,11 +440,11 @@ script = ExtResource("7_a0i7b")
 starting_quest = SubResource("Resource_ltudq")
 inventory = NodePath("../../inventory")
 
-[node name="quest_complete_sfx" type="AudioStreamPlayer" parent="game_menu/Quests"]
+[node name="quest_complete_sfx" type="AudioStreamPlayer" parent="game_menu/Quests" unique_id=868904371]
 stream = ExtResource("9_6k6ct")
 
-[node name="list" type="ItemList" parent="game_menu/Quests"]
-layout_mode = 2
+[node name="list" type="ItemList" parent="game_menu/Quests" unique_id=94181788]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 5.0
 offset_right = 243.0
@@ -456,8 +452,8 @@ offset_bottom = 413.0
 size_flags_horizontal = 0
 item_count = 1
 
-[node name="description" type="RichTextLabel" parent="game_menu/Quests"]
-layout_mode = 2
+[node name="description" type="RichTextLabel" parent="game_menu/Quests" unique_id=822293702]
+layout_mode = 0
 offset_left = 256.0
 offset_top = 21.0
 offset_right = 804.0
@@ -465,7 +461,7 @@ offset_bottom = 405.0
 size_flags_horizontal = 8
 text = "<alan please add Placeholder text>"
 
-[node name="Perks" type="Panel" parent="game_menu"]
+[node name="Perks" type="Panel" parent="game_menu" unique_id=1410612696]
 visible = false
 z_index = -3
 layout_mode = 0
@@ -475,7 +471,7 @@ offset_bottom = 492.0
 script = ExtResource("7_a0i7b")
 inventory = NodePath("../../inventory")
 
-[node name="perk" parent="game_menu/Perks" instance=ExtResource("11_veejb")]
+[node name="perk" parent="game_menu/Perks" unique_id=618475064 instance=ExtResource("11_veejb")]
 visible = false
 layout_mode = 0
 offset_left = 267.0
@@ -490,7 +486,7 @@ position = Vector2(-136, -121)
 points = PackedVector2Array(168, 146, 305, 172, 352, 251)
 default_color = Color(0.485703, 0.485704, 0.485703, 1)
 
-[node name="perk2" parent="game_menu/Perks" instance=ExtResource("11_veejb")]
+[node name="perk2" parent="game_menu/Perks" unique_id=928057562 instance=ExtResource("11_veejb")]
 layout_mode = 0
 offset_left = 457.0
 offset_top = 257.0
@@ -498,7 +494,7 @@ offset_right = 537.0
 offset_bottom = 303.0
 prerequisites = Array[NodePath]([])
 
-[node name="perk3" parent="game_menu/Perks" instance=ExtResource("11_veejb")]
+[node name="perk3" parent="game_menu/Perks" unique_id=1085409932 instance=ExtResource("11_veejb")]
 layout_mode = 0
 offset_left = 145.0
 offset_top = 257.0
@@ -506,7 +502,7 @@ offset_right = 225.0
 offset_bottom = 303.0
 prerequisites = Array[NodePath]([])
 
-[node name="crafting_menu" type="TabBar" parent="."]
+[node name="crafting_menu" type="TabBar" parent="." unique_id=1496406474]
 process_mode = 3
 visible = false
 offset_left = 55.0
@@ -521,13 +517,13 @@ tab_count = 2
 tab_0/title = "Crafting"
 script = ExtResource("8_sq0p4")
 
-[node name="Crafting" type="Panel" parent="crafting_menu"]
+[node name="Crafting" type="Panel" parent="crafting_menu" unique_id=1309104426]
 layout_mode = 0
 offset_top = 58.0
 offset_right = 806.0
 offset_bottom = 466.0
 
-[node name="crafting_button" type="Button" parent="crafting_menu/Crafting"]
+[node name="crafting_button" type="Button" parent="crafting_menu/Crafting" unique_id=1454836395]
 layout_mode = 0
 offset_left = 27.0
 offset_top = 21.0
@@ -537,12 +533,12 @@ text = "Cool pickaxe"
 script = ExtResource("12_07xsm")
 blueprint = SubResource("Resource_ykiit")
 
-[node name="inputs" type="Control" parent="crafting_menu/Crafting/crafting_button"]
+[node name="inputs" type="Control" parent="crafting_menu/Crafting/crafting_button" unique_id=1702539852]
 anchors_preset = 0
 offset_right = 240.0
 offset_bottom = 71.0
 
-[node name="slot1" parent="crafting_menu/Crafting/crafting_button/inputs" instance=ExtResource("8_6rfk8")]
+[node name="slot1" parent="crafting_menu/Crafting/crafting_button/inputs" unique_id=1741746328 instance=ExtResource("8_6rfk8")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.15
@@ -551,7 +547,7 @@ offset_top = 5.0
 offset_bottom = 68.0
 disabled = true
 
-[node name="slot2" parent="crafting_menu/Crafting/crafting_button/inputs" instance=ExtResource("8_6rfk8")]
+[node name="slot2" parent="crafting_menu/Crafting/crafting_button/inputs" unique_id=755231987 instance=ExtResource("8_6rfk8")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.15
@@ -561,7 +557,7 @@ offset_right = 98.0
 offset_bottom = 68.0
 disabled = true
 
-[node name="slot3" parent="crafting_menu/Crafting/crafting_button/inputs" instance=ExtResource("8_6rfk8")]
+[node name="slot3" parent="crafting_menu/Crafting/crafting_button/inputs" unique_id=562369436 instance=ExtResource("8_6rfk8")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.15
@@ -571,7 +567,7 @@ offset_right = 166.0
 offset_bottom = 68.0
 disabled = true
 
-[node name="slot4" parent="crafting_menu/Crafting/crafting_button/inputs" instance=ExtResource("8_6rfk8")]
+[node name="slot4" parent="crafting_menu/Crafting/crafting_button/inputs" unique_id=1425601072 instance=ExtResource("8_6rfk8")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.15
@@ -581,7 +577,7 @@ offset_right = 230.0
 offset_bottom = 68.0
 disabled = true
 
-[node name="output" parent="crafting_menu/Crafting/crafting_button" instance=ExtResource("8_6rfk8")]
+[node name="output" parent="crafting_menu/Crafting/crafting_button" unique_id=600971616 instance=ExtResource("8_6rfk8")]
 layout_mode = 0
 offset_left = 668.0
 offset_top = 5.0
@@ -589,10 +585,10 @@ offset_right = 730.0
 offset_bottom = 68.0
 disabled = true
 
-[node name="store_panel" parent="." instance=ExtResource("12_l73am")]
+[node name="store_panel" parent="." unique_id=2031877746 instance=ExtResource("12_l73am")]
 visible = false
 
-[node name="picture" type="TextureRect" parent="."]
+[node name="picture" type="TextureRect" parent="." unique_id=745862363]
 offset_left = 243.0
 offset_top = 43.0
 offset_right = 753.0
@@ -600,10 +596,10 @@ offset_bottom = 487.0
 mouse_filter = 2
 expand_mode = 1
 
-[node name="stomach" type="Node" parent="."]
+[node name="stomach" type="Node" parent="." unique_id=1053951207]
 script = ExtResource("20_ds02g")
 
-[node name="hunger_bar" type="ProgressBar" parent="stomach"]
+[node name="hunger_bar" type="ProgressBar" parent="stomach" unique_id=2119347061]
 offset_left = 55.0
 offset_top = 502.0
 offset_right = 171.0
@@ -614,17 +610,17 @@ value = 0.5
 show_percentage = false
 script = ExtResource("21_00bt2")
 
-[node name="Label" type="Label" parent="stomach/hunger_bar"]
+[node name="Label" type="Label" parent="stomach/hunger_bar" unique_id=1752062231]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Hunger"
 
-[node name="climbing" type="Node3D" parent="."]
+[node name="climbing" type="Node3D" parent="." unique_id=1277630310]
 transform = Transform3D(-1, 1.52574e-09, 8.74095e-08, 0, 0.999847, -0.0174524, -8.74228e-08, -0.0174524, -0.999848, 0, 0.813039, 0)
 script = ExtResource("5_00bt2")
 
-[node name="label" type="RichTextLabel" parent="climbing"]
+[node name="label" type="RichTextLabel" parent="climbing" unique_id=1363854786]
 offset_left = 363.0
 offset_top = 232.0
 offset_right = 545.0
@@ -633,7 +629,7 @@ theme = ExtResource("8_kbxqm")
 bbcode_enabled = true
 text = "[wave] climbable [/wave]"
 
-[node name="start_ray" type="RayCast3D" parent="climbing"]
+[node name="start_ray" type="RayCast3D" parent="climbing" unique_id=107237021]
 transform = Transform3D(1, 0, -2.91038e-11, 0, -4.28408e-08, -1, 0, 1, -2.98023e-08, 0, 0, 0)
 target_position = Vector3(0, -1.5, 0)
 

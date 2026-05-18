@@ -30,11 +30,13 @@
 [ext_resource type="Script" uid="uid://cq2ox3u1mtqgn" path="res://grammerator.gd" id="28_00egg"]
 [ext_resource type="MeshLibrary" uid="uid://2xjg0bsyswup" path="res://procedural/meshlib.tres" id="29_ycrus"]
 [ext_resource type="Script" uid="uid://3063y13b4csc" path="res://procgrid.gd" id="30_3vtuw"]
+[ext_resource type="AudioStream" uid="uid://b41u5e28d281e" path="res://sfx/bell.ogg" id="31_0mwmh"]
+[ext_resource type="Script" uid="uid://cmbapy26rj5my" path="res://drum.gd" id="31_cana4"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vtuw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fjb1"]
 albedo_color = Color(0.627451, 0.1254902, 0.9411765, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mwmh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wufe0"]
 resource_local_to_scene = true
 albedo_color = Color(1, 0, 0, 1)
 albedo_texture = ExtResource("2_tqase")
@@ -66,7 +68,7 @@ type = "collect"
 target_amount = 10.0
 target_item = SubResource("Resource_3am2a")
 
-[sub_resource type="Resource" id="Resource_cana4"]
+[sub_resource type="Resource" id="Resource_6stxa"]
 resource_local_to_scene = true
 script = ExtResource("10_1tr4g")
 name = "Fight the scarecrow"
@@ -93,7 +95,7 @@ noise = SubResource("FastNoiseLite_ycrus")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cana4"]
 albedo_texture = SubResource("NoiseTexture2D_0mwmh")
 
-[sub_resource type="Resource" id="Resource_0fjb1"]
+[sub_resource type="Resource" id="Resource_l3vsc"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -102,6 +104,67 @@ id = &"laser_gun"
 type = &"tool"
 max_stacks = 10
 equipped_scene = ExtResource("15_aef38")
+
+[sub_resource type="Animation" id="Animation_cana4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sfx:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-20.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0fjb1"]
+resource_name = "beat"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sfx:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-20.0, -20.0, -30.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wufe0"]
+_data = {
+&"RESET": SubResource("Animation_cana4"),
+&"beat": SubResource("Animation_0fjb1")
+}
 
 [node name="main" type="Node3D" unique_id=350322423]
 
@@ -115,19 +178,19 @@ transform = Transform3D(-0.0657351, -0.333891, 0.551225, 0, 0.554084, 0.335624, 
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 3.09317, -7.43304, -62.136)
 
 [node name="right" parent="human2/head/eyes" index="0"]
-frame = 0
+frame = 1
 
 [node name="left" parent="human2/head/eyes" index="1"]
-frame = 0
+frame = 1
 
 [node name="mouth" parent="human2/head" index="1"]
 dialogue_name = &"guy"
 
 [node name="nose" parent="human2/head" index="2"]
-frame = 1
+frame = 7
 
 [node name="hair" parent="human2/head" index="5"]
-material = SubResource("StandardMaterial3D_3vtuw")
+material = SubResource("StandardMaterial3D_0fjb1")
 
 [node name="legs" parent="human2" index="1" node_paths=PackedStringArray("target")]
 target = NodePath("../../destination")
@@ -137,7 +200,7 @@ debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="torso" parent="human2" index="2"]
-material = SubResource("StandardMaterial3D_0mwmh")
+material = SubResource("StandardMaterial3D_wufe0")
 
 [node name="dialogue_box" parent="human2" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.04237, 0)
@@ -167,7 +230,7 @@ shape = SubResource("BoxShape3D_0fjb1")
 transform = Transform3D(4.36714, 0, 0, 0, 4.36714, 0, 0, 0, 4.36714, 19.4368, 3.27553, 0.509155)
 
 [node name="quest" parent="characters/merlin" unique_id=871772850 instance=ExtResource("7_gylqs")]
-r = SubResource("Resource_cana4")
+r = SubResource("Resource_6stxa")
 
 [node name="talk" type="Area3D" parent="characters/merlin" unique_id=884805968 groups=["interactibles"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.659344, 0.49816)
@@ -192,7 +255,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01255, 0)
 shape = SubResource("BoxShape3D_0dbvw")
 
 [node name="map" type="NavigationRegion3D" parent="." unique_id=1569277179]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458634, 0, -0.257289)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025328755, -0.028118134, -0.16285807)
 navigation_mesh = SubResource("NavigationMesh_00egg")
 
 [node name="floor" type="CSGBox3D" parent="map" unique_id=648229934]
@@ -225,7 +288,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -7.50597, 56.1246)
 
 [node name="item" parent="training_dummy" unique_id=987986552 instance=ExtResource("14_7rmuh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654872, -4.54743)
-resource = SubResource("Resource_0fjb1")
+resource = SubResource("Resource_l3vsc")
 
 [node name="tree" parent="." unique_id=1426359164 instance=ExtResource("13_2bldt")]
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -9.53674e-07, -8.00182, -34.7872)
@@ -258,6 +321,18 @@ data = {
 "cells": PackedInt32Array(4, 65534, 1, 65535, 65531, 1, 65535, 65530, 1, 65535, 65529, 0, 65535, 65528, 1, 65535, 65527, 1, 0, 65527, 1, 2, 65529, 0, 1, 65529, 0, 0, 65529, 0, 65534, 65529, 0, 65533, 65529, 0, 65532, 65529, 0, 65531, 65529, 0)
 }
 script = ExtResource("30_3vtuw")
+
+[node name="drum" type="Node3D" parent="." unique_id=1928294027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.917732, 0, 0)
+script = ExtResource("31_cana4")
+
+[node name="sfx" type="AudioStreamPlayer3D" parent="drum" unique_id=1613756599]
+stream = ExtResource("31_0mwmh")
+volume_db = -20.0
+pitch_scale = 0.3
+
+[node name="anim" type="AnimationPlayer" parent="drum" unique_id=216665745]
+libraries/ = SubResource("AnimationLibrary_wufe0")
 
 [editable path="human2"]
 [editable path="characters/phil"]

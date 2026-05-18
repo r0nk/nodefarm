@@ -74,6 +74,9 @@ func process_input(delta):
 #	if Input.is_action_just_pressed("escape"):
 #		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+	if Input.is_action_just_pressed("devout"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 	if Input.is_action_pressed("move_forward"):
 		input_direction+=forward
 	if Input.is_action_pressed("move_backward"):
