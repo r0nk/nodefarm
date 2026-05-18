@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://d1ntcr5swhfxj"]
+
+[ext_resource type="Script" uid="uid://m80pqovkjmir" path="res://legs.gd" id="1_5fopk"]
+
+[sub_resource type="Animation" id="Animation_pdc0f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legs/right_leg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("legs/left_leg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vs72t"]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legs/right_leg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.524978), Vector3(0, 0, -0.543792), Vector3(0, 0, 0.524978)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("legs/left_leg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.53236), Vector3(0, 0, 0.523599), Vector3(0, 0, -0.523599)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdc0f"]
+_data = {
+&"RESET": SubResource("Animation_pdc0f"),
+&"walk": SubResource("Animation_vs72t")
+}
+
+[node name="legs" type="Node3D" unique_id=2079631132]
+transform = Transform3D(-0.00294963, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.00294963, 0, 0, 0)
+script = ExtResource("1_5fopk")
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=1782143705]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_pdc0f")
+
+[node name="right_leg" type="Node3D" parent="." unique_id=1128850662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99703, 0.194518)
+
+[node name="right_leg" type="CSGCylinder3D" parent="right_leg" unique_id=963790240]
+transform = Transform3D(0.999983, 0, 0, 0, 0.999983, 0, 0, 0, 1, 0, -1.02487, 0)
+radius = 0.2
+
+[node name="left_leg" type="Node3D" parent="." unique_id=1086180057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99703, -0.249164)
+
+[node name="left_leg" type="CSGCylinder3D" parent="left_leg" unique_id=1257950138]
+transform = Transform3D(0.999987, 0, 0, 0, 0.999987, 0, 0, 0, 1, 0, -1.02487, 0)
+radius = 0.2
+
+[node name="pathfind" type="NavigationAgent3D" parent="." unique_id=1671495989]
+path_height_offset = -3.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="updater" type="Timer" parent="." unique_id=1891221682]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="updater" to="." method="tick"]

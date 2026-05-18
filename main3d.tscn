@@ -3,8 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
 [ext_resource type="PackedScene" uid="uid://duqr81vc5wk51" path="res://procedural/human.tscn" id="2_5wety"]
 [ext_resource type="PackedScene" uid="uid://chwjftxgx6gkb" path="res://merlin.tscn" id="2_tg236"]
-[ext_resource type="Texture2D" uid="uid://dh15hvnc3rjvp" path="res://images/Default/pattern_06.png" id="2_tqase"]
-[ext_resource type="Resource" uid="uid://dfw47tn8cgchc" path="res://dialogues/I_see.dialogue" id="3_1tr4g"]
 [ext_resource type="PackedScene" uid="uid://dakhvn0iags08" path="res://addons/menus/pause_menu.tscn" id="4_s30wn"]
 [ext_resource type="PackedScene" uid="uid://bkkfy25a2uhk" path="res://addons/fpsrpg_controller/quest.tscn" id="7_gylqs"]
 [ext_resource type="Resource" uid="uid://d3kmkfpogyrkl" path="res://items/gummy_shark.tres" id="8_81346"]
@@ -30,16 +28,11 @@
 [ext_resource type="Script" uid="uid://cq2ox3u1mtqgn" path="res://grammerator.gd" id="28_00egg"]
 [ext_resource type="MeshLibrary" uid="uid://2xjg0bsyswup" path="res://procedural/meshlib.tres" id="29_ycrus"]
 [ext_resource type="Script" uid="uid://3063y13b4csc" path="res://procgrid.gd" id="30_3vtuw"]
-[ext_resource type="AudioStream" uid="uid://b41u5e28d281e" path="res://sfx/bell.ogg" id="31_0mwmh"]
-[ext_resource type="Script" uid="uid://cmbapy26rj5my" path="res://drum.gd" id="31_cana4"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fjb1"]
-albedo_color = Color(0.627451, 0.1254902, 0.9411765, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wufe0"]
-resource_local_to_scene = true
-albedo_color = Color(1, 0, 0, 1)
-albedo_texture = ExtResource("2_tqase")
+[ext_resource type="Texture2D" uid="uid://dbaflnrxg73vf" path="res://images/sprites/angel.png" id="31_0mwmh"]
+[ext_resource type="Script" uid="uid://dsf7t8rl6nvtu" path="res://angel.gd" id="31_cana4"]
+[ext_resource type="AudioStream" uid="uid://c8d3crpn83rvo" path="res://sfx/white_noise.ogg" id="32_0fjb1"]
+[ext_resource type="PackedScene" uid="uid://d1ntcr5swhfxj" path="res://legs.tscn" id="33_0fjb1"]
+[ext_resource type="Script" uid="uid://bfwqncavufaam" path="res://stalker.gd" id="33_wufe0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fjb1"]
 size = Vector3(10, 10, 10)
@@ -68,7 +61,7 @@ type = "collect"
 target_amount = 10.0
 target_item = SubResource("Resource_3am2a")
 
-[sub_resource type="Resource" id="Resource_6stxa"]
+[sub_resource type="Resource" id="Resource_cana4"]
 resource_local_to_scene = true
 script = ExtResource("10_1tr4g")
 name = "Fight the scarecrow"
@@ -82,8 +75,8 @@ size = Vector3(2, 2, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0dbvw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_00egg"]
-vertices = PackedVector3Array(-4, -7.0635395, -5.75, -2.5, -7.0635395, -5.75, -2.75, -7.0635395, -99, -4.5, -7.0635395, -4.75, -99, -7.0635395, -99, -99, -7.0635395, -4.75, 13.5, -7.0635395, -6, 13.5, -7.0635395, -99, 14.5, -7.0635395, -5.25, 14.5, -7.0635395, -3.25, 99, -7.0635395, -3.25, 99, -7.0635395, -99, -4, -6.8135395, 4.5, -2.25, -5.5635395, 4.5, -2.25, -5.5635395, -3.75, -4, -6.8135395, -3.75, -4.5, -7.0635395, 5.5, -99, -7.0635395, 5.5, 12.5, -1.5635395, 4.25, 12.5, -1.5635395, -4, 3.6500015, -1.5635395, -3.8499985, 3.6500015, -1.5635395, 4.4000015, 5.75, -7.0635395, -3.75, 5.75, -7.0635395, 4, 12.25, -7.0635395, 4, 12.25, -7.0635395, -3.75, 14.5, -7.0635395, 3.5, 99, -7.0635395, 3.5, 14.5, -7.0635395, 5.5, 13.75, -7.0635395, 6.25, 12.5, -7.0635395, 99, 99, -7.0635395, 99, 12.25, -7.0635395, 6.25, -3.75, -7.0635395, 99, -3.75, -7.0635395, 6.5, -99, -7.0635395, 99)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(6, 1, 7), PackedInt32Array(7, 1, 2), PackedInt32Array(10, 9, 8), PackedInt32Array(8, 6, 10), PackedInt32Array(10, 6, 7), PackedInt32Array(10, 7, 11), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(12, 16, 15), PackedInt32Array(15, 16, 3), PackedInt32Array(3, 16, 17), PackedInt32Array(3, 17, 5), PackedInt32Array(13, 14, 21), PackedInt32Array(21, 14, 20), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(25, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(9, 10, 26), PackedInt32Array(26, 10, 27), PackedInt32Array(28, 26, 27), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 31), PackedInt32Array(29, 31, 30), PackedInt32Array(30, 32, 29), PackedInt32Array(34, 33, 16), PackedInt32Array(16, 33, 17), PackedInt32Array(17, 33, 35), PackedInt32Array(34, 32, 33), PackedInt32Array(33, 32, 30)]
+vertices = PackedVector3Array(-99, -7.0635395, 48.75, -4.5, -7.0635395, 48.75, -4, -7.0635395, 47.75, -2.75, -7.0635395, -99, -99, -7.0635395, -99, -2.5, -7.0635395, 47.75, 13.5, -7.0635395, 47.5, 13.5, -7.0635395, -99, 14.5, -7.0635395, 48.25, 14.5, -7.0635395, 50.25, 99, -7.0635395, 50.25, 99, -7.0635395, -99, -4, -6.8135395, 58, -2.25, -5.5635395, 58, -2.25, -5.5635395, 49.75, -4, -6.8135395, 49.75, -3.75, -7.0635395, 99, -3.75, -7.0635395, 60, -4.5, -7.0635395, 59.5, -99, -7.0635395, 99, -4.5, -7.0635395, 58.5, 12.5, -1.5635395, 57.75, 12.5, -1.5635395, 49.5, 3.6500015, -1.5635395, 49.649994, 3.6500015, -1.5635395, 57.899994, 5.75, -7.0635395, 49.75, 5.75, -7.0635395, 57.5, 12.25, -7.0635395, 57.5, 12.25, -7.0635395, 49.75, 13.75, -7.0635395, 59.75, 12.25, -7.0635395, 59.75, 12.5, -7.0635395, 99, 14.5, -7.0635395, 59, 99, -7.0635395, 99)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(3, 5, 2), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 5, 3), PackedInt32Array(10, 9, 8), PackedInt32Array(8, 6, 10), PackedInt32Array(10, 6, 7), PackedInt32Array(10, 7, 11), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(18, 19, 0), PackedInt32Array(12, 20, 15), PackedInt32Array(15, 20, 1), PackedInt32Array(1, 20, 0), PackedInt32Array(0, 20, 18), PackedInt32Array(13, 14, 24), PackedInt32Array(24, 14, 23), PackedInt32Array(24, 23, 21), PackedInt32Array(21, 23, 22), PackedInt32Array(28, 27, 25), PackedInt32Array(25, 27, 26), PackedInt32Array(31, 30, 29), PackedInt32Array(29, 32, 31), PackedInt32Array(31, 32, 33), PackedInt32Array(33, 32, 10), PackedInt32Array(32, 9, 10), PackedInt32Array(17, 30, 16), PackedInt32Array(16, 30, 31)]
 agent_height = 4.0
 agent_radius = 1.0
 
@@ -95,7 +88,7 @@ noise = SubResource("FastNoiseLite_ycrus")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cana4"]
 albedo_texture = SubResource("NoiseTexture2D_0mwmh")
 
-[sub_resource type="Resource" id="Resource_l3vsc"]
+[sub_resource type="Resource" id="Resource_0fjb1"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("14_l0lyd")
@@ -105,106 +98,24 @@ type = &"tool"
 max_stacks = 10
 equipped_scene = ExtResource("15_aef38")
 
-[sub_resource type="Animation" id="Animation_cana4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sfx:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-20.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sfx:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gxfs0"]
+radius = 1.3950195
+height = 7.4421387
 
-[sub_resource type="Animation" id="Animation_0fjb1"]
-resource_name = "beat"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sfx:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.46666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-20.0, -20.0, -30.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sfx:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+[sub_resource type="Gradient" id="Gradient_0mwmh"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wufe0"]
-_data = {
-&"RESET": SubResource("Animation_cana4"),
-&"beat": SubResource("Animation_0fjb1")
-}
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cana4"]
+gradient = SubResource("Gradient_0mwmh")
+fill = 1
+fill_from = Vector2(0.52991456, 0.46581197)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nguak"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
 
 [node name="main" type="Node3D" unique_id=350322423]
-
-[node name="human" parent="." unique_id=754432865 instance=ExtResource("2_5wety")]
-transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 0, -7.43304, -62.136)
-
-[node name="destination" type="Marker3D" parent="." unique_id=112620516]
-transform = Transform3D(-0.0657351, -0.333891, 0.551225, 0, 0.554084, 0.335624, -0.644463, 0.0340569, -0.0562248, 7.21039, 1.79103, -0.735459)
-
-[node name="human2" parent="." unique_id=231523595 instance=ExtResource("2_5wety")]
-transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, 3.09317, -7.43304, -62.136)
-
-[node name="right" parent="human2/head/eyes" index="0"]
-frame = 1
-
-[node name="left" parent="human2/head/eyes" index="1"]
-frame = 1
-
-[node name="mouth" parent="human2/head" index="1"]
-dialogue_name = &"guy"
-
-[node name="nose" parent="human2/head" index="2"]
-frame = 7
-
-[node name="hair" parent="human2/head" index="5"]
-material = SubResource("StandardMaterial3D_0fjb1")
-
-[node name="legs" parent="human2" index="1" node_paths=PackedStringArray("target")]
-target = NodePath("../../destination")
-
-[node name="pathfind" parent="human2/legs" index="3"]
-debug_enabled = true
-debug_path_custom_color = Color(1, 0, 0, 1)
-
-[node name="torso" parent="human2" index="2"]
-material = SubResource("StandardMaterial3D_wufe0")
-
-[node name="dialogue_box" parent="human2" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.04237, 0)
-dialogue = ExtResource("3_1tr4g")
 
 [node name="world" parent="." unique_id=1135701814 instance=ExtResource("1_3kllw")]
 world_radius = 1000
@@ -230,7 +141,7 @@ shape = SubResource("BoxShape3D_0fjb1")
 transform = Transform3D(4.36714, 0, 0, 0, 4.36714, 0, 0, 0, 4.36714, 19.4368, 3.27553, 0.509155)
 
 [node name="quest" parent="characters/merlin" unique_id=871772850 instance=ExtResource("7_gylqs")]
-r = SubResource("Resource_6stxa")
+r = SubResource("Resource_cana4")
 
 [node name="talk" type="Area3D" parent="characters/merlin" unique_id=884805968 groups=["interactibles"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.659344, 0.49816)
@@ -271,12 +182,12 @@ light_energy = 20.0
 omni_range = 43.0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="map" unique_id=2066752271]
-transform = Transform3D(0.584674, 0.811268, 0, -0.811268, 0.584674, 0, 0, 0, 1, 0.00458634, -5.75703, 0.257289)
+transform = Transform3D(0.584674, 0.811268, 0, -0.811268, 0.584674, 0, 0, 0, 1, 0.004586339, -5.75703, 53.763237)
 use_collision = true
 size = Vector3(2, 10, 10)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="map" unique_id=2131474797]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47081, -7.06354, 0.117708)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47081, -7.06354, 53.623657)
 use_collision = true
 size = Vector3(10, 10, 10)
 
@@ -288,7 +199,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -7.50597, 56.1246)
 
 [node name="item" parent="training_dummy" unique_id=987986552 instance=ExtResource("14_7rmuh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654872, -4.54743)
-resource = SubResource("Resource_l3vsc")
+resource = SubResource("Resource_0fjb1")
 
 [node name="tree" parent="." unique_id=1426359164 instance=ExtResource("13_2bldt")]
 transform = Transform3D(-0.103918, 0, -0.639417, 0, 0.647806, 0, 0.639417, 0, -0.103918, -9.53674e-07, -8.00182, -34.7872)
@@ -322,17 +233,44 @@ data = {
 }
 script = ExtResource("30_3vtuw")
 
-[node name="drum" type="Node3D" parent="." unique_id=1928294027]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.917732, 0, 0)
+[node name="angel" type="CharacterBody3D" parent="." unique_id=970822209]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.458157, -3.459868, 0)
 script = ExtResource("31_cana4")
 
-[node name="sfx" type="AudioStreamPlayer3D" parent="drum" unique_id=1613756599]
-stream = ExtResource("31_0mwmh")
-volume_db = -20.0
-pitch_scale = 0.3
+[node name="CollisionShape3D" type="CollisionShape3D" parent="angel" unique_id=1660065251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2869873, 0)
+shape = SubResource("CapsuleShape3D_gxfs0")
 
-[node name="anim" type="AnimationPlayer" parent="drum" unique_id=216665745]
-libraries/ = SubResource("AnimationLibrary_wufe0")
+[node name="vosn" type="VisibleOnScreenNotifier3D" parent="angel" unique_id=1801135416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9223742, 0)
 
-[editable path="human2"]
+[node name="drag_sfx" type="AudioStreamPlayer3D" parent="angel" unique_id=1890880073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9223742, 0)
+stream = ExtResource("32_0fjb1")
+volume_db = -10.0
+unit_size = 57.47
+max_db = 6.0
+
+[node name="model" type="Sprite3D" parent="angel" unique_id=1371666280]
+pixel_size = 0.03
+billboard = 2
+texture = ExtResource("31_0mwmh")
+
+[node name="shadow" type="Decal" parent="angel/model" unique_id=454563467]
+transform = Transform3D(1, 0, 0, 0, 0.04412501, -0.999026, 0, 0.999026, 0.04412501, 0, -3.813445, -0.13475643)
+size = Vector3(2, 2, 0.49926758)
+texture_albedo = SubResource("GradientTexture2D_cana4")
+
+[node name="stalker" type="Marker3D" parent="angel" unique_id=1093821857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9223742, 0)
+script = ExtResource("33_wufe0")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="angel/stalker" unique_id=1522876042]
+material = SubResource("StandardMaterial3D_nguak")
+
+[node name="legs" parent="angel" unique_id=176218052 node_paths=PackedStringArray("target") instance=ExtResource("33_0fjb1")]
+transform = Transform3D(-0.00294963, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.00294963, 0, -0.803113, 0)
+speed = 20.0
+target = NodePath("../stalker")
+
 [editable path="characters/phil"]
