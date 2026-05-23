@@ -1,6 +1,6 @@
 extends Sprite3D
 
-@export var regen_rate = 10
+@export var regen_rate = 1
 @export var dodge_chance = 0.0
 
 @export var free_on_death=true
@@ -11,7 +11,7 @@ signal hit(damage)
 signal shield_break(damage)
 signal die()
 
-var dmgn = load("res://dmg_number.tscn")
+var dmgn = load("res://addons/combat/dmg_number.tscn")
 
 func hurt(damage):
 	hit.emit(damage)

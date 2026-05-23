@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://rkak0xt7wr53"]
+
+[ext_resource type="Script" uid="uid://b6l3yb8bti8ui" path="res://gobby.gd" id="1_ltuve"]
+[ext_resource type="PackedScene" uid="uid://dw032d3mhs81m" path="res://addons/combat/hurtbox.tscn" id="2_vahvd"]
+[ext_resource type="Texture2D" uid="uid://dgjqtdye5386l" path="res://images/sprites/gobby.png" id="3_fr5d1"]
+[ext_resource type="PackedScene" uid="uid://d1ntcr5swhfxj" path="res://legs.tscn" id="4_um6g8"]
+[ext_resource type="PackedScene" uid="uid://c3f6u51vx4g5k" path="res://addons/combat/health.tscn" id="5_041i8"]
+[ext_resource type="PackedScene" uid="uid://bjaqv4213o0yw" path="res://addons/combat/loot_drop.tscn" id="6_2bvko"]
+[ext_resource type="Script" uid="uid://cyne3xynkfafa" path="res://addons/fpsrpg_controller/loot_entry.gd" id="7_1m82m"]
+[ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="8_8msps"]
+[ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="9_psfik"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ltuve"]
+radius = 3.2470703
+height = 10.057129
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ltuve"]
+viewport_path = NodePath("sv")
+
+[sub_resource type="Resource" id="Resource_vahvd"]
+resource_local_to_scene = true
+resource_name = "coin"
+script = ExtResource("8_8msps")
+texture = ExtResource("9_psfik")
+id = &"coin"
+max_stacks = 1000
+
+[sub_resource type="Resource" id="Resource_fr5d1"]
+resource_local_to_scene = true
+script = ExtResource("7_1m82m")
+item = SubResource("Resource_vahvd")
+probability = 0.5
+
+[node name="gobby" type="CharacterBody3D" unique_id=595439620 groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0967174, 0)
+script = ExtResource("1_ltuve")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=757680290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.076579094, 0)
+shape = SubResource("CapsuleShape3D_ltuve")
+
+[node name="hurtbox" parent="." unique_id=1250058299 instance=ExtResource("2_vahvd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 4.966821, 0.006629944)
+top_level = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="hurtbox2" parent="." unique_id=182916173 instance=ExtResource("2_vahvd")]
+transform = Transform3D(3.7697039, 0, 0, 0, 4.5039673, 0, 0, 0, 3.6918354, 0, 2.7026849, 0.006629944)
+top_level = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=346143975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.173944, 0)
+pixel_size = 0.2
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_fr5d1")
+
+[node name="legs" parent="." unique_id=2079631132 instance=ExtResource("4_um6g8")]
+transform = Transform3D(-0.00294963, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.00294963, 0, -1.9521127, 0)
+visible = false
+
+[node name="pathfind" parent="legs" index="3" unique_id=1671495989]
+path_height_offset = 0.0
+
+[node name="timer" type="Timer" parent="." unique_id=168961030]
+autostart = true
+
+[node name="health" parent="." unique_id=1330837348 instance=ExtResource("5_041i8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8754306, 0)
+texture = SubResource("ViewportTexture_ltuve")
+
+[node name="bar" parent="health/sv" parent_id_path=PackedInt32Array(1330837348, 1656334692) index="0" unique_id=1214573881]
+max_value = 20.0
+value = 20.0
+
+[node name="loot_drop" parent="." unique_id=1700930475 instance=ExtResource("6_2bvko")]
+loot_entries = Array[ExtResource("7_1m82m")]([SubResource("Resource_fr5d1")])
+
+[connection signal="hurted" from="hurtbox" to="health" method="hurt"]
+[connection signal="hurted" from="hurtbox2" to="health" method="hurt"]
+[connection signal="die" from="health" to="loot_drop" method="drop"]
+
+[editable path="legs"]
+[editable path="health"]

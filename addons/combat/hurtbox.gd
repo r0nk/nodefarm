@@ -4,7 +4,7 @@ extends Area3D
 
 var dmgn = load("res://addons/combat/dmg_number.tscn")
 
-signal hurted
+signal hurted(damage)
 
 func hurt(damage):
 	var instance = dmgn.instantiate()
@@ -13,7 +13,7 @@ func hurt(damage):
 		instance.modulate="#FFFF00"
 	get_parent().add_child(instance)
 	instance.global_position=global_position+Vector3(randf(),randf(),randf())
-	hurted.emit()
+	hurted.emit(damage)
 	$flash_box.visible=true
 	$flash_box/Timer.start()
 

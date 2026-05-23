@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3f6u51vx4g5k"]
+[gd_scene format=3 uid="uid://c3f6u51vx4g5k"]
 
 [ext_resource type="Script" uid="uid://d13rh7wcam43f" path="res://addons/combat/health.gd" id="1_d8kha"]
 [ext_resource type="AudioStream" uid="uid://fshtfjqf32hk" path="res://sfx/hit.ogg" id="2_0o5sg"]
@@ -15,8 +15,8 @@ colors = PackedColorArray(0.737603, 0, 0, 1, 1, 0, 0, 1)
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ucwxo"]
 width = 150
 height = 30
-color_ramp = SubResource("Gradient_ikev5")
 noise = SubResource("FastNoiseLite_q0xdd")
+color_ramp = SubResource("Gradient_ikev5")
 
 [sub_resource type="Gradient" id="Gradient_g46bk"]
 colors = PackedColorArray(0, 0, 0, 1, 0.208088, 0.208088, 0.208088, 1)
@@ -26,8 +26,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.208088, 0.208088, 0.208088, 1)
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3xpaf"]
 width = 160
 height = 40
-color_ramp = SubResource("Gradient_g46bk")
 noise = SubResource("FastNoiseLite_si1rb")
+color_ramp = SubResource("Gradient_g46bk")
 
 [sub_resource type="Gradient" id="Gradient_7mqmv"]
 colors = PackedColorArray(1, 1, 1, 1, 0.839433, 0.839433, 0.839433, 1)
@@ -37,27 +37,27 @@ colors = PackedColorArray(1, 1, 1, 1, 0.839433, 0.839433, 0.839433, 1)
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i61hp"]
 width = 150
 height = 30
-color_ramp = SubResource("Gradient_7mqmv")
 noise = SubResource("FastNoiseLite_1wvmj")
+color_ramp = SubResource("Gradient_7mqmv")
 
-[node name="health" type="Sprite3D"]
+[node name="health" type="Sprite3D" unique_id=1330837348]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21117, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_ua7cu")
 script = ExtResource("1_d8kha")
 
-[node name="hurt_sfx" type="AudioStreamPlayer3D" parent="."]
+[node name="hurt_sfx" type="AudioStreamPlayer3D" parent="." unique_id=1566895867]
 stream = ExtResource("2_0o5sg")
 
-[node name="deshield_sfx" type="AudioStreamPlayer3D" parent="."]
+[node name="deshield_sfx" type="AudioStreamPlayer3D" parent="." unique_id=2039161865]
 stream = ExtResource("3_8270s")
 pitch_scale = 0.5
 
-[node name="sv" type="SubViewport" parent="."]
+[node name="sv" type="SubViewport" parent="." unique_id=1656334692]
 disable_3d = true
 transparent_bg = true
 
-[node name="bar" type="TextureProgressBar" parent="sv"]
+[node name="bar" type="TextureProgressBar" parent="sv" unique_id=1214573881]
 z_index = 2
 offset_left = 175.0
 offset_top = 200.0
@@ -70,7 +70,7 @@ value = 100.0
 texture_progress = SubResource("NoiseTexture2D_ucwxo")
 texture_progress_offset = Vector2(5, 5)
 
-[node name="follow_bar" type="TextureProgressBar" parent="sv"]
+[node name="follow_bar" type="TextureProgressBar" parent="sv" unique_id=1568575206]
 z_index = 1
 offset_left = 175.0
 offset_top = 200.0

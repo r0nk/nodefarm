@@ -44,12 +44,15 @@ func _process(delta):
 	p.look_at(navigation_agent.get_next_path_position())
 	p.rotation_degrees.x=0
 
-	if ! p.is_on_floor():
-		p.velocity.y=-9.8
-	else:
-		p.velocity.y=0
-
 	p.velocity = global_position.direction_to(navigation_agent.get_next_path_position())
+
+#	if ! p.is_on_floor():
+#		p.velocity.y=-9.8*delta
+#	else:
+#		p.velocity.y=0
+
+	p.velocity*=speed
+
 	if debug:
 		print("global_pos: ",global_position);
 		print("npp: ",navigation_agent.get_next_path_position());
@@ -57,6 +60,5 @@ func _process(delta):
 		print("p.velocity: ",p.velocity);
 		print("p.is_on_floor: ",p.is_on_floor());
 
-	p.velocity*=speed
 	p.move_and_slide()
 

@@ -22,6 +22,7 @@
 [ext_resource type="Resource" uid="uid://drip8mwacd1h4" path="res://items/hammer.tres" id="14_stu41"]
 [ext_resource type="Script" uid="uid://c7e6lndgt2s5" path="res://stomach.gd" id="20_ds02g"]
 [ext_resource type="Script" uid="uid://cx422m10xef2e" path="res://addons/fpsrpg_controller/hunger_bar.gd" id="21_00bt2"]
+[ext_resource type="PackedScene" uid="uid://c3f6u51vx4g5k" path="res://addons/combat/health.tscn" id="23_ltudq"]
 
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
@@ -63,6 +64,12 @@ script = ExtResource("13_oi151")
 input1 = ExtResource("13_ykiit")
 output = ExtResource("14_stu41")
 metadata/_custom_type_script = "uid://cr0qtnq7axohb"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ltudq"]
+viewport_path = NodePath("sv")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fjyis"]
+viewport_path = NodePath("health/sv")
 
 [node name="player" type="CharacterBody3D" unique_id=445463381 groups=["Persist", "player"]]
 floor_max_angle = 0.9599311
@@ -634,6 +641,15 @@ text = "[wave] climbable [/wave]"
 transform = Transform3D(1, 0, -2.91038e-11, 0, -4.28408e-08, -1, 0, 1, -2.98023e-08, 0, 0, 0)
 target_position = Vector3(0, -1.5, 0)
 
+[node name="health" parent="." unique_id=1890975322 instance=ExtResource("23_ltudq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4150994, 0)
+texture = SubResource("ViewportTexture_ltudq")
+free_on_death = false
+
+[node name="Sprite2D" type="Sprite2D" parent="health" unique_id=653363273]
+position = Vector2(271, 551)
+texture = SubResource("ViewportTexture_fjyis")
+
 [connection signal="item_picked_up" from="inventory" to="game_menu/Quests" method="item_picked_up"]
 [connection signal="selection_changed" from="inventory/view/hotbar" to="camera/hand" method="selection_changed"]
 [connection signal="item_changed" from="game_menu/Inventory/hat" to="camera/hat" method="selection_changed"]
@@ -641,3 +657,4 @@ target_position = Vector3(0, -1.5, 0)
 
 [editable path="inventory"]
 [editable path="game_menu/Perks/perk"]
+[editable path="health"]

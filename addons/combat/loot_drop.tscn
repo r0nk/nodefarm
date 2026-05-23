@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bjaqv4213o0yw"]
+
+[ext_resource type="Script" uid="uid://cyprpegq0bk0a" path="res://addons/fpsrpg_controller/loot_drop.gd" id="1_pexvw"]
+[ext_resource type="Script" uid="uid://cyne3xynkfafa" path="res://addons/fpsrpg_controller/loot_entry.gd" id="2_4xvfh"]
+[ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="3_xuimc"]
+[ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="4_hi6qh"]
+
+[sub_resource type="Resource" id="Resource_5yf1l"]
+resource_local_to_scene = true
+resource_name = "coin"
+script = ExtResource("3_xuimc")
+texture = ExtResource("4_hi6qh")
+id = &"coin"
+max_stacks = 1000
+
+[sub_resource type="Resource" id="Resource_ttmx2"]
+resource_local_to_scene = true
+script = ExtResource("2_4xvfh")
+item = SubResource("Resource_5yf1l")
+probability = 0.5
+
+[node name="loot_drop" type="Node3D" unique_id=1700930475]
+script = ExtResource("1_pexvw")
+loot_entries = Array[ExtResource("2_4xvfh")]([SubResource("Resource_ttmx2")])

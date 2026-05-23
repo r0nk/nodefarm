@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw032d3mhs81m"]
+[gd_scene format=3 uid="uid://dw032d3mhs81m"]
 
 [ext_resource type="Script" uid="uid://yvgso7raxj4o" path="res://addons/combat/hurtbox.gd" id="1_vbf5y"]
 
@@ -7,21 +7,20 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmcag"]
 shading_mode = 0
 
-[node name="hurtbox" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33554, 0)
+[node name="hurtbox" type="Area3D" unique_id=1250058299]
 top_level = true
 script = ExtResource("1_vbf5y")
 
-[node name="cs" type="CollisionShape3D" parent="."]
+[node name="cs" type="CollisionShape3D" parent="." unique_id=317465373]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.495293, 0)
 shape = SubResource("BoxShape3D_1c3w7")
 
-[node name="flash_box" type="CSGBox3D" parent="."]
+[node name="flash_box" type="CSGBox3D" parent="." unique_id=1401078163]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501786, 0)
 visible = false
 material = SubResource("StandardMaterial3D_wmcag")
 
-[node name="Timer" type="Timer" parent="flash_box"]
+[node name="Timer" type="Timer" parent="flash_box" unique_id=1204498468]
 wait_time = 0.05
 one_shot = true
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://c4mojw8cw1g63"]
+[gd_scene format=4 uid="uid://c4mojw8cw1g63"]
 
 [ext_resource type="Script" uid="uid://c4uyflb3mpn6u" path="res://addons/combat/training_dummy.gd" id="1_kl8m4"]
 [ext_resource type="AudioStream" uid="uid://c6puwd25ptwbn" path="res://sfx/thud.ogg" id="2_fpsne"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dw032d3mhs81m" path="res://addons/combat/hurtbox.tscn" id="4_esi82"]
 [ext_resource type="Texture2D" uid="uid://y4hnjox44anj" path="res://models/scarecrow_0.png" id="5_yng0f"]
 [ext_resource type="Script" uid="uid://s3100lwownc1" path="res://addons/combat/training_dummy_animations.gd" id="6_ubw7h"]
-[ext_resource type="Script" uid="uid://cyprpegq0bk0a" path="res://addons/fpsrpg_controller/loot_drop.gd" id="7_12r34"]
+[ext_resource type="PackedScene" uid="uid://bjaqv4213o0yw" path="res://addons/combat/loot_drop.tscn" id="7_5yf1l"]
 [ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="9_8u7ga"]
 [ext_resource type="Script" uid="uid://cyne3xynkfafa" path="res://addons/fpsrpg_controller/loot_entry.gd" id="9_udite"]
 [ext_resource type="Texture2D" uid="uid://mg5plc5d62af" path="res://images/inventory/coin.png" id="10_nwuy7"]
@@ -174,81 +174,73 @@ _data = {
 &"impact": SubResource("Animation_s7hua")
 }
 
-[sub_resource type="Resource" id="Resource_5yf1l"]
+[sub_resource type="Resource" id="Resource_ttmx2"]
 resource_local_to_scene = true
 resource_name = "coin"
 script = ExtResource("9_8u7ga")
 texture = ExtResource("10_nwuy7")
 id = &"coin"
-type = &""
-description = ""
-flavor = ""
 max_stacks = 1000
-count = 1
-price = 20
 
-[sub_resource type="Resource" id="Resource_ttmx2"]
+[sub_resource type="Resource" id="Resource_iy7x4"]
 resource_local_to_scene = true
 script = ExtResource("9_udite")
-item = SubResource("Resource_5yf1l")
+item = SubResource("Resource_ttmx2")
 probability = 0.5
 
-[node name="training_dummy" type="Node3D"]
+[node name="training_dummy" type="Node3D" unique_id=994288747]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("1_kl8m4")
 
-[node name="Thud" type="AudioStreamPlayer3D" parent="."]
+[node name="Thud" type="AudioStreamPlayer3D" parent="." unique_id=1861061496]
 transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 0, 1.33333, 0)
 stream = ExtResource("2_fpsne")
 script = ExtResource("3_vmoty")
 
-[node name="Node2" type="Node3D" parent="."]
+[node name="Node2" type="Node3D" parent="." unique_id=1314183090]
 
-[node name="body2" type="Node3D" parent="Node2"]
+[node name="body2" type="Node3D" parent="Node2" unique_id=227487258]
 
-[node name="hurtbox" parent="Node2/body2" instance=ExtResource("4_esi82")]
+[node name="hurtbox" parent="Node2/body2" unique_id=76205435 instance=ExtResource("4_esi82")]
 transform = Transform3D(0.6, 0, 0, 0, 1.2, 0, 0, 0, 0.45, 0, 1.48714, -0.0367079)
 top_level = false
 
-[node name="body" type="MeshInstance3D" parent="Node2/body2"]
+[node name="body" type="MeshInstance3D" parent="Node2/body2" unique_id=1625212851]
 mesh = SubResource("ArrayMesh_qaidg")
 skeleton = NodePath("")
 
-[node name="arms2" type="Node3D" parent="Node2/body2"]
-transform = Transform3D(0.996195, 0, 0.0871558, 0, 1, 0, -0.0871558, 0, 0.996195, 0, 0, 0)
+[node name="arms2" type="Node3D" parent="Node2/body2" unique_id=840900084]
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
 
-[node name="hurtbox2" parent="Node2/body2/arms2" instance=ExtResource("4_esi82")]
+[node name="hurtbox2" parent="Node2/body2/arms2" unique_id=1524645741 instance=ExtResource("4_esi82")]
 transform = Transform3D(1.29505, 0, -0.0174311, 0, 0.2, 0, 0.113302, 0, 0.199239, 0.00124359, 1.33753, -0.0141993)
 top_level = false
 multiplier = 0.5
 
-[node name="arms" type="MeshInstance3D" parent="Node2/body2/arms2"]
+[node name="arms" type="MeshInstance3D" parent="Node2/body2/arms2" unique_id=917843038]
 mesh = SubResource("ArrayMesh_8eafq")
 skeleton = NodePath("")
 
-[node name="head2" type="Node3D" parent="Node2/body2"]
+[node name="head2" type="Node3D" parent="Node2/body2" unique_id=1304507203]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[node name="head" type="MeshInstance3D" parent="Node2/body2/head2"]
+[node name="head" type="MeshInstance3D" parent="Node2/body2/head2" unique_id=490135916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62593e-18, 0.21875, -4.62593e-18)
 mesh = SubResource("ArrayMesh_hkl5d")
 skeleton = NodePath("")
 
-[node name="hurtbox" parent="Node2/body2/head2" instance=ExtResource("4_esi82")]
+[node name="hurtbox" parent="Node2/body2/head2" unique_id=519278605 instance=ExtResource("4_esi82")]
 transform = Transform3D(0.3, 0, 0, 0, 0.6, 0, 0, 0, 0.3, 0, 0.487623, -0.0142546)
 top_level = false
 multiplier = 2.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ykl8t")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=671013890]
+libraries/ = SubResource("AnimationLibrary_ykl8t")
 script = ExtResource("6_ubw7h")
 
-[node name="loot_drop" type="Node3D" parent="."]
+[node name="loot_drop" parent="." unique_id=1700930475 instance=ExtResource("7_5yf1l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.12267, 0)
-script = ExtResource("7_12r34")
-loot_entries = Array[ExtResource("9_udite")]([SubResource("Resource_ttmx2")])
+loot_entries = Array[ExtResource("9_udite")]([SubResource("Resource_iy7x4")])
 
 [connection signal="hurted" from="Node2/body2/hurtbox" to="Thud" method="hurted"]
 [connection signal="hurted" from="Node2/body2/hurtbox" to="AnimationPlayer" method="hurted"]
@@ -256,4 +248,3 @@ loot_entries = Array[ExtResource("9_udite")]([SubResource("Resource_ttmx2")])
 [connection signal="hurted" from="Node2/body2/arms2/hurtbox2" to="AnimationPlayer" method="hurted"]
 [connection signal="hurted" from="Node2/body2/head2/hurtbox" to="Thud" method="hurted"]
 [connection signal="hurted" from="Node2/body2/head2/hurtbox" to="AnimationPlayer" method="hurted"]
-[connection signal="hurted" from="Node2/body2/head2/hurtbox" to="loot_drop" method="drop"]

@@ -17,5 +17,6 @@ func spawn():
 	add_child(instance)
 	if(spawned.size()>max_spawned):
 		var f = spawned.pop_back()
-		f.queue_free()
+		if f:
+			f.queue_free()
 	spawned.push_front(instance)
