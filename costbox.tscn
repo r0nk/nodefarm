@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://be131jly1fh6y"]
+
+[ext_resource type="Script" uid="uid://b2dhqdd814lne" path="res://costbox.gd" id="1_e6fel"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00egg"]
+transparency = 1
+albedo_color = Color(0.008436936, 0.63602185, 0.80650085, 0.09803922)
+
+[node name="costbox" type="CSGBox3D" unique_id=1773416794 groups=["interactibles"]]
+transform = Transform3D(1, 0, 1.536965e-15, 0, 1, 0, 1.536965e-15, -5.107026e-15, 1, 0, 0, 0)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(1, 1.9907837, 1.6541748)
+material = SubResource("StandardMaterial3D_00egg")
+script = ExtResource("1_e6fel")
+
+[node name="label" type="Label3D" parent="." unique_id=384100510]
+transform = Transform3D(1, 0, 1.536965e-15, 0, 1, 0, 1.6193644e-15, -1.110223e-16, 1, 0.7419598, -0.011862755, 3.259629e-08)
+pixel_size = 0.02
+billboard = 2
+text = "$ 500"

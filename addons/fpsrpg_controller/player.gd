@@ -57,9 +57,9 @@ func process_interactibles():
 	$camera/HUD/undercross.text=""
 	if $camera/interact_cast.is_colliding():
 		var body = $camera/interact_cast.get_collider()
-		if body.is_in_group("interactibles"):
+		if body and body.is_in_group("interactibles"):
 			$camera/HUD/undercross.text="Press [T] to interact"
-			if Input.is_action_just_pressed("interact"):
+			if body and Input.is_action_just_pressed("interact"):
 				$camera/interact_cast/sfx.play()
 				body.interact()
 

@@ -21,9 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://pa7y6i67npuf" path="res://models/phil.tscn" id="21_1nw2n"]
 [ext_resource type="Script" uid="uid://bj8fjtkppp1oj" path="res://store.gd" id="21_gylqs"]
 [ext_resource type="Script" uid="uid://byrt30315r7ig" path="res://models/phil.gd" id="22_65fwc"]
+[ext_resource type="PackedScene" uid="uid://7tbtop2yyri8" path="res://lever.tscn" id="24_00egg"]
 [ext_resource type="Script" uid="uid://c6jusolse0ugp" path="res://the_black_cube.gd" id="24_gylqs"]
 [ext_resource type="PackedScene" uid="uid://rkak0xt7wr53" path="res://gobby.tscn" id="24_tqase"]
 [ext_resource type="AudioStream" uid="uid://bxwnvw6o7nr62" path="res://sfx/heavy_pulse.ogg" id="25_l8c4v"]
+[ext_resource type="PackedScene" uid="uid://be131jly1fh6y" path="res://costbox.tscn" id="25_ycrus"]
 [ext_resource type="PackedScene" uid="uid://b3603xnb1smn6" path="res://spawner.tscn" id="27_1tr4g"]
 [ext_resource type="MeshLibrary" uid="uid://2xjg0bsyswup" path="res://procedural/meshlib.tres" id="29_ycrus"]
 [ext_resource type="Script" uid="uid://3063y13b4csc" path="res://procgrid.gd" id="30_3vtuw"]
@@ -187,6 +189,12 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.5598, -2.8845382, 87.4412
 [node name="item" parent="training_dummy" unique_id=987986552 instance=ExtResource("14_7rmuh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654872, -4.54743)
 resource = SubResource("Resource_00egg")
+
+[node name="lever" parent="." unique_id=637259742 instance=ExtResource("24_00egg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0.9998722, -0.01598652, 4.3705803e-08, 0.01598652, 0.9998722, 6.98793e-10, 0, -4.9510026, 13.171821)
+
+[node name="costbox" parent="lever" unique_id=1773416794 instance=ExtResource("25_ycrus")]
+transform = Transform3D(1, 7.84932e-30, -1.536965e-15, 0, 1, 5.107026e-15, 1.536965e-15, -5.107026e-15, 1, 0.30583715, 0.0076522827, 0.007263197)
 
 [node name="the_black_cube" type="CSGBox3D" parent="." unique_id=763684886]
 transform = Transform3D(0.70710677, -0.70710677, 0, 0.57206863, 0.57206863, -0.5877711, 0.41561693, 0.41561693, 0.80902725, 0, 0.14696264, 0)
