@@ -7,10 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://c5p8hchuic3ed" path="res://addons/fpsrpg_controller/equipped.tscn" id="5_yhe1a"]
 [ext_resource type="PackedScene" uid="uid://pyi3khqxetpk" path="res://addons/fpsrpg_controller/inventory.tscn" id="6_axg0w"]
 [ext_resource type="Script" uid="uid://5d1okwfswone" path="res://addons/fpsrpg_controller/questlog.gd" id="7_a0i7b"]
+[ext_resource type="PackedScene" uid="uid://dghdadngmf6qv" path="res://addons/combat/rifle.tscn" id="7_nu10k"]
 [ext_resource type="PackedScene" uid="uid://ce002723oqobr" path="res://addons/fpsrpg_controller/item_slot.tscn" id="8_6rfk8"]
 [ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="8_kbxqm"]
 [ext_resource type="Script" uid="uid://db0ct40egj7ue" path="res://addons/fpsrpg_controller/game_menu.gd" id="8_sq0p4"]
 [ext_resource type="AudioStream" uid="uid://bkb4ln1ntblmu" path="res://addons/fpsrpg_controller/sfx/ding.ogg" id="9_6k6ct"]
+[ext_resource type="Texture2D" uid="uid://btc74k4e276nt" path="res://images/inventory/laser_gun.png" id="9_wfdw4"]
 [ext_resource type="Script" uid="uid://bytx0l7rkwx08" path="res://addons/fpsrpg_controller/item_resource.gd" id="10_cwk8v"]
 [ext_resource type="Script" uid="uid://ogpi40jk57jq" path="res://addons/fpsrpg_controller/quest_resource.gd" id="11_tvy6y"]
 [ext_resource type="PackedScene" uid="uid://cwryw2vxb3by0" path="res://perk.tscn" id="11_veejb"]
@@ -27,6 +29,16 @@
 [sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.490116
 height = 3.0
+
+[sub_resource type="Resource" id="Resource_7sh6y"]
+resource_local_to_scene = true
+resource_name = "laser_gun"
+script = ExtResource("10_cwk8v")
+texture = ExtResource("9_wfdw4")
+id = &"laser_gun"
+type = &"tool"
+max_stacks = 10
+equipped_scene = ExtResource("7_nu10k")
 
 [sub_resource type="Resource" id="Resource_00bt2"]
 script = ExtResource("12_ds02g")
@@ -65,7 +77,7 @@ input1 = ExtResource("13_ykiit")
 output = ExtResource("14_stu41")
 metadata/_custom_type_script = "uid://cr0qtnq7axohb"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ltudq"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_31jjg"]
 viewport_path = NodePath("sv")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fjyis"]
@@ -116,20 +128,23 @@ scale = Vector2(2, 2)
 color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(0, -1, 1, 0, 0, 1, -1, 0)
 
+[node name="undercross" type="RichTextLabel" parent="camera/HUD/crosshair" unique_id=467190565]
+offset_left = -80.5
+offset_top = 12.5
+offset_right = 149.0
+offset_bottom = 47.5
+theme = ExtResource("8_kbxqm")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 32
+text = "Press [t] to interact"
+
 [node name="status" type="RichTextLabel" parent="camera/HUD" unique_id=28619586]
 offset_left = 6.0
 offset_top = 158.0
 offset_right = 932.0
 offset_bottom = 678.0
 mouse_filter = 2
-
-[node name="undercross" type="RichTextLabel" parent="camera/HUD" unique_id=467190565]
-offset_left = 735.0
-offset_top = 574.0
-offset_right = 1188.0
-offset_bottom = 797.0
-text = "
-"
 
 [node name="quest_tracker" type="Control" parent="camera/HUD" unique_id=1777602140]
 unique_name_in_owner = true
@@ -210,7 +225,7 @@ offset_bottom = 535.0
 offset_top = 26.0
 
 [node name="one" parent="inventory/view/hotbar" index="1"]
-item = ExtResource("13_ykiit")
+item = SubResource("Resource_7sh6y")
 types = Array[StringName]([&"tool", &"consumable"])
 
 [node name="two" parent="inventory/view/hotbar" index="2"]
@@ -644,7 +659,7 @@ target_position = Vector3(0, -1.5, 0)
 
 [node name="health" parent="." unique_id=1890975322 instance=ExtResource("23_ltudq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4150994, 0)
-texture = SubResource("ViewportTexture_ltudq")
+texture = SubResource("ViewportTexture_31jjg")
 free_on_death = false
 
 [node name="Sprite2D" type="Sprite2D" parent="health" unique_id=653363273]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
+[ext_resource type="PackedScene" uid="uid://cekw0mtysb4ub" path="res://dial.tscn" id="2_6lewv"]
 [ext_resource type="PackedScene" uid="uid://cv3aayvb7pqlh" path="res://3D_button.tscn" id="2_ih0mi"]
 [ext_resource type="Texture2D" uid="uid://cxtfm8y014leu" path="res://images/Default/tile.png" id="2_tvsrp"]
 [ext_resource type="PackedScene" uid="uid://dakhvn0iags08" path="res://addons/menus/pause_menu.tscn" id="4_s30wn"]
@@ -24,7 +25,10 @@ texture_filter = 0
 
 [node name="world" parent="." unique_id=1135701814 instance=ExtResource("1_3kllw")]
 
-[node name="3D_button" parent="." unique_id=637259742 instance=ExtResource("2_ih0mi")]
+[node name="dial" parent="." unique_id=637259742 instance=ExtResource("2_6lewv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.4194374, -2.6032722, 123.37042)
+
+[node name="3D_button" parent="." unique_id=594658482 instance=ExtResource("2_ih0mi")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.025328755, -2.6032722, 123.50765)
 
 [node name="map" type="NavigationRegion3D" parent="." unique_id=1569277179]

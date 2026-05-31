@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cekw0mtysb4ub"]
+
+[ext_resource type="Script" uid="uid://b5tjyxtcapubp" path="res://dial.gd" id="1_ouprd"]
+[ext_resource type="Texture2D" uid="uid://cvgta6mrjbmmd" path="res://images/Default/pattern_14.png" id="1_p42vg"]
+[ext_resource type="AudioStream" uid="uid://cieswqr60rm2g" path="res://sfx/press.ogg" id="3_bywu5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kuwmv"]
+albedo_texture = ExtResource("1_p42vg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ouprd"]
+albedo_color = Color(0.018643638, 0.43698236, 0.56865424, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bywu5"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6lewv"]
+size = Vector3(0.68408203, 1, 1)
+
+[node name="dial" type="Area3D" unique_id=637259742 groups=["interactibles"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ouprd")
+
+[node name="base" type="CSGBox3D" parent="." unique_id=2124770283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09106445, -0.0020194054, 0)
+size = Vector3(0.22607422, 0.567688, 0.5839844)
+material = SubResource("StandardMaterial3D_kuwmv")
+
+[node name="handle" type="Node3D" parent="." unique_id=688293396]
+transform = Transform3D(-4.3711392e-08, 1.0000001, 0, -1.0000001, -4.3711392e-08, 0, 0, 0, 1, 0.11463165, -0.0027403831, 0.010093689)
+
+[node name="model" type="CSGCylinder3D" parent="handle" unique_id=616729694]
+transform = Transform3D(1, 1.2789769e-13, 2.9842795e-13, -1.2789769e-13, 1, 1.2789769e-13, -2.9842795e-13, -1.2789769e-13, 1, -0.009086727, -0.062691145, 3.7252903e-09)
+radius = 0.2
+height = 0.32861328
+sides = 7
+material = SubResource("StandardMaterial3D_ouprd")
+metadata/_edit_group_ = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="handle/model" unique_id=1396518405]
+transform = Transform3D(1, 6.6435746e-13, -2.9842673e-13, -6.6435746e-13, 1, 6.6435746e-13, 2.9842673e-13, -6.6435746e-13, 1, -0.16887745, 0.07913787, -0.005572497)
+size = Vector3(0.068432614, 0.22062989, 0.04654541)
+material = SubResource("StandardMaterial3D_bywu5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1415221433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15795898, 0.057085037, 0)
+shape = SubResource("BoxShape3D_6lewv")
+
+[node name="sfx" type="AudioStreamPlayer3D" parent="." unique_id=1570517389]
+stream = ExtResource("3_bywu5")
+volume_db = -15.0
+pitch_scale = 4.0
