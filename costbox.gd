@@ -1,9 +1,9 @@
 extends CSGBox3D
 
-var cost = 200
+@export var cost = 200
 
 func buy():
-	if Player.get_node("inventory").cash>cost:
+	if Player.get_node("inventory").cash>=cost:
 		Player.get_node("inventory").cash-=cost
 		return true
 	return false

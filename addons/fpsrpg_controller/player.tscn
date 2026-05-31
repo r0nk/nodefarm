@@ -210,6 +210,7 @@ offset_bottom = 535.0
 offset_top = 26.0
 
 [node name="one" parent="inventory/view/hotbar" index="1"]
+item = ExtResource("13_ykiit")
 types = Array[StringName]([&"tool", &"consumable"])
 
 [node name="two" parent="inventory/view/hotbar" index="2"]

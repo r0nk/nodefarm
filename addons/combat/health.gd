@@ -13,7 +13,13 @@ signal die()
 
 var dmgn = load("res://addons/combat/dmg_number.tscn")
 
+func heal(damage):
+	$sv/bar.value+=damage
+
 func hurt(damage):
+	if damage<0:
+		heal(-damage)
+		return
 	hit.emit(damage)
 	if(shield>0):
 		shield-=1
@@ -26,9 +32,6 @@ func hurt(damage):
 		return
 	$hurt_sfx.play()
 	var instance = dmgn.instantiate()
-	instance.text=str(damage)
-	get_tree().get_root().get_node("main").add_child(instance)
-	instance.global_position=global_position
 	$sv/bar.value-=damage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

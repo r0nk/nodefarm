@@ -63,7 +63,7 @@ transform = Transform3D(-0.00294963, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.0029
 visible = false
 
 [node name="pathfind" parent="legs" index="3" unique_id=1671495989]
-path_height_offset = 0.0
+path_height_offset = -1.5
 
 [node name="timer" type="Timer" parent="." unique_id=168961030]
 autostart = true

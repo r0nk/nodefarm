@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://cv3aayvb7pqlh"]
+
+[ext_resource type="Script" uid="uid://cdk0tesnavwx4" path="res://3D_button.gd" id="1_gjlot"]
+[ext_resource type="Texture2D" uid="uid://bp05bwv32d3tt" path="res://images/Default/pattern_17.png" id="2_d4q36"]
+[ext_resource type="Texture2D" uid="uid://bhg140lugarms" path="res://images/Default/pattern_42.png" id="2_iebu2"]
+[ext_resource type="Texture2D" uid="uid://d4ednq6ww0yqs" path="res://images/Default/pattern_23.png" id="4_3gh6i"]
+[ext_resource type="AudioStream" uid="uid://dd20v7hmf3fuy" path="res://sfx/switch.ogg" id="5_d4q36"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6vcn8"]
+albedo_texture = ExtResource("2_d4q36")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvsrp"]
+albedo_color = Color(0.42966908, 0.36595446, 0.29738015, 1)
+albedo_texture = ExtResource("2_iebu2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ih0mi"]
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("4_3gh6i")
+uv1_scale = Vector3(0.7, 0.7, 0.7)
+uv1_offset = Vector3(0.15, 0.15, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6lewv"]
+size = Vector3(0.68408203, 1, 1)
+
+[sub_resource type="Animation" id="Animation_lgguv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("handle/model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.131, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cngvi"]
+resource_name = "pressed"
+length = 0.3
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sfx")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_d4q36")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("handle/model:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.027123686, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.131, 0, 0), Vector3(0.0035862923, 0, -4.656613e-09), Vector3(0.131, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u3ufn"]
+_data = {
+&"RESET": SubResource("Animation_lgguv"),
+&"pressed": SubResource("Animation_cngvi")
+}
+
+[node name="3D_button" type="Area3D" unique_id=637259742 groups=["interactibles"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_gjlot")
+
+[node name="base" type="CSGBox3D" parent="." unique_id=2124770283]
+material_override = SubResource("StandardMaterial3D_6vcn8")
+size = Vector3(0.40820313, 1, 0.5839844)
+material = SubResource("StandardMaterial3D_tvsrp")
+
+[node name="handle" type="Node3D" parent="." unique_id=688293396]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0.11463165, -0.0027403831, 0.010093689)
+
+[node name="model" type="CSGBox3D" parent="handle" unique_id=332087915]
+transform = Transform3D(1, 0, 2.9842795e-13, 0, 1, 0, -2.9842795e-13, 0, 1, 0.131, 0, 0)
+size = Vector3(0.19726563, 0.8474121, 0.44152832)
+material = SubResource("StandardMaterial3D_ih0mi")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1415221433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15795898, 0.057085037, 0)
+shape = SubResource("BoxShape3D_6lewv")
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=1920041119]
+libraries/ = SubResource("AnimationLibrary_u3ufn")
+
+[node name="sfx" type="AudioStreamPlayer3D" parent="." unique_id=1570517389]
