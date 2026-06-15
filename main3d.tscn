@@ -1,44 +1,393 @@
 [gd_scene format=3 uid="uid://ch6d8j0ivqwl6"]
 
 [ext_resource type="PackedScene" uid="uid://b6hlg1085xlka" path="res://addons/fpsrpg_controller/world.tscn" id="1_3kllw"]
-[ext_resource type="PackedScene" uid="uid://cekw0mtysb4ub" path="res://dial.tscn" id="2_6lewv"]
-[ext_resource type="PackedScene" uid="uid://cv3aayvb7pqlh" path="res://3D_button.tscn" id="2_ih0mi"]
-[ext_resource type="Texture2D" uid="uid://cxtfm8y014leu" path="res://images/Default/tile.png" id="2_tvsrp"]
+[ext_resource type="Script" uid="uid://d4dxfuygr6edu" path="res://progress.gd" id="1_u64xo"]
+[ext_resource type="Theme" uid="uid://p4jp3wkv06tq" path="res://addons/menus/tcg.tres" id="2_5wety"]
+[ext_resource type="Script" uid="uid://bx66bqqgwh8vx" path="res://restart_button.gd" id="3_2bldt"]
 [ext_resource type="PackedScene" uid="uid://dakhvn0iags08" path="res://addons/menus/pause_menu.tscn" id="4_s30wn"]
+[ext_resource type="PackedScene" uid="uid://dp13j8na2cs8s" path="res://player_spawn.tscn" id="5_5wety"]
+[ext_resource type="Texture2D" uid="uid://csibepba7lj6g" path="res://images/sprites/dirt_texture.png" id="6_aef38"]
+[ext_resource type="Texture2D" uid="uid://xb8tudhvhktf" path="res://images/sprites/business_man.png" id="8_u64xo"]
+[ext_resource type="Script" uid="uid://03fr2qfvd23p" path="res://business_man.gd" id="9_jiv15"]
+[ext_resource type="PackedScene" uid="uid://b8irfe3j3bv4m" path="res://dialogue_box.tscn" id="9_tu234"]
+[ext_resource type="Resource" uid="uid://yk8ajgr7ks6b" path="res://dialogues/center_of_the_world.dialogue" id="10_ctymw"]
+[ext_resource type="Texture2D" uid="uid://ciqm5av1cnrye" path="res://images/sprites/stone.png" id="11_jmf5q"]
+[ext_resource type="PackedScene" uid="uid://cv3aayvb7pqlh" path="res://3D_button.tscn" id="13_2bldt"]
+[ext_resource type="Script" uid="uid://1rww3py8fyuq" path="res://explosives.gd" id="13_d006i"]
+[ext_resource type="AudioStream" uid="uid://c2e4ruwpbj27y" path="res://sfx/mortar.ogg" id="14_7rmuh"]
+[ext_resource type="AudioStream" uid="uid://bkifs68gqwvx4" path="res://music/ending_cutscene.ogg" id="15_qp3wt"]
 [ext_resource type="MeshLibrary" uid="uid://2xjg0bsyswup" path="res://procedural/meshlib.tres" id="29_ycrus"]
 [ext_resource type="Script" uid="uid://3063y13b4csc" path="res://procgrid.gd" id="30_3vtuw"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lewv"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_2bldt"]
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_00egg"]
-vertices = PackedVector3Array(-249, -4.4978905, -249, -100.75, -4.4978905, -101.75, -100, -4.4978905, -102.5, 249, -4.4978905, -249, 134.75, -4.4978905, -102.5, -249, -4.4978905, 249, -100.75, -4.4978905, 133, 135.5, -4.4978905, -101.75, 249, -4.4978905, 249, 135.5, -4.4978905, 133, -100, -4.4978905, 133.75, 134.75, -4.4978905, 133.75, -98.75, 3.7521095, -100.5, -91.5, 3.7521095, -92.5, -90.75, 3.7521095, -93.25, 133.5, 3.7521095, -100.5, 125.5, 3.7521095, -93.25, -91.5, 3.7521095, 123.75, -98.75, 3.7521095, 131.75, 126.25, 3.7521095, -92.5, 133.5, 3.7521095, 131.75, 126.25, 3.7521095, 123.75, -90.75, 3.7521095, 124.5, 125.5, 3.7521095, 124.5, -98.5, -4.4978905, -100.25, -98.5, -4.4978905, -93.5, -91.75, -4.4978905, -93.5, -91.75, -4.4978905, -100.25, -89.5, -4.4978905, -100.25, -89.5, -4.4978905, -93.5, -82.75, -4.4978905, -93.5, -82.75, -4.4978905, -100.25, -80.5, -4.4978905, -100.25, -80.5, -4.4978905, -93.5, -73.75, -4.4978905, -93.5, -73.75, -4.4978905, -100.25, -71.5, -4.4978905, -100.25, -71.5, -4.4978905, -93.5, -64.75, -4.4978905, -93.5, -64.75, -4.4978905, -100.25, -62.5, -4.4978905, -100.25, -62.5, -4.4978905, -93.5, -55.75, -4.4978905, -93.5, -55.75, -4.4978905, -100.25, -53.5, -4.4978905, -100.25, -53.5, -4.4978905, -93.5, -46.75, -4.4978905, -93.5, -46.75, -4.4978905, -100.25, -44.5, -4.4978905, -100.25, -44.5, -4.4978905, -93.5, -37.75, -4.4978905, -93.5, -37.75, -4.4978905, -100.25, -35.5, -4.4978905, -100.25, -35.5, -4.4978905, -93.5, -28.75, -4.4978905, -93.5, -28.75, -4.4978905, -100.25, -26.5, -4.4978905, -100.25, -26.5, -4.4978905, -93.5, -19.75, -4.4978905, -93.5, -19.75, -4.4978905, -100.25, -17.5, -4.4978905, -100.25, -17.5, -4.4978905, -93.5, -10.75, -4.4978905, -93.5, -10.75, -4.4978905, -100.25, -8.5, -4.4978905, -100.25, -8.5, -4.4978905, -93.5, -1.75, -4.4978905, -93.5, -1.75, -4.4978905, -100.25, 0.5, -4.4978905, -100.25, 0.5, -4.4978905, -93.5, 7.25, -4.4978905, -93.5, 7.25, -4.4978905, -100.25, 9.5, -4.4978905, -100.25, 9.5, -4.4978905, -93.5, 16.25, -4.4978905, -93.5, 16.25, -4.4978905, -100.25, 18.5, -4.4978905, -100.25, 18.5, -4.4978905, -93.5, 25.25, -4.4978905, -93.5, 25.25, -4.4978905, -100.25, 27.5, -4.4978905, -100.25, 27.5, -4.4978905, -93.5, 34.25, -4.4978905, -93.5, 34.25, -4.4978905, -100.25, 36.5, -4.4978905, -100.25, 36.5, -4.4978905, -93.5, 43.25, -4.4978905, -93.5, 43.25, -4.4978905, -100.25, 45.5, -4.4978905, -100.25, 45.5, -4.4978905, -93.5, 52.25, -4.4978905, -93.5, 52.25, -4.4978905, -100.25, 54.5, -4.4978905, -100.25, 54.5, -4.4978905, -93.5, 61.25, -4.4978905, -93.5, 61.25, -4.4978905, -100.25, 63.5, -4.4978905, -100.25, 63.5, -4.4978905, -93.5, 70.25, -4.4978905, -93.5, 70.25, -4.4978905, -100.25, 72.5, -4.4978905, -100.25, 72.5, -4.4978905, -93.5, 79.25, -4.4978905, -93.5, 79.25, -4.4978905, -100.25, 81.5, -4.4978905, -100.25, 81.5, -4.4978905, -93.5, 88.25, -4.4978905, -93.5, 88.25, -4.4978905, -100.25, 90.5, -4.4978905, -100.25, 90.5, -4.4978905, -93.5, 97.25, -4.4978905, -93.5, 97.25, -4.4978905, -100.25, 99.5, -4.4978905, -100.25, 99.5, -4.4978905, -93.5, 106.25, -4.4978905, -93.5, 106.25, -4.4978905, -100.25, 108.5, -4.4978905, -100.25, 108.5, -4.4978905, -93.5, 115.25, -4.4978905, -93.5, 115.25, -4.4978905, -100.25, 117.5, -4.4978905, -100.25, 117.5, -4.4978905, -93.5, 124.25, -4.4978905, -93.5, 124.25, -4.4978905, -100.25, 126.5, -4.4978905, -100.25, 126.5, -4.4978905, -93.5, 133.25, -4.4978905, -93.5, 133.25, -4.4978905, -100.25, -98.5, -4.4978905, -91.25, -98.5, -4.4978905, -84.5, -91.75, -4.4978905, -84.5, -91.75, -4.4978905, -91.25, -89.5, -4.4978905, -91.25, -89.5, -4.4978905, 122.5, 124.25, -4.4978905, 122.5, 124.25, -4.4978905, -91.25, 126.5, -4.4978905, -91.25, 126.5, -4.4978905, -84.5, 133.25, -4.4978905, -84.5, 133.25, -4.4978905, -91.25, -98.5, -4.4978905, -82.25, -98.5, -4.4978905, -75.5, -91.75, -4.4978905, -75.5, -91.75, -4.4978905, -82.25, 126.5, -4.4978905, -82.25, 126.5, -4.4978905, -75.5, 133.25, -4.4978905, -75.5, 133.25, -4.4978905, -82.25, -98.5, -4.4978905, -73.25, -98.5, -4.4978905, -66.5, -91.75, -4.4978905, -66.5, -91.75, -4.4978905, -73.25, 126.5, -4.4978905, -73.25, 126.5, -4.4978905, -66.5, 133.25, -4.4978905, -66.5, 133.25, -4.4978905, -73.25, -98.5, -4.4978905, -64.25, -98.5, -4.4978905, -57.5, -91.75, -4.4978905, -57.5, -91.75, -4.4978905, -64.25, 126.5, -4.4978905, -64.25, 126.5, -4.4978905, -57.5, 133.25, -4.4978905, -57.5, 133.25, -4.4978905, -64.25, -98.5, -4.4978905, -55.25, -98.5, -4.4978905, -48.5, -91.75, -4.4978905, -48.5, -91.75, -4.4978905, -55.25, 126.5, -4.4978905, -55.25, 126.5, -4.4978905, -48.5, 133.25, -4.4978905, -48.5, 133.25, -4.4978905, -55.25, -98.5, -4.4978905, -46.25, -98.5, -4.4978905, -39.5, -91.75, -4.4978905, -39.5, -91.75, -4.4978905, -46.25, 126.5, -4.4978905, -46.25, 126.5, -4.4978905, -39.5, 133.25, -4.4978905, -39.5, 133.25, -4.4978905, -46.25, -98.5, -4.4978905, -37.25, -98.5, -4.4978905, -30.5, -91.75, -4.4978905, -30.5, -91.75, -4.4978905, -37.25, 126.5, -4.4978905, -37.25, 126.5, -4.4978905, -30.5, 133.25, -4.4978905, -30.5, 133.25, -4.4978905, -37.25, -98.5, -4.4978905, -28.25, -98.5, -4.4978905, -21.5, -91.75, -4.4978905, -21.5, -91.75, -4.4978905, -28.25, 126.5, -4.4978905, -28.25, 126.5, -4.4978905, -21.5, 133.25, -4.4978905, -21.5, 133.25, -4.4978905, -28.25, -98.5, -4.4978905, -19.25, -98.5, -4.4978905, -12.5, -91.75, -4.4978905, -12.5, -91.75, -4.4978905, -19.25, 126.5, -4.4978905, -19.25, 126.5, -4.4978905, -12.5, 133.25, -4.4978905, -12.5, 133.25, -4.4978905, -19.25, -98.5, -4.4978905, -10.25, -98.5, -4.4978905, -3.5, -91.75, -4.4978905, -3.5, -91.75, -4.4978905, -10.25, 126.5, -4.4978905, -10.25, 126.5, -4.4978905, -3.5, 133.25, -4.4978905, -3.5, 133.25, -4.4978905, -10.25, -98.5, -4.4978905, -1.25, -98.5, -4.4978905, 5.5, -91.75, -4.4978905, 5.5, -91.75, -4.4978905, -1.25, 126.5, -4.4978905, -1.25, 126.5, -4.4978905, 5.5, 133.25, -4.4978905, 5.5, 133.25, -4.4978905, -1.25, -98.5, -4.4978905, 7.75, -98.5, -4.4978905, 14.5, -91.75, -4.4978905, 14.5, -91.75, -4.4978905, 7.75, 126.5, -4.4978905, 7.75, 126.5, -4.4978905, 14.5, 133.25, -4.4978905, 14.5, 133.25, -4.4978905, 7.75, -98.5, -4.4978905, 16.75, -98.5, -4.4978905, 23.5, -91.75, -4.4978905, 23.5, -91.75, -4.4978905, 16.75, 126.5, -4.4978905, 16.75, 126.5, -4.4978905, 23.5, 133.25, -4.4978905, 23.5, 133.25, -4.4978905, 16.75, -98.5, -4.4978905, 25.75, -98.5, -4.4978905, 32.5, -91.75, -4.4978905, 32.5, -91.75, -4.4978905, 25.75, 126.5, -4.4978905, 25.75, 126.5, -4.4978905, 32.5, 133.25, -4.4978905, 32.5, 133.25, -4.4978905, 25.75, -98.5, -4.4978905, 34.75, -98.5, -4.4978905, 41.5, -91.75, -4.4978905, 41.5, -91.75, -4.4978905, 34.75, 126.5, -4.4978905, 34.75, 126.5, -4.4978905, 41.5, 133.25, -4.4978905, 41.5, 133.25, -4.4978905, 34.75, -98.5, -4.4978905, 43.75, -98.5, -4.4978905, 50.5, -91.75, -4.4978905, 50.5, -91.75, -4.4978905, 43.75, 126.5, -4.4978905, 43.75, 126.5, -4.4978905, 50.5, 133.25, -4.4978905, 50.5, 133.25, -4.4978905, 43.75, -98.5, -4.4978905, 52.75, -98.5, -4.4978905, 59.5, -91.75, -4.4978905, 59.5, -91.75, -4.4978905, 52.75, 126.5, -4.4978905, 52.75, 126.5, -4.4978905, 59.5, 133.25, -4.4978905, 59.5, 133.25, -4.4978905, 52.75, -98.5, -4.4978905, 61.75, -98.5, -4.4978905, 68.5, -91.75, -4.4978905, 68.5, -91.75, -4.4978905, 61.75, 126.5, -4.4978905, 61.75, 126.5, -4.4978905, 68.5, 133.25, -4.4978905, 68.5, 133.25, -4.4978905, 61.75, -98.5, -4.4978905, 70.75, -98.5, -4.4978905, 77.5, -91.75, -4.4978905, 77.5, -91.75, -4.4978905, 70.75, 126.5, -4.4978905, 70.75, 126.5, -4.4978905, 77.5, 133.25, -4.4978905, 77.5, 133.25, -4.4978905, 70.75, -98.5, -4.4978905, 79.75, -98.5, -4.4978905, 86.5, -91.75, -4.4978905, 86.5, -91.75, -4.4978905, 79.75, 126.5, -4.4978905, 79.75, 126.5, -4.4978905, 86.5, 133.25, -4.4978905, 86.5, 133.25, -4.4978905, 79.75, -98.5, -4.4978905, 88.75, -98.5, -4.4978905, 95.5, -91.75, -4.4978905, 95.5, -91.75, -4.4978905, 88.75, 126.5, -4.4978905, 88.75, 126.5, -4.4978905, 95.5, 133.25, -4.4978905, 95.5, 133.25, -4.4978905, 88.75, -98.5, -4.4978905, 97.75, -98.5, -4.4978905, 104.5, -91.75, -4.4978905, 104.5, -91.75, -4.4978905, 97.75, 126.5, -4.4978905, 97.75, 126.5, -4.4978905, 104.5, 133.25, -4.4978905, 104.5, 133.25, -4.4978905, 97.75, -98.5, -4.4978905, 106.75, -98.5, -4.4978905, 113.5, -91.75, -4.4978905, 113.5, -91.75, -4.4978905, 106.75, 126.5, -4.4978905, 106.75, 126.5, -4.4978905, 113.5, 133.25, -4.4978905, 113.5, 133.25, -4.4978905, 106.75, -98.5, -4.4978905, 115.75, -98.5, -4.4978905, 122.5, -91.75, -4.4978905, 122.5, -91.75, -4.4978905, 115.75, 126.5, -4.4978905, 115.75, 126.5, -4.4978905, 122.5, 133.25, -4.4978905, 122.5, 133.25, -4.4978905, 115.75, -98.5, -4.4978905, 124.75, -98.5, -4.4978905, 131.5, -91.75, -4.4978905, 131.5, -91.75, -4.4978905, 124.75, -89.5, -4.4978905, 124.75, -89.5, -4.4978905, 131.5, -82.75, -4.4978905, 131.5, -82.75, -4.4978905, 124.75, -80.5, -4.4978905, 124.75, -80.5, -4.4978905, 131.5, -73.75, -4.4978905, 131.5, -73.75, -4.4978905, 124.75, -71.5, -4.4978905, 124.75, -71.5, -4.4978905, 131.5, -64.75, -4.4978905, 131.5, -64.75, -4.4978905, 124.75, -62.5, -4.4978905, 124.75, -62.5, -4.4978905, 131.5, -55.75, -4.4978905, 131.5, -55.75, -4.4978905, 124.75, -53.5, -4.4978905, 124.75, -53.5, -4.4978905, 131.5, -46.75, -4.4978905, 131.5, -46.75, -4.4978905, 124.75, -44.5, -4.4978905, 124.75, -44.5, -4.4978905, 131.5, -37.75, -4.4978905, 131.5, -37.75, -4.4978905, 124.75, -35.5, -4.4978905, 124.75, -35.5, -4.4978905, 131.5, -28.75, -4.4978905, 131.5, -28.75, -4.4978905, 124.75, -26.5, -4.4978905, 124.75, -26.5, -4.4978905, 131.5, -19.75, -4.4978905, 131.5, -19.75, -4.4978905, 124.75, -17.5, -4.4978905, 124.75, -17.5, -4.4978905, 131.5, -10.75, -4.4978905, 131.5, -10.75, -4.4978905, 124.75, -8.5, -4.4978905, 124.75, -8.5, -4.4978905, 131.5, -1.75, -4.4978905, 131.5, -1.75, -4.4978905, 124.75, 0.5, -4.4978905, 124.75, 0.5, -4.4978905, 131.5, 7.25, -4.4978905, 131.5, 7.25, -4.4978905, 124.75, 9.5, -4.4978905, 124.75, 9.5, -4.4978905, 131.5, 16.25, -4.4978905, 131.5, 16.25, -4.4978905, 124.75, 18.5, -4.4978905, 124.75, 18.5, -4.4978905, 131.5, 25.25, -4.4978905, 131.5, 25.25, -4.4978905, 124.75, 27.5, -4.4978905, 124.75, 27.5, -4.4978905, 131.5, 34.25, -4.4978905, 131.5, 34.25, -4.4978905, 124.75, 36.5, -4.4978905, 124.75, 36.5, -4.4978905, 131.5, 43.25, -4.4978905, 131.5, 43.25, -4.4978905, 124.75, 45.5, -4.4978905, 124.75, 45.5, -4.4978905, 131.5, 52.25, -4.4978905, 131.5, 52.25, -4.4978905, 124.75, 54.5, -4.4978905, 124.75, 54.5, -4.4978905, 131.5, 61.25, -4.4978905, 131.5, 61.25, -4.4978905, 124.75, 63.5, -4.4978905, 124.75, 63.5, -4.4978905, 131.5, 70.25, -4.4978905, 131.5, 70.25, -4.4978905, 124.75, 72.5, -4.4978905, 124.75, 72.5, -4.4978905, 131.5, 79.25, -4.4978905, 131.5, 79.25, -4.4978905, 124.75, 81.5, -4.4978905, 124.75, 81.5, -4.4978905, 131.5, 88.25, -4.4978905, 131.5, 88.25, -4.4978905, 124.75, 90.5, -4.4978905, 124.75, 90.5, -4.4978905, 131.5, 97.25, -4.4978905, 131.5, 97.25, -4.4978905, 124.75, 99.5, -4.4978905, 124.75, 99.5, -4.4978905, 131.5, 106.25, -4.4978905, 131.5, 106.25, -4.4978905, 124.75, 108.5, -4.4978905, 124.75, 108.5, -4.4978905, 131.5, 115.25, -4.4978905, 131.5, 115.25, -4.4978905, 124.75, 117.5, -4.4978905, 124.75, 117.5, -4.4978905, 131.5, 124.25, -4.4978905, 131.5, 124.25, -4.4978905, 124.75, 126.5, -4.4978905, 124.75, 126.5, -4.4978905, 131.5, 133.25, -4.4978905, 131.5, 133.25, -4.4978905, 124.75)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 2, 3), PackedInt32Array(3, 2, 0), PackedInt32Array(6, 5, 1), PackedInt32Array(1, 5, 0), PackedInt32Array(7, 4, 3), PackedInt32Array(9, 7, 8), PackedInt32Array(8, 7, 3), PackedInt32Array(6, 10, 5), PackedInt32Array(11, 9, 8), PackedInt32Array(11, 8, 10), PackedInt32Array(10, 8, 5), PackedInt32Array(12, 14, 13), PackedInt32Array(16, 14, 15), PackedInt32Array(15, 14, 12), PackedInt32Array(17, 18, 13), PackedInt32Array(13, 18, 12), PackedInt32Array(15, 19, 16), PackedInt32Array(21, 19, 20), PackedInt32Array(20, 19, 15), PackedInt32Array(18, 17, 22), PackedInt32Array(20, 23, 21), PackedInt32Array(22, 23, 18), PackedInt32Array(18, 23, 20), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(35, 34, 32), PackedInt32Array(32, 34, 33), PackedInt32Array(39, 38, 36), PackedInt32Array(36, 38, 37), PackedInt32Array(43, 42, 40), PackedInt32Array(40, 42, 41), PackedInt32Array(47, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(51, 50, 48), PackedInt32Array(48, 50, 49), PackedInt32Array(55, 54, 52), PackedInt32Array(52, 54, 53), PackedInt32Array(59, 58, 56), PackedInt32Array(56, 58, 57), PackedInt32Array(63, 62, 60), PackedInt32Array(60, 62, 61), PackedInt32Array(67, 66, 64), PackedInt32Array(64, 66, 65), PackedInt32Array(71, 70, 68), PackedInt32Array(68, 70, 69), PackedInt32Array(75, 74, 72), PackedInt32Array(72, 74, 73), PackedInt32Array(79, 78, 76), PackedInt32Array(76, 78, 77), PackedInt32Array(83, 82, 80), PackedInt32Array(80, 82, 81), PackedInt32Array(87, 86, 84), PackedInt32Array(84, 86, 85), PackedInt32Array(91, 90, 88), PackedInt32Array(88, 90, 89), PackedInt32Array(95, 94, 92), PackedInt32Array(92, 94, 93), PackedInt32Array(99, 98, 96), PackedInt32Array(96, 98, 97), PackedInt32Array(103, 102, 100), PackedInt32Array(100, 102, 101), PackedInt32Array(107, 106, 104), PackedInt32Array(104, 106, 105), PackedInt32Array(111, 110, 108), PackedInt32Array(108, 110, 109), PackedInt32Array(115, 114, 112), PackedInt32Array(112, 114, 113), PackedInt32Array(119, 118, 116), PackedInt32Array(116, 118, 117), PackedInt32Array(123, 122, 120), PackedInt32Array(120, 122, 121), PackedInt32Array(127, 126, 124), PackedInt32Array(124, 126, 125), PackedInt32Array(131, 130, 128), PackedInt32Array(128, 130, 129), PackedInt32Array(135, 134, 132), PackedInt32Array(132, 134, 133), PackedInt32Array(139, 138, 136), PackedInt32Array(136, 138, 137), PackedInt32Array(143, 142, 140), PackedInt32Array(140, 142, 141), PackedInt32Array(147, 146, 144), PackedInt32Array(144, 146, 145), PackedInt32Array(151, 150, 148), PackedInt32Array(148, 150, 149), PackedInt32Array(155, 154, 152), PackedInt32Array(152, 154, 153), PackedInt32Array(159, 158, 156), PackedInt32Array(156, 158, 157), PackedInt32Array(163, 162, 160), PackedInt32Array(160, 162, 161), PackedInt32Array(167, 166, 164), PackedInt32Array(164, 166, 165), PackedInt32Array(171, 170, 168), PackedInt32Array(168, 170, 169), PackedInt32Array(175, 174, 172), PackedInt32Array(172, 174, 173), PackedInt32Array(179, 178, 176), PackedInt32Array(176, 178, 177), PackedInt32Array(183, 182, 180), PackedInt32Array(180, 182, 181), PackedInt32Array(187, 186, 184), PackedInt32Array(184, 186, 185), PackedInt32Array(191, 190, 188), PackedInt32Array(188, 190, 189), PackedInt32Array(195, 194, 192), PackedInt32Array(192, 194, 193), PackedInt32Array(199, 198, 196), PackedInt32Array(196, 198, 197), PackedInt32Array(203, 202, 200), PackedInt32Array(200, 202, 201), PackedInt32Array(207, 206, 204), PackedInt32Array(204, 206, 205), PackedInt32Array(211, 210, 208), PackedInt32Array(208, 210, 209), PackedInt32Array(215, 214, 212), PackedInt32Array(212, 214, 213), PackedInt32Array(219, 218, 216), PackedInt32Array(216, 218, 217), PackedInt32Array(223, 222, 220), PackedInt32Array(220, 222, 221), PackedInt32Array(227, 226, 224), PackedInt32Array(224, 226, 225), PackedInt32Array(231, 230, 228), PackedInt32Array(228, 230, 229), PackedInt32Array(235, 234, 232), PackedInt32Array(232, 234, 233), PackedInt32Array(239, 238, 236), PackedInt32Array(236, 238, 237), PackedInt32Array(243, 242, 240), PackedInt32Array(240, 242, 241), PackedInt32Array(247, 246, 244), PackedInt32Array(244, 246, 245), PackedInt32Array(251, 250, 248), PackedInt32Array(248, 250, 249), PackedInt32Array(255, 254, 252), PackedInt32Array(252, 254, 253), PackedInt32Array(259, 258, 256), PackedInt32Array(256, 258, 257), PackedInt32Array(263, 262, 260), PackedInt32Array(260, 262, 261), PackedInt32Array(267, 266, 264), PackedInt32Array(264, 266, 265), PackedInt32Array(271, 270, 268), PackedInt32Array(268, 270, 269), PackedInt32Array(275, 274, 272), PackedInt32Array(272, 274, 273), PackedInt32Array(279, 278, 276), PackedInt32Array(276, 278, 277), PackedInt32Array(283, 282, 280), PackedInt32Array(280, 282, 281), PackedInt32Array(287, 286, 284), PackedInt32Array(284, 286, 285), PackedInt32Array(291, 290, 288), PackedInt32Array(288, 290, 289), PackedInt32Array(295, 294, 292), PackedInt32Array(292, 294, 293), PackedInt32Array(299, 298, 296), PackedInt32Array(296, 298, 297), PackedInt32Array(303, 302, 300), PackedInt32Array(300, 302, 301), PackedInt32Array(307, 306, 304), PackedInt32Array(304, 306, 305), PackedInt32Array(311, 310, 308), PackedInt32Array(308, 310, 309), PackedInt32Array(315, 314, 312), PackedInt32Array(312, 314, 313), PackedInt32Array(319, 318, 316), PackedInt32Array(316, 318, 317), PackedInt32Array(323, 322, 320), PackedInt32Array(320, 322, 321), PackedInt32Array(327, 326, 324), PackedInt32Array(324, 326, 325), PackedInt32Array(331, 330, 328), PackedInt32Array(328, 330, 329), PackedInt32Array(335, 334, 332), PackedInt32Array(332, 334, 333), PackedInt32Array(339, 338, 336), PackedInt32Array(336, 338, 337), PackedInt32Array(343, 342, 340), PackedInt32Array(340, 342, 341), PackedInt32Array(347, 346, 344), PackedInt32Array(344, 346, 345), PackedInt32Array(351, 350, 348), PackedInt32Array(348, 350, 349), PackedInt32Array(355, 354, 352), PackedInt32Array(352, 354, 353), PackedInt32Array(359, 358, 356), PackedInt32Array(356, 358, 357), PackedInt32Array(363, 362, 360), PackedInt32Array(360, 362, 361), PackedInt32Array(367, 366, 364), PackedInt32Array(364, 366, 365), PackedInt32Array(371, 370, 368), PackedInt32Array(368, 370, 369), PackedInt32Array(375, 374, 372), PackedInt32Array(372, 374, 373), PackedInt32Array(379, 378, 376), PackedInt32Array(376, 378, 377), PackedInt32Array(383, 382, 380), PackedInt32Array(380, 382, 381), PackedInt32Array(387, 386, 384), PackedInt32Array(384, 386, 385), PackedInt32Array(391, 390, 388), PackedInt32Array(388, 390, 389), PackedInt32Array(395, 394, 392), PackedInt32Array(392, 394, 393), PackedInt32Array(399, 398, 396), PackedInt32Array(396, 398, 397), PackedInt32Array(403, 402, 400), PackedInt32Array(400, 402, 401), PackedInt32Array(407, 406, 404), PackedInt32Array(404, 406, 405), PackedInt32Array(411, 410, 408), PackedInt32Array(408, 410, 409), PackedInt32Array(415, 414, 412), PackedInt32Array(412, 414, 413), PackedInt32Array(419, 418, 416), PackedInt32Array(416, 418, 417), PackedInt32Array(423, 422, 420), PackedInt32Array(420, 422, 421), PackedInt32Array(427, 426, 424), PackedInt32Array(424, 426, 425)]
+vertices = PackedVector3Array(-124, -4.4978905, -124, -124, -4.4978905, 124, 124, -4.4978905, 124, 124, -4.4978905, -124)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 sample_partition_type = 2
 agent_height = 4.0
 agent_radius = 1.0
 agent_max_slope = 90.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ih0mi"]
-albedo_texture = ExtResource("2_tvsrp")
-uv1_scale = Vector3(50, 50, 50)
+albedo_color = Color(0.47174215, 0.4185628, 0.40144616, 1)
+albedo_texture = ExtResource("6_aef38")
+uv1_scale = Vector3(10, 10, 10)
 texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qp3wt"]
+shading_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rmuh"]
+albedo_color = Color(0.6648929, 0.33110553, 2.8878452e-07, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tu234"]
+height = 2.9404297
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bldt"]
+albedo_color = Color(0.8, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d006i"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7rmuh"]
+emission_shape = 1
+emission_sphere_radius = 25.55
+gravity = Vector3(0, 20, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 41.889996
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aef38"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_81346"]
+material = SubResource("StandardMaterial3D_aef38")
+radius = 10.0
+height = 20.0
+radial_segments = 16
+rings = 8
+
+[sub_resource type="Skin" id="Skin_cuacs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wety"]
+albedo_texture = ExtResource("11_jmf5q")
+uv1_scale = Vector3(4, 4, 4)
+texture_filter = 0
+
+[sub_resource type="Animation" id="Animation_7rmuh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../cam_1:current")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../audio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_aef38"]
+resource_name = "ending"
+length = 8.016666
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../cam_1:current")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.1666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../audio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.233333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81346"]
+_data = {
+&"RESET": SubResource("Animation_7rmuh"),
+&"ending": SubResource("Animation_aef38")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp3wt"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="main" type="Node3D" unique_id=350322423]
 
+[node name="progress" type="Node" parent="." unique_id=32061343]
+script = ExtResource("1_u64xo")
+
+[node name="Label3D" type="Label3D" parent="progress" unique_id=294246259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025328755, 41.670784, -0.16285807)
+text = "entering a giant chamber,
+
+\"this is it, the center of the world.\"
+\"...\"
+\"its just a ball. What the fuck\"
+\"whats it made out of?\"
+*object scanner*
+\"coal sir.\"
+\"How much coal? will we break even if we break it down and sell it?\"
+
+\"No sir, we might afford the trip back home sir.\""
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="progress/Label3D" unique_id=1941996989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.870232, 0)
+radius = 20.0
+radial_segments = 20
+rings = 12
+material = SubResource("StandardMaterial3D_6lewv")
+
+[node name="Panel" type="Panel" parent="progress" unique_id=1472242880]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+theme = SubResource("Theme_2bldt")
+
+[node name="restart_button" type="Button" parent="progress/Panel" unique_id=1648181609]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 309.0
+offset_right = 793.0
+offset_bottom = 501.0
+theme = ExtResource("2_5wety")
+text = "RESTART"
+script = ExtResource("3_2bldt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="progress/Panel" unique_id=1778083018]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 42.0
+offset_right = 683.0
+offset_bottom = 82.0
+theme = ExtResource("2_5wety")
+text = "VICTORY!"
+
 [node name="world" parent="." unique_id=1135701814 instance=ExtResource("1_3kllw")]
-
-[node name="dial" parent="." unique_id=637259742 instance=ExtResource("2_6lewv")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.4194374, -2.6032722, 123.37042)
-
-[node name="3D_button" parent="." unique_id=594658482 instance=ExtResource("2_ih0mi")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.025328755, -2.6032722, 123.50765)
 
 [node name="map" type="NavigationRegion3D" parent="." unique_id=1569277179]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025328755, -0.028118134, -0.16285807)
 navigation_mesh = SubResource("NavigationMesh_00egg")
 
+[node name="player_spawn" parent="map" unique_id=1517654530 instance=ExtResource("5_5wety")]
+transform = Transform3D(0.32012743, 0, 0, 0, 0.38704175, 0, 0, 0, 0.3593005, -5.7401905, -2.1436396, -149.10431)
+
 [node name="floor" type="CSGBox3D" parent="map" unique_id=648229934]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.4978905, 0)
 use_collision = true
-size = Vector3(500, 5, 500)
+size = Vector3(250, 5, 250)
+material = SubResource("StandardMaterial3D_ih0mi")
+
+[node name="main_chamber" type="CSGBox3D" parent="map" unique_id=1549381830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.400063, 0)
+use_collision = true
+size = Vector3(250, 113.40149, 250)
+material = SubResource("StandardMaterial3D_ih0mi")
+
+[node name="floor3" type="CSGBox3D" parent="map/main_chamber" unique_id=1981653405]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111205935, 0.20567322, -0.0896911)
+operation = 2
+use_collision = true
+size = Vector3(234.60474, 104.6785, 232.0971)
+material = SubResource("StandardMaterial3D_ih0mi")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="map/main_chamber" unique_id=794143600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.131012, 0)
+light_energy = 50.0
+omni_range = 106.67357
+
+[node name="glowstick3" type="Node3D" parent="map/main_chamber" unique_id=652810231]
+transform = Transform3D(0.056692477, -0.43478465, 0.8987481, 0.9916058, 0.12929754, 0, -0.11620594, 0.89120406, 0.43846527, 0.41862977, -41.213448, 0.124996245)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="map/main_chamber/glowstick3" unique_id=636557162]
+transform = Transform3D(0.056692477, 0.99160576, -0.11620592, -0.43478462, 0.12929755, 0.8912037, 0.89874816, -5.897922e-09, 0.43846512, 0.5349989, 0.06976318, 0)
+light_color = Color(1.347661e-06, 0.94229627, 0.9758151, 1)
+light_energy = 50.0
+omni_range = 30.0
+
+[node name="model" type="CSGCylinder3D" parent="map/main_chamber/glowstick3" unique_id=1922348883]
+transform = Transform3D(0.9999999, 0, 0, 2.2351742e-08, 0.9999998, 0, -3.7252903e-09, -2.9802322e-08, 0.99999994, 0, 0, 0)
+radius = 0.08300781
+height = 0.96069336
+material = SubResource("StandardMaterial3D_qp3wt")
+
+[node name="hall" type="CSGBox3D" parent="map/main_chamber" unique_id=1884886399]
+transform = Transform3D(0.34453225, 0, 0, 0, 0.58665067, 0, 0, 0, 0.82982963, 0, -16.229073, -158.44328)
+use_collision = true
+size = Vector3(250, 113.40149, 143.18408)
+material = SubResource("StandardMaterial3D_ih0mi")
+
+[node name="rope" type="Node3D" parent="map/main_chamber/hall" unique_id=288233020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2601337, 3.8295002, -172.23848)
+top_level = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="map/main_chamber/hall/rope" unique_id=150758521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.238277, -2.2310333)
+radius = 0.1
+height = 30.0
+material = SubResource("StandardMaterial3D_7rmuh")
+
+[node name="wire" type="Node3D" parent="map/main_chamber/hall" unique_id=402334271]
+transform = Transform3D(1, 0, 0, 0, 0.03777733, 0.9992862, 0, -0.9992862, 0.03777733, -12.168751, -2.5200882, -110.003365)
+top_level = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="map/main_chamber/hall/wire" unique_id=527288726]
+transform = Transform3D(1, 0, 0, 0, 0.99752617, 0.0702962, 0, -0.0702962, 0.99752617, 0.42261124, 5.1094437, -1.6678219)
+radius = 0.1
+height = 21.475098
+material = SubResource("StandardMaterial3D_7rmuh")
+
+[node name="glowstick" type="Node3D" parent="map/main_chamber/hall" unique_id=1034595758]
+transform = Transform3D(0.16454911, -1.2619563, 2.6086037, 1.6902833, 0.22039954, 0, -0.1400359, 1.0739603, 0.52837986, -15.193948, -41.729824, 31.147781)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="map/main_chamber/hall/glowstick" unique_id=2063996035]
+transform = Transform3D(0.056692477, 0.99160576, -0.11620592, -0.43478462, 0.12929755, 0.8912037, 0.89874816, -5.897922e-09, 0.43846512, 0.5349989, 0.06976318, 0)
+light_color = Color(1, 0.78150046, 0.5940086, 1)
+light_energy = 50.0
+omni_range = 30.0
+
+[node name="model" type="CSGCylinder3D" parent="map/main_chamber/hall/glowstick" unique_id=248972277]
+transform = Transform3D(0.9999999, 0, 0, 2.2351742e-08, 0.9999998, 0, -3.7252903e-09, -2.9802322e-08, 0.99999994, 0, 0, 0)
+radius = 0.08300781
+height = 0.96069336
+material = SubResource("StandardMaterial3D_qp3wt")
+
+[node name="glowstick2" type="Node3D" parent="map/main_chamber/hall" unique_id=242322593]
+transform = Transform3D(0.16454911, -1.2619563, 2.6086037, 1.6902833, 0.22039954, 0, -0.1400359, 1.0739603, 0.52837986, -15.193948, -41.729824, -16.427872)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="map/main_chamber/hall/glowstick2" unique_id=1537014857]
+transform = Transform3D(0.056692477, 0.99160576, -0.11620592, -0.43478462, 0.12929755, 0.8912037, 0.89874816, -5.897922e-09, 0.43846512, 0.5349989, 0.06976318, 0)
+light_color = Color(0.66929156, 0.99282724, 0.63016474, 1)
+light_energy = 50.0
+omni_range = 15.0
+
+[node name="model" type="CSGCylinder3D" parent="map/main_chamber/hall/glowstick2" unique_id=618004422]
+transform = Transform3D(0.97421205, 0.19777103, 0.10861465, 0.19777103, -0.51674163, -0.8329851, -0.10861463, 0.8329851, -0.5425295, 0, 0, 0)
+radius = 0.08300781
+height = 0.96069336
+material = SubResource("StandardMaterial3D_qp3wt")
+
+[node name="hall2" type="CSGBox3D" parent="map/main_chamber" unique_id=1632866138]
+transform = Transform3D(0.34453225, 0, 0, 0, 0.58665067, 0, 0, 0, 0.82982963, -1.1760587, -25.603783, -95.94152)
+operation = 2
+use_collision = true
+size = Vector3(112.63951, 51.99189, 199.854)
+material = SubResource("StandardMaterial3D_ih0mi")
+
+[node name="decorations" type="Node3D" parent="map/main_chamber" unique_id=1665168551]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="map/main_chamber/decorations" unique_id=83836300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -38.913017, 94.44023)
+use_collision = true
+radius = 10.0
+height = 18.538391
+cone = true
+material = SubResource("StandardMaterial3D_ih0mi")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="map/main_chamber/decorations" unique_id=1250287570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.43977, -35.8003, 70.377495)
+use_collision = true
+radius = 10.0
+height = 24.763824
+cone = true
+material = SubResource("StandardMaterial3D_ih0mi")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="map/main_chamber/decorations" unique_id=42793019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.97504, -35.8003, -41.77747)
+use_collision = true
+radius = 10.0
+height = 24.763824
+cone = true
+material = SubResource("StandardMaterial3D_ih0mi")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="map/main_chamber/decorations" unique_id=1536115978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.2273, -35.8003, 30.720655)
+use_collision = true
+radius = 10.0
+height = 24.763824
+cone = true
+material = SubResource("StandardMaterial3D_ih0mi")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="map/main_chamber/decorations" unique_id=740033501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.89686, -35.8003, 30.720655)
+use_collision = true
+radius = 10.0
+height = 24.763824
+cone = true
+material = SubResource("StandardMaterial3D_ih0mi")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="map/main_chamber/decorations" unique_id=561482801]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.44251, -32.640427, -85.8475)
+use_collision = true
+radius = 15.731445
+height = 31.083572
+cone = true
 material = SubResource("StandardMaterial3D_ih0mi")
 
 [node name="GridMap" type="GridMap" parent="map" unique_id=1420361536]
@@ -47,17 +396,521 @@ mesh_library = ExtResource("29_ycrus")
 cell_size = Vector3(3, 3, 3)
 cell_scale = 0.3
 bake_navigation = true
-data = {
-"cells": PackedInt32Array(65527, 65521, 1, 7, 65520, 655361, 6, 65520, 655361, 5, 65520, 655361, 4, 65520, 655361, 3, 65520, 655361, 2, 65520, 655361, 1, 65520, 655361, 0, 65520, 655361, 65535, 65520, 655361, 65529, 65520, 1, 65528, 65520, 1, 65527, 65520, 1, 16, 65521, 655361, 16, 65522, 1, 16, 65523, 1, 16, 65524, 1, 16, 65525, 1, 16, 65526, 1, 16, 65527, 1, 16, 65528, 1, 16, 65529, 1, 16, 65530, 1, 16, 65531, 1, 16, 65532, 1, 16, 65533, 1, 16, 65534, 1, 16, 65535, 1, 16, 0, 1, 16, 1, 1, 16, 2, 1, 16, 3, 1, 16, 4, 1, 16, 5, 1, 16, 6, 1, 7, 9, 1, 6, 9, 1, 5, 9, 1, 65527, 9, 655361, 65527, 8, 1, 65527, 7, 1, 4, 9, 655361, 3, 9, 655361, 2, 9, 655361, 1, 9, 655361, 0, 9, 655361, 65535, 9, 655361, 65534, 9, 655361, 65533, 9, 655361, 65532, 9, 655361, 65531, 9, 655361, 65530, 9, 655361, 65529, 9, 655361, 65528, 9, 655361, 8, 9, 655361, 9, 9, 655361, 10, 9, 655361, 11, 9, 655361, 12, 9, 655361, 13, 9, 655361, 14, 9, 655361, 15, 9, 655361, 16, 9, 655361, 16, 7, 655361, 16, 8, 655361, 65527, 6, 655361, 65527, 5, 655361, 65527, 4, 655361, 65527, 3, 655361, 65527, 2, 655361, 65527, 1, 655361, 65527, 0, 655361, 65527, 65535, 655361, 65527, 65534, 655361, 65527, 65533, 655361, 65527, 65532, 655361, 65527, 65531, 655361, 65527, 65530, 655361, 65527, 65529, 655361, 65527, 65528, 655361, 65527, 65527, 655361, 65527, 65526, 655361, 65527, 65525, 655361, 65527, 65524, 655361, 65527, 65523, 655361, 65527, 65522, 655361, 65530, 65520, 655361, 65531, 65520, 655361, 65532, 65520, 655361, 65533, 65520, 655361, 65534, 65520, 655361, 8, 65520, 655361, 9, 65520, 655361, 10, 65520, 655361, 11, 65520, 655361, 12, 65520, 655361, 16, 65520, 655361, 15, 65520, 655361, 13, 65520, 655361, 14, 65520, 655361)
-}
 script = ExtResource("30_3vtuw")
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="pause_menu" parent="." unique_id=1753282911 instance=ExtResource("4_s30wn")]
 visible = false
 
+[node name="business_man" type="CharacterBody3D" parent="." unique_id=839638600]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025328755, -4.311405, -125.50462)
+script = ExtResource("9_jiv15")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="business_man" unique_id=1203797373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.299244, 0)
+shape = SubResource("CapsuleShape3D_tu234")
+
+[node name="Sprite3D" type="Sprite3D" parent="business_man" unique_id=1092134960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4951583, 0)
+pixel_size = 0.03
+billboard = 2
+texture_filter = 0
+texture = ExtResource("8_u64xo")
+
+[node name="dialogue_box" parent="business_man" unique_id=1307761854 instance=ExtResource("9_tu234")]
+transform = Transform3D(0.32012743, 0, 0, 0, 0.38704175, 0, 0, 0, 0.3593005, 0, 2.406745, 0)
+dialogue = ExtResource("10_ctymw")
+
+[node name="secondary_position" type="Marker3D" parent="business_man" unique_id=338250809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025328755, -5.026009, -17.948433)
+top_level = true
+
 [node name="upgrades" type="Node3D" parent="." unique_id=259930224]
 transform = Transform3D(-4.371139e-08, 0, 1, 0.9998722, -0.01598652, 4.3705803e-08, 0.01598652, 0.9998722, 6.98793e-10, 0, -4.9510026, 51.380035)
 
+[node name="explosives" type="Node3D" parent="." unique_id=1329250787]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -15.859853, -2.6738613, -118.4644)
+script = ExtResource("13_d006i")
+
+[node name="model" type="Node3D" parent="explosives" unique_id=1453129233]
+
+[node name="dynamite_batch" type="Node3D" parent="explosives/model" unique_id=404642786]
+transform = Transform3D(1.9999996, 0, 0, 0, 1.9999996, 0, 0, 0, 2, 3.864026, 1.8267181, 7.915497)
+
+[node name="dynamite" type="CSGCylinder3D" parent="explosives/model/dynamite_batch" unique_id=1254334273]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 0, 0)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch/dynamite" unique_id=1961960329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch/dynamite" unique_id=2126801837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch/dynamite" unique_id=1447292522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch" unique_id=428858857]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0, 0.5217209)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch/dynamite2" unique_id=608144607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch/dynamite2" unique_id=1912236446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch/dynamite2" unique_id=873774037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite3" type="CSGCylinder3D" parent="explosives/model/dynamite_batch" unique_id=1541726924]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999997, 0, 0, 0, 1, 0.42461014, 0, 0.26159668)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch/dynamite3" unique_id=291372542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch/dynamite3" unique_id=363679018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch/dynamite3" unique_id=1983634069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite_batch2" type="Node3D" parent="explosives/model" unique_id=1639796641]
+transform = Transform3D(1.641939, -1.1419424, 0, 1.1419424, 1.641939, 0, 0, 0, 2, 19.06145, 7.8688602, 7.915497)
+
+[node name="dynamite" type="CSGCylinder3D" parent="explosives/model/dynamite_batch2" unique_id=1648511544]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 0, 0)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch2/dynamite" unique_id=796966425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch2/dynamite" unique_id=1261536925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch2/dynamite" unique_id=1047449406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch2" unique_id=191135550]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0, 0.5217209)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch2/dynamite2" unique_id=1818696816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch2/dynamite2" unique_id=916233533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch2/dynamite2" unique_id=1440665612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite3" type="CSGCylinder3D" parent="explosives/model/dynamite_batch2" unique_id=448724533]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999997, 0, 0, 0, 1, 0.42461014, 0, 0.26159668)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch2/dynamite3" unique_id=366602966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch2/dynamite3" unique_id=1302903381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch2/dynamite3" unique_id=349846239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite_batch3" type="Node3D" parent="explosives/model" unique_id=1548637346]
+transform = Transform3D(1.6419386, -1.1419419, 0, 1.1419419, 1.6419386, 0, 0, 0, 2, 3.0978422, 11.357582, 10.205223)
+
+[node name="dynamite" type="CSGCylinder3D" parent="explosives/model/dynamite_batch3" unique_id=1890747304]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 0, 0)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch3/dynamite" unique_id=1721521687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch3/dynamite" unique_id=493961128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch3/dynamite" unique_id=1230624206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch3" unique_id=915598774]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0, 0.5217209)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch3/dynamite2" unique_id=2098687382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch3/dynamite2" unique_id=2096137269]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch3/dynamite2" unique_id=164967032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite3" type="CSGCylinder3D" parent="explosives/model/dynamite_batch3" unique_id=1974472152]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999997, 0, 0, 0, 1, 0.42461014, 0, 0.26159668)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch3/dynamite3" unique_id=1125022658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch3/dynamite3" unique_id=1775868966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch3/dynamite3" unique_id=1821679872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite_batch4" type="Node3D" parent="explosives/model" unique_id=585005754]
+transform = Transform3D(1.7461485, 0.9751699, 0, -0.9751699, 1.7461485, 0, 0, 0, 2, 20.218124, 20.28866, 4.4452896)
+
+[node name="dynamite" type="CSGCylinder3D" parent="explosives/model/dynamite_batch4" unique_id=1855971658]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 0, 0)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch4/dynamite" unique_id=272598900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch4/dynamite" unique_id=551130292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch4/dynamite" unique_id=1284237617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch4" unique_id=663712786]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0, 0.5217209)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch4/dynamite2" unique_id=556812551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch4/dynamite2" unique_id=334960279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch4/dynamite2" unique_id=1452411601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite3" type="CSGCylinder3D" parent="explosives/model/dynamite_batch4" unique_id=1774449281]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999997, 0, 0, 0, 1, 0.42461014, 0, 0.26159668)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch4/dynamite3" unique_id=473367620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch4/dynamite3" unique_id=955818703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch4/dynamite3" unique_id=409057764]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite_batch5" type="Node3D" parent="explosives/model" unique_id=1307519829]
+transform = Transform3D(1.9252294, -0.5417373, 0, 0.5417373, 1.9252294, 0, 0, 0, 2, 31.98502, 3.0992084, 6.840599)
+
+[node name="dynamite" type="CSGCylinder3D" parent="explosives/model/dynamite_batch5" unique_id=1882976950]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 0, 0)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch5/dynamite" unique_id=81981938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch5/dynamite" unique_id=1397393306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch5/dynamite" unique_id=1322246435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch5" unique_id=221935857]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0, 0.5217209)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch5/dynamite2" unique_id=683463307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch5/dynamite2" unique_id=428284999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch5/dynamite2" unique_id=1117886474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="dynamite3" type="CSGCylinder3D" parent="explosives/model/dynamite_batch5" unique_id=1756943923]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999997, 0, 0, 0, 1, 0.42461014, 0, 0.26159668)
+radius = 0.28222656
+height = 2.6137695
+material = SubResource("StandardMaterial3D_2bldt")
+
+[node name="wick" type="CSGCylinder3D" parent="explosives/model/dynamite_batch5/dynamite3" unique_id=923332169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4958931, 0)
+radius = 0.087890625
+height = 0.9516907
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band" type="CSGCylinder3D" parent="explosives/model/dynamite_batch5/dynamite3" unique_id=1265159850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90390146, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="band2" type="CSGCylinder3D" parent="explosives/model/dynamite_batch5/dynamite3" unique_id=549832602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7865586, 0)
+radius = 0.34521484
+height = 0.3370514
+material = SubResource("StandardMaterial3D_d006i")
+
+[node name="sfx" type="AudioStreamPlayer3D" parent="explosives" unique_id=1225024552]
+stream = ExtResource("14_7rmuh")
+volume_db = 10.0
+
+[node name="particles" type="GPUParticles3D" parent="explosives" unique_id=2006562662]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999997, 0, 0, 0, 1, 12.50167, 0, 22.940918)
+emitting = false
+amount = 32
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7rmuh")
+draw_pass_1 = SubResource("SphereMesh_81346")
+draw_skin = SubResource("Skin_cuacs")
+
+[node name="rocks" type="Node3D" parent="." unique_id=351993694]
+unique_name_in_owner = true
+transform = Transform3D(0.32012743, 0, 0, 0, 0.38704175, 0, 0, 0, 0.3593005, -0.025328755, -1.6274815, -125.50462)
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="rocks" unique_id=1548842167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.233612, 0, 62.816895)
+use_collision = true
+radius = 30.0
+rings = 8
+material = SubResource("StandardMaterial3D_5wety")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="rocks" unique_id=420421930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.297507, 0, 62.816895)
+use_collision = true
+radius = 30.0
+rings = 8
+material = SubResource("StandardMaterial3D_5wety")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="rocks" unique_id=1974860945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.028534, 12.615414, 69.83142)
+use_collision = true
+radius = 30.0
+rings = 8
+material = SubResource("StandardMaterial3D_5wety")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="rocks" unique_id=1463010833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.679506, 41.71979, 69.83142)
+use_collision = true
+radius = 30.0
+rings = 8
+material = SubResource("StandardMaterial3D_5wety")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="rocks" unique_id=1993529619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.491383, 67.49571, 69.83142)
+use_collision = true
+radius = 30.0
+rings = 8
+material = SubResource("StandardMaterial3D_5wety")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="rocks" unique_id=903240166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.17573, 41.71979, 69.83142)
+use_collision = true
+radius = 40.0
+rings = 8
+material = SubResource("StandardMaterial3D_5wety")
+
 [node name="music" type="AudioStreamPlayer" parent="." unique_id=1787557840]
 autoplay = true
+
+[node name="ending_cutscene" type="AnimationPlayer" parent="." unique_id=350255464]
+root_node = NodePath("cam_2")
+libraries/ = SubResource("AnimationLibrary_81346")
+
+[node name="cam_1" type="Camera3D" parent="ending_cutscene" unique_id=94485880]
+transform = Transform3D(0.8660082, -0.1997513, -0.45839855, 1.357705e-10, 0.91674244, -0.39947876, 0.50002986, 0.34595188, 0.79390645, -28.38709, -1.6204901, 58.26805)
+
+[node name="cam_2" type="Camera3D" parent="ending_cutscene" unique_id=1309996511]
+transform = Transform3D(-0.99999046, -0.0001522817, 0.004360778, 0, 0.99939084, 0.034899496, -0.004363436, 0.034899164, -0.9993813, -0.7835353, 61.527775, -49.701298)
+
+[node name="audio" type="AudioStreamPlayer" parent="ending_cutscene" unique_id=646688897]
+stream = ExtResource("15_qp3wt")
+
+[node name="Panel" type="Panel" parent="ending_cutscene" unique_id=1412489899]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qp3wt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ending_cutscene/Panel" unique_id=302359442]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.5
+offset_top = -20.5
+offset_right = 162.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_5wety")
+text = "The center of it all."
+
+[node name="3D_button" parent="." unique_id=637259742 instance=ExtResource("13_2bldt")]
+transform = Transform3D(-4.3711392e-08, 2.392755e-16, 1, 0.9999976, -0.002181664, 4.371129e-08, 0.002181664, 0.9999976, 9.536305e-11, -11.742689, -4.306527, -125.774826)
+once_only = true
+
+[connection signal="switched" from="3D_button" to="explosives" method="activate"]

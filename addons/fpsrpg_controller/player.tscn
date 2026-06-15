@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://i20n6ku8iy5v" path="res://addons/fpsrpg_controller/player.gd" id="1"]
 [ext_resource type="Script" uid="uid://c72oyuju4lp25" path="res://addons/fpsrpg_controller/HUD.gd" id="2_3y5t6"]
+[ext_resource type="Script" uid="uid://bpdpk0b2o08od" path="res://addons/fpsrpg_controller/camera.gd" id="2_nu10k"]
 [ext_resource type="AudioStream" uid="uid://1adwfsldpeqs" path="res://addons/fpsrpg_controller/sfx/snap.ogg" id="3_aa11l"]
-[ext_resource type="Script" uid="uid://bxad7srnphnvi" path="res://addons/fpsrpg_controller/climbing.gd" id="5_00bt2"]
 [ext_resource type="PackedScene" uid="uid://c5p8hchuic3ed" path="res://addons/fpsrpg_controller/equipped.tscn" id="5_yhe1a"]
 [ext_resource type="PackedScene" uid="uid://pyi3khqxetpk" path="res://addons/fpsrpg_controller/inventory.tscn" id="6_axg0w"]
 [ext_resource type="Script" uid="uid://5d1okwfswone" path="res://addons/fpsrpg_controller/questlog.gd" id="7_a0i7b"]
@@ -30,7 +30,7 @@
 radius = 0.490116
 height = 3.0
 
-[sub_resource type="Resource" id="Resource_7sh6y"]
+[sub_resource type="Resource" id="Resource_wfdw4"]
 resource_local_to_scene = true
 resource_name = "laser_gun"
 script = ExtResource("10_cwk8v")
@@ -77,13 +77,14 @@ input1 = ExtResource("13_ykiit")
 output = ExtResource("14_stu41")
 metadata/_custom_type_script = "uid://cr0qtnq7axohb"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_31jjg"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_7sh6y"]
 viewport_path = NodePath("sv")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fjyis"]
 viewport_path = NodePath("health/sv")
 
 [node name="player" type="CharacterBody3D" unique_id=445463381 groups=["Persist", "player"]]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 floor_max_angle = 0.9599311
 script = ExtResource("1")
 
@@ -93,34 +94,11 @@ cull_mask = 2148532223
 current = true
 fov = 90.0
 far = 10000.0
+script = ExtResource("2_nu10k")
 
 [node name="HUD" type="CanvasLayer" parent="camera" unique_id=588202068]
 process_mode = 3
 script = ExtResource("2_3y5t6")
-
-[node name="sights" type="Node2D" parent="camera/HUD" unique_id=1606066296]
-visible = false
-
-[node name="Line2D" type="Line2D" parent="camera/HUD/sights" unique_id=1280139192]
-z_index = 3
-position = Vector2(-533, -274)
-rotation = -1.23279
-points = PackedVector2Array(-246.863, 145.068, -85.7383, 592.219, -69.3421, 637.722, 98.5878, 1103.76)
-default_color = Color(0, 0, 0, 1)
-
-[node name="Line2D2" type="Line2D" parent="camera/HUD/sights" unique_id=1158947477]
-z_index = 3
-position = Vector2(-535, -274)
-points = PackedVector2Array(546, 655, 537, -22)
-default_color = Color(0, 0, 0, 1)
-
-[node name="Polygon2D" type="Polygon2D" parent="camera/HUD/sights/Line2D2" unique_id=1864029419]
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(110, 599, 367, 704, 576, 693, 903, 623, 1101, 527, 1141, 265, 1076, 44, 858, -134, 627, -187, 263, -173, 54.9999, -102, -132, 25, -101, 270, -24.0001, 451, 67.9999, 574, -417, 1260, -694, 615, -564, -81, -366, -383, 279, -389, 978, -395, 1467, -338, 1767, -242, 2010, 103, 2013, 519, 2013, 827, 1934, 1062, 1775, 1229, 1150, 1379, 814, 1387, 251, 1410, -148, 1396, -369, 1351, -380, 1271)
-
-[node name="Polygon2D" type="Polygon2D" parent="camera/HUD/sights/Line2D2/Polygon2D" unique_id=1482965870]
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-35.0001, 471, 146, 660, -380, 1365, -516, 1229)
 
 [node name="crosshair" type="Polygon2D" parent="camera/HUD" unique_id=1736460772]
 position = Vector2(-5.96046e-08, 5.96046e-08)
@@ -131,7 +109,7 @@ polygon = PackedVector2Array(0, -1, 1, 0, 0, 1, -1, 0)
 [node name="undercross" type="RichTextLabel" parent="camera/HUD/crosshair" unique_id=467190565]
 offset_left = -80.5
 offset_top = 12.5
-offset_right = 149.0
+offset_right = 208.0
 offset_bottom = 47.5
 theme = ExtResource("8_kbxqm")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -148,6 +126,7 @@ mouse_filter = 2
 
 [node name="quest_tracker" type="Control" parent="camera/HUD" unique_id=1777602140]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 893.0
@@ -193,6 +172,7 @@ scroll_active = false
 [node name="interact_cast" type="RayCast3D" parent="camera" unique_id=1156468269]
 target_position = Vector3(0, 0, -6)
 collision_mask = 2
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="sfx" type="AudioStreamPlayer" parent="camera/interact_cast" unique_id=64483969]
@@ -221,11 +201,14 @@ process_mode = 3
 offset_right = 55.0
 offset_bottom = 535.0
 
+[node name="hotbar" parent="inventory/view" index="0"]
+visible = false
+
 [node name="select_box" parent="inventory/view/hotbar" index="0"]
 offset_top = 26.0
 
 [node name="one" parent="inventory/view/hotbar" index="1"]
-item = SubResource("Resource_7sh6y")
+item = SubResource("Resource_wfdw4")
 types = Array[StringName]([&"tool", &"consumable"])
 
 [node name="two" parent="inventory/view/hotbar" index="2"]
@@ -624,6 +607,7 @@ expand_mode = 1
 script = ExtResource("20_ds02g")
 
 [node name="hunger_bar" type="ProgressBar" parent="stomach" unique_id=2119347061]
+visible = false
 offset_left = 55.0
 offset_top = 502.0
 offset_right = 171.0
@@ -640,29 +624,14 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "Hunger"
 
-[node name="climbing" type="Node3D" parent="." unique_id=1277630310]
-transform = Transform3D(-1, 1.52574e-09, 8.74095e-08, 0, 0.999847, -0.0174524, -8.74228e-08, -0.0174524, -0.999848, 0, 0.813039, 0)
-script = ExtResource("5_00bt2")
-
-[node name="label" type="RichTextLabel" parent="climbing" unique_id=1363854786]
-offset_left = 363.0
-offset_top = 232.0
-offset_right = 545.0
-offset_bottom = 285.0
-theme = ExtResource("8_kbxqm")
-bbcode_enabled = true
-text = "[wave] climbable [/wave]"
-
-[node name="start_ray" type="RayCast3D" parent="climbing" unique_id=107237021]
-transform = Transform3D(1, 0, -2.91038e-11, 0, -4.28408e-08, -1, 0, 1, -2.98023e-08, 0, 0, 0)
-target_position = Vector3(0, -1.5, 0)
-
 [node name="health" parent="." unique_id=1890975322 instance=ExtResource("23_ltudq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4150994, 0)
-texture = SubResource("ViewportTexture_31jjg")
+visible = false
+texture = SubResource("ViewportTexture_7sh6y")
 free_on_death = false
 
 [node name="Sprite2D" type="Sprite2D" parent="health" unique_id=653363273]
+visible = false
 position = Vector2(271, 551)
 texture = SubResource("ViewportTexture_fjyis")
 

@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dp13j8na2cs8s"]
+
+[node name="player_spawn" type="Marker3D" unique_id=1517654530 groups=["Player_Spawn"]]
+transform = Transform3D(0.32012743, 0, 0, 0, 0.38704175, 0, 0, 0, 0.3593005, 0, 0, 0)

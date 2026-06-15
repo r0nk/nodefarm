@@ -9,6 +9,8 @@ func get_mouth():
 
 func pitchmod():
 	var m = get_mouth()
+	if not m:
+		return
 	var base = m.pitch_mod
 	var radius=0.1
 	pitch_scale=randf_range(base-radius,base+radius)
@@ -20,7 +22,8 @@ func volumemod(letter):
 		volume_db=-10
 
 func lipsync(letter):
-	get_mouth().say(letter)
+	if get_mouth():
+		get_mouth().say(letter)
 
 func speak(letter,index,speed):
 	if letter ==" ":

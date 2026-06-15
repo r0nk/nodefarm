@@ -1,0 +1,65 @@
+~ start
+Tie: By golly, could it be? Is that unobtainium?
+- No, sir.
+	Tie: Then what is it?
+	- Coal Sir.
+		Tie: ... Coal?
+		- Yes sir. The same stuff you would use on your grill sir.
+			Tie: I KNOW WHAT COAL IS.
+			Tie: It can't be coal. We've come all this way. It has to be something more mysterious.
+			Tie: It has to be something else. Go take another look.
+			do get_node("/root/main/business_man/dialogue_box").starting_point="another_look"
+			=> END
+~ another_look
+Tie: Is it still coal?
+- Still coal sir.
+	Tie: Okay when you say coal, you are just lying to my face right?
+	- No sir.
+		Tie: Just to make me feel better right?
+		- No sir.
+			Tie: Just because you happen to be sensitive to the fact that this expedition cost me my entire life savings right?
+			- OUR life savings, sir.
+				Tie: Ok. How much cash is this coal worth.
+				- It might cover the trip back.
+					Tie: ... I shouldn't have brought an accountant.
+					do get_node("/root/main/business_man/dialogue_box").starting_point="stages"
+					=> END
+~ stages
+Tie: So that's it then? At the center of everything is a block of coal?
+Tie: No secrets to unravel, no purpose, just a big ball of coal?
+- I've been bigger balls sir. This would be mid size.
+	Tie: You used to moonlight as a therapist right?
+	- Before the incident sir, yes.
+		Tie: Help me work through this. What does this mean?
+		- For our finances or your mental health?
+			Tie: What does it mean? What does ANY of it mean?
+			Tie: Is this the secret? 
+			Tie: Am I supposed to interpret it like that one movie with the panda?
+			- Sir, financially I don't think we have much room for interpretation.
+				Tie: It been decades of work. I've lost two marriages for this.
+				- Sir, the divorces were because your communication skills are terrible.
+					Tie: They couldn't see my vision.
+					- I'm afraid they might have been seeing clearly.
+						Tie: ... Go back to talking about our money.
+						- What money?
+							Tie: That's fair. Unlike this.
+							do get_node("/root/main/business_man/dialogue_box").starting_point="whatnext"
+							=> END
+~ whatnext
+Tie: So what next? We climb out and then what?
+- I'm assuming we run from our creditors sir.
+	Tie: No task can match this one. There's no point to my life any more.
+	- Maybe the real point is the lessons we learned along the-
+		Tie: Do not finish that sentence.
+		Tie: This is all I've ever wanted. For so long.
+		- You did technically do it.
+			Tie: I don't know how to live without this.
+			- Maybe you shouldn't.
+				Tie: Are you saying I should give up?
+				- No, I'm saying you shouldn't try to 'know' how to live.
+					Tie: What does that even mean?
+					- Look at where it brought you.
+						Tie: Look at where it brought US, you mean.
+						Tie: ...
+						do get_node("/root/main/ending_cutscene").play("ending")
+=> END

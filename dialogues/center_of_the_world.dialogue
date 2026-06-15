@@ -1,0 +1,10 @@
+~ start
+Tie: Are you ready?
+- Give me a second
+	Tie: Understandable, take your time.
+- Aren't you standing a little close?
+	Tie: Enterprise takes danger my boy.
+	=> start
+- Yes
+	Tie: I'll let you do the honors, press the button when you are ready.
+=> END

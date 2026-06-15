@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://nsfaptmhcorh"]
 
-[ext_resource type="Texture2D" uid="uid://bdxsxqarswg0s" path="res://images/Default/pattern_46.png" id="1_61u5m"]
+[ext_resource type="Texture2D" uid="uid://cq1sajoowihnn" path="res://images/Default/pattern_68.png" id="1_61u5m"]
 [ext_resource type="Texture2D" uid="uid://bsuh13ctttdg7" path="res://images/Default/pattern_50.png" id="1_a4upo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dr8xb"]
-albedo_color = Color(1, 0.45000005, 0, 1)
+albedo_color = Color(1, 0.75591046, 0.6330594, 1)
 albedo_texture = ExtResource("1_61u5m")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61u5m"]

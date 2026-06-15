@@ -5,7 +5,7 @@ extends Panel
 signal selection_changed(item)
 
 func check_switch(slot):
-	if Input.is_action_just_pressed(slot):
+	if visible and Input.is_action_just_pressed(slot):
 		selected=get_node(slot)
 		selection_changed.emit(selected.item)
 

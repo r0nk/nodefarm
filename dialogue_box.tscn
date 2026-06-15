@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8irfe3j3bv4m"]
+[gd_scene format=3 uid="uid://b8irfe3j3bv4m"]
 
 [ext_resource type="Script" uid="uid://be5jhirej45ap" path="res://dialogue_box.gd" id="1_s5p2f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ceuo"]
 size = Vector3(2, 2, 2)
 
-[node name="dialogue_box" type="Area3D" groups=["interactibles"]]
+[node name="dialogue_box" type="Area3D" unique_id=776104446 groups=["interactibles"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_s5p2f")
 
-[node name="cs" type="CollisionShape3D" parent="."]
+[node name="cs" type="CollisionShape3D" parent="." unique_id=1765983636]
 shape = SubResource("BoxShape3D_3ceuo")
+debug_color = Color(0.7019608, 0.57254905, 0, 1)

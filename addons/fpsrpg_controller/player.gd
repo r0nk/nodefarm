@@ -7,7 +7,15 @@ var gravity_vector = Vector3(0,-98,0)
 var health = 100
 #probably a better way of doing this but yolo lmao
 var dead = false
-var move_locked = false
+var move_locked = false:
+	set(v):
+		if v:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			$camera/HUD/crosshair/undercross.text=""
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		move_locked=v
+
 
 @export var speed = 10
 
@@ -42,8 +50,9 @@ func change_sensitivity(to):
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$camera/HUD/crosshair.position = get_viewport().size/2
-	$camera/HUD/sights.position = get_viewport().size/2
 	DialogueManager.dialogue_ended.connect(dialogue_ended)
+	var spawn = get_tree().get_nodes_in_group("Player_Spawn").pick_random()
+	global_position=spawn.global_position
 
 func _input(event):
 	if (event is InputEventMouseMotion) and not move_locked:
@@ -53,12 +62,18 @@ func _input(event):
 func get_aim():
 	return -$camera.transform.basis.z
 
+func interaction_string(body):
+	var bs = body.get("interaction_string")
+	if bs==null:
+		bs = "interact"
+	return " Press [T] to %s." % [bs]
+
 func process_interactibles():
 	$camera/HUD/crosshair/undercross.text=""
 	if $camera/interact_cast.is_colliding():
 		var body = $camera/interact_cast.get_collider()
 		if body and body.is_in_group("interactibles"):
-			$camera/HUD/crosshair/undercross.text="Press [T] to interact"
+			$camera/HUD/crosshair/undercross.text=interaction_string(body)
 			if body and Input.is_action_just_pressed("interact"):
 				$camera/interact_cast/sfx.play()
 				body.interact()
@@ -79,6 +94,7 @@ func process_input(delta):
 
 	if Input.is_action_pressed("move_forward"):
 		input_direction+=forward
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Input.is_action_pressed("move_backward"):
 		input_direction+=-forward
 	if Input.is_action_pressed("move_left"):
@@ -113,12 +129,6 @@ func _physics_process(delta: float) -> void:
 
 	process_input(delta)
 
-	$camera/hand.visible=!$climbing.active
-
-	if($climbing.active):
-		return #let the climbing script handle movement
-	$climbing.rotation=$camera.rotation
-
 	accel += gravity_vector*delta*7
 	velocity += (speed*input_direction)+(accel*delta)
 	set_velocity(velocity)
@@ -132,5 +142,10 @@ func _physics_process(delta: float) -> void:
 			velocity*=0
 	else:
 		velocity*=1-(delta*8)
+
 	move_and_slide()
+
+func _set(property,value):
+	print("property,value:",property,value)
+	return false
 

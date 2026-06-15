@@ -6,7 +6,6 @@ var active = false
 var surface
 
 func ray_hits_climbable(ray):
-	assert(ray)
 	if ray.is_colliding() and ray.get_collider().is_in_group("climbable"):
 		return true
 	return false
